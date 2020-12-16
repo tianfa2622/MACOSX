@@ -3,7 +3,6 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './plugins/element.js'
-import './assets/iconfont/font_img/iconfont.css'
 import './assets/css/global.css' // 引入全局样式
 import echarts from 'echarts'
 import { pcaa } from 'area-data-vue'

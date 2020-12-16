@@ -1,5 +1,5 @@
 <template>
-  <div :id="elId"></div>
+  <div :id="elId" class="chart"></div>
 </template>
 
 <script>
@@ -50,5 +50,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less" scoped>
+.chart {
+  width: 100%;
+  height: 100%;
+}
 </style>

@@ -11,7 +11,7 @@
         <span class="title">智慧公安检查站管控系统</span>
       </div>
       <!-- 头部右侧区域 -->
-      <div class="flr clearfix">
+      <!-- <div class="flr clearfix">
         <el-button
           type="text"
           icon="el-icon-s-home"
@@ -28,7 +28,7 @@
           个人设置
         </el-button>
         <el-button type="text" class="btntext">退出</el-button>
-      </div>
+      </div> -->
     </el-header>
   </div>
 </template>
