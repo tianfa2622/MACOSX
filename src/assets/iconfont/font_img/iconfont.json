@@ -1,0 +1,86 @@
+{
+  "id": "2268272",
+  "name": "xm1",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "12891720",
+      "name": "勤务管理",
+      "font_class": "qinwuguanli",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "1927422",
+      "name": "基础信息",
+      "font_class": "jichuxinxi",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "3978302",
+      "name": "系统安全合规报表",
+      "font_class": "xitonganquanheguibaobiao",
+      "unicode": "e643",
+      "unicode_decimal": 58947
+    },
+    {
+      "icon_id": "7219967",
+      "name": "防护",
+      "font_class": "fanghu",
+      "unicode": "ea2b",
+      "unicode_decimal": 59947
+    },
+    {
+      "icon_id": "7868902",
+      "name": "治安防范",
+      "font_class": "zhianfangfan",
+      "unicode": "e666",
+      "unicode_decimal": 58982
+    },
+    {
+      "icon_id": "8021741",
+      "name": "通行监控-01",
+      "font_class": "tonghangjiankong-",
+      "unicode": "e78c",
+      "unicode_decimal": 59276
+    },
+    {
+      "icon_id": "10993596",
+      "name": "人脸",
+      "font_class": "xingzhuangjiehe",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "11959918",
+      "name": "基础信息",
+      "font_class": "jichuxinxi1",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "11968745",
+      "name": "home",
+      "font_class": "home",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "14848274",
+      "name": "统计分析",
+      "font_class": "tjfx",
+      "unicode": "fb83",
+      "unicode_decimal": 64387
+    },
+    {
+      "icon_id": "16239623",
+      "name": "人脸",
+      "font_class": "renlian",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    }
+  ]
+}
