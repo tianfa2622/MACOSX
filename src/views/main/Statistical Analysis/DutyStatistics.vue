@@ -1,5 +1,5 @@
 <template>
-  <div class="fill_height mwidth">
+  <div class="fill_height mwidth back-c">
     <el-card>
       <div slot="header" class="header-tit">
         <span>勤务统计</span>

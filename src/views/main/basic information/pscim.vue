@@ -1,5 +1,5 @@
 <template>
-  <div class="fill_height mwidth dflex direction-column">
+  <div class="fill_height mwidth dflex direction-column back-c">
     <el-card body-style="padding-bottom:0">
       <div slot="header" class="clearfix">
         <span style="font-size: 16px">公安检查站信息管理</span>

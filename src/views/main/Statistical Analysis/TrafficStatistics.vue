@@ -1,5 +1,5 @@
 <template>
-  <div class="fill_height mwidth dflex direction-column">
+  <div class="fill_height mwidth dflex direction-column back-c">
     <el-card>
       <div slot="header" class="clearfix">
         <span class="header-title">通行统计</span>

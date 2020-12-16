@@ -1,6 +1,6 @@
 <template>
   <!-- 人员核查预警 -->
-  <div class="fill_height dflex mwidth">
+  <div class="fill_height dflex mwidth back-c">
     <div class="personnelLeft dflex direction-column">
       <el-card body-style="padding-bottom: 0">
         <div slot="header" class="clearfix">

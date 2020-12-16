@@ -1,5 +1,5 @@
 <template>
-  <div class="fill_height dflex direction-column mwidth">
+  <div class="fill_height dflex direction-column mwidth back-c">
     <el-card body-style="padding-bottom: 0">
       <div slot="header" class="clearfix">
         <span style="font-size: 16px">车白名单</span>

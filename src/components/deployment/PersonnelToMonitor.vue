@@ -1,10 +1,9 @@
 <template>
   <div class="dflex direction-column mwidth fill_height">
-    <!-- <div class="personnel_content flex1 dflex"> -->
     <el-form
       :model="form"
       :inline="true"
-      class="form-content fill_height"
+      class="form-content"
       label-width="130px"
     >
       <el-form-item label="被布控人姓名：" class="w-30">
@@ -182,8 +181,11 @@
         </el-upload>
       </el-form-item>
     </el-form>
+    <div class="btn-bot">
+      <el-button class="w150" type="primary">保存</el-button>
+      <el-button class="w150">取消</el-button>
+    </div>
   </div>
-  <!-- </div> -->
 </template>
 
 <script>
@@ -238,8 +240,14 @@ export default {
 
 <style lang="less">
 .form-content {
-  padding: 20px 10%;
+  height: 90%;
+  padding: 20px 10% 0;
   overflow: auto;
+}
+.btn-bot {
+  height: 10%;
+  text-align: end;
+  padding: 0 20%;
 }
 .avatar-uploader .el-upload {
   border: 1px dashed #d9d9d9;

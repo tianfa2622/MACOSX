@@ -45,6 +45,10 @@ a {
   text-decoration: none;
 }
 
+.back-c {
+  background-color: #fff !important;
+}
+
 .fill_height {
   height: 100%;
 }
@@ -310,6 +314,14 @@ a {
 
 .w-50 {
   width: 50% !important;
+}
+
+.w-45 {
+  width: 45% !important;
+}
+
+.w-40 {
+  width: 40% !important;
 }
 
 .w-25 {

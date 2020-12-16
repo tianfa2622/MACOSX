@@ -1,6 +1,6 @@
 <template>
   <!-- 车辆核验预警 -->
-  <div class="fill_height dflex mwidth">
+  <div class="fill_height dflex mwidth back-c">
     <div class="vehicleLeft dflex direction-column">
       <el-card body-style="padding-bottom: 0">
         <div slot="header" class="clearfix">

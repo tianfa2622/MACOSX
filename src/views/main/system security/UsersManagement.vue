@@ -1,9 +1,9 @@
 <template>
   <!-- 用户角色及权限管理页面 -->
-  <div class="fill_height mwidth dflex direction-column">
+  <div class="fill_height mwidth dflex direction-column back-c">
     <el-card>
       <div slot="header" class="clearfix">
-        <span style="font-size:16px">用户角色及权限管理页面</span>
+        <span style="font-size: 16px">用户角色及权限管理页面</span>
       </div>
       <el-form :model="formInline" label-width="100px">
         <el-row type="flex" justify="space-around">
@@ -14,12 +14,19 @@
           </el-col>
           <el-col :span="4">
             <el-form-item label="身份证号码：">
-              <el-input v-model="formInline.identificationNumber" class="w250"></el-input>
+              <el-input
+                v-model="formInline.identificationNumber"
+                class="w250"
+              ></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="4">
             <el-form-item label="公安检查站：">
-              <el-select v-model="formInline.CheckpointCategory" placeholder="请选择检查站" class="w250">
+              <el-select
+                v-model="formInline.CheckpointCategory"
+                placeholder="请选择检查站"
+                class="w250"
+              >
                 <el-option label="部门一" value="shanghai"></el-option>
                 <el-option label="部门二" value="beijing"></el-option>
               </el-select>
@@ -27,19 +34,26 @@
           </el-col>
           <el-col :span="4">
             <el-form-item label="电话号码：">
-              <el-input v-model="formInline.phoneNumber" class="w250"></el-input>
+              <el-input
+                v-model="formInline.phoneNumber"
+                class="w250"
+              ></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
-          <el-col :span="24" style="text-align:end">
-            <el-button @click="onSubmit" type="primary" class="w200">搜索</el-button>
-            <el-button @click="onSubmit1" type="primary" class="w200">新增人员</el-button>
+          <el-col :span="24" style="text-align: end">
+            <el-button @click="onSubmit" type="primary" class="w200"
+              >搜索</el-button
+            >
+            <el-button @click="onSubmit1" type="primary" class="w200"
+              >新增人员</el-button
+            >
           </el-col>
         </el-row>
       </el-form>
       <!-- 新增人员 -->
-      <el-dialog :visible.sync='dialogVisible3' title="编辑" width="25%">
+      <el-dialog :visible.sync="dialogVisible3" title="编辑" width="25%">
         <el-form :model="form4" label-width="130px">
           <el-form-item label="姓名：">
             <el-input v-model="form4.Staffname"></el-input>
@@ -51,13 +65,21 @@
             </el-radio-group>
           </el-form-item>
           <el-form-item label="民族：">
-            <el-select v-model="form4.national" style="width:100%" placeholder="请选择">
+            <el-select
+              v-model="form4.national"
+              style="width: 100%"
+              placeholder="请选择"
+            >
               <el-option label="汉族" value="汉族"></el-option>
               <el-option label="满族" value="满族"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="常用证件类型：">
-            <el-select v-model="form4.CommonCertificateTypes" style="width:100%" placeholder="请选择">
+            <el-select
+              v-model="form4.CommonCertificateTypes"
+              style="width: 100%"
+              placeholder="请选择"
+            >
               <el-option label="身份证" value="身份证"></el-option>
               <el-option label="居住证" value="居住证"></el-option>
               <el-option label="签证" value="签证"></el-option>
@@ -76,24 +98,60 @@
             <el-input v-model="form4.ContactNumber"></el-input>
           </el-form-item>
           <el-form-item label="公安检查站：">
-            <el-select v-model="form4.PublicSecurityCheckpoint" style="width:100%" placeholder="请选择">
-              <el-option label="万家丽公安检查站" value="万家丽公安检查站"></el-option>
-              <el-option label="锦泰广场公安检查站" value="锦泰广场公安检查站"></el-option>
-              <el-option label="火车南站公安检查站" value="火车南站公安检查站"></el-option>
-              <el-option label="五一广场公安检查站" value="五一广场公安检查站"></el-option>
+            <el-select
+              v-model="form4.PublicSecurityCheckpoint"
+              style="width: 100%"
+              placeholder="请选择"
+            >
+              <el-option
+                label="万家丽公安检查站"
+                value="万家丽公安检查站"
+              ></el-option>
+              <el-option
+                label="锦泰广场公安检查站"
+                value="锦泰广场公安检查站"
+              ></el-option>
+              <el-option
+                label="火车南站公安检查站"
+                value="火车南站公安检查站"
+              ></el-option>
+              <el-option
+                label="五一广场公安检查站"
+                value="五一广场公安检查站"
+              ></el-option>
             </el-select>
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
           <el-button @click="dialogVisible3 = false">提 交</el-button>
-          <el-button type="primary" @click="dialogVisible3 = false">取 消</el-button>
+          <el-button type="primary" @click="dialogVisible3 = false"
+            >取 消</el-button
+          >
         </span>
       </el-dialog>
     </el-card>
 
-    <el-card class="mt-10 pb-30 flex1 posi-rel over-h" body-style="height: 100%">
-      <el-table :data="tableDate" fit border :row-style="{height:'32px'}" :header-row-style="{height:'32px'}" :cell-style="{padding:'5px'}" style="width: 100%" class="flex1" height="100%">
-        <el-table-column type="index" label="NO." align="center" width="50px"></el-table-column>
+    <el-card
+      class="mt-10 pb-30 flex1 posi-rel over-h"
+      body-style="height: 100%"
+    >
+      <el-table
+        :data="tableDate"
+        fit
+        border
+        :row-style="{ height: '32px' }"
+        :header-row-style="{ height: '32px' }"
+        :cell-style="{ padding: '5px' }"
+        style="width: 100%"
+        class="flex1"
+        height="100%"
+      >
+        <el-table-column
+          type="index"
+          label="NO."
+          align="center"
+          width="50px"
+        ></el-table-column>
         <el-table-column prop="username" label="姓名" align="center">
         </el-table-column>
         <el-table-column prop="CommonDocuments" label="常用证件">
@@ -110,30 +168,56 @@
         </el-table-column>
         <el-table-column prop="status" label="状态" align="center">
         </el-table-column>
-        <el-table-column prop="UpdateTime" label="更新时间" align="center" min-width="85px">
+        <el-table-column
+          prop="UpdateTime"
+          label="更新时间"
+          align="center"
+          min-width="85px"
+        >
         </el-table-column>
         <el-table-column label="操作" width="220px" align="center">
           <template slot-scope="scope">
-            <el-button @click="handleDetails(scope.$index, scope.row)" type="primary" size="mini">
+            <el-button
+              @click="handleDetails(scope.$index, scope.row)"
+              type="primary"
+              size="mini"
+            >
               编辑
             </el-button>
-            <el-button @click="handleDetails1(scope.$index, scope.row)" type="danger" size="mini">
+            <el-button
+              @click="handleDetails1(scope.$index, scope.row)"
+              type="danger"
+              size="mini"
+            >
               删除
             </el-button>
-            <el-button @click="handleDetails2(scope.$index, scope.row)" type="primary" size="mini">
-              角色
-            </el-button><br>
-            <el-button @click="handleDetails3(scope.$index, scope.row)" type="primary" size="mini" class="mt-5">
+            <el-button
+              @click="handleDetails2(scope.$index, scope.row)"
+              type="primary"
+              size="mini"
+            >
+              角色 </el-button
+            ><br />
+            <el-button
+              @click="handleDetails3(scope.$index, scope.row)"
+              type="primary"
+              size="mini"
+              class="mt-5"
+            >
               权限
             </el-button>
-            <el-button @click="handleDetails4(scope.$index, scope.row)" type="primary" size="mini">
+            <el-button
+              @click="handleDetails4(scope.$index, scope.row)"
+              type="primary"
+              size="mini"
+            >
               解禁
             </el-button>
           </template>
         </el-table-column>
       </el-table>
       <!-- 编辑 -->
-      <el-dialog :visible.sync='dialogVisible' title="编辑" width="25%">
+      <el-dialog :visible.sync="dialogVisible" title="编辑" width="25%">
         <el-form :model="form" label-width="130px">
           <el-form-item label="姓名：">
             <el-input v-model="form.Staffname"></el-input>
@@ -145,13 +229,21 @@
             </el-radio-group>
           </el-form-item>
           <el-form-item label="民族：">
-            <el-select v-model="form.national" style="width:100%" placeholder="请选择">
+            <el-select
+              v-model="form.national"
+              style="width: 100%"
+              placeholder="请选择"
+            >
               <el-option label="汉族" value="汉族"></el-option>
               <el-option label="满族" value="满族"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="常用证件类型：">
-            <el-select v-model="form.CommonCertificateTypes" style="width:100%" placeholder="请选择">
+            <el-select
+              v-model="form.CommonCertificateTypes"
+              style="width: 100%"
+              placeholder="请选择"
+            >
               <el-option label="身份证" value="身份证"></el-option>
               <el-option label="居住证" value="居住证"></el-option>
               <el-option label="签证" value="签证"></el-option>
@@ -170,21 +262,39 @@
             <el-input v-model="form.ContactNumber"></el-input>
           </el-form-item>
           <el-form-item label="公安检查站：">
-            <el-select v-model="form.PublicSecurityCheckpoint" style="width:100%" placeholder="请选择">
-              <el-option label="万家丽公安检查站" value="万家丽公安检查站"></el-option>
-              <el-option label="锦泰广场公安检查站" value="锦泰广场公安检查站"></el-option>
-              <el-option label="火车南站公安检查站" value="火车南站公安检查站"></el-option>
-              <el-option label="五一广场公安检查站" value="五一广场公安检查站"></el-option>
+            <el-select
+              v-model="form.PublicSecurityCheckpoint"
+              style="width: 100%"
+              placeholder="请选择"
+            >
+              <el-option
+                label="万家丽公安检查站"
+                value="万家丽公安检查站"
+              ></el-option>
+              <el-option
+                label="锦泰广场公安检查站"
+                value="锦泰广场公安检查站"
+              ></el-option>
+              <el-option
+                label="火车南站公安检查站"
+                value="火车南站公安检查站"
+              ></el-option>
+              <el-option
+                label="五一广场公安检查站"
+                value="五一广场公安检查站"
+              ></el-option>
             </el-select>
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
           <el-button @click="dialogVisible = false">提 交</el-button>
-          <el-button type="primary" @click="dialogVisible = false">取 消</el-button>
+          <el-button type="primary" @click="dialogVisible = false"
+            >取 消</el-button
+          >
         </span>
       </el-dialog>
       <!-- 角色 -->
-      <el-dialog :visible.sync='dialogVisible1' title="角色设置" width="25%">
+      <el-dialog :visible.sync="dialogVisible1" title="角色设置" width="25%">
         <el-form :model="form2" label-width="130px">
           <el-form-item label="角色名称：">
             <el-input v-model="form2.RoleName"></el-input>
@@ -195,24 +305,35 @@
         </el-form>
         <span slot="footer" class="dialog-footer">
           <el-button @click="dialogVisible1 = false">提 交</el-button>
-          <el-button type="primary" @click="dialogVisible1 = false">取 消</el-button>
+          <el-button type="primary" @click="dialogVisible1 = false"
+            >取 消</el-button
+          >
         </span>
       </el-dialog>
       <!-- 权限 -->
-      <el-dialog :visible.sync='dialogVisible2' title="权限设置" width="25%" class="dialogClass">
+      <el-dialog
+        :visible.sync="dialogVisible2"
+        title="权限设置"
+        width="25%"
+        class="dialogClass"
+      >
         <el-form :model="form3">
           <el-collapse v-model="activeNames" @change="handleChange">
             <el-collapse-item title="地区权限" name="1">
               <div class="clearfix p-10 pl-20 border-b">
                 <span>长沙西公安检查站</span>
                 <span class="flr pr-20">
-                  <el-checkbox v-model="form3.type" label="changsha"><span></span></el-checkbox>
+                  <el-checkbox v-model="form3.type" label="changsha"
+                    ><span></span
+                  ></el-checkbox>
                 </span>
               </div>
               <div class="clearfix p-10 border-b">
                 <span>大姚公安检查站</span>
                 <span class="flr pr-20">
-                  <el-checkbox v-model="form3.type" label="dayao"><span></span></el-checkbox>
+                  <el-checkbox v-model="form3.type" label="dayao"
+                    ><span></span
+                  ></el-checkbox>
                 </span>
               </div>
             </el-collapse-item>
@@ -221,10 +342,10 @@
                 <!-- 功能权限<div> <span>只读</span> <span>是</span><span>否</span></div> -->
                 <el-row :gutter="20" class="mwidth rowtitle">
                   <el-col :span="12">
-                    <div> 功能权限</div>
+                    <div>功能权限</div>
                   </el-col>
                   <el-col :span="6">
-                    <div> 只读</div>
+                    <div>只读</div>
                   </el-col>
                   <el-col :span="2">
                     <div>是</div>
@@ -237,13 +358,17 @@
               <div>
                 <el-row :gutter="20" class="mwidth rowtitle pl-20">
                   <el-col :span="18">
-                    <div> 车辆通行信息监测</div>
+                    <div>车辆通行信息监测</div>
                   </el-col>
                   <el-col :span="2">
-                    <el-radio v-model="form3.VehicleMonitoring" :label="1"><span></span></el-radio>
+                    <el-radio v-model="form3.VehicleMonitoring" :label="1"
+                      ><span></span
+                    ></el-radio>
                   </el-col>
                   <el-col :span="2">
-                    <el-radio v-model="form3.VehicleMonitoring" :label="2"><span></span></el-radio>
+                    <el-radio v-model="form3.VehicleMonitoring" :label="2"
+                      ><span></span
+                    ></el-radio>
                   </el-col>
                 </el-row>
                 <el-divider></el-divider>
@@ -251,13 +376,17 @@
               <div>
                 <el-row :gutter="20" class="mwidth rowtitle pl-20">
                   <el-col :span="18">
-                    <div> 人员通行信息监测</div>
+                    <div>人员通行信息监测</div>
                   </el-col>
                   <el-col :span="2">
-                    <el-radio v-model="form3.PersonnelMonitoring" :label="1"><span></span></el-radio>
+                    <el-radio v-model="form3.PersonnelMonitoring" :label="1"
+                      ><span></span
+                    ></el-radio>
                   </el-col>
                   <el-col :span="2">
-                    <el-radio v-model="form3.PersonnelMonitoring" :label="2"><span></span></el-radio>
+                    <el-radio v-model="form3.PersonnelMonitoring" :label="2"
+                      ><span></span
+                    ></el-radio>
                   </el-col>
                 </el-row>
                 <el-divider></el-divider>
@@ -265,13 +394,17 @@
               <div>
                 <el-row :gutter="20" class="mwidth rowtitle pl-20">
                   <el-col :span="18">
-                    <div> 过车统计</div>
+                    <div>过车统计</div>
                   </el-col>
                   <el-col :span="2">
-                    <el-radio v-model="form3.TrafficStatistics" :label="1"><span></span></el-radio>
+                    <el-radio v-model="form3.TrafficStatistics" :label="1"
+                      ><span></span
+                    ></el-radio>
                   </el-col>
                   <el-col :span="2">
-                    <el-radio v-model="form3.TrafficStatistics" :label="2"><span></span></el-radio>
+                    <el-radio v-model="form3.TrafficStatistics" :label="2"
+                      ><span></span
+                    ></el-radio>
                   </el-col>
                 </el-row>
                 <el-divider></el-divider>
@@ -279,13 +412,17 @@
               <div>
                 <el-row :gutter="20" class="mwidth rowtitle pl-20">
                   <el-col :span="18">
-                    <div> 查控统计</div>
+                    <div>查控统计</div>
                   </el-col>
                   <el-col :span="2">
-                    <el-radio v-model="form3.ControlStatistics" :label="1"><span></span></el-radio>
+                    <el-radio v-model="form3.ControlStatistics" :label="1"
+                      ><span></span
+                    ></el-radio>
                   </el-col>
                   <el-col :span="2">
-                    <el-radio v-model="form3.ControlStatistics" :label="2"><span></span></el-radio>
+                    <el-radio v-model="form3.ControlStatistics" :label="2"
+                      ><span></span
+                    ></el-radio>
                   </el-col>
                 </el-row>
                 <el-divider></el-divider>
@@ -293,13 +430,17 @@
               <div>
                 <el-row :gutter="20" class="mwidth rowtitle pl-20">
                   <el-col :span="18">
-                    <div> 战果统计</div>
+                    <div>战果统计</div>
                   </el-col>
                   <el-col :span="2">
-                    <el-radio v-model="form3.ResultsStatistics" :label="1"><span></span></el-radio>
+                    <el-radio v-model="form3.ResultsStatistics" :label="1"
+                      ><span></span
+                    ></el-radio>
                   </el-col>
                   <el-col :span="2">
-                    <el-radio v-model="form3.ResultsStatistics" :label="2"><span></span></el-radio>
+                    <el-radio v-model="form3.ResultsStatistics" :label="2"
+                      ><span></span
+                    ></el-radio>
                   </el-col>
                 </el-row>
                 <el-divider></el-divider>
@@ -307,13 +448,17 @@
               <div>
                 <el-row :gutter="20" class="mwidth rowtitle pl-20">
                   <el-col :span="18">
-                    <div> 勤务统计</div>
+                    <div>勤务统计</div>
                   </el-col>
                   <el-col :span="2">
-                    <el-radio v-model="form3.DutyStatistics" :label="1"><span></span></el-radio>
+                    <el-radio v-model="form3.DutyStatistics" :label="1"
+                      ><span></span
+                    ></el-radio>
                   </el-col>
                   <el-col :span="2">
-                    <el-radio v-model="form3.DutyStatistics" :label="2"><span></span></el-radio>
+                    <el-radio v-model="form3.DutyStatistics" :label="2"
+                      ><span></span
+                    ></el-radio>
                   </el-col>
                 </el-row>
                 <el-divider></el-divider>
@@ -326,7 +471,17 @@
         </span>
       </el-dialog>
       <!-- 分页 -->
-      <el-pagination background @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[10, 15, 20, 25]" :page-size="10" layout="total, sizes, prev, pager, next, jumper" :total="400" class="posi-abs b-10 ta-c offset">
+      <el-pagination
+        background
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="currentPage"
+        :page-sizes="[10, 15, 20, 25]"
+        :page-size="10"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="400"
+        class="posi-abs b-10 ta-c offset"
+      >
       </el-pagination>
     </el-card>
   </div>
@@ -468,37 +623,36 @@ export default {
 
 <style lang="less" scoped>
 .mwidth {
-    width: 100%;
-    .el-collapse-item__content {
-        padding-bottom: 0;
-    }
-    .rowtitle {
-        font-size: 14px !important;
-    }
-    .el-divider--horizontal {
-        margin: 4px 0;
-    }
-    .border-b {
-        border-bottom: 1px solid #ccc;
-    }
-    .dialogClass {
-        /deep/ .el-dialog__body {
-            padding: 15px 20px;
-            .el-collapse-item {
-                /deep/ .el-collapse-item__header {
-                    padding-left: 10px;
+  width: 100%;
+  .el-collapse-item__content {
+    padding-bottom: 0;
+  }
+  .rowtitle {
+    font-size: 14px !important;
+  }
+  .el-divider--horizontal {
+    margin: 4px 0;
+  }
+  .border-b {
+    border-bottom: 1px solid #ccc;
+  }
+  .dialogClass {
+    /deep/ .el-dialog__body {
+      padding: 15px 20px;
+      .el-collapse-item {
+        /deep/ .el-collapse-item__header {
+          padding-left: 10px;
 
-                    background-color: #f2f2f2;
-                }
-                /deep/ .el-collapse-item__wrap {
-                    border: 0;
-                    .el-collapse-item__content {
-                        padding-bottom: 0;
-                    }
-                }
-            }
+          background-color: #f2f2f2;
         }
+        /deep/ .el-collapse-item__wrap {
+          border: 0;
+          .el-collapse-item__content {
+            padding-bottom: 0;
+          }
+        }
+      }
     }
+  }
 }
-
 </style>

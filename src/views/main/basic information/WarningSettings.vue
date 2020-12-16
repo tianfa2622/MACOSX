@@ -1,7 +1,7 @@
 <template>
   <!-- 预警设置 -->
   <div
-    class="dflex fill_height mwidth direction-column"
+    class="dflex fill_height mwidth direction-column back-c"
     style="min-height: 650px"
   >
     <el-card class="over-h" style="height: 45%">

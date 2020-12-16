@@ -1,5 +1,5 @@
 <template>
-  <div class="dflex direction-column fill_height mwidth">
+  <div class="dflex direction-column fill_height mwidth back-c">
     <el-card body-style="padding-bottom: 0">
       <div slot="header" class="clearfix">
         <span style="font-size: 16px">人员物关联</span>

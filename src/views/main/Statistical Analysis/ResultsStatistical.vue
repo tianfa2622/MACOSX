@@ -1,5 +1,5 @@
 <template>
-  <div class="fill_height mwidth">
+  <div class="fill_height mwidth back-c">
     <div class="tit">战果统计</div>
     <el-tabs type="border-card" class="tabs-height">
       <el-tab-pane label="按物品" class="fill_height dflex direction-column">
