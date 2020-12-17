@@ -41,6 +41,7 @@ export default {
     },
     drawLine () {
       this.myChart = echarts.init(document.getElementById(this.elId))
+      this.myChart.setOption(this.option)
       window.addEventListener('resize', this.handlerResize)
     }
   },

@@ -1,123 +1,111 @@
-var fontColor = '#30eee9'
+// 当日人车统计
+const bgColor = '#fff'
+// const title = 'ss'
+const color = ['#0E7CE2', '#FF8352', '#E271DE']
+const echartData = [{
+  name: '安检大厅流量',
+  value: '1231'
+},
+{
+  name: '列车人员',
+  value: '143'
+},
+{
+  name: '车道人员',
+  value: '231'
+}
+]
+
+const formatNumber = function (num) {
+  const reg = /(?=(\B)(\d{3})+$)/g
+  return num.toString().replace(reg, ',')
+}
+// const total = echartData.reduce((a, b) => {
+//   return a + b.value * 1
+// }, 0)
+
 const options = {
-  backgroundColor: '#11183c',
-  grid: {
-    left: '5%',
-    right: '10%',
-    top: '20%',
-    bottom: '15%',
-    containLabel: true
-  },
-  tooltip: {
-    show: true,
-    trigger: 'item'
-  },
-  legend: {
-    show: true,
-    x: 'center',
-    y: '35',
-    icon: 'stack',
-    itemWidth: 10,
-    itemHeight: 10,
+  // backgroundColor: bgColor,
+  color: color,
+  // tooltip: {
+  //     trigger: 'item'
+  // },
+  title: [{
+    // text: '{name|' + title + '}\n{val|' + formatNumber(total) + '}',
+    // top: 'center',
+    // left: 'center',
+    // textStyle: {
+    //   rich: {
+    //     name: {
+    //       fontSize: 16,
+    //       fontWeight: 'normal',
+    //       color: '#666666',
+    //       padding: [10, 0]
+    //     },
+    //     val: {
+    //       fontSize: 16,
+    //       fontWeight: 'bold',
+    //       color: '#333333'
+    //     }
+    //   }
+    // }
+    // }, {
+    text: '当日人车统计',
+    top: 5,
+    left: 0,
     textStyle: {
-      color: '#1bb4f6'
-    },
-    data: ['已采纳', '已发布']
-  },
-  xAxis: [{
-    type: 'category',
-    boundaryGap: false,
-    axisLabel: {
-      color: fontColor
-    },
-    axisLine: {
-      show: true,
-      lineStyle: {
-        color: '#397cbc'
-      }
-    },
-    axisTick: {
-      show: false
-    },
-    splitLine: {
-      show: false,
-      lineStyle: {
-        color: '#195384'
-      }
-    },
-    data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+      fontSize: 14,
+      color: '#fff',
+      fontWeight: 400
+    }
   }],
-  yAxis: [{
-    type: 'value',
-    name: '',
-    min: 0,
-    max: 1000,
-    axisLabel: {
-      formatter: '{value}',
-      textStyle: {
-        color: '#2ad1d2'
+  series: [{
+    type: 'pie',
+    radius: ['60%', '30%'],
+    center: ['50%', '50%'],
+    data: echartData,
+    hoverAnimation: false,
+    itemStyle: {
+      normal: {
+        borderColor: bgColor,
+        borderWidth: 2
       }
     },
-    axisLine: {
-      lineStyle: {
-        color: '#27b4c2'
+    labelLine: {
+      normal: {
+        length: 20,
+        length2: 120,
+        lineStyle: {
+          color: '#cfb31d'
+        }
       }
     },
-    axisTick: {
-      show: false
-    },
-    splitLine: {
-      show: true,
-      lineStyle: {
-        color: '#11366e'
+    label: {
+      normal: {
+        formatter: params => {
+          return (
+            '{icon|●}{name|' + params.name + '}{value|' +
+            formatNumber(params.value) + '}'
+          )
+        },
+        padding: [0, -100, 25, -100],
+        rich: {
+          icon: {
+            fontSize: 16
+          },
+          name: {
+            fontSize: 14,
+            padding: [0, 10, 0, 4],
+            color: '#cfb31d'
+          },
+          value: {
+            fontSize: 18,
+            fontWeight: 'bold',
+            color: '#cfb31d'
+          }
+        }
       }
     }
-  }
-
-  ],
-  series: [{
-    name: '已采纳',
-    type: 'line',
-    stack: '总量',
-    symbol: 'circle',
-    symbolSize: 8,
-    itemStyle: {
-      normal: {
-        color: '#0092f6',
-        lineStyle: {
-          color: '#0092f6',
-          width: 1
-        }
-      }
-    },
-    markPoint: {
-      itemStyle: {
-        normal: {
-          color: 'red'
-        }
-      }
-    },
-    data: [120, 132, 101, 134, 90, 230, 210, 182, 191, 234, 290, 330]
-  },
-  {
-    name: '已发布',
-    type: 'line',
-    stack: '总量',
-    symbol: 'circle',
-    symbolSize: 8,
-
-    itemStyle: {
-      normal: {
-        color: '#00d4c7',
-        lineStyle: {
-          color: '#00d4c7',
-          width: 1
-        }
-      }
-    },
-    data: [220, 182, 191, 234, 290, 330, 310, 201, 154, 190, 330, 410]
-  }
-
-  ]
+  }]
 }
 export default options

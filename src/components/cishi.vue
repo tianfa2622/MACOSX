@@ -11,8 +11,7 @@
       router
     >
       <el-menu-item index="/" class="nav-size">
-        <i class="iconfont icon-home"></i>
-        首页
+        <span class="index-title">首 页</span>
       </el-menu-item>
 
       <el-submenu index="/PublicSecurity" popper-class="main-submenu-item">
@@ -26,7 +25,7 @@
         </el-menu-item>
         <el-menu-item index="/personnel">
           <template slot="title">
-            <span>人员核查预警</span>
+            <span class="home-title">人员核查预警</span>
           </template>
         </el-menu-item>
         <el-menu-item index="/iteminspection">
@@ -208,14 +207,23 @@ export default {}
 
   margin: 0 auto;
   width: fit-content;
-  height: 61px;
+  height: 48px;
+  line-height: 48px;
 
   white-space: nowrap;
+  li {
+    height: 48px !important;
+    line-height: 48px !important;
+  }
 }
 </style>
 <style lang="less">
-.nav-size {
+.index-title {
   font-size: 18px !important;
+  letter-spacing: 7px !important;
+}
+.nav-size {
+  font-size: 16px !important;
 }
 .main-submenu-item {
   .el-menu {
@@ -232,9 +240,9 @@ export default {}
 .el-submenu {
   .el-submenu__title {
     padding: 0 10px;
-    height: 61px !important;
+    height: 48px !important;
 
-    line-height: 61px !important;
+    line-height: 48px !important;
 
     background-color: rgba(255, 255, 255, 0) !important;
   }

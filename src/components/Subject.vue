@@ -16,7 +16,7 @@ export default {
 <style lang="less" scoped>
 #Homes {
   margin-top: 10px;
-  height: calc(100% - 130px);
+  height: calc(100% - 76px);
 
   background-color: rgba(0, 0, 0, 0);
 

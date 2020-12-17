@@ -43,7 +43,7 @@ export default {
 .home-header {
   padding: 0;
   width: 100%;
-  height: 52px;
+  height: 28px;
 
   background-color: rgba(0, 0, 0, 0);
   .home-title {
@@ -61,17 +61,18 @@ export default {
       z-index: 1000;
 
       margin: 10px 30px 10px 0;
-      width: 90px;
-      height: 90px;
+      width: 55px;
+      height: 55px;
 
       vertical-align: middle;
     }
     .title {
-      font-size: 48px;
+      font-size: 40px;
       font-weight: 600;
-      line-height: 90px;
+      line-height: 75px;
       text-align: center;
       vertical-align: middle;
+      letter-spacing: 7px;
 
       color: #fff;
     }
