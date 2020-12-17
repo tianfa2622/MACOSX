@@ -24,11 +24,12 @@
         <EchartsPackage :option="VehicleVerification"></EchartsPackage>
       </div>
     </div>
-    <div class="flex1 fill_height dflex direction-column">
-      <div class="dflex1">
-        <!-- <EchartsPackage :option="option"></EchartsPackage> -->
+    <div class="flex1 fill_height dflex direction-column just-cont">
+      <div class="dflex1 h-50">
+        <EchartsPackage :option="ResultsStatisticsChart"></EchartsPackage>
       </div>
-      <div class="dflex1">
+      <div class="h-50 dflex1">
+        <EchartsPackage :option="PoliceAndEquipmentChart"></EchartsPackage>
         <!-- <EchartsPackage :option="option"></EchartsPackage> -->
       </div>
     </div>
@@ -45,6 +46,9 @@ import PedestrianTraffic from './index/PedestrianTraffic/PedestrianTraffic.js'
 import PersonnelVerification from './index/PersonnelVerification/PersonnelVerification.js'
 // 车辆核查
 import VehicleVerification from './index/VehicleVerification/VehicleVerification.js'
+// 战果统计
+import ResultsStatisticsChart from './index/ResultsStatisticsChart/ResultsStatisticsChart.js'
+import PoliceAndEquipmentChart from './index/PoliceAndEquipmentChart/PoliceAndEquipmentChart.js'
 
 export default {
   name: 'Home2',
@@ -56,7 +60,9 @@ export default {
       PeopleAndVehiclesStatistics,
       PedestrianTraffic,
       PersonnelVerification,
-      VehicleVerification
+      VehicleVerification,
+      ResultsStatisticsChart,
+      PoliceAndEquipmentChart
     }
   }
 }

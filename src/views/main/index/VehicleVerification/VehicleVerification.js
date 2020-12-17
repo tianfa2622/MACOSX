@@ -1,6 +1,6 @@
 // 车辆验证
 const data = [{
-  name: '核查人员',
+  name: '过站车辆',
   value: 62,
   itemStyle: { color: '#00ff33' }
 },
