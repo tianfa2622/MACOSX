@@ -32,14 +32,72 @@
             </el-form-item>
           </el-col>
         </el-row>
-        <el-row style="text-align: center">
+        <el-row style="text-align: end">
           <el-col>
-            <el-button @click="onSubmit" type="primary" class="w200"
-              >搜索</el-button
+            <el-button @click="onSubmit" plain class="w200">搜索</el-button>
+            <el-button @click="onSubmit1" type="primary" class="w200 ml-20"
+              >添加</el-button
             >
           </el-col>
         </el-row>
       </el-form>
+
+      <!-- 编辑 -->
+      <el-dialog :visible.sync="dialogVisible1" title="添加" width="25%">
+        <el-form :model="form" label-width="130px">
+          <el-form-item label="姓名：">
+            <el-input v-model="form.OnDutyName"></el-input>
+          </el-form-item>
+          <el-form-item label="常用证件：">
+            <el-select
+              v-model="form.CommonDocuments"
+              style="width: 100%"
+              placeholder="请选择证件类型"
+            >
+              <el-option label="身份证" value="bumengyi"></el-option>
+              <el-option label="港澳通行证" value="bumenger"></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="证件号码：">
+            <el-input v-model="form.CertificateNum"></el-input>
+          </el-form-item>
+          <el-form-item label="性别：">
+            <el-radio-group v-model="form.gender">
+              <el-radio label="男"></el-radio>
+              <el-radio label="女"></el-radio>
+            </el-radio-group>
+          </el-form-item>
+          <el-form-item label="民族：">
+            <el-select
+              v-model="form.nation"
+              style="width: 100%"
+              placeholder="请选择民族"
+            >
+              <el-option label="部门一" value="bumengyi"></el-option>
+              <el-option label="部门二" value="bumenger"></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="联系电话：">
+            <el-input v-model="form.contactNumber"></el-input>
+          </el-form-item>
+          <el-form-item label="公安检查站：">
+            <el-select
+              v-model="form.CheckpointCategory"
+              style="width: 100%"
+              placeholder="请选择检查站"
+            >
+              <el-option label="部门一" value="bumengyi"></el-option>
+              <el-option label="部门二" value="bumenger"></el-option>
+            </el-select>
+          </el-form-item>
+        </el-form>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="dialogVisible1 = false">取 消</el-button>
+          <el-button type="primary" @click="dialogVisible1 = false"
+            >确 定</el-button
+          >
+        </span>
+      </el-dialog>
     </el-card>
 
     <el-card
@@ -233,11 +291,15 @@ export default {
         CheckpointCategory: ''
       },
       currentPage: 1,
-      dialogVisible: false
+      dialogVisible: false,
+      dialogVisible1: false
     }
   },
   methods: {
     onSubmit () {},
+    onSubmit1 () {
+      this.dialogVisible1 = true
+    },
     handleDetails () {
       this.dialogVisible = true
     },

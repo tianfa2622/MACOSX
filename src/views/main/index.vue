@@ -8,11 +8,7 @@
         <EchartsPackage :option="PedestrianTraffic"></EchartsPackage>
       </div>
       <div class="dflex1 h-33">
-        <span class="CheckTitle">人员核查</span>
-        <EchartsPackage
-          :option="PersonnelVerification"
-          style="height: calc(100% - 19px) !important"
-        ></EchartsPackage>
+        <EchartsPackage :option="PersonnelVerification"></EchartsPackage>
       </div>
     </div>
     <div class="flex1 fill_height dflex direction-column just-cont">
@@ -20,7 +16,6 @@
         <!-- <EchartsPackage :option="option"></EchartsPackage> -->
       </div>
       <div class="dflex1 h-33">
-        <span class="CheckTitle">车辆核查</span>
         <EchartsPackage :option="VehicleVerification"></EchartsPackage>
       </div>
     </div>
@@ -30,7 +25,6 @@
       </div>
       <div class="h-50 dflex1">
         <EchartsPackage :option="PoliceAndEquipmentChart"></EchartsPackage>
-        <!-- <EchartsPackage :option="option"></EchartsPackage> -->
       </div>
     </div>
   </div>
@@ -39,16 +33,16 @@
 <script>
 import EchartsPackage from '../../components/echarts/index'
 // 当日人车统计
-import PeopleAndVehiclesStatistics from './index/PeopleAndVehiclesStatistics/PeopleAndVehiclesStatistics'
+import PeopleAndVehiclesStatistics from './indexEcarts/PeopleAndVehiclesStatistics/PeopleAndVehiclesStatistics'
 // 人车通行折线图
-import PedestrianTraffic from './index/PedestrianTraffic/PedestrianTraffic.js'
+import PedestrianTraffic from './indexEcarts/PedestrianTraffic/PedestrianTraffic.js'
 // 人员核查
-import PersonnelVerification from './index/PersonnelVerification/PersonnelVerification.js'
+import PersonnelVerification from './indexEcarts/PersonnelVerification/PersonnelVerification.js'
 // 车辆核查
-import VehicleVerification from './index/VehicleVerification/VehicleVerification.js'
+import VehicleVerification from './indexEcarts/VehicleVerification/VehicleVerification.js'
 // 战果统计
-import ResultsStatisticsChart from './index/ResultsStatisticsChart/ResultsStatisticsChart.js'
-import PoliceAndEquipmentChart from './index/PoliceAndEquipmentChart/PoliceAndEquipmentChart.js'
+import ResultsStatisticsChart from './indexEcarts/ResultsStatisticsChart/ResultsStatisticsChart.js'
+import PoliceAndEquipmentChart from './indexEcarts/PoliceAndEquipmentChart/PoliceAndEquipmentChart.js'
 
 export default {
   name: 'Home2',
@@ -79,38 +73,5 @@ export default {
   font-size: 14px;
   color: #0aabc2;
   padding-bottom: 6px;
-}
-.CheckTitle {
-  font-size: 14px;
-  color: #0092f6;
-  padding: 5px 0 0 10px;
-}
-.bgc1 {
-  background-color: #ffb6c1;
-  height: 33.3%;
-}
-.bgc2 {
-  background-color: #ff69b4;
-  height: 33.3%;
-}
-.bgc3 {
-  background-color: #da70d6;
-  height: 33.3%;
-}
-.bgc4 {
-  background-color: #800080;
-  height: 70%;
-}
-.bgc5 {
-  background-color: #6a5acd;
-  height: 30%;
-}
-.bgc6 {
-  background-color: #4169e1;
-  height: 50%;
-}
-.bgc7 {
-  background-color: #1e90ff;
-  height: 50%;
 }
 </style>

@@ -9,7 +9,7 @@
 <script>
 import Header from '@/components/Header.vue'
 import Subject from '@/components/Subject.vue'
-import Sidebar from '@/components/cishi.vue'
+import Sidebar from '@/components/Sidebar.vue'
 
 export default {
   name: 'app',

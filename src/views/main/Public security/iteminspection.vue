@@ -115,7 +115,7 @@
         >
         </el-pagination>
       </el-card>
-
+      <!-- 新增 -->
       <el-dialog title="新增" :visible.sync="addDialogFormVisible" width="30%">
         <el-form :model="form1" label-width="140px">
           <el-form-item label="安检违禁物品类别：">
@@ -157,39 +157,29 @@
           </el-form-item>
         </el-form>
       </el-dialog>
-      <el-dialog title="新增" :visible.sync="dialogVisible1" width="30%">
+      <!-- 新增 -->
+
+      <!-- 查看 -->
+      <el-dialog title="查看" :visible.sync="dialogVisible1" width="30%">
         <el-form :model="form1" label-width="140px">
           <el-form-item label="安检违禁物品类别：">
-            <el-select v-model="form1.name">
-              <el-option label="区域一" value="爆咋物"></el-option>
-              <el-option label="区域二" value="刀具"></el-option>
-            </el-select>
+            <el-input :disabled="true" v-model="form1.name"></el-input>
           </el-form-item>
           <el-form-item label="数量：">
-            <el-input
-              v-model="form1.num"
-              maxlength="4"
-              style="width: 222px"
-              type="number"
-              min="0"
-            ></el-input>
+            <el-input :disabled="true" v-model="form1.num"></el-input>
           </el-form-item>
           <el-form-item label="请选择检查站：">
-            <el-select v-model="form1.region" placeholder="请选择检查站">
-              <el-option label="区域一" value="shanghai"></el-option>
-              <el-option label="区域二" value="beijing"></el-option>
-            </el-select>
+            <el-input :disabled="true" v-model="form1.region"></el-input>
           </el-form-item>
           <el-form-item label="物品特征描述：">
             <el-input
+              :disabled="true"
               type="textarea"
-              :rows="2"
+              :rows="3"
               v-model="form1.desc"
               :autosize="{ minRows: 2, maxRows: 4 }"
               show-word-limit
-              style="width: 300px"
               resize="none"
-              placeholder="请输入内容"
             ></el-input>
           </el-form-item>
           <el-form-item>
@@ -198,6 +188,7 @@
           </el-form-item>
         </el-form>
       </el-dialog>
+      <!-- 查看 -->
     </div>
 
     <div class="vehicleRight">
@@ -205,16 +196,22 @@
         <div slot="header" class="clearfix cardhead" style="font-size: 14px">
           <span>违禁物品抓获概况</span>
         </div>
-        <div id="vehiclECharts" style="width: 100%; height: 100%"></div>
+        <EchartsPackage :option="iteminspection"></EchartsPackage>
       </el-card>
     </div>
   </div>
 </template>
 
 <script>
+import EchartsPackage from '../../../components/echarts/index'
+import iteminspection from './Echartstable/iteminspection'
 export default {
+  components: {
+    EchartsPackage
+  },
   data () {
     return {
+      iteminspection,
       formInline: {
         user: '',
         region: '',
@@ -265,7 +262,6 @@ export default {
   created () {
   },
   mounted () {
-    this.drawLine()
   },
   methods: {
     onSubmit () {
@@ -279,53 +275,6 @@ export default {
     },
     reportonSubmit () {
       this.dialogVisible1 = false
-    },
-    drawLine () {
-      const myChart1 = this.$echarts.init(document.getElementById('vehiclECharts'))
-      myChart1.setOption({
-        color: ['#3398DB'],
-        tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            type: 'shadow'
-          }
-        },
-
-        xAxis: [
-          {
-            type: 'category',
-            data: ['违禁物品1', '违禁物品2', '违禁物品3', '违禁物品4', '违禁物品5', '违禁物品6', '违禁物品7'],
-            axisTick: {
-              alignWithLabel: true
-            },
-            axisLabel: {
-              interval: 0,
-              rotate: '-40'
-            }
-          }
-        ],
-        yAxis: [
-          {
-            type: 'value',
-            min: 0,
-            max: 1000,
-            interval: 250
-          }
-        ],
-        series: [
-          {
-            name: '抓获数目',
-            type: 'bar',
-            barWidth: '60%',
-            data: [480, 980, 765, 800, 960, 175, 625],
-            label: {
-              show: true,
-              rotate: 0,
-              position: 'top'
-            }
-          }
-        ]
-      })
     },
     handleDetails () {
       console.log('详情')

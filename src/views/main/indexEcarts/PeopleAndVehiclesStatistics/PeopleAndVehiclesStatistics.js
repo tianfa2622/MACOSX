@@ -52,7 +52,7 @@ const options = {
     // }, {
     text: '当日人车统计',
     top: 5,
-    left: 0,
+    x: 'center',
     textStyle: {
       fontSize: 14,
       color: '#fff',

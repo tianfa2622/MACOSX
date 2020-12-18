@@ -16,25 +16,35 @@ const data = [{
 }
 ]
 const option = {
-  title: {
-    text: '{header1| 今日核查}' + '{header2| 2020}',
-    textAlign: 'left',
-    left: '53%',
-    top: '20%',
-    textStyle: {
-      color: '#ccc',
-      rich: {
-        header1: {
-          width: 130,
-          fontSize: 15
-        },
-        header2: {
-          width: 85,
-          fontSize: 15
+  title: [
+    {
+      text: '{header1| 今日核查}' + '{header2| 2020}',
+      textAlign: 'left',
+      left: '53%',
+      top: '20%',
+      textStyle: {
+        color: '#ccc',
+        rich: {
+          header1: {
+            width: 130,
+            fontSize: 15
+          },
+          header2: {
+            width: 85,
+            fontSize: 15
+          }
         }
       }
+    },
+    {
+      text: '车辆核查',
+      top: '2%',
+      left: '5%',
+      textStyle: {
+        color: '#0092f6'
+      }
     }
-  },
+  ],
   legend: {
     // selectedMode: false, // 取消图例上的点击事件
     type: 'plain',
@@ -91,7 +101,7 @@ const option = {
   series: [{
     name: '数量',
     type: 'pie',
-    radius: ['40%', '55%'],
+    radius: ['35%', '55%'],
     center: ['25%', '50%'],
     data: data,
     label: {

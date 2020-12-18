@@ -156,34 +156,37 @@
     <el-dialog title="详情" :visible.sync="dialogFormVisible" width="30%">
       <el-form :model="form">
         <el-form-item label="机动车牌号码：" label-width="150px">
-          <el-input v-model="form.LicensePlateNumber"></el-input>
+          <el-input
+            :disabled="true"
+            v-model="form.LicensePlateNumber"
+          ></el-input>
         </el-form-item>
         <el-form-item label="机动车车辆类型：" label-width="150px">
-          <el-input v-model="form.VehicleCategory"></el-input>
+          <el-input :disabled="true" v-model="form.VehicleCategory"></el-input>
         </el-form-item>
         <el-form-item label="车辆型号：" label-width="150px">
-          <el-input v-model="form.VehicleType"></el-input>
+          <el-input :disabled="true" v-model="form.VehicleType"></el-input>
         </el-form-item>
         <el-form-item label="机动车牌种类：" label-width="150px">
-          <el-input v-model="form.LicensePlateType"></el-input>
+          <el-input :disabled="true" v-model="form.LicensePlateType"></el-input>
         </el-form-item>
         <el-form-item label="机动车身颜色：" label-width="150px">
-          <el-input v-model="form.TheBodyColor"></el-input>
+          <el-input :disabled="true" v-model="form.TheBodyColor"></el-input>
         </el-form-item>
         <el-form-item label="省份简称：" label-width="150px">
-          <el-input v-model="form.Provinces"></el-input>
+          <el-input :disabled="true" v-model="form.Provinces"></el-input>
         </el-form-item>
         <el-form-item label="机动车所有人名称：" label-width="150px">
-          <el-input v-model="form.TheOwnerName"></el-input>
+          <el-input :disabled="true" v-model="form.TheOwnerName"></el-input>
         </el-form-item>
         <el-form-item label="公民身份证号码：" label-width="150px">
-          <el-input v-model="form.IdentityNumber"></el-input>
+          <el-input :disabled="true" v-model="form.IdentityNumber"></el-input>
         </el-form-item>
         <el-form-item label="时间：" label-width="150px">
-          <el-input v-model="form.CarTime"></el-input>
+          <el-input :disabled="true" v-model="form.CarTime"></el-input>
         </el-form-item>
         <el-form-item label="重点人员管控类别：" label-width="150px">
-          <el-input v-model="form.ControlCategory"></el-input>
+          <el-input :disabled="true" v-model="form.ControlCategory"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">

@@ -38,9 +38,11 @@ import {
   CollapseItem,
   Checkbox,
   Divider,
-  Image
+  Image,
+  Avatar
 } from 'element-ui'
 
+Vue.use(Avatar)
 Vue.use(Image)
 Vue.use(Divider)
 Vue.use(Checkbox)

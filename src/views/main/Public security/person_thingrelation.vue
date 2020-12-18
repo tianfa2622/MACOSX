@@ -129,37 +129,39 @@
     <el-dialog title="查看" :visible.sync="DialogFormVisible" width="30%">
       <el-form :model="form1" label-width="140px">
         <el-form-item label="安检违禁物品类别：">
-          <el-select v-model="form1.name">
+          <!-- <el-select v-model="form1.name">
             <el-option label="区域一" value="爆咋物"></el-option>
             <el-option label="区域二" value="刀具"></el-option>
-          </el-select>
+          </el-select> -->
+          <el-input :disabled="true" v-model="form1.name"></el-input>
         </el-form-item>
         <el-form-item label="数量：">
-          <el-input
+          <!-- <el-input
             v-model="form1.num"
             maxlength="4"
             style="width: 222px"
             type="number"
             min="0"
             show-word-limit
-          ></el-input>
+          ></el-input> -->
+          <el-input :disabled="true" v-model="form1.num"></el-input>
         </el-form-item>
-        <el-form-item label="请选择检查站：">
-          <el-select v-model="form1.region" placeholder="请选择检查站">
+        <el-form-item label="公安检查站：">
+          <!-- <el-select v-model="form1.region" placeholder="请选择检查站">
             <el-option label="区域一" value="shanghai"></el-option>
             <el-option label="区域二" value="beijing"></el-option>
-          </el-select>
+          </el-select> -->
+          <el-input :disabled="true" v-model="form1.region"></el-input>
         </el-form-item>
         <el-form-item label="物品特征描述：">
           <el-input
+            :disabled="true"
             type="textarea"
             :rows="2"
             v-model="form1.desc"
             :autosize="{ minRows: 2, maxRows: 4 }"
             show-word-limit
-            style="width: 300px"
             resize="none"
-            placeholder="请输入内容"
           ></el-input>
         </el-form-item>
         <el-form-item>
@@ -171,61 +173,190 @@
 
     <!-- 详情Dialog -->
     <el-dialog
-      title="查看-大腰检查站"
+      title="查看-大腰检查站(人证对比结果：正常，车证对比结果：正常)"
       :visible.sync="dialogVisible1"
-      width="40%"
+      width="50%"
       class="dialogs"
     >
-      <div style="width: 100%; height: 100%">
-        <span class="dialogtitle">基本信息</span>
-        <div style="width: 100%; height: 100%" class="dialogs-box">
-          <div style="width: 50%; float: left">
-            <span>通过事件:</span><br />
-            <span>机动车号牌号码:</span><br />
-            <span>机动车车辆类型:</span><br />
-            <span>通过时间:</span><br />
-            <span>机动车车身颜色:</span><br />
-            <span>联系电话:</span><br />
-            <span>政治面貌:</span><br />
-            <span>配偶姓名:</span><br />
-            <span>重点人员分类管控类别:</span><br />
-          </div>
-          <div style="width: 50%; float: right">
-            <span>机动车所有人名称:</span><br />
-            <span>公民身份证号码:</span><br />
-            <span>机动车号牌种类:</span><br />
-            <span>机动车档案编号:</span><br />
-            <span>机动车中文品牌名称:</span><br />
-            <span>国籍:</span><br />
-            <span>婚姻状况:</span><br />
-            <span>配偶省份证号码:</span><br />
-            <span>重点人员处置措施:</span><br />
-          </div>
-        </div>
-        <p class="dialogtitle">过检人员图像</p>
-        <div style="width: 100%; height: 80px" class="dialogs-box">
-          <div style="width: 50%; float: left">
-            <span style="padding-bottom: 30px">三维人脸:</span>
-          </div>
-          <div style="width: 50%; float: right">
-            <span style="padding-bottom: 30px">人员图:</span>
-          </div>
-        </div>
-        <p class="dialogtitle">车辆过检图像</p>
-        <div style="width: 100%; height: 300px" class="dialogs-box">
-          <div style="width: 50%; float: left">
-            <span style="padding-bottom: 30px">车前盖图:</span><br />
-            <span style="padding-bottom: 30px">车厢图:</span><br />
-            <span style="padding-bottom: 30px">车前标:</span><br />
-          </div>
-          <div style="width: 50%; float: right">
-            <span style="padding-bottom: 30px">车后盖图:</span><br />
-            <span style="padding-bottom: 30px">底盘图:</span><br />
-            <span style="padding-bottom: 30px">车后标:</span><br />
-          </div>
-        </div>
+      <div class="dia-spanbox">
+        <span class="dia-spanTitle">基本信息</span>
       </div>
-
+      <el-form
+        :model="form"
+        :inline="true"
+        class="form-content mwidth"
+        label-width="173px"
+        size="small"
+      >
+        <el-form-item label="通过事件：" class="w-45">
+          <el-input :disabled="true" v-model="form.PassingTime"></el-input>
+        </el-form-item>
+        <el-form-item label="机动车所有人名称：" class="w-45">
+          <el-input
+            :disabled="true"
+            v-model="form.NameOfMotorVehicleOwner"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="机动车号牌号码：" class="w-45">
+          <el-input
+            :disabled="true"
+            v-model="form.MotorVehicleLicensePlateNumber"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="公民身份证号码：" class="w-45">
+          <el-input :disabled="true" v-model="form.CitizenIDNumber"></el-input>
+        </el-form-item>
+        <el-form-item label="机动车车辆类型：" class="w-45">
+          <el-input :disabled="true" v-model="form.MotorVehicleType"></el-input>
+        </el-form-item>
+        <el-form-item label="机动车号牌种类：" class="w-45">
+          <el-input
+            :disabled="true"
+            v-model="form.TypeOfLicensePlate"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="通过时间：" class="w-45">
+          <el-input :disabled="true" v-model="form.PassTime"></el-input>
+        </el-form-item>
+        <el-form-item label="机动车档案编号：" class="w-45">
+          <el-input :disabled="true" v-model="form.CarFileNumber"></el-input>
+        </el-form-item>
+        <el-form-item label="机动车车身颜色：" class="w-45">
+          <el-input :disabled="true" v-model="form.theColorOfCar"></el-input>
+        </el-form-item>
+        <el-form-item label="机动车中文品牌名称：" class="w-45">
+          <el-input :disabled="true" v-model="form.ChineseBrandName"></el-input>
+        </el-form-item>
+        <el-form-item label="联系电话：" class="w-45">
+          <el-input :disabled="true" v-model="form.contactNumber"></el-input>
+        </el-form-item>
+        <el-form-item label="国籍：" class="w-45">
+          <el-input
+            :disabled="true"
+            v-model="form.CountryOfCitizenship"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="政治面貌：" class="w-45">
+          <el-input :disabled="true" v-model="form.politicalStatus"></el-input>
+        </el-form-item>
+        <el-form-item label="婚姻状况：" class="w-45">
+          <el-input :disabled="true" v-model="form.maritalStatus"></el-input>
+        </el-form-item>
+        <el-form-item label="配偶姓名：" class="w-45">
+          <el-input :disabled="true" v-model="form.spouseName"></el-input>
+        </el-form-item>
+        <el-form-item label="配偶身份证号码：" class="w-45">
+          <el-input :disabled="true" v-model="form.SpouseIDNumber"></el-input>
+        </el-form-item>
+        <el-form-item label="重点人员分类管控类别：" class="w-45">
+          <el-input :disabled="true" v-model="form.ControlCategory"></el-input>
+        </el-form-item>
+        <el-form-item label="重点人员处置措施：" class="w-45">
+          <el-input :disabled="true" v-model="form.DisposalMeasures"></el-input>
+        </el-form-item>
+      </el-form>
+      <div class="dia-spanbox">
+        <span class="dia-spanTitle">人员过检图像</span>
+      </div>
+      <el-form
+        :model="form"
+        :inline="true"
+        class="form-content"
+        label-width="153px"
+        size="small"
+      >
+        <el-form-item label="三维人脸图：" class="w-45">
+          <el-avatar
+            :size="150"
+            :src="form.circleUrl"
+            fit="fill"
+            shape="square"
+          ></el-avatar>
+        </el-form-item>
+        <el-form-item label="人脸图：" class="w-45">
+          <el-avatar
+            :size="150"
+            :src="form.circleUrl"
+            fit="fill"
+            shape="square"
+          ></el-avatar>
+        </el-form-item>
+      </el-form>
+      <div class="dia-spanbox">
+        <span class="dia-spanTitle">车辆过检图像</span>
+      </div>
+      <el-form
+        :model="form"
+        :inline="true"
+        class="form-content"
+        label-width="153px"
+        size="small"
+      >
+        <el-form-item label="车前盖图：" class="w-45">
+          <el-avatar
+            :size="150"
+            :src="form.circleUrl"
+            fit="fill"
+            shape="square"
+          ></el-avatar>
+        </el-form-item>
+        <el-form-item label="车后盖图：" class="w-45">
+          <el-avatar
+            :size="150"
+            :src="form.circleUrl"
+            fit="fill"
+            shape="square"
+          ></el-avatar>
+        </el-form-item>
+        <el-form-item label="车厢图：" class="w-45">
+          <el-avatar
+            :size="150"
+            :src="form.circleUrl"
+            fit="fill"
+            shape="square"
+          ></el-avatar>
+        </el-form-item>
+        <el-form-item label="车侧图：" class="w-45">
+          <el-avatar
+            :size="150"
+            :src="form.circleUrl"
+            fit="fill"
+            shape="square"
+          ></el-avatar>
+        </el-form-item>
+        <el-form-item label="车顶图：" class="w-45">
+          <el-avatar
+            :size="150"
+            :src="form.circleUrl"
+            fit="fill"
+            shape="square"
+          ></el-avatar>
+        </el-form-item>
+        <el-form-item label="底盘图：" class="w-45">
+          <el-avatar
+            :size="150"
+            :src="form.circleUrl"
+            fit="fill"
+            shape="square"
+          ></el-avatar>
+        </el-form-item>
+        <el-form-item label="车前标：" class="w-45">
+          <el-avatar
+            :size="150"
+            :src="form.circleUrl"
+            fit="fill"
+            shape="square"
+          ></el-avatar>
+        </el-form-item>
+        <el-form-item label="车后标：" class="w-45">
+          <el-avatar
+            :size="150"
+            :src="form.circleUrl"
+            fit="fill"
+            shape="square"
+          ></el-avatar>
+        </el-form-item>
+      </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible1 = false">取 消</el-button>
         <el-button type="primary" @click="dialogVisible1 = false"
@@ -294,6 +425,37 @@ export default {
         num: '',
         region: '',
         desc: ''
+      },
+      form: {
+        PassingTime: '',
+        NameOfMotorVehicleOwner: '',
+        MotorVehicleLicensePlateNumber: '',
+        CitizenIDNumber: '',
+        MotorVehicleType: '',
+        TypeOfLicensePlate: '',
+        PassTime: '',
+        CarFileNumber: '',
+        theColorOfCar: '',
+        ChineseBrandName: '',
+        contactNumber: '',
+        CountryOfCitizenship: '',
+        politicalStatus: '',
+        maritalStatus: '',
+        spouseName: '',
+        SpouseIDNumber: '',
+        ControlCategory: '',
+        DisposalMeasures: '',
+        ThreeDimensionalFaceMap: '',
+        // FaceMap:'',
+        circleUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1608282562624&di=ed0738170ab24767d983a2e6c88f0180&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201510%2F18%2F20151018172940_5etXi.jpeg'
+        // FrontCoverPicture:'',
+        // RearCoverPicture:'',
+        // CarPicture:'',
+        // CarSideView:'',
+        // RoofPicture:'',
+        // ChassisDrawing:'',
+        // FrontLabel:'',
+        // RearLabel:'',
       }
     }
   },

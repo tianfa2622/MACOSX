@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 // 首页
-import Indexs from '@/views/main/1.vue'
+import Indexs from '@/views/main/index.vue'
 
 Vue.use(VueRouter)
 

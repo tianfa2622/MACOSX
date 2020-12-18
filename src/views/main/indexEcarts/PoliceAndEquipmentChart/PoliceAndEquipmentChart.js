@@ -1,5 +1,5 @@
 import echarts from 'echarts'
-// 结果统计图
+// 民警数量和装备情况
 var classData = [{
   name: '芙蓉区',
   value: 100
@@ -32,14 +32,14 @@ var colors = ['#ec710f', '#1f8fff', '#34d5fc', '#7bed9f', '#ff5252']
 //   // total += item.value
 //   return item.name
 // })
-// var i = 0
+var i = 0
 var xAxisData = []
 // var seriesData = []
-// while (i < 4) {
-//   xAxisData.push(classData[i].name)
-//   seriesData.push(classData[i])
-//   i++
-// }
+while (i < 4) {
+  xAxisData.push(classData[i].name)
+  // seriesData.push(classData[i])
+  i++
+}
 
 const option = {
   // backgroundColor: '#0e4b86',
@@ -47,8 +47,8 @@ const option = {
   title: [
     {
       text: '民警数量',
-      top: '3%',
-      left: '30%',
+      top: '1%',
+      left: '50%',
       textStyle: {
         fontSize: 14,
         color: '#52FFFF'
@@ -56,8 +56,8 @@ const option = {
     },
     {
       text: '装备情况',
-      bottom: '38%',
-      left: '5%',
+      bottom: '35%',
+      left: '20%',
       textStyle: {
         fontSize: 14,
         color: '#52FFFF'
@@ -95,10 +95,10 @@ const option = {
   //   // data: legendData
   // }],
   grid: {
-    left: '6%',
+    left: '10%',
     right: '2%',
-    top: '5%',
-    height: '50%',
+    top: '10%',
+    height: '48%',
     containLabel: true
   },
   xAxis: {
@@ -124,7 +124,7 @@ const option = {
     }
   },
   yAxis: {
-    splitNumber: 100, // 控制Y轴数值显示数量
+    // splitNumber: 100, // 控制Y轴数值显示数量
     axisLine: {
       show: true, // Y轴线不显示
       lineStyle: {
@@ -152,11 +152,11 @@ const option = {
   series: [{
     name: '饼图',
     type: 'pie',
-    radius: ['20%', '35%'], // 大小缩放
-    center: ['60%', '75%'], // 位置调整
+    radius: ['15%', '30%'], // 大小缩放
+    center: ['60%', '80%'], // 位置调整
     label: {
       normal: {
-        show: false // 线
+        show: true // 线
       },
       emphasis: {
         show: false
@@ -205,7 +205,7 @@ const option = {
   //   }]
   // },
   {
-    name: '',
+    name: '柱形',
     type: 'bar', // 柱子的形状
     barWidth: 30, // 柱子的宽度
     itemStyle: { // 柱子圆角

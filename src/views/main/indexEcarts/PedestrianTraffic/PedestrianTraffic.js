@@ -26,7 +26,7 @@ const options = {
     itemWidth: 14,
     itemHeight: 5,
     itemGap: 13,
-    data: ['移动', '电信'],
+    data: ['人', '车'],
     right: '4%',
     textStyle: {
       fontSize: 12,
@@ -73,7 +73,7 @@ const options = {
     }
   }],
   series: [{
-    name: '移动',
+    name: '人',
     type: 'line',
     smooth: true,
     symbol: 'circle',
@@ -117,7 +117,7 @@ const options = {
     },
     data: [220, 182, 191, 134, 150, 120, 110, 125]
   }, {
-    name: '电信',
+    name: '车',
     type: 'line',
     smooth: true,
     symbol: 'circle',

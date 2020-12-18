@@ -25,6 +25,7 @@
         <el-button
           @click="onSubmit"
           type="primary"
+          class="mb-10"
           style="margin-right: 20px; width: 200px"
           >搜索</el-button
         >

@@ -2,7 +2,7 @@
   <!-- 人员核查预警 -->
   <div class="fill_height dflex mwidth back-c">
     <div class="personnelLeft dflex direction-column">
-      <el-card body-style="padding-bottom: 0">
+      <el-card body-style="padding-bottom: 0" class="over-f">
         <div slot="header" class="clearfix">
           <span style="font-size: 16px">人员核查预警</span>
         </div>
@@ -20,14 +20,13 @@
               :data="$pcaa"
               :level="1"
               size="small"
-              style="overflow: visible; !important"
             ></area-select>
           </el-form-item>
           <el-form-item class="ml-30">
             <el-button
               type="primary"
               style="width: 150px"
-              @click="handleDetails1"
+              @click="handleDetails3"
               >实时监控</el-button
             >
           </el-form-item>
@@ -141,65 +140,190 @@
       </el-card>
     </div>
 
-    <!-- 详情Dialog -->
-    <el-dialog
-      title="详情"
-      :visible.sync="dialogVisible1"
-      width="30%"
-      class="dialogs"
-    >
-      <span class="dialogtitle">基本信息</span>
-      <div style="width: 100%; height: 500px" class="dialogs-box">
-        <div style="width: 50%; float: left">
-          <span>姓名:</span><br />
-          <span>常用证件:</span><br />
-          <span>出生日期:</span><br />
-          <span>联系电话:</span><br />
-          <span>国籍:</span><br />
-          <span>政治面貌:</span><br />
-          <span>配偶姓名:</span><br />
-          <span>人口编码:</span><br />
-          <span>与户主关系:</span><br />
-          <span>重点人员分类管控类别:</span><br />
-          <span>简要案情:</span><br />
-          <span>穿着描述:</span><br />
-          <span>通过时间:</span><br />
+    <!-- 实时监控Dialog -->
+    <el-dialog :visible.sync="dialogVisible3" width="50%">
+      <div class="monitor-dflex">
+        <div class="monitor-img">
+          <el-image lazy :src="src"></el-image>
         </div>
-        <div style="width: 50%; float: right">
-          <span>性别:</span><br />
-          <span>证件号码:</span><br />
-          <span>民族:</span><br />
-          <span>贯籍:</span><br />
-          <span>宗教信仰:</span><br />
-          <span>婚姻状况:</span><br />
-          <span>配偶身份证号码:</span><br />
-          <span>户号:</span><br />
-          <span>户籍地址:</span><br />
-          <span>重点人员处置措施:</span><br />
-          <span>时间:</span><br />
+        <div class="monitor-img">
+          <el-image lazy :src="src"></el-image>
+        </div>
+        <div class="monitor-img">
+          <el-image lazy :src="src"></el-image>
+        </div>
+        <div class="monitor-img">
+          <el-image lazy :src="src"></el-image>
+        </div>
+        <div class="monitor-img">
+          <el-image lazy :src="src"></el-image>
+        </div>
+        <div class="monitor-img">
+          <el-image lazy :src="src"></el-image>
         </div>
       </div>
-      <p class="dialogtitle">过检图像</p>
-      <div style="width: 100%; height: 100px" class="dialogs-box">
-        <div style="width: 50%; float: left">
-          <span>三维人脸图:</span><br />
-        </div>
-        <div style="width: 50%; float: right"><span>人脸图:</span><br /></div>
-      </div>
-      <span class="dialogtitle">人员特征</span>
-      <div style="width: 100%; height: 110px" class="dialogs-box">
-        <div style="width: 50%; float: left">
-          <span>着鞋特征:</span><br />
-          <span>佩戴眼镜特征:</span><br />
-          <span>下身着装特征:</span><br />
-        </div>
-        <div style="width: 50%; float: right">
-          <span>着帽特征:</span><br />
-          <span>人体姿态特征:</span><br />
-          <span>上身着装特征:</span><br />
-        </div>
-      </div>
+    </el-dialog>
+    <!-- 实时监控Dialog -->
 
+    <!-- 详情Dialog -->
+    <el-dialog :visible.sync="dialogVisible1" width="50%" class="dialogs">
+      <div class="dia-spanbox">
+        <span class="dia-spanTitle">基本信息</span>
+      </div>
+      <el-form
+        :model="form"
+        :inline="true"
+        class="form-content mwidth"
+        label-width="173px"
+        size="small"
+      >
+        <el-form-item label="姓名：" class="w-45">
+          <el-input :disabled="true" v-model="form.name"></el-input>
+        </el-form-item>
+        <el-form-item label="性别：" class="w-45">
+          <el-input :disabled="true" v-model="form.gender"></el-input>
+        </el-form-item>
+        <el-form-item label="常用证件：" class="w-45">
+          <el-input :disabled="true" v-model="form.CommonDocuments"></el-input>
+        </el-form-item>
+        <el-form-item label="证件号码：" class="w-45">
+          <el-input
+            :disabled="true"
+            v-model="form.CertificateNumber"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="出生日期：" class="w-45">
+          <el-input :disabled="true" v-model="form.dateOfBirth"></el-input>
+        </el-form-item>
+        <el-form-item label="民族：" class="w-45">
+          <el-input :disabled="true" v-model="form.Nationality"></el-input>
+        </el-form-item>
+        <el-form-item label="联系电话：" class="w-45">
+          <el-input :disabled="true" v-model="form.contactNumber"></el-input>
+        </el-form-item>
+        <el-form-item label="籍贯：" class="w-45">
+          <el-input :disabled="true" v-model="form.Hometown"></el-input>
+        </el-form-item>
+        <el-form-item label="国籍：" class="w-45">
+          <el-input
+            :disabled="true"
+            v-model="form.CountryOfCitizenship"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="宗教信仰：" class="w-45">
+          <el-input :disabled="true" v-model="form.ReligiousBelief"></el-input>
+        </el-form-item>
+        <el-form-item label="政治面貌：" class="w-45">
+          <el-input :disabled="true" v-model="form.politicalStatus"></el-input>
+        </el-form-item>
+        <el-form-item label="婚姻状况：" class="w-45">
+          <el-input :disabled="true" v-model="form.maritalStatus"></el-input>
+        </el-form-item>
+        <el-form-item label="配偶姓名：" class="w-45">
+          <el-input :disabled="true" v-model="form.spouseName"></el-input>
+        </el-form-item>
+        <el-form-item label="配偶身份证号码：" class="w-45">
+          <el-input :disabled="true" v-model="form.SpouseIDNumber"></el-input>
+        </el-form-item>
+        <el-form-item label="人口编码：" class="w-45">
+          <el-input :disabled="true" v-model="form.PopulationCode"></el-input>
+        </el-form-item>
+        <el-form-item label="户号：" class="w-45">
+          <el-input :disabled="true" v-model="form.AccountNumbers"></el-input>
+        </el-form-item>
+        <el-form-item label="与户主关系：" class="w-45">
+          <el-input
+            :disabled="true"
+            v-model="form.RelationshipWithTheHeadOfHousehold"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="户籍地址：" class="w-45">
+          <el-input :disabled="true" v-model="form.ResidenceAddress"></el-input>
+        </el-form-item>
+        <el-form-item label="重点人员分类管控类别：" class="w-45">
+          <el-input :disabled="true" v-model="form.ControlCategory"></el-input>
+        </el-form-item>
+        <el-form-item label="重点人员处置措施：" class="w-45">
+          <el-input :disabled="true" v-model="form.DisposalMeasures"></el-input>
+        </el-form-item>
+        <el-form-item label="简要案情：" class="w-45">
+          <el-input :disabled="true" v-model="form.BriefCase"></el-input>
+        </el-form-item>
+        <el-form-item label="处置时间：" class="w-45">
+          <el-input :disabled="true" v-model="form.DisposalTime"></el-input>
+        </el-form-item>
+        <el-form-item label="通过时间：" class="w-45">
+          <el-input :disabled="true" v-model="form.PassTime"></el-input>
+        </el-form-item>
+      </el-form>
+      <div class="dia-spanbox">
+        <span class="dia-spanTitle">过检图像</span>
+      </div>
+      <el-form
+        :model="form"
+        :inline="true"
+        class="form-content"
+        label-width="153px"
+        size="small"
+      >
+        <el-form-item label="三维人脸图：" class="w-45">
+          <el-avatar
+            :size="150"
+            :src="form.circleUrl"
+            fit="fill"
+            shape="square"
+          ></el-avatar>
+        </el-form-item>
+        <el-form-item label="人脸图：" class="w-45">
+          <el-avatar
+            :size="150"
+            :src="form.circleUrl"
+            fit="fill"
+            shape="square"
+          ></el-avatar>
+        </el-form-item>
+      </el-form>
+      <div class="dia-spanbox">
+        <span class="dia-spanTitle">人员特征</span>
+      </div>
+      <el-form
+        :model="form"
+        :inline="true"
+        class="form-content"
+        label-width="153px"
+        size="small"
+      >
+        <el-form-item label="着鞋特征：" class="w-45">
+          <el-input :disabled="true" v-model="form.ShoesFeatures"></el-input>
+        </el-form-item>
+        <el-form-item label="着帽特征：" class="w-45">
+          <el-input
+            :disabled="true"
+            v-model="form.WearingCharacteristics"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="佩戴眼镜特征：" class="w-45">
+          <el-input :disabled="true" v-model="form.GlassesFeatures"></el-input>
+        </el-form-item>
+        <el-form-item label="人体姿态特征：" class="w-45">
+          <el-input
+            :disabled="true"
+            v-model="form.PostureCharacteristics"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="下身着装特征：" class="w-45">
+          <el-input
+            :disabled="true"
+            v-model="form.underDressFeatures"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="上身着装特征：" class="w-45">
+          <el-input
+            :disabled="true"
+            v-model="form.UpperDressFeatures"
+          ></el-input>
+        </el-form-item>
+      </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible1 = false">取 消</el-button>
         <el-button type="primary" @click="dialogVisible1true">确 定</el-button>
@@ -209,16 +333,16 @@
 
     <!-- 处置Dialog -->
     <el-dialog :visible.sync="dialogVisible2" width="30%">
-      <el-form label-width="110px" :model="form">
+      <el-form label-width="110px" :model="form1">
         <el-form-item label="重点人员处理：">
-          <el-select v-model="form.dealWith">
+          <el-select v-model="form1.dealWith">
             <el-option value="yichang" label="yichang"></el-option>
             <el-option value="chuk" label="chuk"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="处理结果：">
           <el-input
-            v-model="form.desc"
+            v-model="form1.desc"
             type="textarea"
             :autosize="{ minRows: 4, maxRows: 6 }"
             placeholder="请输入内容"
@@ -234,19 +358,27 @@
 
     <div class="personnelRigth">
       <el-card class="dflex direction-column box-card fill_height">
-        <div slot="header" class="clearfix cardhead" style="font-size: 18px">
+        <div slot="header" class="clearfix cardhead">
           <span>人证比对结果统计表</span>
         </div>
-        <div id="personnelECharts" style="width: 100%; height: 100%"></div>
+        <EchartsPackage :option="personnelEcarts"></EchartsPackage>
       </el-card>
     </div>
   </div>
 </template>
 
 <script>
+import EchartsPackage from '../../../components/echarts/index'
+import personnelEcarts from './Echartstable/personnelEcarts'
+
 export default {
+  components: {
+    EchartsPackage
+  },
   data () {
     return {
+      src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
+      personnelEcarts,
       options: [{
         value: '选项1',
         label: '黄金糕'
@@ -354,15 +486,47 @@ export default {
       currentPage: 1,
       dialogVisible1: false,
       dialogVisible2: false,
+      dialogVisible3: false,
       selected: [],
-      form: {
+      form1: {
         dealWith: '',
         desc: ''
+      },
+      form: {
+        name: '',
+        gender: '',
+        CommonDocuments: '',
+        CertificateNumber: '',
+        dateOfBirth: '',
+        Nationality: '',
+        contactNumber: '',
+        Hometown: '',
+        CountryOfCitizenship: '',
+        ReligiousBelief: '',
+        politicalStatus: '',
+        maritalStatus: '',
+        spouseName: '',
+        SpouseIDNumber: '',
+        PopulationCode: '',
+        AccountNumbers: '',
+        RelationshipWithTheHeadOfHousehold: '',
+        ResidenceAddress: '',
+        ControlCategory: '',
+        DisposalMeasures: '',
+        BriefCase: '',
+        DisposalTime: '',
+        PassTime: '',
+        circleUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1608282562624&di=ed0738170ab24767d983a2e6c88f0180&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201510%2F18%2F20151018172940_5etXi.jpeg',
+        ShoesFeatures: '',
+        WearingCharacteristics: '',
+        GlassesFeatures: '',
+        PostureCharacteristics: '',
+        underDressFeatures: '',
+        UpperDressFeatures: ''
       }
     }
   },
   mounted () {
-    this.drawLine()
   },
   methods: {
     setRowStyle ({ row, column }) {
@@ -386,6 +550,9 @@ export default {
       console.log('chuzhi')
       this.dialogVisible2 = true
     },
+    handleDetails3 () {
+      this.dialogVisible3 = true
+    },
     dialogVisible1true () {
       this.dialogVisible1 = false
     },
@@ -394,32 +561,6 @@ export default {
     },
     handleCurrentChange (val) {
       console.log(`当前页: ${val}`)
-    },
-    drawLine () {
-      const myChart1 = this.$echarts.init(document.getElementById('personnelECharts'))
-      myChart1.setOption({
-        tooltip: {
-          trigger: 'item',
-          formatter: '{a} <br/>{b}: {c} ({d}%)'
-        },
-        legend: {
-          top: 10,
-          data: ['正常', '一级预警', '二级预警', '三级预警']
-        },
-        series: [
-          {
-            name: '访问来源',
-            type: 'pie',
-            radius: ['40%', '55%'],
-            data: [
-              { value: 335, name: '正常' },
-              { value: 310, name: '一级预警' },
-              { value: 234, name: '二级预警' },
-              { value: 135, name: '三级预警' }
-            ]
-          }
-        ]
-      })
     }
   }
 }
@@ -437,18 +578,12 @@ export default {
     /deep/ .el-range-separator {
       width: 8%;
     }
+    .over-f {
+      overflow: visible !important;
+    }
   }
   .dialogs /deep/ .el-dialog__body {
     padding: 1px 20px;
-    .dialogtitle {
-      margin-bottom: 8px;
-
-      font-size: 16px;
-      font-weight: 700;
-    }
-  }
-  .dialogs-box span {
-    display: block;
   }
   .personnelRigth {
     width: 25%;
@@ -464,7 +599,7 @@ export default {
     }
     .cardhead {
       height: 30px;
-
+      font-size: 18px;
       line-height: 30px;
       text-align: center;
     }
@@ -475,6 +610,15 @@ export default {
       /deep/ .el-card__body {
         flex: 1;
       }
+    }
+  }
+  .dia-spanbox {
+    width: 15%;
+    text-align: end;
+    padding: 20px 0;
+    .dia-spanTitle {
+      font-size: 18px;
+      font-weight: 650;
     }
   }
 }
@@ -498,6 +642,15 @@ export default {
   box-shadow: 0 2px 12px 2px rgba(0, 0, 0, 0.1);
   /deep/ .el-range-separator {
     width: 8%;
+  }
+}
+</style>
+<style lang="less">
+.area-select {
+  height: 40px;
+  overflow: visible !important;
+  .area-selected-trigger {
+    padding: 0 15px;
   }
 }
 </style>
