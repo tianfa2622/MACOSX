@@ -14,6 +14,7 @@
     <div class="flex1 fill_height dflex direction-column just-cont">
       <div class="dflex1 h-65">
         <!-- <EchartsPackage :option="option"></EchartsPackage> -->
+        <mapchart></mapchart>
       </div>
       <div class="dflex1 h-33">
         <EchartsPackage :option="VehicleVerification"></EchartsPackage>
@@ -43,11 +44,11 @@ import VehicleVerification from './indexEcarts/VehicleVerification/VehicleVerifi
 // 战果统计
 import ResultsStatisticsChart from './indexEcarts/ResultsStatisticsChart/ResultsStatisticsChart.js'
 import PoliceAndEquipmentChart from './indexEcarts/PoliceAndEquipmentChart/PoliceAndEquipmentChart.js'
-
+import mapchart from '@/components/echarts/sctterMap'
 export default {
   name: 'Home2',
   components: {
-    EchartsPackage
+    EchartsPackage, mapchart
   },
   data () {
     return {

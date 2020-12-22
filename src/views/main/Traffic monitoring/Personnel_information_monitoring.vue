@@ -1,46 +1,43 @@
 <template>
-  <baidu-map
-    class="bm-view"
-    :center="center"
-    :zoom="zoom"
-    :scroll-wheel-zoom="true"
-    @ready="handler"
-  >
-    <bm-navigation anchor="BMAP_ANCHOR_BOTTOM_RIGHT"></bm-navigation>
-  </baidu-map>
+  <div id="container"></div>
 </template>
 
 <script>
-
+import AMap from 'AMap'
+var map
 export default {
   data () {
     return {
-      center: {
-        lng: 0,
-        lat: 0
-      },
-      zoom: 3
-    }
-  },
-  methods: {
-    handler ({ Bmap, map }) {
-      console.log(Bmap, map)
-      this.center.lng = 113
-      this.center.lat = 28.21
-      this.zoom = 12
     }
   },
   mounted () {
+    this.init()
+  },
+  methods: {
+    init () {
+      map = new AMap.Map('container', {
+        center: [112.932841, 28.206193],
+        resizeEnable: true,
+        zoom: 10,
+        buildingAnimation: true
+      })
+      console.log(map)
+      AMap.plugin(['AMap.ToolBar', 'AMap.Scale', 'AMap.ControlBar'], function () {
+        map.addControl(new AMap.ToolBar())
+        map.addControl(new AMap.Scale())
+        map.addControl(new AMap.ControlBar({
+          showZoomBar: true,
+          showControlButton: true
+        }))
+      })
+    }
   }
 }
 </script>
 
 <style lang='less'>
-.bm-view {
-  overflow: hidden;
+#container {
   width: 100%;
   height: 100%;
-  margin: 0;
-  font-family: "微软雅黑";
 }
 </style>
