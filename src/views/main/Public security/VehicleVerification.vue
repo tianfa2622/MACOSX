@@ -698,6 +698,7 @@ export default {
     dialogVisible1true () {
       this.dialogVisible1 = false
     },
+    handleDetails4 () {},
     handleSizeChange (val) {
       console.log(`每页 ${val} 条`)
     },
@@ -751,6 +752,7 @@ export default {
 }
 .form-content {
   justify-content: space-between;
+  padding: 20px 8% 0;
 }
 .dia-spanbox {
   width: 15%;

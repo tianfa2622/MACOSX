@@ -39,9 +39,13 @@ import {
   Checkbox,
   Divider,
   Image,
-  Avatar
+  Avatar,
+  Autocomplete,
+  Tree
 } from 'element-ui'
 
+Vue.use(Tree)
+Vue.use(Autocomplete)
 Vue.use(Avatar)
 Vue.use(Image)
 Vue.use(Divider)

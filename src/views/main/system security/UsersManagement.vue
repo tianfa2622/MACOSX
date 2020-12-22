@@ -1,9 +1,9 @@
 <template>
-  <!-- 用户角色及权限管理页面 -->
+  <!-- 用户管理页面 -->
   <div class="fill_height mwidth dflex direction-column back-c">
     <el-card>
       <div slot="header" class="clearfix">
-        <span style="font-size: 16px">用户角色及权限管理页面</span>
+        <span style="font-size: 16px">用户管理</span>
       </div>
       <el-form :model="formInline" label-width="100px">
         <el-row type="flex" justify="space-around">
@@ -21,7 +21,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="4">
-            <el-form-item label="公安检查站：">
+            <el-form-item label="检查站：">
               <el-select
                 v-model="formInline.CheckpointCategory"
                 placeholder="请选择检查站"
@@ -53,8 +53,18 @@
         </el-row>
       </el-form>
       <!-- 新增人员 -->
-      <el-dialog :visible.sync="dialogVisible3" title="编辑" width="25%">
+      <el-dialog :visible.sync="dialogVisible3" title="新增人员" width="25%">
         <el-form :model="form4" label-width="130px">
+          <el-form-item label="角色设置：">
+            <el-select
+              v-model="form4.Roles"
+              style="width: 100%"
+              placeholder="请选择角色"
+            >
+              <el-option label="角色1" value="角色1"></el-option>
+              <el-option label="角色2" value="角色2"></el-option>
+            </el-select>
+          </el-form-item>
           <el-form-item label="姓名：">
             <el-input v-model="form4.Staffname"></el-input>
           </el-form-item>
@@ -160,7 +170,7 @@
         </el-table-column>
         <el-table-column prop="gender" label="性别" align="center">
         </el-table-column>
-        <el-table-column prop="nation" label="民族" align="center">
+        <el-table-column prop="Roles" label="角色" align="center">
         </el-table-column>
         <el-table-column prop="contactNumber" label="联系电话">
         </el-table-column>
@@ -192,21 +202,6 @@
               删除
             </el-button>
             <el-button
-              @click="handleDetails2(scope.$index, scope.row)"
-              type="primary"
-              size="mini"
-            >
-              角色 </el-button
-            ><br />
-            <el-button
-              @click="handleDetails3(scope.$index, scope.row)"
-              type="primary"
-              size="mini"
-              class="mt-5"
-            >
-              权限
-            </el-button>
-            <el-button
               @click="handleDetails4(scope.$index, scope.row)"
               type="primary"
               size="mini"
@@ -219,6 +214,16 @@
       <!-- 编辑 -->
       <el-dialog :visible.sync="dialogVisible" title="编辑" width="25%">
         <el-form :model="form" label-width="130px">
+          <el-form-item label="角色设置：">
+            <el-select
+              v-model="form.Roles"
+              style="width: 100%"
+              placeholder="请选择角色"
+            >
+              <el-option label="角色1" value="角色1"></el-option>
+              <el-option label="角色2" value="角色2"></el-option>
+            </el-select>
+          </el-form-item>
           <el-form-item label="姓名：">
             <el-input v-model="form.Staffname"></el-input>
           </el-form-item>
@@ -293,183 +298,6 @@
           >
         </span>
       </el-dialog>
-      <!-- 角色 -->
-      <el-dialog :visible.sync="dialogVisible1" title="角色设置" width="25%">
-        <el-form :model="form2" label-width="130px">
-          <el-form-item label="角色名称：">
-            <el-input v-model="form2.RoleName"></el-input>
-          </el-form-item>
-          <el-form-item label="说明：">
-            <el-input v-model="form2.Description"></el-input>
-          </el-form-item>
-        </el-form>
-        <span slot="footer" class="dialog-footer">
-          <el-button @click="dialogVisible1 = false">提 交</el-button>
-          <el-button type="primary" @click="dialogVisible1 = false"
-            >取 消</el-button
-          >
-        </span>
-      </el-dialog>
-      <!-- 权限 -->
-      <el-dialog
-        :visible.sync="dialogVisible2"
-        title="权限设置"
-        width="25%"
-        class="dialogClass"
-      >
-        <el-form :model="form3">
-          <el-collapse v-model="activeNames" @change="handleChange">
-            <el-collapse-item title="地区权限" name="1">
-              <div class="clearfix p-10 pl-20 border-b">
-                <span>长沙西公安检查站</span>
-                <span class="flr pr-20">
-                  <el-checkbox v-model="form3.type" label="changsha"
-                    ><span></span
-                  ></el-checkbox>
-                </span>
-              </div>
-              <div class="clearfix p-10 border-b">
-                <span>大姚公安检查站</span>
-                <span class="flr pr-20">
-                  <el-checkbox v-model="form3.type" label="dayao"
-                    ><span></span
-                  ></el-checkbox>
-                </span>
-              </div>
-            </el-collapse-item>
-            <el-collapse-item name="2">
-              <template slot="title">
-                <!-- 功能权限<div> <span>只读</span> <span>是</span><span>否</span></div> -->
-                <el-row :gutter="20" class="mwidth rowtitle">
-                  <el-col :span="12">
-                    <div>功能权限</div>
-                  </el-col>
-                  <el-col :span="6">
-                    <div>只读</div>
-                  </el-col>
-                  <el-col :span="2">
-                    <div>是</div>
-                  </el-col>
-                  <el-col :span="2">
-                    <div>否</div>
-                  </el-col>
-                </el-row>
-              </template>
-              <div>
-                <el-row :gutter="20" class="mwidth rowtitle pl-20">
-                  <el-col :span="18">
-                    <div>车辆通行信息监测</div>
-                  </el-col>
-                  <el-col :span="2">
-                    <el-radio v-model="form3.VehicleMonitoring" :label="1"
-                      ><span></span
-                    ></el-radio>
-                  </el-col>
-                  <el-col :span="2">
-                    <el-radio v-model="form3.VehicleMonitoring" :label="2"
-                      ><span></span
-                    ></el-radio>
-                  </el-col>
-                </el-row>
-                <el-divider></el-divider>
-              </div>
-              <div>
-                <el-row :gutter="20" class="mwidth rowtitle pl-20">
-                  <el-col :span="18">
-                    <div>人员通行信息监测</div>
-                  </el-col>
-                  <el-col :span="2">
-                    <el-radio v-model="form3.PersonnelMonitoring" :label="1"
-                      ><span></span
-                    ></el-radio>
-                  </el-col>
-                  <el-col :span="2">
-                    <el-radio v-model="form3.PersonnelMonitoring" :label="2"
-                      ><span></span
-                    ></el-radio>
-                  </el-col>
-                </el-row>
-                <el-divider></el-divider>
-              </div>
-              <div>
-                <el-row :gutter="20" class="mwidth rowtitle pl-20">
-                  <el-col :span="18">
-                    <div>过车统计</div>
-                  </el-col>
-                  <el-col :span="2">
-                    <el-radio v-model="form3.TrafficStatistics" :label="1"
-                      ><span></span
-                    ></el-radio>
-                  </el-col>
-                  <el-col :span="2">
-                    <el-radio v-model="form3.TrafficStatistics" :label="2"
-                      ><span></span
-                    ></el-radio>
-                  </el-col>
-                </el-row>
-                <el-divider></el-divider>
-              </div>
-              <div>
-                <el-row :gutter="20" class="mwidth rowtitle pl-20">
-                  <el-col :span="18">
-                    <div>查控统计</div>
-                  </el-col>
-                  <el-col :span="2">
-                    <el-radio v-model="form3.ControlStatistics" :label="1"
-                      ><span></span
-                    ></el-radio>
-                  </el-col>
-                  <el-col :span="2">
-                    <el-radio v-model="form3.ControlStatistics" :label="2"
-                      ><span></span
-                    ></el-radio>
-                  </el-col>
-                </el-row>
-                <el-divider></el-divider>
-              </div>
-              <div>
-                <el-row :gutter="20" class="mwidth rowtitle pl-20">
-                  <el-col :span="18">
-                    <div>战果统计</div>
-                  </el-col>
-                  <el-col :span="2">
-                    <el-radio v-model="form3.ResultsStatistics" :label="1"
-                      ><span></span
-                    ></el-radio>
-                  </el-col>
-                  <el-col :span="2">
-                    <el-radio v-model="form3.ResultsStatistics" :label="2"
-                      ><span></span
-                    ></el-radio>
-                  </el-col>
-                </el-row>
-                <el-divider></el-divider>
-              </div>
-              <div>
-                <el-row :gutter="20" class="mwidth rowtitle pl-20">
-                  <el-col :span="18">
-                    <div>勤务统计</div>
-                  </el-col>
-                  <el-col :span="2">
-                    <el-radio v-model="form3.DutyStatistics" :label="1"
-                      ><span></span
-                    ></el-radio>
-                  </el-col>
-                  <el-col :span="2">
-                    <el-radio v-model="form3.DutyStatistics" :label="2"
-                      ><span></span
-                    ></el-radio>
-                  </el-col>
-                </el-row>
-                <el-divider></el-divider>
-              </div>
-            </el-collapse-item>
-          </el-collapse>
-        </el-form>
-        <span slot="footer" class="dialog-footer">
-          <el-button @click="dialogVisible1 = false">提 交</el-button>
-        </span>
-      </el-dialog>
       <!-- 分页 -->
       <el-pagination
         background
@@ -503,6 +331,7 @@ export default {
           CommonDocuments: '身份证',
           IDNumber: '430100000000000000',
           gender: '男',
+          Roles: 'admin',
           nation: '汉',
           contactNumber: '1234567891',
           CheckpointCategory: '哒哒哒',
@@ -514,6 +343,7 @@ export default {
           CommonDocuments: '身份证',
           IDNumber: '430100000000000000',
           gender: '女',
+          Roles: 'admin3',
           nation: '汉',
           contactNumber: '1234567890',
           CheckpointCategory: '哒哒哒',
@@ -522,6 +352,7 @@ export default {
         }
       ],
       form: {
+        Roles: '',
         Staffname: '张三',
         gender: 1,
         national: '汉族',
@@ -530,20 +361,8 @@ export default {
         ContactNumber: '02111111111',
         PublicSecurityCheckpoint: '万家丽公安检查站'
       },
-      form2: {
-        RoleName: '',
-        Description: ''
-      },
-      form3: {
-        type: ['dayao'],
-        VehicleMonitoring: 1,
-        PersonnelMonitoring: 2,
-        TrafficStatistics: 1,
-        ControlStatistics: 1,
-        ResultsStatistics: 2,
-        DutyStatistics: 2
-      },
       form4: {
+        Roles: '',
         Staffname: '',
         gender: '',
         national: '',
@@ -554,8 +373,6 @@ export default {
       },
       currentPage: 1,
       dialogVisible: false,
-      dialogVisible1: false,
-      dialogVisible2: false,
       dialogVisible3: false,
       activeNames: ['1']
     }
@@ -585,12 +402,6 @@ export default {
           message: '已取消删除'
         })
       })
-    },
-    handleDetails2 () {
-      this.dialogVisible1 = true
-    },
-    handleDetails3 () {
-      this.dialogVisible2 = true
     },
     handleDetails4 () {
       this.$confirm('确定禁用该用户?', '提示', {

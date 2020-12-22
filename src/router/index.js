@@ -70,10 +70,15 @@ const routes = [
     path: '/scim',
     component: () => import(/* webpackChunkName: "Scim" */'../views/main/basic information/SCIM.vue')
   },
-  // 用户角色及权限管理
+  // 用户管理
   {
     path: '/usersManagement',
     component: () => import(/* webpackChunkName: "UsersManagement" */'@/views/main/system security/UsersManagement.vue')
+  },
+  // 角色管理
+  {
+    path: '/roleManagement',
+    component: () => import(/* webpackChunkName: "RoleManagement" */'@/views/main/system security/RoleManagement.vue')
   },
   // 日志管理
   {

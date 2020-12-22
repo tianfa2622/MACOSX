@@ -153,7 +153,12 @@
         </template>
         <el-menu-item index="/usersManagement">
           <template slot="title">
-            <span>用户角色及权限管理</span>
+            <span>用户管理</span>
+          </template>
+        </el-menu-item>
+        <el-menu-item index="/RoleManagement">
+          <template slot="title">
+            <span>角色管理</span>
           </template>
         </el-menu-item>
         <el-menu-item index="/logmanagement">

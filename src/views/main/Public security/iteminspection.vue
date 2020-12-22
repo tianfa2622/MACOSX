@@ -65,34 +65,49 @@
             type="index"
             label="NO."
             align="center"
+            :resizable="false"
           ></el-table-column>
           <el-table-column
             prop="category"
             align="center"
             label="安检违禁物品类别"
+            :resizable="false"
           ></el-table-column>
           <el-table-column
             prop="ProhibitedNumber"
             align="center"
             label="数量"
+            :resizable="false"
           ></el-table-column>
           <el-table-column
             prop="description"
             label="物品特征描述"
             align="center"
+            :resizable="false"
             show-overflow-tooltip
           >
           </el-table-column>
-          <el-table-column prop="Checkpoint" align="center" label="公安检查站">
+          <el-table-column
+            prop="Checkpoint"
+            :resizable="false"
+            align="center"
+            label="公安检查站"
+          >
           </el-table-column>
           <el-table-column
             prop="CheckTime"
             align="center"
             label="时间"
+            :resizable="false"
             min-width="90px"
           >
           </el-table-column>
-          <el-table-column prop="operating" label="操作" align="center">
+          <el-table-column
+            prop="operating"
+            label="操作"
+            :resizable="false"
+            align="center"
+          >
             <template slot-scope="scope">
               <el-button
                 @click="handleDetails(scope.$index, scope.row)"
@@ -168,9 +183,6 @@
           <el-form-item label="数量：">
             <el-input :disabled="true" v-model="form1.num"></el-input>
           </el-form-item>
-          <el-form-item label="请选择检查站：">
-            <el-input :disabled="true" v-model="form1.region"></el-input>
-          </el-form-item>
           <el-form-item label="物品特征描述：">
             <el-input
               :disabled="true"
@@ -182,9 +194,16 @@
               resize="none"
             ></el-input>
           </el-form-item>
-          <el-form-item>
-            <el-button type="primary" @click="reportonSubmit">提交</el-button>
-            <el-button @click="reportonSubmit">取消</el-button>
+          <el-form-item label="X光照片：">
+            <el-avatar
+              :size="150"
+              :src="form1.circleUrl"
+              fit="fill"
+              shape="square"
+            ></el-avatar>
+          </el-form-item>
+          <el-form-item label="公安检查站：">
+            <el-input :disabled="true" v-model="form1.region"></el-input>
           </el-form-item>
         </el-form>
       </el-dialog>
@@ -254,7 +273,8 @@ export default {
         name: '',
         num: '',
         region: '',
-        desc: ''
+        desc: '',
+        circleUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1608282562624&di=ed0738170ab24767d983a2e6c88f0180&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201510%2F18%2F20151018172940_5etXi.jpeg'
       },
       dialogVisible1: false
     }
@@ -273,9 +293,9 @@ export default {
     AddonSubmit () {
       this.addDialogFormVisible = true
     },
-    reportonSubmit () {
-      this.dialogVisible1 = false
-    },
+    // reportonSubmit () {
+    //   this.dialogVisible1 = false
+    // },
     handleDetails () {
       console.log('详情')
       this.dialogVisible1 = true
