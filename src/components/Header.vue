@@ -5,7 +5,6 @@
       <div
         class="home-title"
         title="返回首页"
-        @click="$route.path !== '/' && $router.push('/')"
       >
         <img class="logo" src="../assets/images/logo/u1.png" alt="logo" />
         <span class="title">智慧公安检查站管控系统</span>
@@ -17,7 +16,8 @@
           icon="el-icon-s-home"
           class="btntext"
           style="margin-right: 30px"
-          @click="$route.path !== '/' && $router.push('/')"
+          v-if="$route.path !== '/'"
+          @click="$router.push('/')"
         >
           返回首页
         </el-button>

@@ -1,6 +1,6 @@
 <template>
   <div id="Home2" class="fill_height mwidth dflex">
-    <div class="flex1 fill_height dflex direction-column just-cont">
+    <div class="w-1_3 fill_height dflex direction-column just-cont over-h">
       <div class="dflex1 h-33">
         <EchartsPackage :option="PeopleAndVehiclesStatistics"></EchartsPackage>
       </div>
@@ -11,7 +11,7 @@
         <EchartsPackage :option="PersonnelVerification"></EchartsPackage>
       </div>
     </div>
-    <div class="flex1 fill_height dflex direction-column just-cont">
+    <div class="w-1_3 fill_height dflex direction-column just-cont">
       <div class="dflex1 h-65">
         <!-- <EchartsPackage :option="option"></EchartsPackage> -->
         <mapchart></mapchart>
@@ -20,7 +20,7 @@
         <EchartsPackage :option="VehicleVerification"></EchartsPackage>
       </div>
     </div>
-    <div class="flex1 fill_height dflex direction-column just-cont">
+    <div class="w-1_3 fill_height dflex direction-column just-cont">
       <div class="dflex1 h-50">
         <EchartsPackage :option="ResultsStatisticsChart"></EchartsPackage>
       </div>

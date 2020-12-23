@@ -12,7 +12,7 @@ body {
   position: relative;
 
   margin: 0;
-  min-width: 1780px;
+  min-width: 1600px;
 }
 
 #app {
@@ -306,6 +306,10 @@ a {
 
 .b-10 {
   bottom: 10px !important;
+}
+
+.w-1_3 {
+  width: calc(100% / 3);
 }
 
 .w-100 {
