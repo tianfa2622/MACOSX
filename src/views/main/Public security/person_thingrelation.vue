@@ -161,7 +161,7 @@
     </el-dialog>
 
     <!-- 详情Dialog -->
-    <el-dialog :visible.sync="dialogVisible1" width="50%" class="dialogs">
+    <el-dialog :visible.sync="dialogVisible1" width="60%" class="dialogs">
       <template slot="title">
         <div class="titleZise">
           查看-大腰检查站(人证对比结果：

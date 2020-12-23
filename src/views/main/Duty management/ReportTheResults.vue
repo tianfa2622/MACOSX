@@ -39,7 +39,7 @@
       </el-form>
 
       <!-- 上报 -->
-      <el-dialog :visible.sync="dialogVisible" title="上报" width="45%">
+      <el-dialog :visible.sync="dialogVisible" title="上报" width="30%">
         <el-form :model="form" :inline="true" label-width="150px">
           <el-form-item label="所属站点：">
             <el-input class="w200" v-model="form.OwnedSite"></el-input>
@@ -175,7 +175,12 @@
           :resizable="false"
         >
         </el-table-column>
-        <el-table-column label="操作" align="center" :resizable="false">
+        <el-table-column
+          label="操作"
+          align="center"
+          min-width="90"
+          :resizable="false"
+        >
           <template slot-scope="scope">
             <el-button
               @click="handleDetails2(scope.$index, scope.row)"
@@ -195,6 +200,7 @@
               @click="handleDetails1(scope.$index, scope.row)"
               type="danger"
               size="mini"
+              class="mt-5"
             >
               删除
             </el-button>
@@ -217,7 +223,7 @@
       </el-pagination>
 
       <!-- 详情 -->
-      <el-dialog :visible.sync="dialogVisible2" title="详情" width="45%">
+      <el-dialog :visible.sync="dialogVisible2" title="详情" width="30%">
         <el-form :model="form" :inline="true" label-width="150px">
           <el-form-item label="所属站点：">
             <el-input

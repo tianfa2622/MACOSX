@@ -6,20 +6,25 @@
         <div slot="header" class="clearfix">
           <span style="font-size: 16px">物品检查</span>
         </div>
-        <el-form :inline="true" style="text-align: center" :model="formInline">
-          <el-form-item label="安检违禁物品类别：">
+        <el-form
+          :inline="true"
+          class="dflex dfstyle ta-c"
+          label-width="138px"
+          :model="formInline"
+        >
+          <el-form-item label="安检违禁物品类别：" class="w-35">
             <el-select v-model="formInline.user" placeholder="安检违禁物品类别">
               <el-option label="区域一" value="shanghai"></el-option>
               <el-option label="区域二" value="beijing"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="公安检查站：" style="margin-left: 20px">
+          <el-form-item label="公安检查站：">
             <el-select v-model="formInline.region" placeholder="公安检查站">
               <el-option label="区域一" value="shanghai"></el-option>
               <el-option label="区域二" value="beijing"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="日期：" style="margin-left: 20px">
+          <el-form-item label="日期：" class="ta-c">
             <el-col :span="11">
               <el-date-picker
                 type="date"
@@ -28,7 +33,7 @@
                 style="width: 100%"
               ></el-date-picker>
             </el-col>
-            <el-col class="line" :span="2">-</el-col>
+            <el-col class="line" :span="1">-</el-col>
             <el-col :span="11">
               <el-date-picker
                 type="date"
@@ -327,7 +332,9 @@ export default {
     width: 75%;
   }
 }
-
+.dfstyle {
+  flex-wrap: wrap;
+}
 .vehicleRight {
   width: 25%;
   height: 100%;

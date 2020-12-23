@@ -5,13 +5,13 @@
         <span style="font-size: 16px">处理联动及结果流转</span>
       </div>
       <el-form :inline="true" :model="form" label-width="120px">
-        <el-form-item label="异常/预警类型：" style="width: 30%" class="ta-c">
+        <el-form-item label="异常/预警类型：" class="ta-c w-25">
           <el-select v-model="form.region">
             <el-option label="一级预警" value="yiji"></el-option>
             <el-option label="二级预警" value="erji"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="时间：" class="ta-c">
+        <el-form-item label="时间：" class="ta-c w-40">
           <el-col :span="11">
             <el-date-picker
               type="date"
@@ -30,16 +30,16 @@
             ></el-date-picker>
           </el-col>
         </el-form-item>
-        <el-form-item label="处理状态：" class="ml-20 ta-c" style="width: 30%">
+        <el-form-item label="处理状态：" class="w-25 ta-c">
           <el-select v-model="form.ProcessingState">
             <el-option label="已处理" value="yichuli"></el-option>
             <el-option label="未处理" value="weichuli"></el-option>
-          </el-select> </el-form-item
-        ><br />
-        <el-form-item label="处理人：" class="ta-c" style="width: 30%">
-          <el-input v-model="form.name" style="width: 217px"></el-input>
+          </el-select>
         </el-form-item>
-        <el-form-item label="处理时间：" class="ta-c">
+        <el-form-item label="处理人：" class="ta-c w-25">
+          <el-input v-model="form.name" class="w217"></el-input>
+        </el-form-item>
+        <el-form-item label="处理时间：" class="ta-c w-40">
           <el-col :span="11">
             <el-date-picker
               type="date"
@@ -58,7 +58,7 @@
             ></el-date-picker>
           </el-col>
         </el-form-item>
-        <el-form-item style="width: 30%" class="ta-c">
+        <el-form-item class="ta-c w-25">
           <el-button type="primary" plain class="w150" @click="onSubmit"
             >搜索</el-button
           >
@@ -267,6 +267,15 @@ export default {
 <style lang="less" scoped>
 .mwidth {
   width: 100%;
+}
+.w-33 {
+  width: 33% !important;
+}
+.w-25 {
+  width: 25% !important;
+}
+.w217 {
+  width: 217px !important;
 }
 
 /deep/ .el-dialog__body {

@@ -27,7 +27,7 @@
               </el-select>
             </el-form-item>
           </el-col>
-          <el-col :span="3">
+          <el-col :span="5">
             <el-button @click="onSubmit" type="primary" class="w100">
               搜索
             </el-button>

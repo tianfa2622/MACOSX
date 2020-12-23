@@ -193,7 +193,12 @@
           :resizable="false"
         >
         </el-table-column>
-        <el-table-column label="操作" align="center" :resizable="false">
+        <el-table-column
+          label="操作"
+          align="center"
+          min-width="90px"
+          :resizable="false"
+        >
           <template slot-scope="scope">
             <el-button
               @click="handleDetails(scope.$index, scope.row)"
@@ -206,6 +211,7 @@
               @click="handleDetails1(scope.$index, scope.row)"
               type="primary"
               size="mini"
+              class="mt-5"
             >
               删除
             </el-button>

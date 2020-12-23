@@ -253,7 +253,18 @@
       </el-dialog>
       <!-- 人员配备 -->
       <el-dialog :visible.sync="dialogVisible2" width="30%">
-        <el-transfer v-model="value" :data="data" filterable></el-transfer>
+        <!-- <el-transfer v-model="value" :data="data" filterable></el-transfer> -->
+        <template>
+          <el-table
+            :data="tableDatas"
+            tooltip-effect="dark"
+            style="width: 100%"
+            @selection-change="handleSelectionChange"
+          >
+            <el-table-column type="selection" width="55"></el-table-column>
+            <el-table-column prop="name" label="姓名"> </el-table-column>
+          </el-table>
+        </template>
         <span slot="footer" class="dialog-footer">
           <el-button @click="dialogVisible2 = false" plain>取 消</el-button>
           <el-button
@@ -300,6 +311,21 @@ export default {
         CheckpointCategory: '',
         unitName: ''
       },
+      tableDatas: [{
+        name: '王小虎'
+      }, {
+        name: '王小虎'
+      }, {
+        name: '王小虎'
+      }, {
+        name: '王小虎'
+      }, {
+        name: '王小虎'
+      }, {
+        name: '王小虎'
+      }, {
+        name: '王小虎'
+      }],
       tableDate: [
         {
           CheckpointName: '赵子龙',
@@ -334,6 +360,9 @@ export default {
   },
   methods: {
     onSubmit () {},
+    handleSelectionChange (val) {
+      this.multipleSelection = val
+    },
     handleDetails () {
       this.dialogVisible = true
     },

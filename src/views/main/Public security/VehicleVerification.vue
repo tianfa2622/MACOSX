@@ -196,180 +196,258 @@
     </div>
 
     <!-- 详情Dialog -->
-    <el-dialog :visible.sync="dialogVisible1" width="50%" class="dialogs">
-      <div class="dia-spanbox">
-        <span class="dia-spanTitle">基本信息</span>
-      </div>
-      <el-form
-        :model="form"
-        :inline="true"
-        class="form-content mwidth"
-        size="small"
-        label-width="153px"
+    <el-dialog :visible.sync="dialogVisible1" width="70%" class="dialogs">
+      <template slot="title">
+        <div class="titleZise">
+          查看-大腰检查站(对比结果：
+          <span class="result-color">正常</span>)
+        </div>
+      </template>
+      <el-tabs
+        v-model="activeName"
+        @tab-click="handleClick"
+        type="border-card"
+        class="mb-10"
       >
-        <el-form-item label="通过事件：" class="w-45">
-          <el-input :disabled="true" v-model="form.PassingEvents"></el-input>
-        </el-form-item>
-        <el-form-item label="机动车所有人名称：" class="w-45">
-          <el-input
-            :disabled="true"
-            v-model="form.NameOfMotorVehicleOwner"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="机动车号牌号码：" class="w-45">
-          <el-input
-            :disabled="true"
-            v-model="form.MotorVehicleLicensePlateNumber"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="公民身份证号码：" class="w-45">
-          <el-input :disabled="true" v-model="form.CitizenIDNumber"></el-input>
-        </el-form-item>
-        <el-form-item label="机动车车辆类型：" class="w-45">
-          <el-input :disabled="true" v-model="form.MotorVehicleType"></el-input>
-        </el-form-item>
-        <el-form-item label="机动车号牌种类：" class="w-45">
-          <el-input
-            :disabled="true"
-            v-model="form.TypesOfMotorVehicleLicensePlates"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="通过时间：" class="w-45">
-          <el-input :disabled="true" v-model="form.PassTime"></el-input>
-        </el-form-item>
-        <el-form-item label="机动车档案编号：" class="w-45">
-          <el-input
-            :disabled="true"
-            v-model="form.MotorVehicleFileNumber"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="机动车车身颜色：" class="w-45">
-          <el-input
-            :disabled="true"
-            v-model="form.MotorVehicleBodyColor"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="机动车中文品牌名称：" class="w-45">
-          <el-input
-            :disabled="true"
-            v-model="form.ChineseNameOfTheCar"
-          ></el-input>
-        </el-form-item>
-      </el-form>
-      <div class="dia-spanbox">
-        <span class="dia-spanTitle">过检图像</span>
-      </div>
-      <el-form
-        :model="form"
-        :inline="true"
-        class="form-content"
-        size="small"
-        label-width="153px"
-      >
-        <el-form-item label="车前盖图：" class="w-45">
-          <el-avatar
-            :size="150"
-            :src="form.circleUrl"
-            fit="fill"
-            shape="square"
-          ></el-avatar>
-        </el-form-item>
-        <el-form-item label="车后盖图：" class="w-45">
-          <el-avatar
-            :size="150"
-            :src="form.circleUrl"
-            fit="fill"
-            shape="square"
-          ></el-avatar>
-        </el-form-item>
-        <el-form-item label="车厢图：" class="w-45">
-          <el-avatar
-            :size="150"
-            :src="form.circleUrl"
-            fit="fill"
-            shape="square"
-          ></el-avatar>
-        </el-form-item>
-        <el-form-item label="车侧图：" class="w-45">
-          <el-avatar
-            :size="150"
-            :src="form.circleUrl"
-            fit="fill"
-            shape="square"
-          ></el-avatar>
-        </el-form-item>
-        <el-form-item label="车顶图：" class="w-45">
-          <el-avatar
-            :size="150"
-            :src="form.circleUrl"
-            fit="fill"
-            shape="square"
-          ></el-avatar>
-        </el-form-item>
-        <el-form-item label="底盘图：" class="w-45">
-          <el-avatar
-            :size="150"
-            :src="form.circleUrl"
-            fit="fill"
-            shape="square"
-          ></el-avatar>
-        </el-form-item>
-        <el-form-item label="车前标：" class="w-45">
-          <el-avatar
-            :size="150"
-            :src="form.circleUrl"
-            fit="fill"
-            shape="square"
-          ></el-avatar>
-        </el-form-item>
-        <el-form-item label="车后标：" class="w-45">
-          <el-avatar
-            :size="150"
-            :src="form.circleUrl"
-            fit="fill"
-            shape="square"
-          ></el-avatar>
-        </el-form-item>
-      </el-form>
-      <div class="dia-spanbox">
-        <span class="dia-spanTitle">机动车特征</span>
-      </div>
-      <el-form
-        :model="form"
-        :inline="true"
-        class="form-content"
-        label-width="153px"
-        size="small"
-      >
-        <el-form-item label="车辆异常痕迹：" class="w-100">
-          <el-input
-            :disabled="true"
-            v-model="form.AbnormalTracesOfTheVehicle"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="车前部物品特征：" class="w-100">
-          <el-input
-            :disabled="true"
-            v-model="form.FeaturesOfFrontItems"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="车后部物品特征：" class="w-100">
-          <el-input
-            :disabled="true"
-            v-model="form.FeaturesOfRearItems"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="车辆张贴物特征：" class="w-100">
-          <el-input
-            :disabled="true"
-            v-model="form.FeaturesOfVehiclePostings"
-          ></el-input>
-        </el-form-item>
-      </el-form>
-      <span slot="footer" class="dialog-footer">
+        <el-tab-pane name="first" label="关联人员信息">
+          <div class="dia-spanbox">
+            <span class="dia-spanTitle">基本信息</span>
+          </div>
+          <el-form
+            :model="form"
+            :inline="true"
+            class="form-content mwidth"
+            size="small"
+            label-width="153px"
+          >
+            <el-form-item label="通过事件：" class="w-45">
+              <el-input
+                :disabled="true"
+                v-model="form.PassingEvents"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="机动车所有人名称：" class="w-45">
+              <el-input
+                :disabled="true"
+                v-model="form.NameOfMotorVehicleOwner"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="机动车号牌号码：" class="w-45">
+              <el-input
+                :disabled="true"
+                v-model="form.MotorVehicleLicensePlateNumber"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="公民身份证号码：" class="w-45">
+              <el-input
+                :disabled="true"
+                v-model="form.CitizenIDNumber"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="机动车车辆类型：" class="w-45">
+              <el-input
+                :disabled="true"
+                v-model="form.MotorVehicleType"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="机动车号牌种类：" class="w-45">
+              <el-input
+                :disabled="true"
+                v-model="form.TypesOfMotorVehicleLicensePlates"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="通过时间：" class="w-45">
+              <el-input :disabled="true" v-model="form.PassTime"></el-input>
+            </el-form-item>
+            <el-form-item label="机动车档案编号：" class="w-45">
+              <el-input
+                :disabled="true"
+                v-model="form.MotorVehicleFileNumber"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="机动车车身颜色：" class="w-45">
+              <el-input
+                :disabled="true"
+                v-model="form.MotorVehicleBodyColor"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="机动车中文品牌名称：" class="w-45">
+              <el-input
+                :disabled="true"
+                v-model="form.ChineseNameOfTheCar"
+              ></el-input>
+            </el-form-item>
+          </el-form>
+          <div class="dia-spanbox">
+            <span class="dia-spanTitle">过检图像</span>
+          </div>
+          <el-form
+            :model="form"
+            :inline="true"
+            class="form-content"
+            size="small"
+            label-width="153px"
+          >
+            <el-form-item label="车前盖图：" class="w-45">
+              <el-avatar
+                :size="150"
+                :src="form.circleUrl"
+                fit="fill"
+                shape="square"
+              ></el-avatar>
+            </el-form-item>
+            <el-form-item label="车后盖图：" class="w-45">
+              <el-avatar
+                :size="150"
+                :src="form.circleUrl"
+                fit="fill"
+                shape="square"
+              ></el-avatar>
+            </el-form-item>
+            <el-form-item label="车厢图：" class="w-45">
+              <el-avatar
+                :size="150"
+                :src="form.circleUrl"
+                fit="fill"
+                shape="square"
+              ></el-avatar>
+            </el-form-item>
+            <el-form-item label="车侧图：" class="w-45">
+              <el-avatar
+                :size="150"
+                :src="form.circleUrl"
+                fit="fill"
+                shape="square"
+              ></el-avatar>
+            </el-form-item>
+            <el-form-item label="车顶图：" class="w-45">
+              <el-avatar
+                :size="150"
+                :src="form.circleUrl"
+                fit="fill"
+                shape="square"
+              ></el-avatar>
+            </el-form-item>
+            <el-form-item label="底盘图：" class="w-45">
+              <el-avatar
+                :size="150"
+                :src="form.circleUrl"
+                fit="fill"
+                shape="square"
+              ></el-avatar>
+            </el-form-item>
+            <el-form-item label="车前标：" class="w-45">
+              <el-avatar
+                :size="150"
+                :src="form.circleUrl"
+                fit="fill"
+                shape="square"
+              ></el-avatar>
+            </el-form-item>
+            <el-form-item label="车后标：" class="w-45">
+              <el-avatar
+                :size="150"
+                :src="form.circleUrl"
+                fit="fill"
+                shape="square"
+              ></el-avatar>
+            </el-form-item>
+          </el-form>
+          <div class="dia-spanbox">
+            <span class="dia-spanTitle">机动车特征</span>
+          </div>
+          <el-form
+            :model="form"
+            :inline="true"
+            class="form-content"
+            label-width="153px"
+            size="small"
+          >
+            <el-form-item label="车辆异常痕迹：" class="w-90">
+              <el-input
+                :disabled="true"
+                v-model="form.AbnormalTracesOfTheVehicle"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="车前部物品特征：" class="w-90">
+              <el-input
+                :disabled="true"
+                v-model="form.FeaturesOfFrontItems"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="车后部物品特征：" class="w-90">
+              <el-input
+                :disabled="true"
+                v-model="form.FeaturesOfRearItems"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="车辆张贴物特征：" class="w-90">
+              <el-input
+                :disabled="true"
+                v-model="form.FeaturesOfVehiclePostings"
+              ></el-input>
+            </el-form-item>
+          </el-form>
+        </el-tab-pane>
+        <el-tab-pane name="second" label="关联人员信息">
+          <!-- <el-card
+            class="mt-10 pb-30 flex1 posi-rel"
+            style="over-flow: hidden"
+            body-style="height: 100%"
+          > -->
+          <el-table
+            :data="tableData2"
+            fit
+            border
+            style="width: 100%"
+            class="flex1"
+            height="100%"
+          >
+            <el-table-column
+              prop="AssociateName"
+              label="姓名"
+              :resizable="false"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="typeOfCertificate"
+              :resizable="false"
+              label="证件类型"
+            ></el-table-column>
+            <el-table-column
+              prop="CertificateNumber"
+              label="证件号码"
+              min-width="140px"
+              :resizable="false"
+              show-overflow-tooltip
+            >
+            </el-table-column>
+            <el-table-column
+              prop="AssociateTime"
+              :resizable="false"
+              label="时间"
+            >
+            </el-table-column>
+          </el-table>
+          <!-- <el-pagination
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page="currentPage"
+          :page-sizes="[5, 10, 15, 20]"
+          :page-size="5"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="400"
+          class="posi-abs b-10 ta-c offset"
+        >
+        </el-pagination> -->
+          <!-- </el-card> -->
+        </el-tab-pane>
+      </el-tabs>
+
+      <!-- <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible1 = false">取 消</el-button>
         <el-button type="primary" @click="dialogVisible1true">确 定</el-button>
-      </span>
+      </span> -->
     </el-dialog>
     <!-- 详情Dialog -->
 
@@ -493,6 +571,7 @@ export default {
   },
   data () {
     return {
+      activeName: 'first',
       vehicleVenificationJson,
       formInline: {
         VehicleType: '',
@@ -638,6 +717,15 @@ export default {
       tableData1: [
         {}, {}, {}, {}
       ],
+      tableData2: [
+        {
+          AssociateName: '',
+          typeOfCertificate: '',
+          CertificateNumber: '',
+          AssociateTime: ''
+        },
+        {}, {}, {}
+      ],
       form: {
         PassingEvents: '',
         NameOfMotorVehicleOwner: '',
@@ -679,6 +767,10 @@ export default {
   mounted () {
   },
   methods: {
+    // 切换标签页时触发
+    handleClick (tab, event) {
+      this.activeName = tab.name
+    },
     setRowStyle ({ row, column }) {
       if (column.property === 'CarComparison') {
         if (row.CarComparison === '正常') {
@@ -771,7 +863,15 @@ export default {
     font-weight: 650;
   }
 }
-
+.titleZise {
+  font-size: 16px;
+}
+.result-color {
+  color: #009900;
+}
+// .dialogs {
+//   overflow: initial;
+// }
 /deep/ .status-success {
   background-color: #85c963 !important;
 }

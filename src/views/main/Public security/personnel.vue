@@ -190,7 +190,7 @@
     <!-- 实时监控Dialog -->
 
     <!-- 详情Dialog -->
-    <el-dialog :visible.sync="dialogVisible1" width="50%" class="dialogs">
+    <el-dialog :visible.sync="dialogVisible1" width="60%" class="dialogs">
       <div class="dia-spanbox">
         <span class="dia-spanTitle">基本信息</span>
       </div>

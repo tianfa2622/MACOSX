@@ -2,19 +2,19 @@
   <div class="fill_height mwidth dflex direction-column">
     <el-card class="card-top">
       <el-form :inline="true" :model="form" class="dflex">
-        <el-form-item label="车辆类型：" class="flex1 ta-c">
+        <el-form-item label="车辆类型：" class="w-25 ta-c">
           <el-select v-model="form.VehicleType" placeholder="请选择车辆类型">
             <el-option value="区域一" label="区域一"></el-option>
             <el-option value="区域二" label="区域二"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="证件号码/车辆号码：" class="ta-c flex1">
+        <el-form-item label="证件号码/车辆号码：" class="ta-c w-25">
           <el-input
             placeholder="请输入号码"
             v-model="form.VehicledocumentNumber"
           ></el-input>
         </el-form-item>
-        <el-form-item label="布控时间段：" class="flex1 ta-c">
+        <el-form-item label="布控时间段：" class="flex2 ta-c">
           <el-date-picker
             v-model="form.value1"
             type="daterange"
@@ -288,5 +288,8 @@ export default {
 <style lang="less">
 .card-top {
   border-top: none !important;
+}
+.w-25 {
+  width: 25% !important;
 }
 </style>
