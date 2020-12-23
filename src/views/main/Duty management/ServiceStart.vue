@@ -117,12 +117,14 @@
           label="NO."
           align="center"
           width="50px"
+          :resizable="false"
         ></el-table-column>
         <el-table-column
           prop="CaptainOnDuty"
           label="执勤队长"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
@@ -131,6 +133,7 @@
           label="值班队员"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
@@ -139,6 +142,7 @@
           label="警务力量"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
@@ -146,6 +150,7 @@
           label="车辆位置"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
@@ -153,6 +158,7 @@
           label="勤务上报"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
@@ -160,6 +166,7 @@
           label="勤务时间"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
@@ -167,6 +174,7 @@
           label="勤务任务"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
@@ -174,6 +182,7 @@
           label="执勤民警"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
@@ -181,9 +190,10 @@
           label="所属检查站"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
-        <el-table-column label="操作" align="center">
+        <el-table-column label="操作" align="center" :resizable="false">
           <template slot-scope="scope">
             <el-button
               @click="handleDetails(scope.$index, scope.row)"

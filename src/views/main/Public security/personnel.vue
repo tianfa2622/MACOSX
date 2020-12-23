@@ -70,45 +70,68 @@
             type="index"
             label="NO."
             align="center"
+            width="50px"
+            :resizable="false"
           ></el-table-column>
-          <el-table-column prop="names" label="姓名" align="center">
+          <el-table-column
+            prop="names"
+            label="姓名"
+            align="center"
+            :resizable="false"
+          >
           </el-table-column>
           <el-table-column
             prop="sex"
             align="center"
             label="性别"
+            :resizable="false"
           ></el-table-column>
           <el-table-column
             prop="Cdocuments"
             align="center"
             label="常用证件"
+            :resizable="false"
           ></el-table-column>
           <el-table-column
             prop="documentsNum"
             label="证件号码"
             align="center"
             show-overflow-tooltip
+            :resizable="false"
           >
           </el-table-column>
-          <el-table-column prop="Peraddress" align="center" label="户籍地址">
+          <el-table-column
+            prop="Peraddress"
+            align="center"
+            label="户籍地址"
+            :resizable="false"
+          >
           </el-table-column>
           <el-table-column
             prop="checkpoint"
             label="检查站"
             align="center"
+            :resizable="false"
           ></el-table-column>
           <el-table-column
             prop="PeoComparison"
             label="人证比对结果"
             align="center"
+            :resizable="false"
           ></el-table-column>
           <el-table-column
             prop="Peotime"
             label="时间"
             align="center"
+            :resizable="false"
             show-overflow-tooltip
           ></el-table-column>
-          <el-table-column prop="cao" label="操作" align="center">
+          <el-table-column
+            prop="cao"
+            label="操作"
+            align="center"
+            :resizable="false"
+          >
             <template slot-scope="scope">
               <el-button
                 @click="handleDetails(scope.$index, scope.row)"

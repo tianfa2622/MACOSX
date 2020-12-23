@@ -42,7 +42,7 @@
         </el-row>
       </el-form>
 
-      <!-- 编辑 -->
+      <!-- 添加 -->
       <el-dialog :visible.sync="dialogVisible1" title="添加" width="25%">
         <el-form :model="form" label-width="130px">
           <el-form-item label="姓名：">
@@ -92,10 +92,10 @@
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
+          <el-button type="primary" @click="dialogVisible1 = false">
+            提 交
+          </el-button>
           <el-button @click="dialogVisible1 = false">取 消</el-button>
-          <el-button type="primary" @click="dialogVisible1 = false"
-            >确 定</el-button
-          >
         </span>
       </el-dialog>
     </el-card>
@@ -117,12 +117,14 @@
           label="NO."
           align="center"
           width="50px"
+          :resizable="false"
         ></el-table-column>
         <el-table-column
           prop="OnDutyName"
           label="姓名"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
@@ -130,6 +132,7 @@
           label="常用证件"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
@@ -137,6 +140,7 @@
           label="证件号码"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
@@ -144,6 +148,7 @@
           label="性别"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
@@ -151,6 +156,7 @@
           label="民族"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
@@ -158,6 +164,7 @@
           label="联系电话"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
@@ -165,6 +172,7 @@
           label="公安检查站"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
@@ -172,9 +180,10 @@
           label="更新时间"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
-        <el-table-column label="操作" align="center">
+        <el-table-column label="操作" align="center" :resizable="false">
           <template slot-scope="scope">
             <el-button
               @click="handleDetails(scope.$index, scope.row)"
@@ -236,10 +245,10 @@
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
+          <el-button type="primary" @click="dialogVisible = false">
+            提 交
+          </el-button>
           <el-button @click="dialogVisible = false">取 消</el-button>
-          <el-button type="primary" @click="dialogVisible = false"
-            >确 定</el-button
-          >
         </span>
       </el-dialog>
 

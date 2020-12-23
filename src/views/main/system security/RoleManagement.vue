@@ -92,12 +92,23 @@
           label="序号"
           align="center"
           width="80px"
+          :resizable="false"
         ></el-table-column>
-        <el-table-column prop="RoleName" label="角色名称" align="center">
+        <el-table-column
+          prop="RoleName"
+          :resizable="false"
+          label="角色名称"
+          align="center"
+        >
         </el-table-column>
-        <el-table-column prop="AccountNumber" label="账号数量" align="center">
+        <el-table-column
+          prop="AccountNumber"
+          :resizable="false"
+          label="账号数量"
+          align="center"
+        >
         </el-table-column>
-        <el-table-column label="权限" align="center">
+        <el-table-column label="权限" :resizable="false" align="center">
           <template slot-scope="scope">
             <el-button
               @click="handleDetails(scope.$index, scope.row)"

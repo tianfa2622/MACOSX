@@ -1,8 +1,9 @@
 <template>
+  <!-- 人车物关联 -->
   <div class="dflex direction-column fill_height mwidth back-c">
     <el-card body-style="padding-bottom: 0">
       <div slot="header" class="clearfix">
-        <span style="font-size: 16px">人员物关联</span>
+        <span class="person_title">人车物关联</span>
       </div>
       <el-form
         :inline="true"
@@ -19,20 +20,20 @@
             <el-option label="区域二" value="beijing"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="车牌号码：" style="margin-left: 20px">
+        <el-form-item label="车牌号码：" class="ml-20">
           <el-input v-model="formInline.CarNumber"></el-input>
         </el-form-item>
         <el-form-item label="身份证号码：">
           <el-input v-model="formInline.IdNumber"></el-input>
         </el-form-item>
-        <el-form-item label="所属检查站：" style="margin-left: 20px">
+        <el-form-item label="所属检查站：" class="ml-20">
           <el-select v-model="formInline.region" placeholder="公安检查站">
             <el-option label="区域一" value="shanghai"></el-option>
             <el-option label="区域二" value="beijing"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
-      <div class="flr clearfix mb-10" style="width: 25%">
+      <div class="flr clearfix mb-10 w-25">
         <el-button @click="onSubmit" type="primary" class="w150 mr-20">
           查询
         </el-button>
@@ -44,57 +45,61 @@
       style="over-flow: hidden"
       body-style="height: 100%"
     >
-      <el-table
-        :data="tableData"
-        fit
-        border
-        style="width: 100%"
-        class="flex1"
-        height="100%"
-      >
+      <el-table :data="tableData" fit border class="flex1 w-100" height="100%">
         <el-table-column
-          fixed
           type="index"
           label="NO."
+          width="50px"
           align="center"
+          :resizable="false"
         ></el-table-column>
         <el-table-column
           prop="CarNumb"
           align="center"
           label="机动车牌号码"
+          :resizable="false"
         ></el-table-column>
         <el-table-column
           prop="VehicleType"
           align="center"
           label="车辆类型"
+          :resizable="false"
         ></el-table-column>
         <el-table-column
           prop="CitizenNumber"
           label="公民身份号码"
           align="center"
+          :resizable="false"
           show-overflow-tooltip
         >
         </el-table-column>
         <el-table-column
           prop="CarModel"
           align="center"
+          :resizable="false"
           label="车辆型号"
         ></el-table-column>
         <el-table-column
           prop="CarOwner"
           align="center"
+          :resizable="false"
           label="机动车所有人"
         ></el-table-column>
         <el-table-column
           prop="time1"
           align="center"
           label="时间"
-          min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
-        <el-table-column prop="Checkpoint1" align="center" label="检查站">
+        <el-table-column
+          prop="Checkpoint1"
+          align="center"
+          label="检查站"
+          :resizable="false"
+        >
         </el-table-column>
-        <el-table-column label="操作" align="center">
+        <el-table-column label="操作" align="center" :resizable="false">
           <template slot-scope="scope" class="tabbtn">
             <el-button
               @click="handleDetails(scope.$index, scope.row)"
@@ -129,28 +134,12 @@
     <el-dialog title="查看" :visible.sync="DialogFormVisible" width="30%">
       <el-form :model="form1" label-width="140px">
         <el-form-item label="安检违禁物品类别：">
-          <!-- <el-select v-model="form1.name">
-            <el-option label="区域一" value="爆咋物"></el-option>
-            <el-option label="区域二" value="刀具"></el-option>
-          </el-select> -->
           <el-input :disabled="true" v-model="form1.name"></el-input>
         </el-form-item>
         <el-form-item label="数量：">
-          <!-- <el-input
-            v-model="form1.num"
-            maxlength="4"
-            style="width: 222px"
-            type="number"
-            min="0"
-            show-word-limit
-          ></el-input> -->
           <el-input :disabled="true" v-model="form1.num"></el-input>
         </el-form-item>
         <el-form-item label="公安检查站：">
-          <!-- <el-select v-model="form1.region" placeholder="请选择检查站">
-            <el-option label="区域一" value="shanghai"></el-option>
-            <el-option label="区域二" value="beijing"></el-option>
-          </el-select> -->
           <el-input :disabled="true" v-model="form1.region"></el-input>
         </el-form-item>
         <el-form-item label="物品特征描述：">
@@ -172,12 +161,14 @@
     </el-dialog>
 
     <!-- 详情Dialog -->
-    <el-dialog
-      title="查看-大腰检查站(人证对比结果：正常，车证对比结果：正常)"
-      :visible.sync="dialogVisible1"
-      width="50%"
-      class="dialogs"
-    >
+    <el-dialog :visible.sync="dialogVisible1" width="50%" class="dialogs">
+      <template slot="title">
+        <div class="titleZise">
+          查看-大腰检查站(人证对比结果：
+          <span class="result-color">正常</span>，车证对比结果：
+          <span class="result-color">正常</span>)
+        </div>
+      </template>
       <div class="dia-spanbox">
         <span class="dia-spanTitle">基本信息</span>
       </div>
@@ -489,7 +480,15 @@ export default {
 .mwdith {
   width: 100%;
 }
-
+.titleZise {
+  font-size: 16px;
+}
+.result-color {
+  color: #009900;
+}
+.person_title {
+  font-size: 16px;
+}
 .dialogs /deep/ .el-dialog__body {
   padding: 1px 20px;
   .dialogtitle {

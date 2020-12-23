@@ -161,22 +161,60 @@
           label="NO."
           align="center"
           width="50px"
+          :resizable="false"
         ></el-table-column>
-        <el-table-column prop="username" label="姓名" align="center">
+        <el-table-column
+          prop="username"
+          :resizable="false"
+          label="姓名"
+          align="center"
+        >
         </el-table-column>
-        <el-table-column prop="CommonDocuments" label="常用证件">
+        <el-table-column
+          prop="CommonDocuments"
+          :resizable="false"
+          label="常用证件"
+        >
         </el-table-column>
-        <el-table-column prop="IDNumber" label="证件号码" min-width="90px">
+        <el-table-column
+          prop="IDNumber"
+          :resizable="false"
+          label="证件号码"
+          min-width="90px"
+        >
         </el-table-column>
-        <el-table-column prop="gender" label="性别" align="center">
+        <el-table-column
+          prop="gender"
+          :resizable="false"
+          label="性别"
+          align="center"
+        >
         </el-table-column>
-        <el-table-column prop="Roles" label="角色" align="center">
+        <el-table-column
+          prop="Roles"
+          :resizable="false"
+          label="角色"
+          align="center"
+        >
         </el-table-column>
-        <el-table-column prop="contactNumber" label="联系电话">
+        <el-table-column
+          prop="contactNumber"
+          :resizable="false"
+          label="联系电话"
+        >
         </el-table-column>
-        <el-table-column prop="CheckpointCategory" label="公安检查站">
+        <el-table-column
+          prop="CheckpointCategory"
+          :resizable="false"
+          label="公安检查站"
+        >
         </el-table-column>
-        <el-table-column prop="status" label="状态" align="center">
+        <el-table-column
+          prop="status"
+          label="状态"
+          :resizable="false"
+          align="center"
+        >
         </el-table-column>
         <el-table-column
           prop="UpdateTime"
@@ -185,7 +223,12 @@
           min-width="85px"
         >
         </el-table-column>
-        <el-table-column label="操作" width="220px" align="center">
+        <el-table-column
+          label="操作"
+          width="220px"
+          :resizable="false"
+          align="center"
+        >
           <template slot-scope="scope">
             <el-button
               @click="handleDetails(scope.$index, scope.row)"

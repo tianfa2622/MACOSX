@@ -1,4 +1,5 @@
 <template>
+  <!-- 人车黑名单 -->
   <div class="fill_height dflex direction-column mwidth back-c">
     <el-card body-style="padding-bottom: 0">
       <div slot="header" class="clearfix">
@@ -81,26 +82,32 @@
           type="index"
           label="NO."
           align="center"
+          width="50px"
+          :resizable="false"
         ></el-table-column>
         <el-table-column
           prop="LicensePlateNumber"
           align="center"
+          :resizable="false"
           label="机动车牌号码"
         ></el-table-column>
         <el-table-column
           prop="VehicleCategory"
           align="center"
+          :resizable="false"
           label="车辆类型"
         ></el-table-column>
         <el-table-column
           prop="VehicleType"
           label="车辆型号"
+          :resizable="false"
           align="center"
           show-overflow-tooltip
         ></el-table-column>
         <el-table-column
           prop="LicensePlateType"
           label="机动车牌种类"
+          :resizable="false"
           align="center"
           show-overflow-tooltip
         >
@@ -108,20 +115,23 @@
         <el-table-column
           prop="TheOwnerName"
           align="center"
+          :resizable="false"
           label="机动车所有人名称"
         ></el-table-column>
         <el-table-column
           prop="CarTime"
           align="center"
+          :resizable="false"
           label="时间"
         ></el-table-column>
         <el-table-column
           prop="ControlCategory"
           align="center"
           label="重点人员管控类别"
+          :resizable="false"
           min-width="90px"
         ></el-table-column>
-        <el-table-column label="操作" align="center">
+        <el-table-column label="操作" align="center" :resizable="false">
           <template slot-scope="scope">
             <el-button
               @click="handleDetails(scope.$index, scope.row)"
@@ -154,104 +164,105 @@
 
     <!-- 详情弹出框 -->
     <el-dialog title="详情" :visible.sync="dialogFormVisible" width="30%">
-      <el-form :model="form">
-        <el-form-item label="机动车牌号码：" label-width="150px">
+      <el-form :model="form" label-width="150px">
+        <el-form-item label="机动车牌号码：">
           <el-input
             :disabled="true"
             v-model="form.LicensePlateNumber"
           ></el-input>
         </el-form-item>
-        <el-form-item label="机动车车辆类型：" label-width="150px">
+        <el-form-item label="机动车车辆类型：">
           <el-input :disabled="true" v-model="form.VehicleCategory"></el-input>
         </el-form-item>
-        <el-form-item label="车辆型号：" label-width="150px">
+        <el-form-item label="车辆型号：">
           <el-input :disabled="true" v-model="form.VehicleType"></el-input>
         </el-form-item>
-        <el-form-item label="机动车牌种类：" label-width="150px">
+        <el-form-item label="机动车牌种类：">
           <el-input :disabled="true" v-model="form.LicensePlateType"></el-input>
         </el-form-item>
-        <el-form-item label="机动车身颜色：" label-width="150px">
+        <el-form-item label="机动车身颜色：">
           <el-input :disabled="true" v-model="form.TheBodyColor"></el-input>
         </el-form-item>
-        <el-form-item label="省份简称：" label-width="150px">
+        <el-form-item label="省份简称：">
           <el-input :disabled="true" v-model="form.Provinces"></el-input>
         </el-form-item>
-        <el-form-item label="机动车所有人名称：" label-width="150px">
+        <el-form-item label="机动车所有人名称：">
           <el-input :disabled="true" v-model="form.TheOwnerName"></el-input>
         </el-form-item>
-        <el-form-item label="公民身份证号码：" label-width="150px">
+        <el-form-item label="公民身份证号码：">
           <el-input :disabled="true" v-model="form.IdentityNumber"></el-input>
         </el-form-item>
-        <el-form-item label="时间：" label-width="150px">
+        <el-form-item label="时间：">
           <el-input :disabled="true" v-model="form.CarTime"></el-input>
         </el-form-item>
-        <el-form-item label="重点人员管控类别：" label-width="150px">
+        <el-form-item label="重点人员管控类别：">
           <el-input :disabled="true" v-model="form.ControlCategory"></el-input>
         </el-form-item>
       </el-form>
-      <div slot="footer" class="dialog-footer">
+      <!-- <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
         <el-button type="primary" @click="dialogFormVisible = false"
           >确 定</el-button
         >
-      </div>
+      </div> -->
     </el-dialog>
     <!-- 详情弹出框 -->
 
     <!-- 增加弹出框 -->
     <el-dialog title="新增" :visible.sync="dialogFormVisible1" width="30%">
-      <el-form :model="form">
-        <el-form-item label="机动车牌号码：" label-width="166px">
-          <el-input
-            v-model="form.LicensePlateNumber"
-            style="width: 222px"
-          ></el-input>
+      <el-form :model="form" label-width="166px">
+        <el-form-item label="机动车牌号码：">
+          <el-input v-model="form.LicensePlateNumber" class="w-100"></el-input>
         </el-form-item>
-        <el-form-item label="机动车车辆类型：" label-width="166px">
-          <el-select v-model="form.VehicleType" placeholder="机动车车辆类型">
+        <el-form-item label="机动车车辆类型：">
+          <el-select
+            v-model="form.VehicleType"
+            class="w-100"
+            placeholder="请选择机动车车辆类型"
+          >
             <el-option label="轿车" value="shanghai"></el-option>
             <el-option label="货车" value="beijing"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="车辆型号：" label-width="166px">
-          <el-input v-model="form.VehicleType" style="width: 222px"></el-input>
+        <el-form-item label="车辆型号：">
+          <el-input v-model="form.VehicleType" class="w-100"></el-input>
         </el-form-item>
-        <el-form-item label="机动车牌种类：" label-width="166px">
+        <el-form-item label="机动车牌种类：">
           <el-select
             v-model="form.LicensePlateType"
-            placeholder="机动车车牌种类"
+            placeholder="请选择机动车车牌种类"
+            class="w-100"
           >
             <el-option label="蓝牌白字" value="shanghai"></el-option>
             <el-option label="黄牌黑字" value="beijing"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="机动车身颜色：" label-width="166px">
-          <el-input v-model="form.TheBodyColor" style="width: 222px"></el-input>
+        <el-form-item label="机动车身颜色：">
+          <el-input v-model="form.TheBodyColor" class="w-100"></el-input>
         </el-form-item>
-        <el-form-item label="省份简称：" label-width="166px">
-          <el-input v-model="form.Provinces" style="width: 222px"></el-input>
+        <el-form-item label="省份简称：">
+          <el-input v-model="form.Provinces" class="w-100"></el-input>
         </el-form-item>
-        <el-form-item label="机动车所有人名称：" label-width="166px">
-          <el-input v-model="form.TheOwnerName" style="width: 222px"></el-input>
+        <el-form-item label="机动车所有人名称：">
+          <el-input v-model="form.TheOwnerName" class="w-100"></el-input>
         </el-form-item>
-        <el-form-item label="公民身份证号码：" label-width="166px">
-          <el-input
-            v-model="form.IdentityNumber"
-            style="width: 222px"
-          ></el-input>
+        <el-form-item label="公民身份证号码：">
+          <el-input v-model="form.IdentityNumber" class="w-100"></el-input>
         </el-form-item>
-        <el-form-item label="时间：" label-width="166px">
+        <el-form-item label="时间：">
           <el-date-picker
             v-model="form.CarTime"
             type="datetime"
             placeholder="选择日期时间"
+            class="w-100"
           >
           </el-date-picker>
         </el-form-item>
         <el-form-item label="重点人员分类管控类别：">
           <el-select
             v-model="form.ControlCategory"
-            placeholder="重点人员分类管控类别"
+            placeholder="请选择重点人员分类管控类别"
+            class="w-100"
           >
             <el-option label="一级管控" value="shanghai"></el-option>
             <el-option label="二级管控" value="beijing"></el-option>
@@ -336,7 +347,7 @@ export default {
       this.dialogFormVisible = true
     },
     handleDetails1 () {
-      this.$confirm('此操作将永久移除该调记录, 是否继续?', '提示', {
+      this.$confirm('此操作将永久移除该条记录, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning',

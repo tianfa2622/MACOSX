@@ -35,7 +35,7 @@
         </el-menu-item>
         <el-menu-item index="/personnelLostContact">
           <template slot="title">
-            <span>人员物失联</span>
+            <span>人员物关联</span>
           </template>
         </el-menu-item>
         <el-menu-item index="/message">

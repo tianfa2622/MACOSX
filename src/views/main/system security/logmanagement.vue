@@ -49,18 +49,30 @@
           label="NO."
           align="center"
           width="50px"
+          :resizable="false"
         ></el-table-column>
-        <el-table-column prop="TheDateOf" label="日期" align="center">
+        <el-table-column
+          prop="TheDateOf"
+          label="日期"
+          :resizable="false"
+          align="center"
+        >
         </el-table-column>
         <el-table-column
           prop="OperatingContent"
           label="操作内容"
           align="center"
+          :resizable="false"
         >
         </el-table-column>
-        <el-table-column prop="OperationOf" label="操作人" align="center">
+        <el-table-column
+          prop="OperationOf"
+          :resizable="false"
+          label="操作人"
+          align="center"
+        >
         </el-table-column>
-        <el-table-column label="操作" align="center">
+        <el-table-column label="操作" :resizable="false" align="center">
           <template slot-scope="scope">
             <el-button
               @click="handleDetails(scope.$index, scope.row)"
@@ -85,21 +97,34 @@
             label="NO."
             align="center"
             width="50px"
+            :resizable="false"
           ></el-table-column>
-          <el-table-column prop="TableName" label="表名" align="center">
+          <el-table-column
+            prop="TableName"
+            :resizable="false"
+            label="表名"
+            align="center"
+          >
           </el-table-column>
-          <el-table-column prop="FieldName" label="字段名" align="center">
+          <el-table-column
+            prop="FieldName"
+            :resizable="false"
+            label="字段名"
+            align="center"
+          >
           </el-table-column>
           <el-table-column
             prop="ValueBeforeModification"
             label="修改前的值"
             align="center"
+            :resizable="false"
           >
           </el-table-column>
           <el-table-column
             prop="ModifiedValue"
             label="修改后的值"
             align="center"
+            :resizable="false"
           >
           </el-table-column>
         </el-table>

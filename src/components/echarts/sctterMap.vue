@@ -97,7 +97,7 @@ export default {
           left: 'center',
           top: '15',
           text: this.parentInfo[this.parentInfo.length - 1].cityName +
-                '地图(可点击下钻)',
+                '地图',
           textStyle: {
             color: 'rgb(179, 239, 255)',
             fontSize: 16

@@ -29,28 +29,51 @@
           label="NO."
           align="center"
           width="50px"
+          :resizable="false"
         ></el-table-column>
-        <el-table-column prop="EquipmentName" label="设备名称" align="center">
+        <el-table-column
+          prop="EquipmentName"
+          label="设备名称"
+          align="center"
+          :resizable="false"
+        >
         </el-table-column>
-        <el-table-column prop="BrandModels" label="品牌型号" align="center">
+        <el-table-column
+          prop="BrandModels"
+          :resizable="false"
+          label="品牌型号"
+          align="center"
+        >
         </el-table-column>
         <el-table-column
           prop="NetworkPortNumber"
           label="网络端口号"
           align="center"
+          :resizable="false"
         >
         </el-table-column>
-        <el-table-column prop="IPAddress" label="IP地址" align="center">
+        <el-table-column
+          prop="IPAddress"
+          :resizable="false"
+          label="IP地址"
+          align="center"
+        >
         </el-table-column>
         <el-table-column
           prop="PublicSecurityCheckpoint"
           label="公安检查站"
           align="center"
+          :resizable="false"
         >
         </el-table-column>
-        <el-table-column prop="UpdateTime" label="更新时间" align="center">
+        <el-table-column
+          prop="UpdateTime"
+          :resizable="false"
+          label="更新时间"
+          align="center"
+        >
         </el-table-column>
-        <el-table-column label="操作" align="center">
+        <el-table-column label="操作" :resizable="false" align="center">
           <template slot-scope="scope">
             <el-button
               @click="handleDetails(scope.$index, scope.row)"

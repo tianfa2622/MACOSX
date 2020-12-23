@@ -48,12 +48,14 @@
           type="index"
           label="NO."
           align="center"
+          :resizable="false"
           width="50px"
         ></el-table-column>
         <el-table-column
           prop="CheckpointName"
           label="公安检查站名称"
           align="center"
+          :resizable="false"
           min-width="90px"
         >
         </el-table-column>
@@ -61,6 +63,7 @@
           prop="CheckpointCategory"
           label="公安检查站类别"
           align="center"
+          :resizable="false"
           min-width="90px"
         >
         </el-table-column>
@@ -68,6 +71,7 @@
           prop="contactNumber"
           label="联系电话"
           align="center"
+          :resizable="false"
           min-width="90px"
         >
         </el-table-column>
@@ -75,6 +79,7 @@
           prop="address"
           label="地址"
           align="center"
+          :resizable="false"
           min-width="90px"
         >
         </el-table-column>
@@ -82,6 +87,7 @@
           prop="InstitutionalLevel"
           label="机构级别"
           align="center"
+          :resizable="false"
           min-width="90px"
         >
         </el-table-column>
@@ -89,10 +95,11 @@
           prop="AttributionUnitName"
           label="归属单位名称"
           align="center"
+          :resizable="false"
           min-width="90px"
         >
         </el-table-column>
-        <el-table-column label="操作" align="center">
+        <el-table-column label="操作" align="center" :resizable="false">
           <template slot-scope="scope">
             <el-button
               @click="handleDetails(scope.$index, scope.row)"
@@ -181,12 +188,12 @@
             <el-input v-model="form.principalPhone" :disabled="true"></el-input>
           </el-form-item>
         </el-form>
-        <span slot="footer" class="dialog-footer">
+        <!-- <span slot="footer" class="dialog-footer">
           <el-button @click="dialogVisible = false">取 消</el-button>
           <el-button type="primary" @click="dialogVisible = false"
             >确 定</el-button
           >
-        </span>
+        </span> -->
       </el-dialog>
       <!-- 编辑 -->
       <el-dialog :visible.sync="dialogVisible1" title="编辑" width="30%">
@@ -240,7 +247,7 @@
         <span slot="footer" class="dialog-footer">
           <el-button @click="dialogVisible1 = false">取 消</el-button>
           <el-button type="primary" @click="dialogVisible1 = false"
-            >确 定</el-button
+            >提 交</el-button
           >
         </span>
       </el-dialog>

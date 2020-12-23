@@ -61,9 +61,9 @@
           style="width: 100%"
         >
           <el-table-column
-            fixed
             type="index"
             label="NO."
+            width="50px"
             align="center"
             :resizable="false"
           ></el-table-column>
@@ -134,7 +134,7 @@
       <el-dialog title="新增" :visible.sync="addDialogFormVisible" width="30%">
         <el-form :model="form1" label-width="140px">
           <el-form-item label="安检违禁物品类别：">
-            <el-select v-model="form1.name">
+            <el-select v-model="form1.name" class="w222">
               <el-option label="区域一" value="爆咋物"></el-option>
               <el-option label="区域二" value="刀具"></el-option>
             </el-select>
@@ -143,13 +143,17 @@
             <el-input
               v-model="form1.num"
               maxlength="4"
-              style="width: 222px"
+              class="w222"
               type="number"
               min="0"
             ></el-input>
           </el-form-item>
           <el-form-item label="请选择检查站：">
-            <el-select v-model="form1.region" placeholder="请选择检查站">
+            <el-select
+              v-model="form1.region"
+              class="w222"
+              placeholder="请选择检查站"
+            >
               <el-option label="区域一" value="shanghai"></el-option>
               <el-option label="区域二" value="beijing"></el-option>
             </el-select>

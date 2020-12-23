@@ -117,12 +117,14 @@
           label="NO."
           align="center"
           width="50px"
+          :resizable="false"
         ></el-table-column>
         <el-table-column
           prop="SiteName"
           label="站点名称"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
@@ -130,6 +132,7 @@
           label="查获时间"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
@@ -137,12 +140,14 @@
           label="查获民警"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
           prop="BeSeized"
           label="被查获人员姓名/物品名称"
           align="center"
+          :resizable="false"
           min-width="90px"
         >
         </el-table-column>
@@ -151,6 +156,7 @@
           label="被查获人证件号码"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
@@ -158,6 +164,7 @@
           label="查获描述"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
@@ -165,9 +172,10 @@
           label="执勤民警"
           align="center"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
-        <el-table-column label="操作" align="center">
+        <el-table-column label="操作" align="center" :resizable="false">
           <template slot-scope="scope">
             <el-button
               @click="handleDetails2(scope.$index, scope.row)"

@@ -20,4 +20,7 @@ export default {
 </script>
 
 <style lang="less">
+.el-table th.gutter {
+  display: table-cell !important;
+}
 </style>

@@ -73,6 +73,7 @@
           </el-form-item>
           <el-form-item label="布控事由：" class="w-40">
             <el-input
+              type="textarea"
               v-model="formInline.desc"
               :autosize="{ minRows: 2, maxRows: 4 }"
               placeholder="请输入布控事由"

@@ -112,7 +112,11 @@
             show-overflow-tooltip
           >
           </el-table-column>
-          <el-table-column prop="VehicleModel" label="车辆型号">
+          <el-table-column
+            prop="VehicleModel"
+            :resizable="false"
+            label="车辆型号"
+          >
           </el-table-column>
           <el-table-column
             prop="Carname"
@@ -143,7 +147,12 @@
             label="检查站"
             :resizable="false"
           ></el-table-column>
-          <el-table-column label="操作" min-width="150px" align="center">
+          <el-table-column
+            label="操作"
+            :resizable="false"
+            min-width="150px"
+            align="center"
+          >
             <template slot-scope="scope">
               <el-button
                 @click="handleDetails(scope.$index, scope.row)"
@@ -158,7 +167,7 @@
                 @click="handleDetails2(scope.$index, scope.row)"
                 size="mini"
                 type="primary"
-                class="bgc mini-btn mt-5"
+                class="bgc1 mini-btn mt-5"
               >
                 关联人员
               </el-button>
@@ -790,9 +799,17 @@ export default {
   width: 48%;
   padding-bottom: 5px;
 }
-.bgc {
+.bgc1 {
   border: 1px solid #ccccff;
   background-color: #ccccff;
+}
+.bgc1:hover {
+  background: #bebee5 !important;
+  border-color: #bebee5 !important;
+}
+.bgc1:active {
+  background: #bebee5 !important;
+  border-color: #bebee5 !important;
 }
 .mini-btn {
   padding: 7px 7px !important;

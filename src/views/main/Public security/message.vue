@@ -84,18 +84,20 @@
           type="index"
           label="NO."
           align="center"
+          :resizable="false"
         ></el-table-column>
         <el-table-column
           prop="warningType"
           label="异常/预警类型"
-          min-width="90px"
           align="center"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
           prop="timeRange"
           align="center"
           label="时间"
+          :resizable="false"
         ></el-table-column>
         <el-table-column
           prop="ProcessingState"
@@ -103,24 +105,32 @@
           align="center"
           min-width="140px"
           show-overflow-tooltip
+          :resizable="false"
         >
         </el-table-column>
-        <el-table-column prop="ProcessingTime" align="center" label="处理时间">
+        <el-table-column
+          prop="ProcessingTime"
+          :resizable="false"
+          align="center"
+          label="处理时间"
+        >
         </el-table-column>
         <el-table-column
           prop="ProcessingName"
           align="center"
           label="处理人"
           min-width="90px"
+          :resizable="false"
         >
         </el-table-column>
         <el-table-column
           prop="ProcessingResults"
           label="处理结果"
           min-width="120px"
+          :resizable="false"
           show-overflow-tooltip
         ></el-table-column>
-        <el-table-column label="操作" align="center">
+        <el-table-column label="操作" align="center" :resizable="false">
           <template slot-scope="scope">
             <el-button
               @click="handleDetails(scope.$index, scope.row)"
@@ -151,7 +161,7 @@
       >
       </el-pagination>
     </el-card>
-
+    <!-- 立即处理 -->
     <el-dialog :visible.sync="dialogVisible" width="25%">
       <el-form label-position="left" label-width="80px" :model="form">
         <el-form-item label="处理结果:">
@@ -164,13 +174,13 @@
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="dialogVisible = false">
+          保 存
+        </el-button>
         <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false"
-          >确 定</el-button
-        >
       </span>
     </el-dialog>
-
+    <!-- 结果流转 -->
     <el-dialog :visible.sync="dialogVisible1" width="25%">
       <el-form label-width="80px" :model="form">
         <el-form-item label="流转至:">
@@ -181,10 +191,10 @@
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="dialogVisible1 = false">
+          保 存
+        </el-button>
         <el-button @click="dialogVisible1 = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible1 = false"
-          >确 定</el-button
-        >
       </span>
     </el-dialog>
   </div>

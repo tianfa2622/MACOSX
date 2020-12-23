@@ -1,4 +1,5 @@
 <template>
+  <!-- 战果统计 -->
   <div class="fill_height mwidth back-c">
     <div class="tit">战果统计</div>
     <el-tabs
