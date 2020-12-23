@@ -43,7 +43,9 @@
           <el-button @click="onSubmit" style="margin-right: 20px" class="w100">
             查询
           </el-button>
-          <el-button type="primary" @click="AddonSubmit">新增</el-button>
+          <el-button type="primary" class="w100" @click="AddonSubmit"
+            >新增</el-button
+          >
         </div>
       </el-card>
 

@@ -6,14 +6,23 @@
         <div slot="header" class="clearfix">
           <span style="font-size: 16px">人员核查预警</span>
         </div>
+
+        <el-button
+          type="primary"
+          class="w150 ml-20 mb-10"
+          @click="handleDetails3"
+        >
+          实时监控
+        </el-button>
+
         <el-form :inline="true" class="pl-10" label-width="96px">
-          <el-form-item label="姓名：">
+          <el-form-item label="姓名：" class="ml-25">
             <el-input placeholder="请输入姓名"></el-input>
           </el-form-item>
-          <el-form-item label="证件号码：" style="margin-left: 20px">
+          <el-form-item label="证件号码：" class="ml-25">
             <el-input placeholder="请输入证件号码"></el-input>
           </el-form-item>
-          <el-form-item label="户籍地址：" style="margin-left: 20px">
+          <el-form-item label="户籍地址：" class="ml-25">
             <area-select
               type="text"
               v-model="selected"
@@ -22,23 +31,15 @@
               size="small"
             ></area-select>
           </el-form-item>
-          <el-form-item class="ml-30">
-            <el-button
-              type="primary"
-              style="width: 150px"
-              @click="handleDetails3"
-              >实时监控</el-button
-            >
-          </el-form-item>
-          <el-form-item label="所属检查站：">
+          <el-form-item label="所属检查站：" class="ml-25">
             <el-select v-model="station" style="width: 202px">
               <el-option value="区域一" label="区域一"></el-option>
               <el-option value="区域二" label="区域二"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="日期：" style="margin-left: 20px">
+          <el-form-item label="日期：" class="ml-25">
             <el-date-picker
-              style="margin-left: 10px"
+              class="ml-10"
               v-model="date1"
               type="daterange"
               range-separator="至"
@@ -47,8 +48,8 @@
             >
             </el-date-picker>
           </el-form-item>
-          <el-form-item style="margin-left: 20px">
-            <el-button plain style="width: 100px">搜索</el-button>
+          <el-form-item class="ml-25">
+            <el-button plain class="w150">搜索</el-button>
           </el-form-item>
         </el-form>
       </el-card>

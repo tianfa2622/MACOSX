@@ -6,6 +6,13 @@
         <div slot="header" class="clearfix">
           <span style="font-size: 16px">车辆核查预警</span>
         </div>
+        <el-button
+          type="primary"
+          class="w150 ml-20 mb-10"
+          @click="handleDetails1"
+        >
+          实时监控
+        </el-button>
         <el-form :inline="true" class="pl-10">
           <el-form-item label="机动车车辆类型：" label-width="125px">
             <el-select v-model="formInline.VehicleType">
@@ -29,14 +36,6 @@
               <el-option value="验证成功" label="验证成功"></el-option>
               <el-option value="验证失败" label="验证失败"></el-option>
             </el-select>
-          </el-form-item>
-          <el-form-item class="ml-30">
-            <el-button
-              type="primary"
-              style="width: 150px"
-              @click="handleDetails1"
-              >实时监控</el-button
-            >
           </el-form-item>
           <el-form-item label="所属检查站：" label-width="125px">
             <el-select v-model="formInline.station">
