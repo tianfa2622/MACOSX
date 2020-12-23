@@ -1,5 +1,5 @@
 <template>
-  <div class="clearfix main-menu">
+  <div class="clearfix main-menu dflex justify-center w-100">
     <el-menu
       mode="horizontal"
       :default-active="$route.path"
@@ -7,7 +7,7 @@
       text-color="#fff"
       active-text-color="#06f"
       unique-opened:true
-      class="fill_height fll"
+      class="fill_height"
       router
     >
       <el-menu-item index="/" class="nav-size">
@@ -83,7 +83,7 @@
       </el-submenu>
     </el-menu>
 
-    <div class="fll" style="width: 800px; height: 100%"></div>
+    <div class="flex1" style="height: 100%;max-width:800px"></div>
 
     <el-menu
       mode="horizontal"
@@ -92,7 +92,7 @@
       text-color="#fff"
       active-text-color="#06f"
       unique-opened:true
-      class="fill_height fll"
+      class="fill_height"
       router
     >
       <el-submenu index="5" popper-class="main-submenu-item">
@@ -224,7 +224,7 @@ export default {}
 </style>
 <style lang="less">
 .index-title {
-  font-size: 18px !important;
+  font-size: 16px !important;
   letter-spacing: 7px !important;
 }
 .nav-size {
