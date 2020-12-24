@@ -1,31 +1,34 @@
 <template>
   <div id="Home2" class="fill_height mwidth dflex">
     <div class="w-1_3 fill_height dflex direction-column just-cont over-h">
-      <div class="dflex1 h-33 bgc1">
-        <EchartsPackage :option="PeopleAndVehiclesStatistics"></EchartsPackage>
+      <div class="dflex1 h-40 bgc1 over-h">
+        <EchartsPackage :option="ResultsStatisticsChart"></EchartsPackage>
       </div>
-      <div class="dflex1 h-33 bgc1">
+      <div class="dflex1 h-29 bgc1 over-h">
         <EchartsPackage :option="PedestrianTraffic"></EchartsPackage>
       </div>
-      <div class="dflex1 h-33">
+      <div class="dflex1 h-29 bgc1 over-h">
         <EchartsPackage :option="PersonnelVerification"></EchartsPackage>
       </div>
     </div>
     <div class="w-1_3 fill_height dflex direction-column just-cont">
-      <div class="dflex1 h-65">
+      <div class="dflex1 h-65 over-h">
         <!-- <EchartsPackage :option="option"></EchartsPackage> -->
         <mapchart></mapchart>
       </div>
-      <div class="dflex1 h-33">
+      <!-- <div class="dflex1 h-33">
         <EchartsPackage :option="VehicleVerification"></EchartsPackage>
-      </div>
+      </div> -->
     </div>
     <div class="w-1_3 fill_height dflex direction-column just-cont">
-      <div class="dflex1 h-48 bgc2">
-        <EchartsPackage :option="ResultsStatisticsChart"></EchartsPackage>
-      </div>
-      <div class="h-48 dflex1 bgc2">
+      <div class="dflex1 h-40 bgc2 over-h">
         <EchartsPackage :option="PoliceAndEquipmentChart"></EchartsPackage>
+      </div>
+      <div class="h-29 dflex1 bgc2 over-h">
+        <EchartsPackage :option="PeopleAndVehiclesStatistics"></EchartsPackage>
+      </div>
+      <div class="h-29 dflex1 bgc2 over-h">
+        <EchartsPackage :option="VehicleVerification"></EchartsPackage>
       </div>
     </div>
   </div>
@@ -79,6 +82,9 @@ export default {
 }
 .h-48 {
   height: 49%;
+}
+.h-29 {
+  height: 29%;
 }
 .spanTitle {
   width: 100%;

@@ -44,9 +44,9 @@
         height="100%"
       >
         <el-table-column
-          fixed
           type="index"
           label="NO."
+          width="50"
           :resizable="false"
           align="center"
         ></el-table-column>
@@ -112,68 +112,166 @@
         class="posi-abs b-10 ta-c offset"
       >
       </el-pagination>
+      <!-- 车辆详情 -->
+      <el-dialog title="详情" :visible.sync="DialogFormVisible" width="50%">
+        <el-form
+          :inline="true"
+          :model="DiaForm"
+          label-width="124px"
+          size="small"
+        >
+          <el-form-item label="车辆号码：" class="w-45">
+            <el-input
+              v-model="DiaForm.VehicledocumentNumber"
+              :disabled="true"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="机动车品牌：" class="w-45">
+            <el-input
+              :disabled="true"
+              v-model="DiaForm.NameAndBrand"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="车辆颜色：" class="w-45">
+            <el-input :disabled="true" v-model="DiaForm.CarColor"></el-input>
+          </el-form-item>
+          <el-form-item label="车辆类型：" class="w-45">
+            <el-input v-model="DiaForm.VehicleType" :disabled="true">
+            </el-input>
+          </el-form-item>
+          <el-form-item label="布控开始时间：" class="w-45">
+            <el-input v-model="DiaForm.ControlTime" :disabled="true">
+            </el-input>
+          </el-form-item>
+          <el-form-item label="布控结束时间：" class="w-45">
+            <el-input v-model="DiaForm.ControlendTime" :disabled="true">
+            </el-input>
+          </el-form-item>
+          <el-form-item label="布控人：" class="w-45">
+            <el-input
+              v-model="DiaForm.MonitorPeople"
+              :disabled="true"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="布控人联系电话：" class="w-45">
+            <el-input
+              v-model="DiaForm.MonitorPeoplePhone"
+              :disabled="true"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="布控事由：" class="w-45">
+            <el-input
+              type="textarea"
+              :disabled="true"
+              class="w200"
+              v-model="DiaForm.ControlReason"
+              :autosize="{ minRows: 2, maxRows: 4 }"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="布控范围：" class="w-405">
+            <el-input
+              :disabled="true"
+              v-model="DiaForm.MonitorTheScope"
+            ></el-input>
+          </el-form-item>
+        </el-form>
+      </el-dialog>
+      <!-- 车辆详情 -->
 
-      <el-dialog title="详情" :visible.sync="DialogFormVisible" width="25%">
-        <el-form label-width="110px" :model="DiaForm" style="padding: 0 10%">
-          <el-form-item label="布控类型：">
-            <el-input v-model="DiaForm.ControlType" :disabled="true"></el-input>
-          </el-form-item>
-          <el-form-item
-            label="车辆类型："
-            v-if="tableData[dialogRowIndex].ControlType == '车辆布控'"
-          >
-            <el-input v-model="DiaForm.VehicleType" :disabled="true"></el-input>
-          </el-form-item>
-          <el-form-item label="人员类型：" v-else>
-            <el-input v-model="DiaForm.PersonType" :disabled="true"></el-input>
-          </el-form-item>
-          <el-form-item
-            label="被布控人姓名："
-            v-if="tableData[dialogRowIndex].ControlType == '人员布控'"
-          >
+      <!-- 人员详情 -->
+      <el-dialog title="详情" :visible.sync="dialogVisible1" width="50%">
+        <el-form
+          :model="DiaForm"
+          :inline="true"
+          label-width="130px"
+          size="small"
+        >
+          <el-form-item label="被布控人姓名：" class="w-45">
             <el-input
+              :disabled="true"
               v-model="DiaForm.NameAndBrand"
-              :disabled="true"
             ></el-input>
           </el-form-item>
-          <el-form-item label="车辆品牌：" v-else>
-            <el-input
-              v-model="DiaForm.NameAndBrand"
-              :disabled="true"
-            ></el-input>
+          <el-form-item label="证件类型：" class="w-45">
+            <el-input :disabled="true" v-model="DiaForm.CertificateCategory">
+            </el-input>
           </el-form-item>
-          <el-form-item
-            label="证件号码："
-            v-if="tableData[dialogRowIndex].ControlType == '人员布控'"
-          >
+          <el-form-item label="证件号码：" class="w-45">
             <el-input
+              :disabled="true"
               v-model="DiaForm.VehicledocumentNumber"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="民族：" class="w-45">
+            <el-input v-model="DiaForm.national" :disabled="true"> </el-input>
+          </el-form-item>
+          <el-form-item label="籍贯：" class="w-45">
+            <el-input v-model="DiaForm.Hometown" :disabled="true"></el-input>
+          </el-form-item>
+          <el-form-item label="性别：" class="w-45">
+            <el-input v-model="DiaForm.gender" :disabled="true"> </el-input>
+          </el-form-item>
+          <el-form-item label="出生时间：" class="w-45">
+            <el-input v-model="DiaForm.TimeOfBirth" :disabled="true">
+            </el-input>
+          </el-form-item>
+          <el-form-item label="住址：" class="w-45">
+            <el-input v-model="DiaForm.address" :disabled="true"></el-input>
+          </el-form-item>
+          <el-form-item label="联系电话：" class="w-45">
+            <el-input
+              :disabled="true"
+              v-model="DiaForm.ContactPhoneNumber"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="身高：" class="w-45">
+            <el-input :disabled="true" v-model="DiaForm.height"> </el-input>
+            <span class="ml-10"> 厘米</span>
+          </el-form-item>
+          <el-form-item label="口音：" class="w-45">
+            <el-input
+              v-model="DiaForm.Accent"
+              :disabled="true"
+              class="w200"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="绰号/化名：" class="w-45">
+            <el-input v-model="DiaForm.nickname" :disabled="true"></el-input>
+          </el-form-item>
+          <el-form-item label="体型特征：" class="w-45">
+            <el-input v-model="DiaForm.feature" :disabled="true"></el-input>
+          </el-form-item>
+          <el-form-item label="布控开始时间：" class="w-45">
+            <el-input v-model="DiaForm.ControlTime" :disabled="true">
+            </el-input>
+          </el-form-item>
+          <el-form-item label="布控结束时间：" class="w-45">
+            <el-time-select v-model="DiaForm.endTime" :disabled="true">
+            </el-time-select>
+          </el-form-item>
+          <el-form-item label="布控人：" class="w-45">
+            <el-input
+              v-model="DiaForm.MonitorPeople"
               :disabled="true"
             ></el-input>
           </el-form-item>
-          <el-form-item label="车牌号码：" v-else>
-            <el-input
-              v-model="DiaForm.VehicledocumentNumber"
-              :disabled="true"
-            ></el-input>
+          <el-form-item label="布控人联系电话：" class="w-45">
+            <el-input v-model="DiaForm.TheContact" :disabled="true"></el-input>
           </el-form-item>
-          <el-form-item label="布控时间：">
-            <el-input v-model="DiaForm.ControlTime" :disabled="true"></el-input>
+          <el-form-item label="布控范围：" class="w-45">
+            <el-input v-model="DiaForm.ControlRange" :disabled="true">
+            </el-input>
           </el-form-item>
-          <el-form-item label="布控事由：">
+          <el-form-item label="布控事由：" class="w-40">
             <el-input
+              type="textarea"
               v-model="DiaForm.ControlReason"
               :disabled="true"
             ></el-input>
           </el-form-item>
         </el-form>
-        <span slot="footer" class="dialog-footer">
-          <el-button @click="DialogFormVisible = false">取 消</el-button>
-          <el-button type="primary" @click="DialogFormVisible = false">
-            确 定
-          </el-button>
-        </span>
       </el-dialog>
+      <!-- 人员详情 -->
     </el-card>
   </div>
 </template>
@@ -192,9 +290,14 @@ export default {
           ControlType: '车辆布控',
           NameAndBrand: '张三',
           ControlTime: '2019/12/21 12:12:12',
+          ControlendTime: '2019/12/21 12:12:12',
+          CarColor: '黑色',
           ControlReason: '此人为重点人员',
           VehicledocumentNumber: '421012198209236721',
           VehicleType: '货车',
+          MonitorPeople: 'hh',
+          MonitorPeoplePhone: '1111111111111',
+          MonitorTheScope: '',
           PersonType: '',
           NameOfTheAccused: '',
           VehicleBrands: '',
@@ -213,7 +316,23 @@ export default {
           NameAndBrand: '张三',
           ControlTime: '2019/12/21 12:12:12',
           ControlReason: '此人为逃犯',
-          VehicledocumentNumber: '421012198209236721'
+          VehicledocumentNumber: '421012198209236721',
+          CertificateCategory: '',
+          national: '',
+          Hometown: '',
+          gender: '',
+          TimeOfBirth: '',
+          address: '',
+          ContactPhoneNumber: '',
+          height: '',
+          Accent: '',
+          nickname: '',
+          feature: '',
+          endTime: '',
+          MonitorPeople: '',
+          TheContact: '',
+          ControlRange: ''
+
         },
         {
           ControlType: '人员布控',
@@ -238,13 +357,18 @@ export default {
         // ControlReason: ''
       },
       dialogRowIndex: 0
+
     }
   },
   methods: {
     handleDetails (index, row) {
       console.log(row)
-      this.dialogRowIndex = index
-      this.DialogFormVisible = true
+      this.DiaForm = row
+      if (row.ControlType === '车辆布控') {
+        this.DialogFormVisible = true
+      } else {
+        this.dialogVisible1 = true
+      }
       this.DiaForm = row
     },
     handleDetails1 (index, row) {
@@ -272,10 +396,6 @@ export default {
     handleDetails4 () {
       console.log('重置按钮')
     },
-    handleDetails5 () {
-      this.dialogVisible1 = true
-      console.log('添加页面')
-    },
     handleSizeChange (val) {
       console.log(`每页 ${val} 条`)
     },
@@ -285,11 +405,14 @@ export default {
   }
 }
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .card-top {
   border-top: none !important;
 }
 .w-25 {
   width: 25% !important;
+}
+.form-content-car {
+  width: 100%;
 }
 </style>

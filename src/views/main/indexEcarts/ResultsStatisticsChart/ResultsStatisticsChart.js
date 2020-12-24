@@ -87,10 +87,10 @@ const option = {
     // data: legendData
   }],
   grid: {
-    left: '2%',
+    left: '6%',
     right: '2%',
-    top: '3%',
-    height: '50%',
+    top: '8%',
+    height: '45%',
     containLabel: true
   },
   xAxis: {

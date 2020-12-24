@@ -41,10 +41,10 @@ const options = {
   }],
   series: [{
     type: 'pie',
-    radius: ['50%', '20%'],
+    radius: ['25%', '50%'],
     center: ['50%', '50%'],
     data: echartData,
-    hoverAnimation: false,
+    hoverAnimation: true,
     itemStyle: {
       normal: {
         borderColor: bgColor,

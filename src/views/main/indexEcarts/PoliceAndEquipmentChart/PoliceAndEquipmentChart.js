@@ -47,7 +47,7 @@ const option = {
   title: [
     {
       text: '民警数量',
-      top: '1%',
+      top: '3%',
       left: '50%',
       textStyle: {
         fontSize: 14,
@@ -98,7 +98,7 @@ const option = {
     left: '10%',
     right: '2%',
     top: '10%',
-    height: '48%',
+    height: '45%',
     containLabel: true
   },
   xAxis: {
@@ -159,7 +159,7 @@ const option = {
         show: true // 线
       },
       emphasis: {
-        show: false
+        show: true
       }
     },
     data: equipment,
@@ -207,7 +207,7 @@ const option = {
   {
     name: '柱形',
     type: 'bar', // 柱子的形状
-    barWidth: 30, // 柱子的宽度
+    barWidth: 25, // 柱子的宽度
     itemStyle: { // 柱子圆角
       barBorderRadius: [30, 30, 30, 30],
       color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{

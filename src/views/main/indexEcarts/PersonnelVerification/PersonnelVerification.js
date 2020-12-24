@@ -2,17 +2,17 @@
 const data = [{
   name: '核查人员',
   value: 62,
-  itemStyle: { color: '#00ff33' }
+  itemStyle: { color: '#7bed9f' }
 },
 {
   name: '重点人员',
   value: 7,
-  itemStyle: { color: '#ff0000' }
+  itemStyle: { color: '#e74c3c' }
 },
 {
   name: '未核查人员',
   value: 20,
-  itemStyle: { color: '#bcbcbc' }
+  itemStyle: { color: '#ecf0f1' }
 }
 ]
 const option = {
