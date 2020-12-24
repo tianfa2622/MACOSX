@@ -4,7 +4,7 @@
       <div slot="header" class="clearfix">
         <span style="font-size: 16px">车白名单</span>
       </div>
-      <el-form :inline="true" :model="formInline">
+      <el-form :inline="true" size="medium" :model="formInline">
         <el-form-item label="机动车牌号码：" style="width: 31%" class="ta-c">
           <el-input v-model="formInline.CarNumber"></el-input>
         </el-form-item>

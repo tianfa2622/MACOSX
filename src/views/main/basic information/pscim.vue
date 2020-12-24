@@ -4,7 +4,7 @@
       <div slot="header" class="clearfix">
         <span style="font-size: 16px">公安检查站信息管理</span>
       </div>
-      <el-form :inline="true" :model="formInline">
+      <el-form :inline="true" size="medium" :model="formInline">
         <el-form-item label="公安检查站名称：" style="width: 30%" class="ta-c">
           <el-input v-model="formInline.CheckpointName"></el-input>
         </el-form-item>
@@ -256,13 +256,28 @@
         <!-- <el-transfer v-model="value" :data="data" filterable></el-transfer> -->
         <template>
           <el-table
-            :data="tableDatas"
+            :data="
+              tableDatas.filter(
+                (data) =>
+                  !search ||
+                  data.name.toLowerCase().includes(search.toLowerCase())
+              )
+            "
             tooltip-effect="dark"
             style="width: 100%"
             @selection-change="handleSelectionChange"
           >
             <el-table-column type="selection" width="55"></el-table-column>
-            <el-table-column prop="name" label="姓名"> </el-table-column>
+            <el-table-column prop="name" label="配备人员姓名"></el-table-column>
+            <el-table-column align="right">
+              <template slot="header">
+                <el-input
+                  v-model="search"
+                  size="mini"
+                  placeholder="输入关键字搜索"
+                />
+              </template>
+            </el-table-column>
           </el-table>
         </template>
         <span slot="footer" class="dialog-footer">
@@ -314,11 +329,11 @@ export default {
       tableDatas: [{
         name: '王小虎'
       }, {
-        name: '王小虎'
+        name: '王小牛'
       }, {
-        name: '王小虎'
+        name: '傅少'
       }, {
-        name: '王小虎'
+        name: '宇子'
       }, {
         name: '王小虎'
       }, {
@@ -326,6 +341,8 @@ export default {
       }, {
         name: '王小虎'
       }],
+      search: '',
+      multipleSelection: [],
       tableDate: [
         {
           CheckpointName: '赵子龙',
@@ -362,6 +379,7 @@ export default {
     onSubmit () {},
     handleSelectionChange (val) {
       this.multipleSelection = val
+      console.log(this.multipleSelection)
     },
     handleDetails () {
       this.dialogVisible = true

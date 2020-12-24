@@ -11,6 +11,7 @@ const options = {
       color: '#0092f6'
     },
     // left: '6%'
+    top: '3%',
     x: 'center'
   },
   tooltip: {
@@ -27,6 +28,7 @@ const options = {
     itemHeight: 5,
     itemGap: 13,
     data: ['人', '车'],
+    top: '5%',
     right: '4%',
     textStyle: {
       fontSize: 12,
@@ -34,9 +36,9 @@ const options = {
     }
   },
   grid: {
-    left: '1%',
-    right: '3%',
-    bottom: '1%',
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
     containLabel: true
   },
   xAxis: [{

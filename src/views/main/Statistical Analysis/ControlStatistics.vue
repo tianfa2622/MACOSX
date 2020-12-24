@@ -6,6 +6,7 @@
         <span class="header-title">查控统计</span>
       </div>
       <el-form
+        size="medium"
         :model="formInline"
         label-width="130px"
         :inline="true"

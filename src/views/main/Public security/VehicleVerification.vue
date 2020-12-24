@@ -13,7 +13,7 @@
         >
           实时监控
         </el-button>
-        <el-form :inline="true" class="pl-10">
+        <el-form :inline="true" size="medium" class="pl-10">
           <el-form-item label="机动车车辆类型：" label-width="125px">
             <el-select v-model="formInline.VehicleType">
               <el-option value="轿车" label="轿车"></el-option>

@@ -4,7 +4,7 @@
       <div slot="header" class="clearfix">
         <span style="font-size: 16px">处理联动及结果流转</span>
       </div>
-      <el-form :inline="true" :model="form" label-width="120px">
+      <el-form :inline="true" size="medium" :model="form" label-width="120px">
         <el-form-item label="异常/预警类型：" class="ta-c w-25">
           <el-select v-model="form.region">
             <el-option label="一级预警" value="yiji"></el-option>

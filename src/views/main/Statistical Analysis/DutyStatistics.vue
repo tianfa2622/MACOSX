@@ -1,11 +1,16 @@
 <template>
   <!-- 勤务统计 -->
-  <div class="fill_height mwidth back-c">
+  <div class="fill_height mwidth back-c over-h">
     <el-card>
       <div slot="header" class="header-tit">
         <span>勤务统计</span>
       </div>
-      <el-form :model="formInline" label-width="130px" :inline="true">
+      <el-form
+        :model="formInline"
+        label-width="130px"
+        size="medium"
+        :inline="true"
+      >
         <el-form-item label="值班队长">
           <el-input v-model="formInline.CaptainOnDuty"></el-input>
         </el-form-item>
@@ -33,7 +38,8 @@
           <el-button
             @click="onSubmit"
             type="primary"
-            class="ml-25 p-15 w100 bgc mr-25"
+            size="medium"
+            class="ml-25 w100 bgc mr-25"
             >导出</el-button
           >
         </el-form-item>
@@ -259,7 +265,7 @@ export default {
     font-size: 16px;
   }
   .area-select {
-    height: 40px;
+    height: 36px;
     .area-selected-trigger {
       padding: 0 15px;
     }
@@ -269,14 +275,14 @@ export default {
     background-color: #9cf !important;
   }
   .Duty-bottom {
-    height: calc(100% - 225px);
+    height: calc(100% - 204px);
     overflow: auto;
     margin-top: 10px;
     flex-wrap: wrap;
     justify-content: space-between;
     .card-content {
       width: 32%;
-      margin-top: 5px;
+      margin: 5px 0;
       ul {
         list-style: none;
         font-size: 16px;

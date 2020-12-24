@@ -10,6 +10,7 @@
         label-width="100px"
         :inline="true"
         class="dflex"
+        size="medium"
       >
         <el-form-item label="值班对长：" class="flex1">
           <el-input v-model="formInline.CertificateNum" class="w250"></el-input>
@@ -209,7 +210,7 @@
             </el-button>
             <el-button
               @click="handleDetails1(scope.$index, scope.row)"
-              type="primary"
+              type="danger"
               size="mini"
               class="mt-5"
             >

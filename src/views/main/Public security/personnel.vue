@@ -15,7 +15,7 @@
           实时监控
         </el-button>
 
-        <el-form :inline="true" class="pl-10" label-width="96px">
+        <el-form :inline="true" size="medium" class="pl-10" label-width="96px">
           <el-form-item label="姓名：" class="ml-25">
             <el-input placeholder="请输入姓名"></el-input>
           </el-form-item>
@@ -348,10 +348,6 @@
           ></el-input>
         </el-form-item>
       </el-form>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible1 = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible1true">确 定</el-button>
-      </span>
     </el-dialog>
     <!-- 详情Dialog -->
 
@@ -671,7 +667,7 @@ export default {
 </style>
 <style lang="less">
 .area-select {
-  height: 40px;
+  height: 36px;
   overflow: visible !important;
   .area-selected-trigger {
     padding: 0 15px;

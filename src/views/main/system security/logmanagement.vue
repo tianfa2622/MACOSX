@@ -4,7 +4,7 @@
       <div slot="header" class="clearfix">
         <span style="font-size: 16px">日志管理</span>
       </div>
-      <el-form :model="formInline" :inline="true" class="ml-30">
+      <el-form :model="formInline" size="medium" :inline="true" class="ml-30">
         <el-form-item label="日期：" style="text-align: center">
           <el-col :span="11">
             <el-date-picker

@@ -7,6 +7,7 @@
       </div>
       <el-form
         :inline="true"
+        size="medium"
         :model="formInline"
         label-width="140px"
         class="mx-20"
@@ -130,7 +131,7 @@
       >
       </el-pagination>
     </el-card>
-
+    <!-- 查看违禁物 -->
     <el-dialog title="查看" :visible.sync="DialogFormVisible" width="30%">
       <el-form :model="form1" label-width="140px">
         <el-form-item label="安检违禁物品类别：">
@@ -160,7 +161,7 @@
       </el-form>
     </el-dialog>
 
-    <!-- 详情Dialog -->
+    <!-- 人车详情Dialog -->
     <el-dialog :visible.sync="dialogVisible1" width="60%" class="dialogs">
       <template slot="title">
         <div class="titleZise">
@@ -348,14 +349,8 @@
           ></el-avatar>
         </el-form-item>
       </el-form>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible1 = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible1 = false"
-          >确 定</el-button
-        >
-      </span>
     </el-dialog>
-    <!-- 详情Dialog -->
+    <!-- 人车详情Dialog -->
   </div>
 </template>
 

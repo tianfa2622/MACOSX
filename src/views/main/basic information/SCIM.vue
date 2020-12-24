@@ -5,7 +5,7 @@
       <div slot="header" class="clearfix">
         <span style="font-size: 16px">警备装备信息管理页面</span>
       </div>
-      <el-form :model="formInline">
+      <el-form size="medium" :model="formInline">
         <el-row type="flex" justify="space-around">
           <el-col :span="7">
             <el-form-item label="警备装备名称：">

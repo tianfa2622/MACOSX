@@ -8,7 +8,7 @@
       <div slot="header">
         <span class="header-title">人员预警</span>
       </div>
-      <el-form :model="formInline" class="centerColor">
+      <el-form :model="formInline" size="medium" class="centerColor">
         <div class="mwidth centerColor">
           <el-row :gutter="20" class="py-5">
             <el-col :span="3" style="text-align: center">

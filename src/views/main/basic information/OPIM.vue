@@ -4,7 +4,7 @@
       <div slot="header" class="clearfix">
         <span style="font-size: 16px">执勤人员信息管理</span>
       </div>
-      <el-form :model="formInline" label-width="100px">
+      <el-form :model="formInline" size="medium" label-width="100px">
         <el-row type="flex" justify="space-around">
           <el-col :span="6">
             <el-form-item label="姓名：">

@@ -8,6 +8,7 @@
         </div>
         <el-form
           :inline="true"
+          size="medium"
           class="dflex dfstyle ta-c"
           label-width="138px"
           :model="formInline"

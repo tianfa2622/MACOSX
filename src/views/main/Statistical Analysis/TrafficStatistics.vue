@@ -10,6 +10,7 @@
         label-width="130px"
         :inline="true"
         class="text-al"
+        size="medium"
       >
         <el-form-item>
           <el-select

@@ -1,10 +1,10 @@
 <template>
   <div id="Home2" class="fill_height mwidth dflex">
     <div class="w-1_3 fill_height dflex direction-column just-cont over-h">
-      <div class="dflex1 h-33">
+      <div class="dflex1 h-33 bgc1">
         <EchartsPackage :option="PeopleAndVehiclesStatistics"></EchartsPackage>
       </div>
-      <div class="dflex1 h-33">
+      <div class="dflex1 h-33 bgc1">
         <EchartsPackage :option="PedestrianTraffic"></EchartsPackage>
       </div>
       <div class="dflex1 h-33">
@@ -21,10 +21,10 @@
       </div>
     </div>
     <div class="w-1_3 fill_height dflex direction-column just-cont">
-      <div class="dflex1 h-50">
+      <div class="dflex1 h-48 bgc2">
         <EchartsPackage :option="ResultsStatisticsChart"></EchartsPackage>
       </div>
-      <div class="h-50 dflex1">
+      <div class="h-48 dflex1 bgc2">
         <EchartsPackage :option="PoliceAndEquipmentChart"></EchartsPackage>
       </div>
     </div>
@@ -66,6 +66,19 @@ export default {
 <style lang='less'>
 .just-cont {
   justify-content: space-between;
+}
+.bgc1 {
+  background-image: url(../../assets/images/index/2.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.bgc2 {
+  background-image: url(../../assets/images/index/1.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.h-48 {
+  height: 49%;
 }
 .spanTitle {
   width: 100%;

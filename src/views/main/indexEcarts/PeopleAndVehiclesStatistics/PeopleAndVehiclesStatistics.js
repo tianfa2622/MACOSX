@@ -25,33 +25,13 @@ const formatNumber = function (num) {
 // }, 0)
 
 const options = {
-  // backgroundColor: bgColor,
   color: color,
   // tooltip: {
   //     trigger: 'item'
   // },
   title: [{
-    // text: '{name|' + title + '}\n{val|' + formatNumber(total) + '}',
-    // top: 'center',
-    // left: 'center',
-    // textStyle: {
-    //   rich: {
-    //     name: {
-    //       fontSize: 16,
-    //       fontWeight: 'normal',
-    //       color: '#666666',
-    //       padding: [10, 0]
-    //     },
-    //     val: {
-    //       fontSize: 16,
-    //       fontWeight: 'bold',
-    //       color: '#333333'
-    //     }
-    //   }
-    // }
-    // }, {
     text: '当日人车统计',
-    top: 5,
+    top: '5%',
     x: 'center',
     textStyle: {
       fontSize: 14,
@@ -61,7 +41,7 @@ const options = {
   }],
   series: [{
     type: 'pie',
-    radius: ['60%', '30%'],
+    radius: ['50%', '20%'],
     center: ['50%', '50%'],
     data: echartData,
     hoverAnimation: false,
