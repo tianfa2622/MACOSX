@@ -155,9 +155,10 @@
               :data="form1.FunctionPermissions"
               show-checkbox
               node-key="id"
-              :default-expanded-keys="[1, 4]"
-              :default-checked-keys="[4, 9, 10, 11]"
+              :default-expanded-keys="[4]"
+              :default-checked-keys="[1, 4]"
               :props="form1.defaultProps"
+              check-strictly
             >
             </el-tree>
           </el-form-item>
@@ -206,11 +207,14 @@ export default {
       form: {
         RoleName: '',
         dataPermission: '1',
-        FunctionPermissions: [{
-          id: 1,
-          label: '首页',
-          disabled: true,
-          children: [{
+        FunctionPermissions: [
+          {
+            id: 1,
+            label: '首页',
+            disabled: true,
+            children: []
+          },
+          {
             id: 4,
             label: '车辆核验预警',
             children: [{
@@ -223,8 +227,8 @@ export default {
               id: 11,
               label: '修改'
             }]
-          }]
-        }],
+          }
+        ],
         defaultProps: {
           children: 'children',
           label: 'label'
@@ -259,19 +263,19 @@ export default {
           id: 1,
           label: '首页',
           disabled: true,
+          children: []
+        }, {
+          id: 4,
+          label: '车辆核验预警',
           children: [{
-            id: 4,
-            label: '车辆核验预警',
-            children: [{
-              id: 9,
-              label: '提交'
-            }, {
-              id: 10,
-              label: '审核'
-            }, {
-              id: 11,
-              label: '修改'
-            }]
+            id: 9,
+            label: '提交'
+          }, {
+            id: 10,
+            label: '审核'
+          }, {
+            id: 11,
+            label: '修改'
           }]
         }],
         defaultProps: {

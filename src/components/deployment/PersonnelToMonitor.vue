@@ -277,9 +277,9 @@ export default {
 }
 .el-upload__tip {
   width: 110px;
-  height: 50px !important;
   position: absolute;
-  top: 20px;
+  top: 30px;
   left: -113px;
+  line-height: 18px;
 }
 </style>

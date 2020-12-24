@@ -6,43 +6,41 @@
         <div slot="header" class="clearfix">
           <span style="font-size: 16px">物品检查</span>
         </div>
-        <el-form
-          :inline="true"
-          size="medium"
-          class="dflex dfstyle ta-c"
-          label-width="138px"
-          :model="formInline"
-        >
-          <el-form-item label="安检违禁物品类别：" class="w-35">
-            <el-select v-model="formInline.user" placeholder="安检违禁物品类别">
+        <el-form :inline="true" size="medium" :model="formInline">
+          <el-form-item label="安检违禁物品类别：" class="mr-20">
+            <el-select
+              v-model="formInline.user"
+              placeholder="安检违禁物品类别"
+              class="w150"
+            >
               <el-option label="区域一" value="shanghai"></el-option>
               <el-option label="区域二" value="beijing"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="公安检查站：">
-            <el-select v-model="formInline.region" placeholder="公安检查站">
+          <el-form-item label="公安检查站：" class="mr-20">
+            <el-select
+              v-model="formInline.region"
+              placeholder="公安检查站"
+              class="w150"
+            >
               <el-option label="区域一" value="shanghai"></el-option>
               <el-option label="区域二" value="beijing"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="日期：" class="ta-c">
-            <el-col :span="11">
-              <el-date-picker
-                type="date"
-                placeholder="选择日期"
-                v-model="formInline.date1"
-                style="width: 100%"
-              ></el-date-picker>
-            </el-col>
-            <el-col class="line" :span="1">-</el-col>
-            <el-col :span="11">
-              <el-date-picker
-                type="date"
-                placeholder="选择日期"
-                v-model="formInline.date2"
-                style="width: 100%"
-              ></el-date-picker>
-            </el-col>
+          <el-form-item label="日期：">
+            <el-date-picker
+              type="date"
+              placeholder="选择日期"
+              v-model="formInline.date1"
+              class="w150"
+            ></el-date-picker>
+            <span> - </span>
+            <el-date-picker
+              type="date"
+              placeholder="选择日期"
+              v-model="formInline.date2"
+              class="w150"
+            ></el-date-picker>
           </el-form-item>
         </el-form>
         <div class="flr clearfix" style="margin: 0 100px 20px 10px">
@@ -332,9 +330,6 @@ export default {
     padding: 2px 10px 0 0;
     width: 75%;
   }
-}
-.dfstyle {
-  flex-wrap: wrap;
 }
 .vehicleRight {
   width: 25%;
