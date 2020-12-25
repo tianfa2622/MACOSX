@@ -38,7 +38,7 @@ const option = {
     },
     {
       text: '车辆核查',
-      top: '2%',
+      top: '6%',
       left: '5%',
       textStyle: {
         color: '#0092f6'
@@ -55,7 +55,7 @@ const option = {
     align: 'left',
     itemGap: 15,
     itemWidth: 10, // 设置宽度
-    itemHeight: 10, // 设置高度
+    itemHeight: 8, // 设置高度
     symbolKeepAspect: false,
     textStyle: {
       color: '#fff',
@@ -98,56 +98,40 @@ const option = {
       }
     }
   },
+  tooltip: {
+    trigger: 'item',
+    position: [180, 20],
+    borderColor: 'rgba(255,255,255,.3)',
+    backgroundColor: 'rgba(13,5,30,.6)',
+    borderWidth: 1,
+    formatter: function (parms) {
+      var str = parms.marker + '' + parms.data.name + '</br>' +
+        '数量：' + parms.data.value + '</br>' +
+        '占比：' + parms.percent + '%'
+      return str
+    }
+  },
   series: [{
     name: '数量',
     type: 'pie',
-    radius: ['35%', '55%'],
-    center: ['25%', '50%'],
+    clockwise: 'true',
+    avoidLabelOverlap: true, // 避免标签重叠
+    radius: ['30%', '50%'],
+    center: ['25%', '65%'],
     data: data,
     label: {
       normal: {
-        show: false,
-        position: 'center',
-        formatter: '{text|{c}}\n{b}',
-        //     textStyle: {
-        // //   rich: {
-        // //     name: {
-        // //       fontSize: 16,
-        // //       fontWeight: 'normal',
-        // //       color: '#666666',
-        // //       padding: [10, 0]
-        // //     },
-        // //     val: {
-        // //       fontSize: 16,
-        // //       fontWeight: 'bold',
-        // //       color: '#333333'
-        // //     }
-        // //   }
-        // // }
-        rich: {
-          text: {
-            align: 'center',
-            verticalAlign: 'middle',
-            padding: 8,
-            fontSize: 30
-          },
-          value: {
-            align: 'center',
-            verticalAlign: 'middle',
-            fontSize: 20
-          }
-        }
-      },
-      emphasis: {
         show: true,
-        textStyle: {
-          fontSize: '12'
-        }
+        position: 'outside'
       }
     },
     labelLine: {
       normal: {
-        show: true
+        length: 15,
+        length2: 10,
+        lineStyle: {
+          width: 2
+        }
       }
     }
   }]

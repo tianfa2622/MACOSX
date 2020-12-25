@@ -1,4 +1,5 @@
 <template>
+  <!-- 布控解控 -->
   <div class="fill_height mwidth dflex direction-column">
     <el-card class="card-top">
       <el-form :inline="true" :model="form" class="dflex">
@@ -174,6 +175,14 @@
               v-model="DiaForm.MonitorTheScope"
             ></el-input>
           </el-form-item>
+          <el-form-item label="被布控人照片：" class="w-45">
+            <el-avatar
+              :size="150"
+              :src="DiaForm.circleUrl"
+              fit="fill"
+              shape="square"
+            ></el-avatar>
+          </el-form-item>
         </el-form>
       </el-dialog>
       <!-- 车辆详情 -->
@@ -225,7 +234,8 @@
             ></el-input>
           </el-form-item>
           <el-form-item label="身高：" class="w-45">
-            <el-input :disabled="true" v-model="DiaForm.height"> </el-input>
+            <el-input :disabled="true" class="w100" v-model="DiaForm.height">
+            </el-input>
             <span class="ml-10"> 厘米</span>
           </el-form-item>
           <el-form-item label="口音：" class="w-45">
@@ -246,8 +256,7 @@
             </el-input>
           </el-form-item>
           <el-form-item label="布控结束时间：" class="w-45">
-            <el-time-select v-model="DiaForm.endTime" :disabled="true">
-            </el-time-select>
+            <el-input v-model="DiaForm.endTime" :disabled="true"> </el-input>
           </el-form-item>
           <el-form-item label="布控人：" class="w-45">
             <el-input
@@ -262,12 +271,20 @@
             <el-input v-model="DiaForm.ControlRange" :disabled="true">
             </el-input>
           </el-form-item>
-          <el-form-item label="布控事由：" class="w-40">
+          <el-form-item label="布控事由：" class="w-45">
             <el-input
               type="textarea"
               v-model="DiaForm.ControlReason"
               :disabled="true"
             ></el-input>
+          </el-form-item>
+          <el-form-item label="被布控人照片：" class="w-45">
+            <el-avatar
+              :size="150"
+              :src="DiaForm.circleUrl"
+              fit="fill"
+              shape="square"
+            ></el-avatar>
           </el-form-item>
         </el-form>
       </el-dialog>
@@ -302,7 +319,8 @@ export default {
           NameOfTheAccused: '',
           VehicleBrands: '',
           DocumentNumber: '',
-          LicensePlateNumber: ''
+          LicensePlateNumber: '',
+          circleUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1608282562624&di=ed0738170ab24767d983a2e6c88f0180&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201510%2F18%2F20151018172940_5etXi.jpeg'
         },
         {
           ControlType: '车辆布控',
@@ -331,8 +349,8 @@ export default {
           endTime: '',
           MonitorPeople: '',
           TheContact: '',
-          ControlRange: ''
-
+          ControlRange: '',
+          circleUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1608282562624&di=ed0738170ab24767d983a2e6c88f0180&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201510%2F18%2F20151018172940_5etXi.jpeg'
         },
         {
           ControlType: '人员布控',

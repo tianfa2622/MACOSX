@@ -54,8 +54,9 @@
               :data="form.FunctionPermissions"
               show-checkbox
               node-key="id"
-              :default-expanded-keys="[1, 4]"
-              :default-checked-keys="[4, 9, 10, 11]"
+              :default-expanded-keys="[4]"
+              :default-checked-keys="[1, 4, 9]"
+              check-strictly
               :props="form.defaultProps"
             >
             </el-tree>
@@ -117,7 +118,7 @@
               修改
             </el-button>
             <el-button
-              class="pl-20"
+              class="pl-20 del-color"
               @click="handleDetails1(scope.$index, scope.row)"
               type="text"
             >
@@ -156,7 +157,7 @@
               show-checkbox
               node-key="id"
               :default-expanded-keys="[4]"
-              :default-checked-keys="[1, 4]"
+              :default-checked-keys="[1, 4, 9]"
               :props="form1.defaultProps"
               check-strictly
             >
@@ -219,13 +220,19 @@ export default {
             label: '车辆核验预警',
             children: [{
               id: 9,
-              label: '提交'
+              label: '只读'
             }, {
               id: 10,
-              label: '审核'
+              label: '增'
             }, {
               id: 11,
-              label: '修改'
+              label: '删'
+            }, {
+              id: 12,
+              label: '改'
+            }, {
+              id: 13,
+              label: '处理'
             }]
           }
         ],
@@ -269,13 +276,19 @@ export default {
           label: '车辆核验预警',
           children: [{
             id: 9,
-            label: '提交'
+            label: '只读'
           }, {
             id: 10,
-            label: '审核'
+            label: '增'
           }, {
             id: 11,
-            label: '修改'
+            label: '删'
+          }, {
+            id: 12,
+            label: '改'
+          }, {
+            id: 13,
+            label: '处理'
           }]
         }],
         defaultProps: {
@@ -353,6 +366,9 @@ export default {
 </script>
 
 <style lang='less' scoped>
+.del-color {
+  color: red;
+}
 .mwidth {
   .Rolestitle {
     font-size: 16px;

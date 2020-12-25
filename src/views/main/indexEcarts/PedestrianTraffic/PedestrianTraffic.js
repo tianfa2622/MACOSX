@@ -11,7 +11,7 @@ const options = {
       color: '#0092f6'
     },
     // left: '6%'
-    top: '3%',
+    top: '6%',
     x: 'center'
   },
   tooltip: {

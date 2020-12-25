@@ -78,6 +78,7 @@
             <el-button
               @click="handleDetails(scope.$index, scope.row)"
               plain
+              type="primary"
               size="mini"
             >
               编辑
@@ -85,6 +86,7 @@
             <el-button
               @click="handleDetails1(scope.$index, scope.row)"
               plain
+              type="warning"
               size="mini"
             >
               删除
@@ -131,10 +133,10 @@
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
-          <el-button @click="dialogVisible = false">提 交</el-button>
-          <el-button type="primary" @click="dialogVisible = false"
-            >取 消</el-button
-          >
+          <el-button type="primary" @click="dialogVisible = false">
+            提 交
+          </el-button>
+          <el-button @click="dialogVisible = false">取 消</el-button>
         </span>
       </el-dialog>
 

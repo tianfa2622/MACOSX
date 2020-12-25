@@ -307,12 +307,6 @@
             ></el-input>
           </el-form-item>
         </el-form>
-        <span slot="footer" class="dialog-footer">
-          <el-button type="primary" @click="dialogVisible2 = false"
-            >保 存</el-button
-          >
-          <el-button @click="dialogVisible2 = false">取 消</el-button>
-        </span>
       </el-dialog>
 
       <!-- 编辑 -->

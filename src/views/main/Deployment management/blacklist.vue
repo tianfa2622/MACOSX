@@ -146,7 +146,7 @@
             >
             <el-button
               @click="handleDetails1(scope.$index, scope.row)"
-              type="primary"
+              type="warning"
               size="mini"
               >移除</el-button
             >
