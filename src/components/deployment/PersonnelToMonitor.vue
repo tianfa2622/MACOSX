@@ -148,14 +148,13 @@
         ></el-input>
       </el-form-item>
       <el-form-item label="布控范围：" class="w-30">
-        <el-select
+        <el-input
           v-model="form.ControlRange"
+          :readonly="true"
+          @focus="DeploymentControl"
           class="w200"
           placeholder="请选择布控范围"
-        >
-          <el-option label="万家丽" value="万家丽"></el-option>
-          <el-option label="雨花区" value="雨花区"></el-option>
-        </el-select>
+        ></el-input>
       </el-form-item>
       <el-form-item label="布控事由：" class="w-30">
         <el-input
@@ -186,14 +185,61 @@
       <el-button class="w150" type="primary">保存</el-button>
       <el-button class="w150">取消</el-button>
     </div>
+    <!-- 布控范围 -->
+    <el-dialog title="布控范围" :visible.sync="dialogVisible" width="40%">
+      <div class="mb-20">
+        <area-select
+          type="text"
+          v-model="selected"
+          :data="$pcaa"
+          :level="1"
+        ></area-select>
+      </div>
+      <div class="ml-30">
+        <el-transfer
+          filterable
+          :filter-method="filterMethod"
+          filter-placeholder="请输入城市拼音"
+          v-model="value"
+          :data="data"
+        >
+        </el-transfer>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisible = false">
+          确 定
+        </el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 export default {
   data () {
+    const generateData = _ => {
+      const data = []
+      const cities = ['上海', '北京', '广州', '深圳', '南京', '西安', '成都']
+      const pinyin = ['shanghai', 'beijing', 'guangzhou', 'shenzhen', 'nanjing', 'xian', 'chengdu']
+      cities.forEach((city, index) => {
+        data.push({
+          label: city,
+          key: index,
+          pinyin: pinyin[index]
+        })
+      })
+      return data
+    }
     return {
+      data: generateData(),
+      value: [],
+      filterMethod (query, item) {
+        return item.pinyin.indexOf(query) > -1
+      },
+      selected: [],
       activeName: 'first',
+      dialogVisible: false,
       form: {
         NameCharged: '',
         national: '',
@@ -233,6 +279,9 @@ export default {
         this.$message.error('上传头像图片大小不能超过 2MB!')
       }
       return isJPG && isLt2M
+    },
+    DeploymentControl () {
+      this.dialogVisible = true
     }
   }
 }
@@ -282,5 +331,19 @@ export default {
   top: 30px;
   left: -113px;
   line-height: 18px;
+}
+</style>
+<style lang="less">
+.el-dialog__body {
+  .el-transfer {
+    .el-transfer-panel {
+      .el-transfer-panel__body {
+        height: 256px;
+        .el-transfer-panel__filter {
+          width: auto !important;
+        }
+      }
+    }
+  }
 }
 </style>

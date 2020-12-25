@@ -83,7 +83,7 @@
       </el-submenu>
     </el-menu>
 
-    <div class="flex1" style="height: 100%;max-width:800px"></div>
+    <div class="flex1" style="height: 100%; max-width: 800px"></div>
 
     <el-menu
       mode="horizontal"
@@ -203,10 +203,10 @@ export default {}
 .el-menu--horizontal > .el-menu-item:not(.is-disabled):hover {
   background-color: rgba(255, 255, 255, 0.2) !important;
 }
-.el-menu-item {
-  padding: 0 20px;
-  transition: border-color 0.3s, background-color 0.3s, color 0.3s !important;
-}
+// .el-menu-item {
+//   padding: 0 20px;
+//   transition: border-color 0.3s, background-color 0.3s, color 0.3s !important;
+// }
 .main-menu {
   overflow: hidden;
 

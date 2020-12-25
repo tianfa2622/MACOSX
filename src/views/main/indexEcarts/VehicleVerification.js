@@ -1,6 +1,6 @@
-// 人员验证
+// 车辆验证
 const data = [{
-  name: '核查人员',
+  name: '过站车辆',
   value: 62,
   itemStyle: { color: '#7bed9f' }
 },
@@ -16,6 +16,7 @@ const data = [{
 }
 ]
 const option = {
+  // backgroundColor: 'rgba(0,0,0,0.5)',
   title: [
     {
       text: '{header1| 今日核查}' + '{header2| 2020}',
@@ -37,9 +38,9 @@ const option = {
       }
     },
     {
-      text: '人员核查',
+      text: '车辆核查',
       top: '6%',
-      left: '5%',
+      left: '46%',
       textStyle: {
         color: '#0092f6'
       }
@@ -123,42 +124,7 @@ const option = {
       normal: {
         show: true,
         position: 'outside'
-        // formatter: '{text|{c}}\n{b}',
-        //     textStyle: {
-        // //   rich: {
-        // //     name: {
-        // //       fontSize: 16,
-        // //       fontWeight: 'normal',
-        // //       color: '#666666',
-        // //       padding: [10, 0]
-        // //     },
-        // //     val: {
-        // //       fontSize: 16,
-        // //       fontWeight: 'bold',
-        // //       color: '#333333'
-        // //     }
-        // //   }
-        // // }
-        // rich: {
-        //   text: {
-        //     align: 'center',
-        //     verticalAlign: 'middle',
-        //     padding: 8,
-        //     fontSize: 30
-        //   },
-        //   value: {
-        //     align: 'center',
-        //     verticalAlign: 'middle',
-        //     fontSize: 20
-        //   }
-        // }
       }
-      // emphasis: {
-      //   show: true,
-      //   textStyle: {
-      //     fontSize: '12'
-      //   }
-      // }
     },
     labelLine: {
       normal: {

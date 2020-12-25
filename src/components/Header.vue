@@ -2,10 +2,7 @@
   <div class="my_bg">
     <el-header class="home-header" height="80">
       <!-- 头部左侧标题 -->
-      <div
-        class="home-title"
-        title="返回首页"
-      >
+      <div class="home-title" title="返回首页">
         <img class="logo" src="../assets/images/logo/u1.png" alt="logo" />
         <span class="title">智慧公安检查站管控系统</span>
       </div>

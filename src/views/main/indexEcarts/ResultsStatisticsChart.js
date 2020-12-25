@@ -35,7 +35,7 @@ while (i < 4) {
 }
 
 const option = {
-  // backgroundColor: '#0e4b86',
+  // backgroundColor: 'rgba(0,0,0,0)',
   color: colors,
   title: [{
     text: '战果统计',

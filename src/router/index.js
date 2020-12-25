@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 // 首页
-import Indexs from '@/views/main/index.vue'
+// import Indexs from '@/views/main/index copy.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    component: Indexs
+    // component: Indexs
+    component: () => import(/* webpackChunkName: "Indexs" */'@/views/main/index copy.vue')
   },
   // 车辆核验预警
   {

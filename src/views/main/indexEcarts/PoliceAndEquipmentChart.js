@@ -47,11 +47,11 @@ const option = {
   title: [
     {
       text: '民警数量',
-      top: '3%',
+      top: '4%',
       left: '50%',
       textStyle: {
-        fontSize: 14,
-        color: '#52FFFF'
+        fontSize: 16,
+        color: '#018ae9'
       }
     },
     {

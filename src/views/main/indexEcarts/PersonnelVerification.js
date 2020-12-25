@@ -1,6 +1,6 @@
-// 车辆验证
+// 人员验证
 const data = [{
-  name: '过站车辆',
+  name: '核查人员',
   value: 62,
   itemStyle: { color: '#7bed9f' }
 },
@@ -37,9 +37,9 @@ const option = {
       }
     },
     {
-      text: '车辆核查',
+      text: '人员核查',
       top: '6%',
-      left: '5%',
+      left: '46%',
       textStyle: {
         color: '#0092f6'
       }
@@ -123,7 +123,42 @@ const option = {
       normal: {
         show: true,
         position: 'outside'
+        // formatter: '{text|{c}}\n{b}',
+        //     textStyle: {
+        // //   rich: {
+        // //     name: {
+        // //       fontSize: 16,
+        // //       fontWeight: 'normal',
+        // //       color: '#666666',
+        // //       padding: [10, 0]
+        // //     },
+        // //     val: {
+        // //       fontSize: 16,
+        // //       fontWeight: 'bold',
+        // //       color: '#333333'
+        // //     }
+        // //   }
+        // // }
+        // rich: {
+        //   text: {
+        //     align: 'center',
+        //     verticalAlign: 'middle',
+        //     padding: 8,
+        //     fontSize: 30
+        //   },
+        //   value: {
+        //     align: 'center',
+        //     verticalAlign: 'middle',
+        //     fontSize: 20
+        //   }
+        // }
       }
+      // emphasis: {
+      //   show: true,
+      //   textStyle: {
+      //     fontSize: '12'
+      //   }
+      // }
     },
     labelLine: {
       normal: {

@@ -18,19 +18,19 @@ export default {
   margin-top: 10px;
   height: calc(100% - 76px);
 
-  background-color: rgba(0, 0, 0, 0);
+  // background-color: rgba(0, 0, 0, 0);
 
-  .Homes-left {
-    float: left;
+  // .Homes-left {
+  //   float: left;
 
-    width: 300px;
-    height: 100%;
-  }
-  .Homes-right {
-    float: right;
+  //   width: 300px;
+  //   height: 100%;
+  // }
+  // .Homes-right {
+  //   float: right;
 
-    width: calc(100% - 300px);
-    height: 100%;
-  }
+  //   width: calc(100% - 300px);
+  //   height: 100%;
+  // }
 }
 </style>

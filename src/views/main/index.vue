@@ -1,6 +1,6 @@
 <template>
   <div id="Home2" class="fill_height mwidth dflex">
-    <div class="w-1_3 fill_height dflex direction-column just-cont over-h">
+    <div class="w-1_3 fill_height dflex direction-column just-cont">
       <div class="h-50 bgc1 over-h">
         <EchartsPackage :option="ResultsStatisticsChart"></EchartsPackage>
       </div>
@@ -16,6 +16,7 @@
         </div>
       </div>
     </div>
+
     <div class="w-1_3 fill_height dflex direction-column just-cont">
       <div class="dflex1 h-65 over-h">
         <mapchart></mapchart>
@@ -24,6 +25,7 @@
         <EchartsPackage :option="PeopleAndVehiclesStatistics"></EchartsPackage>
       </div>
     </div>
+
     <div class="w-1_3 fill_height dflex direction-column just-cont">
       <div class="dflex1 h-50 bgc2 over-h">
         <EchartsPackage :option="PoliceAndEquipmentChart"></EchartsPackage>
@@ -88,12 +90,12 @@ export default {
 .h-29 {
   height: 29%;
 }
-.spanTitle {
-  width: 100%;
-  display: block;
-  text-align: center;
-  font-size: 14px;
-  color: #0aabc2;
-  padding-bottom: 6px;
-}
+// .spanTitle {
+//   width: 100%;
+//   display: block;
+//   text-align: center;
+//   font-size: 14px;
+//   color: #0aabc2;
+//   padding-bottom: 6px;
+// }
 </style>
