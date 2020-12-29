@@ -20,6 +20,9 @@
                 <el-input
                   class="w50"
                   size="mini"
+                  :maxlength="3"
+                  :max="100"
+                  :min="1"
                   v-model="formInline.yujing1"
                 />&nbsp;%不同则报预警
               </div>
@@ -35,6 +38,9 @@
                 <el-input
                   class="w50"
                   size="mini"
+                  :maxlength="3"
+                  :max="100"
+                  :min="1"
                   v-model="formInline.yujing2"
                 />&nbsp;%不同则报预警
               </div>
@@ -50,6 +56,9 @@
                 <el-input
                   class="w50"
                   size="mini"
+                  :maxlength="3"
+                  :max="100"
+                  :min="1"
                   v-model="formInline.yujing3"
                 />&nbsp;%不同则报预警
               </div>
@@ -65,6 +74,9 @@
                 <el-input
                   class="w50"
                   size="mini"
+                  :maxlength="3"
+                  :max="100"
+                  :min="1"
                   v-model="formInline.yujing4"
                 />&nbsp;级预警
               </div>
@@ -81,7 +93,7 @@
       <div slot="header">
         <span class="header-title">车辆预警</span>
       </div>
-      <el-form :model="formInline" class="centerColor">
+      <el-form :model="formInline1" class="centerColor">
         <div class="mwidth centerColor">
           <el-row :gutter="20" class="py-5">
             <el-col :span="3" style="text-align: center">
@@ -93,7 +105,10 @@
                 <el-input
                   class="w50"
                   size="mini"
-                  v-model="formInline.yujing1"
+                  :maxlength="3"
+                  :max="100"
+                  :min="1"
+                  v-model="formInline1.yujing1"
                 />&nbsp;%不同则报预警
               </div>
             </el-col>
@@ -108,7 +123,10 @@
                 <el-input
                   class="w50"
                   size="mini"
-                  v-model="formInline.yujing2"
+                  :maxlength="3"
+                  :max="100"
+                  :min="1"
+                  v-model="formInline1.yujing2"
                 />&nbsp;%不同则报预警
               </div>
             </el-col>
@@ -123,7 +141,10 @@
                 <el-input
                   class="w50"
                   size="mini"
-                  v-model="formInline.yujing3"
+                  :maxlength="3"
+                  :max="100"
+                  :min="1"
+                  v-model="formInline1.yujing3"
                 />&nbsp;%不同则报预警
               </div>
             </el-col>
@@ -138,7 +159,10 @@
                 <el-input
                   class="w50"
                   size="mini"
-                  v-model="formInline.yujing4"
+                  :maxlength="3"
+                  :max="100"
+                  :min="1"
+                  v-model="formInline1.yujing4"
                 />&nbsp;级预警
               </div>
             </el-col>
@@ -166,17 +190,29 @@ export default {
         yujing2: 0,
         yujing3: 0,
         yujing4: 0
+      },
+      formInline1: {
+        yujing1: 0,
+        yujing2: 0,
+        yujing3: 0,
+        yujing4: 0
       }
     }
   },
   methods: {
-    onSubmit () {},
-    onSubmit1 () {}
+    onSubmit () {
+      this.formInline = {}
+      this.formInline1 = {}
+    },
+    onSubmit1 () {
+      this.formInline = {}
+      this.formInline1 = {}
+    }
   }
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .mwidth {
   width: 100%;
   .el-card {
@@ -196,6 +232,9 @@ export default {
     font-size: 16px;
     font-weight: 500;
     line-height: 28px;
+    /deep/.el-input__inner {
+      padding: 0px 10px !important;
+    }
   }
   .warningbottom {
     height: 10%;

@@ -40,6 +40,7 @@
         :data="tableDate"
         fit
         border
+        :key="itemkey"
         style="width: 100%"
         class="flex1"
         height="100%"
@@ -305,6 +306,7 @@
 </template>
 
 <script>
+// import { set } from 'vue/types/umd'
 export default {
   data () {
     const generateData = _ => {
@@ -376,7 +378,8 @@ export default {
       currentPage: 1,
       data: generateData(),
       value: [1, 4],
-      Rowindex: null
+      Rowindex: null,
+      itemkey: ''
     }
   },
   methods: {
@@ -386,17 +389,19 @@ export default {
       console.log(this.multipleSelection)
     },
     handleDetails (index, row) {
-      this.form = row
+      this.form = this.tableDate[index]
       this.dialogVisible = true
     },
     handleDetails1 (index, row) {
       this.dialogVisible1 = true
-      this.form = row
+      const editrow = JSON.parse(JSON.stringify(row))
+      this.form = editrow
       this.Rowindex = index
     },
     addbtn () {
       this.dialogVisible1 = false
       this.tableDate[this.Rowindex] = this.form
+      this.itemkey = Math.random()
     },
     handleDetails2 () {
       this.dialogVisible2 = true

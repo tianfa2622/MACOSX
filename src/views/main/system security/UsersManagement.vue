@@ -54,10 +54,10 @@
       </el-form>
       <!-- 新增人员 -->
       <el-dialog :visible.sync="dialogVisible3" title="新增人员" width="25%">
-        <el-form :model="form4" label-width="130px">
+        <el-form :model="form" label-width="130px">
           <el-form-item label="角色设置：">
             <el-select
-              v-model="form4.Roles"
+              v-model="form.Roles"
               style="width: 100%"
               placeholder="请选择角色"
             >
@@ -66,27 +66,31 @@
             </el-select>
           </el-form-item>
           <el-form-item label="姓名：">
-            <el-input v-model="form4.Staffname"></el-input>
+            <el-input v-model="form.username"></el-input>
           </el-form-item>
           <el-form-item label="性别：">
-            <el-radio-group v-model="form4.gender">
-              <el-radio ::label="1">男</el-radio>
+            <el-radio-group v-model="form.gender">
+              <el-radio :label="1">男</el-radio>
               <el-radio :label="0">女</el-radio>
             </el-radio-group>
           </el-form-item>
           <el-form-item label="民族：">
             <el-select
-              v-model="form4.national"
+              v-model="form.national"
               style="width: 100%"
               placeholder="请选择"
             >
-              <el-option label="汉族" value="汉族"></el-option>
-              <el-option label="满族" value="满族"></el-option>
+              <el-option
+                v-for="item in nation"
+                :key="item.length"
+                :label="item.name"
+                :value="item.name"
+              ></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="常用证件类型：">
             <el-select
-              v-model="form4.CommonCertificateTypes"
+              v-model="form.CommonDocuments"
               style="width: 100%"
               placeholder="请选择"
             >
@@ -102,14 +106,14 @@
             </el-select>
           </el-form-item>
           <el-form-item label="证件号码：">
-            <el-input v-model="form4.DocumentNumber"></el-input>
+            <el-input v-model="form.IDNumber"></el-input>
           </el-form-item>
           <el-form-item label="联系电话：">
-            <el-input v-model="form4.ContactNumber"></el-input>
+            <el-input v-model="form.contactNumber"></el-input>
           </el-form-item>
           <el-form-item label="公安检查站：">
             <el-select
-              v-model="form4.PublicSecurityCheckpoint"
+              v-model="form.CheckpointCategory"
               style="width: 100%"
               placeholder="请选择"
             >
@@ -133,9 +137,7 @@
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
-          <el-button type="primary" @click="dialogVisible3 = false">
-            提 交
-          </el-button>
+          <el-button type="primary" @click="Addto"> 提 交 </el-button>
           <el-button @click="dialogVisible3 = false">取 消</el-button>
         </span>
       </el-dialog>
@@ -161,6 +163,7 @@
           label="NO."
           align="center"
           width="50px"
+          :key="itemkey"
           :resizable="false"
         ></el-table-column>
         <el-table-column
@@ -248,8 +251,17 @@
               @click="handleDetails4(scope.$index, scope.row)"
               type="primary"
               size="mini"
+              v-if="scope.row.status !== '启动'"
             >
               解禁
+            </el-button>
+            <el-button
+              v-else
+              type="warning"
+              @click="handleDetails4(scope.$index, scope.row)"
+              size="mini"
+            >
+              禁用
             </el-button>
           </template>
         </el-table-column>
@@ -268,7 +280,7 @@
             </el-select>
           </el-form-item>
           <el-form-item label="姓名：">
-            <el-input v-model="form.Staffname"></el-input>
+            <el-input v-model="form.username"></el-input>
           </el-form-item>
           <el-form-item label="性别：">
             <el-radio-group v-model="form.gender">
@@ -282,8 +294,12 @@
               style="width: 100%"
               placeholder="请选择"
             >
-              <el-option label="汉族" value="汉族"></el-option>
-              <el-option label="满族" value="满族"></el-option>
+              <el-option
+                v-for="item in nation"
+                :key="item.length"
+                :label="item.name"
+                :value="item.name"
+              ></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="常用证件类型：">
@@ -335,9 +351,7 @@
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
-          <el-button type="primary" @click="dialogVisible = false"
-            >提 交</el-button
-          >
+          <el-button type="primary" @click="addbtn">提 交</el-button>
           <el-button @click="dialogVisible = false">取 消</el-button>
         </span>
       </el-dialog>
@@ -359,9 +373,11 @@
 </template>
 
 <script>
+import nation from '../../../components/Nation/Nation'
 export default {
   data () {
     return {
+      nation,
       formInline: {
         username: '',
         identificationNumber: '',
@@ -373,9 +389,9 @@ export default {
           username: '张三',
           CommonDocuments: '身份证',
           IDNumber: '430100000000000000',
-          gender: '男',
+          gender: 1,
           Roles: 'admin',
-          nation: '汉',
+          national: '汉族',
           contactNumber: '1234567891',
           CheckpointCategory: '哒哒哒',
           status: '禁用',
@@ -385,9 +401,9 @@ export default {
           username: 'lisa',
           CommonDocuments: '身份证',
           IDNumber: '430100000000000000',
-          gender: '女',
+          gender: 0,
           Roles: 'admin3',
-          nation: '汉',
+          national: '汉',
           contactNumber: '1234567890',
           CheckpointCategory: '哒哒哒',
           status: '启动',
@@ -396,45 +412,59 @@ export default {
       ],
       form: {
         Roles: '',
-        Staffname: '张三',
-        gender: 1,
-        national: '汉族',
-        CommonCertificateTypes: '身份证',
-        DocumentNumber: '423426122212000000',
-        ContactNumber: '02111111111',
-        PublicSecurityCheckpoint: '万家丽公安检查站'
-      },
-      form4: {
-        Roles: '',
-        Staffname: '',
-        gender: '',
+        username: '',
+        gender: null,
         national: '',
-        CommonCertificateTypes: '',
-        DocumentNumber: '',
-        ContactNumber: '',
-        PublicSecurityCheckpoint: ''
+        CommonDocuments: '',
+        IDNumber: '',
+        contactNumber: '',
+        CheckpointCategory: '',
+        status: '',
+        UpdateTime: ''
       },
       currentPage: 1,
       dialogVisible: false,
       dialogVisible3: false,
-      activeNames: ['1']
+      activeNames: ['1'],
+      itemkey: ''
     }
   },
   methods: {
     onSubmit () {},
     onSubmit1 () {
+      this.form = {}
       this.dialogVisible3 = true
     },
-    handleDetails () {
-      this.dialogVisible = true
+    Addto () {
+      const UpdateTime = this.$moment(new Date()).format('YYYY/MM/DD HH:mm:ss')
+      this.form.UpdateTime = UpdateTime
+      this.form.status = '禁用'
+      this.tableDate.push(this.form)
+      this.dialogVisible3 = false
+      this.form = {}
     },
-    handleDetails1 () {
-      this.$confirm('确定删除 张三 该用户?', '提示', {
+    handleDetails (index, row) {
+      this.dialogVisible = true
+      const editrow = JSON.parse(JSON.stringify(row))
+      this.form = editrow
+      this.Rowindex = index
+    },
+    addbtn () {
+      const UpdateTime = this.$moment(new Date()).format('YYYY/MM/DD HH:mm:ss')
+      this.form.UpdateTime = UpdateTime
+      this.dialogVisible = false
+      this.tableDate[this.Rowindex] = this.form
+      this.itemkey = Math.random()
+    },
+    handleDetails1 (index, row) {
+      const username = row.username
+      this.$confirm(`确定删除 ${username} 该用户?`, '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning',
         center: true
       }).then(() => {
+        this.tableDate.splice(index, 1)
         this.$message({
           type: 'success',
           message: '删除成功!'
@@ -446,21 +476,35 @@ export default {
         })
       })
     },
-    handleDetails4 () {
-      this.$confirm('确定禁用该用户?', '提示', {
+    handleDetails4 (index, row) {
+      let mystatus
+      if (row.status === '禁用') {
+        mystatus = '启动'
+      } else {
+        mystatus = '禁用'
+      }
+      this.$confirm(`确定${mystatus}该用户?`, '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning',
         center: true
       }).then(() => {
+        const UpdateTime = this.$moment(new Date()).format('YYYY/MM/DD HH:mm:ss')
+        row.UpdateTime = UpdateTime
+        row.status = mystatus
+        this.itemkey = Math.random()
         this.$message({
           type: 'success',
-          message: '删除成功!'
+          message: `${mystatus}成功!`
         })
       }).catch(() => {
+        const UpdateTime = this.$moment(new Date()).format('YYYY/MM/DD HH:mm:ss')
+        row.UpdateTime = UpdateTime
+        row.status = mystatus
+        this.itemkey = Math.random()
         this.$message({
           type: 'info',
-          message: '已取消删除'
+          message: `已取消${mystatus}`
         })
       })
     },

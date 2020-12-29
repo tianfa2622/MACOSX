@@ -10,11 +10,13 @@ import echarts from 'echarts'
 import { pcaa } from 'area-data-vue'
 import 'area-linkage-vue/dist/index.css'
 import VueAreaLinkage from 'area-linkage-vue'
-
+import moment from 'moment'
+moment.locale('zh-cn')
 Vue.use(VueAreaLinkage)
 
 Vue.prototype.$pcaa = pcaa
 Vue.prototype.$echarts = echarts
+Vue.prototype.$moment = moment
 
 new Vue({
   router,

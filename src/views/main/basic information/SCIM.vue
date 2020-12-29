@@ -40,13 +40,13 @@
 
       <!-- 新增 -->
       <el-dialog :visible.sync="dialogVisible1" title="编辑" width="25%">
-        <el-form :model="form1" label-width="130px">
+        <el-form :model="form" label-width="130px">
           <el-form-item label="警备装备名称：">
-            <el-input v-model="form1.OnDutyName"></el-input>
+            <el-input v-model="form.equipmentName"></el-input>
           </el-form-item>
           <el-form-item label="数量：">
             <el-input
-              v-model.number="form1.contactNumber"
+              v-model.number="form.equipmentNumber"
               type="number"
               maxlength="3"
               onkeyup="value=value.replace(/[^\d]/g,'')"
@@ -56,7 +56,7 @@
           </el-form-item>
           <el-form-item label="公安检查站：">
             <el-select
-              v-model="form1.CheckpointCategory"
+              v-model="form.CheckpointCategory"
               style="width: 100%"
               placeholder="请选择检查站"
             >
@@ -66,9 +66,7 @@
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
-          <el-button type="primary" @click="dialogVisible1 = false">
-            提 交
-          </el-button>
+          <el-button type="primary" @click="Addto"> 提 交 </el-button>
           <el-button @click="dialogVisible1 = false"> 取 消 </el-button>
         </span>
       </el-dialog>
@@ -85,6 +83,7 @@
         style="width: 100%"
         class="flex1"
         height="100%"
+        :key="itemkey"
       >
         <el-table-column
           type="index"
@@ -138,11 +137,11 @@
       <el-dialog :visible.sync="dialogVisible" title="编辑" width="25%">
         <el-form :model="form" label-width="130px">
           <el-form-item label="警备装备名称：">
-            <el-input v-model="form.OnDutyName"></el-input>
+            <el-input v-model="form.equipmentName"></el-input>
           </el-form-item>
           <el-form-item label="数量：">
             <el-input
-              v-model.number="form.contactNumber"
+              v-model.number="form.equipmentNumber"
               type="number"
               maxlength="3"
               onkeyup="value=value.replace(/[^\d]/g,'')"
@@ -162,9 +161,7 @@
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
-          <el-button type="primary" @click="dialogVisible = false">
-            提 交
-          </el-button>
+          <el-button type="primary" @click="addbtn"> 提 交 </el-button>
           <el-button @click="dialogVisible = false"> 取 消 </el-button>
         </span>
       </el-dialog>
@@ -208,24 +205,37 @@ export default {
         CheckpointCategory: '',
         UpdateTime: ''
       },
-      form1: {
-        equipmentName: '',
-        equipmentNumber: '',
-        CheckpointCategory: '',
-        UpdateTime: ''
-      },
       currentPage: 1,
       dialogVisible: false,
-      dialogVisible1: false
+      dialogVisible1: false,
+      itemkey: ''
     }
   },
   methods: {
     onSubmit () {},
     onSubmit1 () {
+      this.form = {}
       this.dialogVisible1 = true
     },
-    handleDetails () {
+    Addto () {
+      const UpdateTime = this.$moment(new Date()).format('YYYY/MM/DD HH:mm:ss')
+      this.form.UpdateTime = UpdateTime
+      this.tableDate.push(this.form)
+      this.dialogVisible1 = false
+      this.form = {}
+    },
+    handleDetails (index, row) {
       this.dialogVisible = true
+      const editrow = JSON.parse(JSON.stringify(row))
+      this.form = editrow
+      this.Rowindex = index
+    },
+    addbtn () {
+      const UpdateTime = this.$moment(new Date()).format('YYYY/MM/DD HH:mm:ss')
+      this.form.UpdateTime = UpdateTime
+      this.dialogVisible = false
+      this.tableDate[this.Rowindex] = this.form
+      this.itemkey = Math.random()
     },
     handleSizeChange (val) {
       console.log(`每页 ${val} 条`)
