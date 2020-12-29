@@ -82,9 +82,9 @@
           >
           </el-table-column>
           <el-table-column
-            prop="sex"
+            prop="KeyPersonnel"
             align="center"
-            label="性别"
+            label="是否为重点人员"
             :resizable="false"
           ></el-table-column>
           <el-table-column
@@ -137,13 +137,15 @@
               <el-button
                 @click="handleDetails(scope.$index, scope.row)"
                 type="primary"
-                size="mini mini-btn mt-5"
+                size="mini"
                 >详情</el-button
               >
               <el-button
                 @click="handleDetails1(scope.$index, scope.row)"
                 size="mini"
-                type="info mini-btn mt-5"
+                class="tablebtn mt-5"
+                type="info"
+                v-if="scope.row.PeoComparison !== '正常'"
                 >处置</el-button
               >
             </template>
@@ -190,7 +192,7 @@
     <!-- 实时监控Dialog -->
 
     <!-- 详情Dialog -->
-    <el-dialog :visible.sync="dialogVisible1" width="60%" class="dialogs">
+    <el-dialog :visible.sync="dialogVisible1" width="70%" class="dialogs">
       <div class="dia-spanbox">
         <span class="dia-spanTitle">基本信息</span>
       </div>
@@ -199,7 +201,7 @@
         :inline="true"
         class="form-content mwidth"
         label-width="173px"
-        size="small"
+        size="mini"
       >
         <el-form-item label="姓名：" class="w-45">
           <el-input :disabled="true" v-model="form.name"></el-input>
@@ -288,11 +290,11 @@
         :inline="true"
         class="form-content"
         label-width="153px"
-        size="small"
+        size="mini"
       >
         <el-form-item label="三维人脸图：" class="w-45">
           <el-avatar
-            :size="150"
+            :size="120"
             :src="form.circleUrl"
             fit="fill"
             shape="square"
@@ -300,7 +302,7 @@
         </el-form-item>
         <el-form-item label="人脸图：" class="w-45">
           <el-avatar
-            :size="150"
+            :size="120"
             :src="form.circleUrl"
             fit="fill"
             shape="square"
@@ -315,7 +317,7 @@
         :inline="true"
         class="form-content"
         label-width="153px"
-        size="small"
+        size="mini"
       >
         <el-form-item label="着鞋特征：" class="w-45">
           <el-input :disabled="true" v-model="form.ShoesFeatures"></el-input>
@@ -454,7 +456,7 @@ export default {
       tableData: [
         {
           names: '张三',
-          sex: '男',
+          KeyPersonnel: '是',
           Cdocuments: '身份证',
           documentsNum: '430426121198103218721',
           Peraddress: '湖南省长沙市',
@@ -464,7 +466,7 @@ export default {
         },
         {
           names: '张四',
-          sex: '女',
+          KeyPersonnel: '否',
           Cdocuments: '居住证',
           documentsNum: '430426121198103218721',
           Peraddress: '湖南省长沙市',
@@ -474,7 +476,7 @@ export default {
         },
         {
           names: '张五',
-          sex: '男',
+          KeyPersonnel: '是',
           Cdocuments: '身份证',
           documentsNum: '430426121198103218721',
           Peraddress: '湖南省长沙市',
@@ -484,7 +486,7 @@ export default {
         },
         {
           names: '李三',
-          sex: '男',
+          KeyPersonnel: '是',
           Cdocuments: '身份证',
           documentsNum: '430426121198103218721',
           Peraddress: '湖南省长沙市',
@@ -494,7 +496,7 @@ export default {
         },
         {
           names: '小二',
-          sex: '男',
+          KeyPersonnel: '否',
           Cdocuments: '身份证',
           documentsNum: '430426121198103218721',
           Peraddress: '湖南省长沙市',
@@ -559,6 +561,13 @@ export default {
           return 'status-orange'
         } else {
           return 'status-error'
+        }
+      }
+      if (column.property === 'KeyPersonnel') {
+        if (row.KeyPersonnel === '是') {
+          return 'status-errorSize'
+        } else {
+          return 'status-successSize'
         }
       }
     },
@@ -654,6 +663,12 @@ export default {
 /deep/ .status-error {
   background-color: rgb(231, 110, 110) !important;
 }
+/deep/ .status-errorSize {
+  color: rgb(231, 110, 110) !important;
+}
+/deep/ .status-successSize {
+  color: #85c963 !important;
+}
 .pers-head {
   padding: 20px;
   width: 100%;
@@ -663,6 +678,9 @@ export default {
   /deep/ .el-range-separator {
     width: 8%;
   }
+}
+.mini-btn {
+  padding: 7px 12px !important;
 }
 </style>
 <style lang="less">

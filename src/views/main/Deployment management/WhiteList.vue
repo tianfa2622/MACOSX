@@ -143,7 +143,7 @@
         </el-form-item>
         <el-form-item label="机动车车辆类型：">
           <el-select
-            v-model="form.VehicleType"
+            v-model="form.VehicleCategory"
             class="w-100"
             placeholder="请选择机动车车辆类型"
           >
@@ -179,6 +179,7 @@
         <el-form-item label="时间：">
           <el-date-picker
             v-model="form.CarTime"
+            value-format="yyyy-MM-dd HH:mm:ss"
             type="datetime"
             placeholder="选择日期时间"
             class="w-100"
@@ -198,51 +199,46 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible1 = false">取 消</el-button>
-        <el-button type="primary" @click="dialogFormVisible1 = false"
-          >确 定</el-button
-        >
+        <el-button type="primary" @click="addData">确 定</el-button>
       </div>
     </el-dialog>
     <!-- 增加弹出框 -->
 
     <!-- 详情弹出框 -->
     <el-dialog title="详情" :visible.sync="dialogFormVisible" width="30%">
-      <el-form :model="form1" label-width="150px">
+      <el-form :model="form" label-width="150px">
         <el-form-item label="机动车牌号码：">
           <el-input
             :disabled="true"
-            v-model="form1.LicensePlateNumber"
+            v-model="form.LicensePlateNumber"
           ></el-input>
         </el-form-item>
         <el-form-item label="机动车车辆类型：">
-          <el-input :disabled="true" v-model="form1.VehicleCategory"></el-input>
+          <el-input :disabled="true" v-model="form.VehicleCategory"></el-input>
         </el-form-item>
         <el-form-item label="车辆型号：">
-          <el-input :disabled="true" v-model="form1.VehicleType"></el-input>
+          <el-input :disabled="true" v-model="form.VehicleType"></el-input>
         </el-form-item>
         <el-form-item label="机动车牌种类：">
-          <el-input
-            :disabled="true"
-            v-model="form1.LicensePlateType"
-          ></el-input>
+          <el-input :disabled="true" v-model="form.LicensePlateType"></el-input>
         </el-form-item>
         <el-form-item label="机动车身颜色：">
-          <el-input :disabled="true" v-model="form1.TheBodyColor"></el-input>
+          <el-input :disabled="true" v-model="form.TheBodyColor"></el-input>
         </el-form-item>
         <el-form-item label="省份简称：">
-          <el-input :disabled="true" v-model="form1.Provinces"></el-input>
+          <el-input :disabled="true" v-model="form.Provinces"></el-input>
         </el-form-item>
         <el-form-item label="机动车所有人名称：">
-          <el-input :disabled="true" v-model="form1.TheOwnerName"></el-input>
+          <el-input :disabled="true" v-model="form.TheOwnerName"></el-input>
         </el-form-item>
         <el-form-item label="公民身份证号码：">
-          <el-input :disabled="true" v-model="form1.IdentityNumber"></el-input>
+          <el-input :disabled="true" v-model="form.IdentityNumber"></el-input>
         </el-form-item>
         <el-form-item label="时间：">
-          <el-input :disabled="true" v-model="form1.CarTime"></el-input>
+          <el-input :disabled="true" v-model="form.CarTime"></el-input>
         </el-form-item>
         <el-form-item label="重点人员管控类别：">
-          <el-input :disabled="true" v-model="form1.ControlCategory"></el-input>
+          <el-input :disabled="true" v-model="form.ControlCategory"></el-input>
         </el-form-item>
       </el-form>
       <!-- <div slot="footer" class="dialog-footer">
@@ -309,19 +305,7 @@ export default {
         Provinces: '',
         TheOwnerName: '',
         IdentityNumber: '',
-        CarTime: '',
-        ControlCategory: ''
-      },
-      form1: {
-        LicensePlateNumber: '',
-        VehicleCategory: '',
-        VehicleType: '',
-        LicensePlateType: '',
-        TheBodyColor: '',
-        Provinces: '',
-        TheOwnerName: '',
-        IdentityNumber: '',
-        CarTime: '',
+        CarTime: null,
         ControlCategory: ''
       }
     }
@@ -329,22 +313,30 @@ export default {
   methods: {
     onSubmit () { },
     onSubmit1 () {
+      this.form = {}
       this.dialogFormVisible1 = true
     },
-    handleDetails () {
+    addData () {
+      this.tableData.push(this.form)
+      this.dialogFormVisible1 = false
+    },
+    handleDetails (index, row) {
+      this.form = {}
+      this.form = this.tableData[index]
       this.dialogFormVisible = true
     },
-    handleDetails1 () {
+    handleDetails1 (index, row) {
       this.$confirm('此操作将永久移除该条记录, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning',
         center: true
       }).then(() => {
-        this.$message({
-          type: 'success',
-          message: '删除成功!'
-        })
+        this.tableData.splice(index, 1)
+          .this.$message({
+            type: 'success',
+            message: '删除成功!'
+          })
       }).catch(() => {
         this.$message({
           type: 'info',

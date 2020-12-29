@@ -41,6 +41,12 @@ a {
   text-decoration: none;
 }
 
+@media screen and (min-width:1600px) {
+  .tablebtn {
+    margin-left: 0px !important;
+  }
+}
+
 .router-link-active {
   text-decoration: none;
 }

@@ -12,20 +12,26 @@
         label-width="140px"
         class="mx-20"
       >
-        <el-form-item label="安检违禁物品类别：">
+        <el-form-item label="机动车车辆类型：">
           <el-select
             v-model="formInline.category"
-            placeholder="安检违禁物品类别"
+            placeholder="请选择机动车车辆类型"
           >
             <el-option label="区域一" value="shanghai"></el-option>
             <el-option label="区域二" value="beijing"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="车牌号码：" class="ml-20">
-          <el-input v-model="formInline.CarNumber"></el-input>
+          <el-input
+            placeholder="请输入车牌号码"
+            v-model="formInline.CarNumber"
+          ></el-input>
         </el-form-item>
         <el-form-item label="身份证号码：">
-          <el-input v-model="formInline.IdNumber"></el-input>
+          <el-input
+            placeholder="请输入身份证号码"
+            v-model="formInline.IdNumber"
+          ></el-input>
         </el-form-item>
         <el-form-item label="所属检查站：" class="ml-20">
           <el-select v-model="formInline.region" placeholder="公安检查站">
@@ -112,7 +118,15 @@
               @click="handleDetails1(scope.$index, scope.row)"
               type="primary"
               size="mini"
+              v-if="scope.row.ComparedResult === '预警'"
               >查看违禁物</el-button
+            >
+            <el-button
+              @click="handleDetails2(scope.$index, scope.row)"
+              type="primary"
+              size="mini"
+              v-else
+              >关联违禁物</el-button
             >
           </template>
         </el-table-column>
@@ -154,15 +168,71 @@
             resize="none"
           ></el-input>
         </el-form-item>
-        <el-form-item>
-          <el-button type="primary" @click="onSubmit1">提交</el-button>
-          <el-button @click="onSubmit1">取消</el-button>
-        </el-form-item>
       </el-form>
     </el-dialog>
 
+    <!-- 关联人员Dialog -->
+    <el-dialog :visible.sync="DialogTableVisible1" width="40%">
+      <el-form :inline="true" class="pl-10">
+        <el-form-item label="违禁物品：">
+          <el-input></el-input>
+        </el-form-item>
+        <el-form-item style="margin-left: 20px">
+          <el-button plain style="width: 100px">搜索</el-button>
+        </el-form-item>
+      </el-form>
+      <el-table :data="tableData1" fit border style="width: 100%" height="100%">
+        <el-table-column
+          prop="Prohibitedtype"
+          label="违禁物品类别"
+          :resizable="false"
+          show-overflow-tooltip
+        >
+        </el-table-column>
+        <el-table-column
+          prop="ProhibitedNumber"
+          label="数量"
+          :resizable="false"
+        ></el-table-column>
+        <el-table-column
+          prop="describe"
+          label="描述"
+          :resizable="false"
+        ></el-table-column>
+        <el-table-column label="操作" align="center">
+          <template slot-scope="scope">
+            <el-button
+              @click="handleDetails4(scope.$index, scope.row)"
+              type="text"
+              class="mini-btn"
+              size="mini"
+              v-if="scope.row.cancelbtn === true"
+              :resizable="false"
+            >
+              关联
+            </el-button>
+            <el-button
+              @click="handleDetails5(scope.$index, scope.row)"
+              type="text"
+              class="mini-btn cancelColor"
+              size="mini"
+              :resizable="false"
+              v-else
+            >
+              取消
+            </el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="DialogTableVisible1 = false">取 消</el-button>
+        <el-button type="primary" @click="DialogTableVisible1">确 定</el-button>
+      </span>
+    </el-dialog>
+    <!-- 关联人员Dialog -->
+
     <!-- 人车详情Dialog -->
-    <el-dialog :visible.sync="dialogVisible1" width="60%" class="dialogs">
+    <el-dialog :visible.sync="dialogVisible1" width="70%" class="dialogs">
       <template slot="title">
         <div class="titleZise">
           查看-大腰检查站(人证对比结果：
@@ -178,7 +248,7 @@
         :inline="true"
         class="form-content mwidth"
         label-width="173px"
-        size="small"
+        size="mini"
       >
         <el-form-item label="通过事件：" class="w-45">
           <el-input :disabled="true" v-model="form.PassingTime"></el-input>
@@ -255,11 +325,11 @@
         :inline="true"
         class="form-content"
         label-width="153px"
-        size="small"
+        size="mini"
       >
         <el-form-item label="三维人脸图：" class="w-45">
           <el-avatar
-            :size="150"
+            :size="120"
             :src="form.circleUrl"
             fit="fill"
             shape="square"
@@ -267,7 +337,7 @@
         </el-form-item>
         <el-form-item label="人脸图：" class="w-45">
           <el-avatar
-            :size="150"
+            :size="120"
             :src="form.circleUrl"
             fit="fill"
             shape="square"
@@ -282,11 +352,11 @@
         :inline="true"
         class="form-content"
         label-width="153px"
-        size="small"
+        size="mini"
       >
         <el-form-item label="车前盖图：" class="w-45">
           <el-avatar
-            :size="150"
+            :size="120"
             :src="form.circleUrl"
             fit="fill"
             shape="square"
@@ -294,7 +364,7 @@
         </el-form-item>
         <el-form-item label="车后盖图：" class="w-45">
           <el-avatar
-            :size="150"
+            :size="120"
             :src="form.circleUrl"
             fit="fill"
             shape="square"
@@ -302,7 +372,7 @@
         </el-form-item>
         <el-form-item label="车厢图：" class="w-45">
           <el-avatar
-            :size="150"
+            :size="120"
             :src="form.circleUrl"
             fit="fill"
             shape="square"
@@ -310,7 +380,7 @@
         </el-form-item>
         <el-form-item label="车侧图：" class="w-45">
           <el-avatar
-            :size="150"
+            :size="120"
             :src="form.circleUrl"
             fit="fill"
             shape="square"
@@ -318,7 +388,7 @@
         </el-form-item>
         <el-form-item label="车顶图：" class="w-45">
           <el-avatar
-            :size="150"
+            :size="120"
             :src="form.circleUrl"
             fit="fill"
             shape="square"
@@ -326,7 +396,7 @@
         </el-form-item>
         <el-form-item label="底盘图：" class="w-45">
           <el-avatar
-            :size="150"
+            :size="120"
             :src="form.circleUrl"
             fit="fill"
             shape="square"
@@ -334,7 +404,7 @@
         </el-form-item>
         <el-form-item label="车前标：" class="w-45">
           <el-avatar
-            :size="150"
+            :size="120"
             :src="form.circleUrl"
             fit="fill"
             shape="square"
@@ -342,7 +412,7 @@
         </el-form-item>
         <el-form-item label="车后标：" class="w-45">
           <el-avatar
-            :size="150"
+            :size="120"
             :src="form.circleUrl"
             fit="fill"
             shape="square"
@@ -372,7 +442,8 @@ export default {
           CarModel: 'XT-860L',
           CarOwner: '张三',
           time1: '2019/12/30 12:12:12',
-          Checkpoint1: '大瑶检查站'
+          Checkpoint1: '大瑶检查站',
+          ComparedResult: '正常'
         },
         {
           CarNumb: '湘A BGM91',
@@ -381,31 +452,17 @@ export default {
           CarModel: 'XT-860L',
           CarOwner: '张三',
           time1: '2019/12/30 12:12:12',
-          Checkpoint1: '大瑶检查站'
-        },
-        {
-          CarNumb: '湘A BGM91',
-          VehicleType: '轿车',
-          CitizenNumber: '430108199502320232',
-          CarModel: 'XT-860L',
-          CarOwner: '张三',
-          time1: '2019/12/30 12:12:12',
-          Checkpoint1: '大瑶检查站'
-        },
-        {
-          CarNumb: '湘A BGM91',
-          VehicleType: '轿车',
-          CitizenNumber: '430108199502320232',
-          CarModel: 'XT-860L',
-          CarOwner: '张三',
-          time1: '2019/12/30 12:12:12',
-          Checkpoint1: '大瑶检查站'
+          Checkpoint1: '大瑶检查站',
+          ComparedResult: '预警'
         }
-
+      ],
+      tableData1: [
+        { cancelbtn: true }, { cancelbtn: true }, { cancelbtn: true }
       ],
       currentPage: 1,
       DialogFormVisible: false,
       dialogVisible1: false,
+      DialogTableVisible1: false,
       form1: {
         name: '',
         num: '',
@@ -451,15 +508,21 @@ export default {
     onSubmit () {
       console.log('chaxun')
     },
-    onSubmit1 () {
-      this.DialogFormVisible = false
-    },
     handleDetails () {
       this.dialogVisible1 = true
       console.log('人车信息')
     },
     handleDetails1 () {
       this.DialogFormVisible = true
+    },
+    handleDetails2 () {
+      this.DialogTableVisible1 = true
+    },
+    handleDetails4 (index, row) {
+      row.cancelbtn = false
+    },
+    handleDetails5 (index, row) {
+      row.cancelbtn = true
     },
     handleSizeChange (val) {
       console.log(`每页 ${val} 条`)
@@ -498,5 +561,11 @@ export default {
 }
 .el-button--mini {
   padding: 7px !important;
+}
+.cancelColor {
+  color: red;
+}
+.mini-btn {
+  padding: 7px 10px !important;
 }
 </style>

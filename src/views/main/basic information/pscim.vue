@@ -246,9 +246,7 @@
         </el-form>
         <span slot="footer" class="dialog-footer">
           <el-button @click="dialogVisible1 = false">取 消</el-button>
-          <el-button type="primary" @click="dialogVisible1 = false"
-            >提 交</el-button
-          >
+          <el-button type="primary" @click="addbtn">提 交</el-button>
         </span>
       </el-dialog>
       <!-- 人员配备 -->
@@ -350,29 +348,35 @@ export default {
           address: '常山',
           InstitutionalLevel: '一级',
           contactNumber: '6666666666666',
-          AttributionUnitName: '蜀国'
-
+          AttributionUnitName: '蜀国',
+          principalName: '刘备',
+          principalPhone: '11111111111',
+          longitude: '33.33',
+          latitude: '33.33',
+          UnitAbbreviation: '蜀'
         }
       ],
       form: {
-        CheckpointName: '赵子龙',
-        CheckpointCategory: '将领',
-        address: '常山',
-        InstitutionalLevel: '一级',
-        contactNumber: '6666666666666',
-        AttributionUnitName: '蜀国',
-        principalName: '刘备',
-        principalPhone: '11111111111',
-        longitude: '33.33',
-        latitude: '33.33',
-        UnitAbbreviation: '蜀'
+        // CheckpointName: '',
+        // CheckpointCategory: '',
+        // address: '',
+        // InstitutionalLevel: '',
+        // contactNumber: '',
+        // AttributionUnitName: '',
+        // principalName: '',
+        // principalPhone: '',
+        // longitude: '',
+        // latitude: '',
+        // UnitAbbreviation: ''
       },
+      form1: {},
       dialogVisible: false,
       dialogVisible1: false,
       dialogVisible2: false,
       currentPage: 1,
       data: generateData(),
-      value: [1, 4]
+      value: [1, 4],
+      Rowindex: null
     }
   },
   methods: {
@@ -381,11 +385,18 @@ export default {
       this.multipleSelection = val
       console.log(this.multipleSelection)
     },
-    handleDetails () {
+    handleDetails (index, row) {
+      this.form = row
       this.dialogVisible = true
     },
-    handleDetails1 () {
+    handleDetails1 (index, row) {
       this.dialogVisible1 = true
+      this.form = row
+      this.Rowindex = index
+    },
+    addbtn () {
+      this.dialogVisible1 = false
+      this.tableDate[this.Rowindex] = this.form
     },
     handleDetails2 () {
       this.dialogVisible2 = true

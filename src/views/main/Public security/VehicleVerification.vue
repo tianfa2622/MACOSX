@@ -163,20 +163,21 @@
                 查看
               </el-button>
               <el-button
+                @click="handleDetails3(scope.$index, scope.row)"
+                size="mini"
+                type="info"
+                class="mini-btn mt-5"
+                v-if="scope.row.CarComparison !== '正常'"
+              >
+                处置
+              </el-button>
+              <el-button
                 @click="handleDetails2(scope.$index, scope.row)"
                 size="mini"
                 type="primary"
                 class="bgc1 mini-btn mt-5"
               >
                 关联人员
-              </el-button>
-              <el-button
-                @click="handleDetails3(scope.$index, scope.row)"
-                size="mini"
-                type="info"
-                class="mini-btn mt-5"
-              >
-                处置
               </el-button>
             </template>
           </el-table-column>
@@ -196,7 +197,7 @@
     </div>
 
     <!-- 详情Dialog -->
-    <el-dialog :visible.sync="dialogVisible1" width="70%" class="dialogs">
+    <el-dialog :visible.sync="dialogVisible1" width="60%" class="dialogs">
       <template slot="title">
         <div class="titleZise">
           查看-大腰检查站(对比结果：
@@ -217,7 +218,7 @@
             :model="form"
             :inline="true"
             class="form-content mwidth"
-            size="small"
+            size="mini"
             label-width="153px"
           >
             <el-form-item label="通过事件：" class="w-45">
@@ -285,12 +286,12 @@
             :model="form"
             :inline="true"
             class="form-content"
-            size="small"
+            size="mini"
             label-width="153px"
           >
             <el-form-item label="车前盖图：" class="w-45">
               <el-avatar
-                :size="150"
+                :size="120"
                 :src="form.circleUrl"
                 fit="fill"
                 shape="square"
@@ -298,7 +299,7 @@
             </el-form-item>
             <el-form-item label="车后盖图：" class="w-45">
               <el-avatar
-                :size="150"
+                :size="120"
                 :src="form.circleUrl"
                 fit="fill"
                 shape="square"
@@ -306,7 +307,7 @@
             </el-form-item>
             <el-form-item label="车厢图：" class="w-45">
               <el-avatar
-                :size="150"
+                :size="120"
                 :src="form.circleUrl"
                 fit="fill"
                 shape="square"
@@ -314,7 +315,7 @@
             </el-form-item>
             <el-form-item label="车侧图：" class="w-45">
               <el-avatar
-                :size="150"
+                :size="120"
                 :src="form.circleUrl"
                 fit="fill"
                 shape="square"
@@ -322,7 +323,7 @@
             </el-form-item>
             <el-form-item label="车顶图：" class="w-45">
               <el-avatar
-                :size="150"
+                :size="120"
                 :src="form.circleUrl"
                 fit="fill"
                 shape="square"
@@ -330,7 +331,7 @@
             </el-form-item>
             <el-form-item label="底盘图：" class="w-45">
               <el-avatar
-                :size="150"
+                :size="120"
                 :src="form.circleUrl"
                 fit="fill"
                 shape="square"
@@ -338,7 +339,7 @@
             </el-form-item>
             <el-form-item label="车前标：" class="w-45">
               <el-avatar
-                :size="150"
+                :size="120"
                 :src="form.circleUrl"
                 fit="fill"
                 shape="square"
@@ -346,7 +347,7 @@
             </el-form-item>
             <el-form-item label="车后标：" class="w-45">
               <el-avatar
-                :size="150"
+                :size="120"
                 :src="form.circleUrl"
                 fit="fill"
                 shape="square"
@@ -361,7 +362,7 @@
             :inline="true"
             class="form-content"
             label-width="153px"
-            size="small"
+            size="mini"
           >
             <el-form-item label="车辆异常痕迹：" class="w-90">
               <el-input
@@ -443,11 +444,6 @@
           <!-- </el-card> -->
         </el-tab-pane>
       </el-tabs>
-
-      <!-- <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible1 = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible1true">确 定</el-button>
-      </span> -->
     </el-dialog>
     <!-- 详情Dialog -->
 
@@ -510,18 +506,21 @@
               type="text"
               class="mini-btn"
               size="mini"
+              v-if="scope.row.cancelbtn === true"
               :resizable="false"
             >
               关联
             </el-button>
-            <!-- <el-button
+            <el-button
               @click="handleDetails5(scope.$index, scope.row)"
+              type="text"
+              class="mini-btn cancelColor"
               size="mini"
-              type="info"
-              class="mini-btn"
+              :resizable="false"
+              v-else
             >
               取消
-            </el-button> -->
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -602,120 +601,14 @@ export default {
           CarComparison: '一级预警',
           cartime: '2019/12/31',
           checkpoint: '大瑶检查站'
-        },
-        {
-          CarNumber: '湘A BGF92',
-          CarModels: '货车',
-          IdCardNumber: '430108199502320111',
-          VehicleModel: 'XT-86L',
-          Carname: '李四',
-          vehicleType: '黄牌黑字',
-          CarComparison: '一级预警',
-          cartime: '2019/12/31',
-          checkpoint: '大瑶检查站'
-        },
-        {
-          CarNumber: '湘A BGF92',
-          CarModels: '货车',
-          IdCardNumber: '430108199502320111',
-          VehicleModel: 'XT-86L',
-          Carname: '李四',
-          vehicleType: '黄牌黑字',
-          CarComparison: '一级预警',
-          cartime: '2019/12/31',
-          checkpoint: '大瑶检查站'
-        },
-        {
-          CarNumber: '湘A BGF92',
-          CarModels: '货车',
-          IdCardNumber: '430108199502320111',
-          VehicleModel: 'XT-86L',
-          Carname: '李四',
-          vehicleType: '黄牌黑字',
-          CarComparison: '一级预警',
-          cartime: '2019/12/31',
-          checkpoint: '大瑶检查站'
-        },
-        {
-          CarNumber: '湘A BGF92',
-          CarModels: '货车',
-          IdCardNumber: '430108199502320111',
-          VehicleModel: 'XT-86L',
-          Carname: '李四',
-          vehicleType: '黄牌黑字',
-          CarComparison: '一级预警',
-          cartime: '2019/12/31',
-          checkpoint: '大瑶检查站'
-        },
-        {
-          CarNumber: '湘A BGF92',
-          CarModels: '货车',
-          IdCardNumber: '430108199502320111',
-          VehicleModel: 'XT-86L',
-          Carname: '李四',
-          vehicleType: '黄牌黑字',
-          CarComparison: '一级预警',
-          cartime: '2019/12/31',
-          checkpoint: '大瑶检查站'
-        },
-        {
-          CarNumber: '湘A BGF92',
-          CarModels: '货车',
-          IdCardNumber: '430108199502320111',
-          VehicleModel: 'XT-86L',
-          Carname: '李四',
-          vehicleType: '黄牌黑字',
-          CarComparison: '一级预警',
-          cartime: '2019/12/31',
-          checkpoint: '大瑶检查站'
-        },
-        {
-          CarNumber: '湘A BGF92',
-          CarModels: '货车',
-          IdCardNumber: '430108199502320111',
-          VehicleModel: 'XT-86L',
-          Carname: '李四',
-          vehicleType: '黄牌黑字',
-          CarComparison: '一级预警',
-          cartime: '2019/12/31',
-          checkpoint: '大瑶检查站'
-        },
-        {
-          CarNumber: '湘A BGF92',
-          CarModels: '货车',
-          IdCardNumber: '430108199502320111',
-          VehicleModel: 'XT-86L',
-          Carname: '李四',
-          vehicleType: '黄牌黑字',
-          CarComparison: '一级预警',
-          cartime: '2019/12/31',
-          checkpoint: '大瑶检查站'
-        },
-        {
-          CarNumber: '湘A BGF92',
-          CarModels: '货车',
-          IdCardNumber: '430108199502320111',
-          VehicleModel: 'XT-86L',
-          Carname: '李四',
-          vehicleType: '黄牌黑字',
-          CarComparison: '一级预警',
-          cartime: '2019/12/31',
-          checkpoint: '大瑶检查站'
-        },
-        {
-          CarNumber: '湘A BGF92',
-          CarModels: '货车',
-          IdCardNumber: '430108199502320111',
-          VehicleModel: 'XT-86L',
-          Carname: '李四',
-          vehicleType: '黄牌黑字',
-          CarComparison: '一级预警',
-          cartime: '2019/12/31',
-          checkpoint: '大瑶检查站'
         }
       ],
       tableData1: [
-        {}, {}, {}, {}
+        {
+          cancelbtn: true
+        }, {
+          cancelbtn: true
+        }
       ],
       tableData2: [
         {
@@ -789,7 +682,7 @@ export default {
     handleDetails1 () {
       this.dialogVisible2 = true
     },
-    handleDetails3 () {
+    handleDetails3 (index, row) {
       this.dialogVisible3 = true
     },
     handleDetails2 () {
@@ -798,7 +691,12 @@ export default {
     dialogVisible1true () {
       this.dialogVisible1 = false
     },
-    handleDetails4 () {},
+    handleDetails4 (index, row) {
+      row.cancelbtn = false
+    },
+    handleDetails5 (index, row) {
+      row.cancelbtn = true
+    },
     handleSizeChange (val) {
       console.log(`每页 ${val} 条`)
     },
@@ -869,14 +767,17 @@ export default {
 .result-color {
   color: #009900;
 }
-// .dialogs {
-//   overflow: initial;
-// }
 /deep/ .status-success {
   background-color: #85c963 !important;
 }
 /deep/ .status-error {
   background-color: rgb(231, 110, 110) !important;
+}
+.cancelColor {
+  color: red;
+}
+.mini-btn {
+  padding: 7px 12px !important;
 }
 </style>
 
@@ -909,8 +810,5 @@ export default {
 .bgc1:active {
   background: #bebee5 !important;
   border-color: #bebee5 !important;
-}
-.mini-btn {
-  padding: 7px 7px !important;
 }
 </style>

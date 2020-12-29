@@ -56,11 +56,12 @@ const option = {
     },
     {
       text: '装备情况',
-      bottom: '35%',
-      left: '20%',
+      bottom: '38%',
+      left: '50%',
       textStyle: {
-        fontSize: 14,
-        color: '#52FFFF'
+        fontSize: 16,
+        color: '#0092f6',
+        fontWeight: 700
       }
     }
   ],

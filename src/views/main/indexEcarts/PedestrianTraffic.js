@@ -6,7 +6,7 @@ const options = {
   title: {
     text: '通行人车流量折线图',
     textStyle: {
-      fontWeight: 'normal',
+      fontWeight: 700,
       fontSize: 16,
       color: '#0092f6'
     },

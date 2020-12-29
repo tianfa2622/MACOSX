@@ -39,7 +39,7 @@ const option = {
     {
       text: '人员核查',
       top: '6%',
-      left: '46%',
+      left: '40%',
       textStyle: {
         color: '#0092f6'
       }

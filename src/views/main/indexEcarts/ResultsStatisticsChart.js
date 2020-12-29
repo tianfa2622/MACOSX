@@ -40,10 +40,11 @@ const option = {
   title: [{
     text: '战果统计',
     bottom: '38%',
-    left: '5%',
+    left: '40%',
     textStyle: {
-      fontSize: 14,
-      color: '#52FFFF'
+      fontSize: 16,
+      color: '#0092f6',
+      fontWeight: 700
     }
   }
     // {

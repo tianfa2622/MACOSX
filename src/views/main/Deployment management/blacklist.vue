@@ -103,7 +103,7 @@
           label="车辆类型"
         ></el-table-column>
         <el-table-column
-          prop="VehicleType"
+          prop="VehicleModel"
           label="车辆型号"
           :resizable="false"
           align="center"
@@ -180,7 +180,7 @@
           <el-input :disabled="true" v-model="form.VehicleCategory"></el-input>
         </el-form-item>
         <el-form-item label="车辆型号：">
-          <el-input :disabled="true" v-model="form.VehicleType"></el-input>
+          <el-input :disabled="true" v-model="form.VehicleModel"></el-input>
         </el-form-item>
         <el-form-item label="机动车牌种类：">
           <el-input :disabled="true" v-model="form.LicensePlateType"></el-input>
@@ -221,7 +221,7 @@
         </el-form-item>
         <el-form-item label="机动车车辆类型：">
           <el-select
-            v-model="form.VehicleType"
+            v-model="form.VehicleCategory"
             class="w-100"
             placeholder="请选择机动车车辆类型"
           >
@@ -230,7 +230,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="车辆型号：">
-          <el-input v-model="form.VehicleType" class="w-100"></el-input>
+          <el-input v-model="form.VehicleModel" class="w-100"></el-input>
         </el-form-item>
         <el-form-item label="机动车牌种类：">
           <el-select
@@ -257,6 +257,7 @@
         <el-form-item label="时间：">
           <el-date-picker
             v-model="form.CarTime"
+            value-format="yyyy-MM-dd HH:mm:ss"
             type="datetime"
             placeholder="选择日期时间"
             class="w-100"
@@ -276,9 +277,7 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible1 = false">取 消</el-button>
-        <el-button type="primary" @click="dialogFormVisible1 = false"
-          >确 定</el-button
-        >
+        <el-button type="primary" @click="addData">确 定</el-button>
       </div>
     </el-dialog>
     <!-- 增加弹出框 -->
@@ -301,7 +300,7 @@ export default {
         {
           LicensePlateNumber: '湘A BGHF2',
           VehicleCategory: '轿车',
-          VehicleType: 'XT-860L',
+          VehicleModel: 'XT-860L',
           LicensePlateType: '蓝牌白字',
           TheOwnerName: '张三三',
           CarTime: '2020/12/12 12:12:12',
@@ -310,7 +309,7 @@ export default {
         {
           LicensePlateNumber: '湘A BGHF2',
           VehicleCategory: '轿车',
-          VehicleType: 'XT-860L',
+          VehicleModel: 'XT-860L',
           LicensePlateType: '蓝牌白字',
           TheOwnerName: '张三三',
           CarTime: '2020/12/12 12:12:12',
@@ -319,7 +318,7 @@ export default {
         {
           LicensePlateNumber: '湘A BGHF2',
           VehicleCategory: '轿车',
-          VehicleType: 'XT-860L',
+          VehicleModel: 'XT-860L',
           LicensePlateType: '黄牌黑字',
           TheOwnerName: '张三三',
           CarTime: '2020/12/12 12:12:12',
@@ -332,13 +331,13 @@ export default {
       form: {
         LicensePlateNumber: '',
         VehicleCategory: '',
-        VehicleType: '',
+        VehicleModel: '',
         LicensePlateType: '',
         TheBodyColor: '',
         Provinces: '',
         TheOwnerName: '',
         IdentityNumber: '',
-        CarTime: '',
+        CarTime: null,
         ControlCategory: ''
       }
     }
@@ -346,18 +345,21 @@ export default {
   methods: {
     onSubmit () { },
     onSubmit1 () {
+      this.form = {}
       this.dialogFormVisible1 = true
     },
-    handleDetails () {
+    handleDetails (index) {
+      this.form = this.tableData[index]
       this.dialogFormVisible = true
     },
-    handleDetails1 () {
+    handleDetails1 (index, row) {
       this.$confirm('此操作将永久移除该条记录, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning',
         center: true
       }).then(() => {
+        this.tableData.splice(index, 1)
         this.$message({
           type: 'success',
           message: '删除成功!'
@@ -368,6 +370,11 @@ export default {
           message: '已取消删除'
         })
       })
+    },
+    addData () {
+      this.tableData.push(this.form)
+      this.form = {}
+      this.dialogFormVisible1 = false
     },
     handleSizeChange (val) {
       console.log(`每页 ${val} 条`)

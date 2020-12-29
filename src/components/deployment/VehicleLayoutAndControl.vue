@@ -149,8 +149,8 @@
       </div>
     </div>
     <div class="flex1 vehicle-btn-bot">
-      <el-button class="w150" type="primary">保存</el-button>
-      <el-button class="w150">取消</el-button>
+      <el-button class="w150" type="primary" @click="cancel">保存</el-button>
+      <el-button class="w150" @click="cancel">取消</el-button>
     </div>
   </div>
 </template>
@@ -224,6 +224,9 @@ export default {
     },
     DeploymentControl () {
       this.dialogVisible1 = true
+    },
+    cancel () {
+      this.formInline = {}
     }
   }
 }

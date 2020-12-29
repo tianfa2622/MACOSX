@@ -38,9 +38,14 @@
           placeholder="请输入民族"
           class="w200"
         >
-          <el-option label="汉族" value="汉族"></el-option>
-          <el-option label="维吾尔族" value="维吾尔族"></el-option>
-          <el-option label="苗族" value="苗族"></el-option>
+          <el-option
+            v-for="item in nation"
+            :key="item.length"
+            :label="item.name"
+            :value="item.name"
+          ></el-option>
+          <!-- <el-option label="维吾尔族" value="维吾尔族"></el-option>
+          <el-option label="苗族" value="苗族"></el-option> -->
         </el-select>
       </el-form-item>
       <el-form-item label="籍贯：" class="w-30">
@@ -52,8 +57,8 @@
       </el-form-item>
       <el-form-item label="性别：" class="w-30">
         <el-select v-model="form.gender" class="w200" placeholder="请选择性别">
-          <el-option label="男" value="male"></el-option>
-          <el-option label="女" value="Female"></el-option>
+          <el-option label="男" value="1"></el-option>
+          <el-option label="女" value="0"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="出生时间：" class="w-30">
@@ -182,8 +187,8 @@
       </el-form-item>
     </el-form>
     <div class="btn-bot">
-      <el-button class="w150" type="primary">保存</el-button>
-      <el-button class="w150">取消</el-button>
+      <el-button class="w150" type="primary" @click="cancel">保存</el-button>
+      <el-button class="w150" @click="cancel">取消</el-button>
     </div>
     <!-- 布控范围 -->
     <el-dialog title="布控范围" :visible.sync="dialogVisible" width="40%">
@@ -193,13 +198,14 @@
           v-model="selected"
           :data="$pcaa"
           :level="1"
+          class="line-h"
         ></area-select>
       </div>
       <div class="ml-30">
         <el-transfer
           filterable
           :filter-method="filterMethod"
-          filter-placeholder="请输入城市拼音"
+          filter-placeholder="请输入检查站拼音"
           v-model="value"
           :data="data"
         >
@@ -216,6 +222,7 @@
 </template>
 
 <script>
+import nation from '../Nation/Nation'
 export default {
   data () {
     const generateData = _ => {
@@ -232,6 +239,7 @@ export default {
       return data
     }
     return {
+      nation,
       data: generateData(),
       value: [],
       filterMethod (query, item) {
@@ -282,6 +290,9 @@ export default {
     },
     DeploymentControl () {
       this.dialogVisible = true
+    },
+    cancel () {
+      this.form = {}
     }
   }
 }
@@ -289,6 +300,9 @@ export default {
 </script>
 
 <style lang="less">
+.line-h {
+  line-height: 16px;
+}
 .form-content {
   height: 90%;
   padding: 20px 10% 0;

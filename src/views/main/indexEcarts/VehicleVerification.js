@@ -40,7 +40,7 @@ const option = {
     {
       text: '车辆核查',
       top: '6%',
-      left: '46%',
+      left: '40%',
       textStyle: {
         color: '#0092f6'
       }

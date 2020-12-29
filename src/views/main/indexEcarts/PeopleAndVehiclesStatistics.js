@@ -34,9 +34,9 @@ const options = {
     top: '5%',
     x: 'center',
     textStyle: {
-      fontSize: 14,
-      color: '#fff',
-      fontWeight: 400
+      fontSize: 16,
+      color: '#0092f6',
+      fontWeight: 700
     }
   }],
   series: [{
