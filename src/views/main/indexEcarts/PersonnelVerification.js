@@ -117,7 +117,7 @@ const option = {
     clockwise: 'true',
     avoidLabelOverlap: true, // 避免标签重叠
     radius: ['30%', '50%'],
-    center: ['25%', '65%'],
+    center: ['30%', '65%'],
     data: data,
     label: {
       normal: {

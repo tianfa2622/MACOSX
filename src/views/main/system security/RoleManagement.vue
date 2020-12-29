@@ -334,13 +334,14 @@ export default {
       this.dialogVisible1 = true
     },
     // 删除
-    handleDetails1 () {
+    handleDetails1 (index) {
       this.$confirm('确定删除该角色吗?----删除前请检查该角色中已无用户，否则无法删除！', '删除确认', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning',
         center: true
       }).then(() => {
+        this.tableDate.splice(index, 1)
         this.$message({
           type: 'success',
           message: '该角色已删除!'

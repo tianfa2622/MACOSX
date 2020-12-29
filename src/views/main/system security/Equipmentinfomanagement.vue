@@ -23,6 +23,7 @@
         style="width: 100%"
         class="flex1"
         height="100%"
+        :key="itemkey"
       >
         <el-table-column
           type="index"
@@ -133,9 +134,7 @@
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
-          <el-button type="primary" @click="dialogVisible = false">
-            提 交
-          </el-button>
+          <el-button type="primary" @click="addbtn"> 提 交 </el-button>
           <el-button @click="dialogVisible = false">取 消</el-button>
         </span>
       </el-dialog>
@@ -189,22 +188,34 @@ export default {
         UpdateTime: '2020-11-30 12:12:59'
       },
       currentPage: 1,
-      dialogVisible: false
-
+      dialogVisible: false,
+      itemkey: '',
+      Rowindex: null
     }
   },
   methods: {
     onSubmit () {},
-    handleDetails () {
+    handleDetails (index, row) {
       this.dialogVisible = true
+      const editrow = JSON.parse(JSON.stringify(row))
+      this.form2 = editrow
+      this.Rowindex = index
     },
-    handleDetails1 () {
+    addbtn () {
+      const UpdateTime = this.$moment(new Date()).format('YYYY-MM-DD HH:mm:ss')
+      this.form2.UpdateTime = UpdateTime
+      this.dialogVisible = false
+      this.tableDate[this.Rowindex] = this.form2
+      this.itemkey = Math.random()
+    },
+    handleDetails1 (index) {
       this.$confirm('是否确认删除 X射线安检机 此设备?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning',
         center: true
       }).then(() => {
+        this.tableDate.splice(index, 1)
         this.$message({
           type: 'success',
           message: '删除成功!'

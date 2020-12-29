@@ -39,7 +39,7 @@ const option = {
   color: colors,
   title: [{
     text: '战果统计',
-    bottom: '38%',
+    top: '6%',
     left: '40%',
     textStyle: {
       fontSize: 16,

@@ -39,7 +39,7 @@ const option = {
     },
     {
       text: '车辆核查',
-      top: '6%',
+      top: '10%',
       left: '40%',
       textStyle: {
         color: '#0092f6'
@@ -118,7 +118,7 @@ const option = {
     clockwise: 'true',
     avoidLabelOverlap: true, // 避免标签重叠
     radius: ['30%', '50%'],
-    center: ['25%', '65%'],
+    center: ['30%', '65%'],
     data: data,
     label: {
       normal: {

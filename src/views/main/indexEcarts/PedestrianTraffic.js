@@ -11,7 +11,7 @@ const options = {
       color: '#0092f6'
     },
     // left: '6%'
-    top: '6%',
+    top: '7%',
     x: 'center'
   },
   tooltip: {
@@ -36,9 +36,9 @@ const options = {
     }
   },
   grid: {
-    left: '3%',
-    right: '4%',
-    bottom: '3%',
+    left: '4%',
+    right: '5%',
+    bottom: '4%',
     containLabel: true
   },
   xAxis: [{

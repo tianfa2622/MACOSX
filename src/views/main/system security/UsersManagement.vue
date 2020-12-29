@@ -426,7 +426,8 @@ export default {
       dialogVisible: false,
       dialogVisible3: false,
       activeNames: ['1'],
-      itemkey: ''
+      itemkey: '',
+      Rowindex: null
     }
   },
   methods: {

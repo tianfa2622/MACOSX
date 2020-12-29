@@ -31,7 +31,7 @@ const options = {
   // },
   title: [{
     text: '当日人车统计',
-    top: '5%',
+    top: '6%',
     x: 'center',
     textStyle: {
       fontSize: 16,
@@ -42,7 +42,7 @@ const options = {
   series: [{
     type: 'pie',
     radius: ['25%', '50%'],
-    center: ['50%', '50%'],
+    center: ['50%', '60%'],
     data: echartData,
     hoverAnimation: true,
     itemStyle: {
@@ -54,7 +54,7 @@ const options = {
     labelLine: {
       normal: {
         length: 20,
-        length2: 120,
+        length2: 90,
         lineStyle: {
           color: '#cfb31d'
         }

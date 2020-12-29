@@ -47,7 +47,7 @@ const option = {
   title: [
     {
       text: '民警数量',
-      top: '4%',
+      top: '5%',
       left: '50%',
       textStyle: {
         fontSize: 16,
@@ -56,7 +56,7 @@ const option = {
     },
     {
       text: '装备情况',
-      bottom: '38%',
+      bottom: '35%',
       left: '50%',
       textStyle: {
         fontSize: 16,
@@ -98,7 +98,7 @@ const option = {
   grid: {
     left: '10%',
     right: '2%',
-    top: '10%',
+    top: '13%',
     height: '45%',
     containLabel: true
   },
