@@ -121,7 +121,23 @@
         </el-menu-item>
       </el-submenu>
 
-      <el-submenu index="6" popper-class="main-submenu-item">
+      <el-submenu popper-class="main-submenu-item" index="6">
+        <template slot="title">
+          <span class="nav-size">勤务管理</span>
+        </template>
+        <el-menu-item index="/serviceStart">
+          <template slot="title">
+            <span>勤务启动</span>
+          </template>
+        </el-menu-item>
+        <el-menu-item index="/reportTheResults">
+          <template slot="title">
+            <span>战果上报</span>
+          </template>
+        </el-menu-item>
+      </el-submenu>
+
+      <el-submenu index="7" popper-class="main-submenu-item">
         <template slot="title">
           <span class="nav-size">基本信息</span>
         </template>
@@ -147,7 +163,7 @@
         </el-menu-item>
       </el-submenu>
 
-      <el-submenu popper-class="main-submenu-item" index="7">
+      <el-submenu popper-class="main-submenu-item" index="8">
         <template slot="title">
           <span class="nav-size">系统安全</span>
         </template>
@@ -169,22 +185,6 @@
         <el-menu-item index="/equipmentinfomanagement">
           <template slot="title">
             <span>设备信息管理</span>
-          </template>
-        </el-menu-item>
-      </el-submenu>
-
-      <el-submenu popper-class="main-submenu-item" index="8">
-        <template slot="title">
-          <span class="nav-size">勤务管理</span>
-        </template>
-        <el-menu-item index="/serviceStart">
-          <template slot="title">
-            <span>勤务启动</span>
-          </template>
-        </el-menu-item>
-        <el-menu-item index="/reportTheResults">
-          <template slot="title">
-            <span>战果上报</span>
           </template>
         </el-menu-item>
       </el-submenu>

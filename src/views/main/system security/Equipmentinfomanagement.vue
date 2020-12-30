@@ -20,6 +20,7 @@
         :data="tableDate"
         fit
         border
+        size="small"
         style="width: 100%"
         class="flex1"
         height="100%"

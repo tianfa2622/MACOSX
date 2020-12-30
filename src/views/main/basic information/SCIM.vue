@@ -83,6 +83,7 @@
         style="width: 100%"
         class="flex1"
         height="100%"
+        size="small"
         :key="itemkey"
       >
         <el-table-column

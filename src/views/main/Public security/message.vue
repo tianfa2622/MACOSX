@@ -78,6 +78,7 @@
         class="flex1"
         height="100%"
         style="width: 100%"
+        size="small"
       >
         <el-table-column
           fixed

@@ -4,7 +4,7 @@ var xData = (function () {
 }())
 
 const options = {
-  backgroundColor: '#344b58',
+  // backgroundColor: '#344b58',
   title: {
     text: '车辆查控',
     x: '4%',

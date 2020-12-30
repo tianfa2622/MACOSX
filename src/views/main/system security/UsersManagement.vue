@@ -151,9 +151,7 @@
         :data="tableDate"
         fit
         border
-        :row-style="{ height: '32px' }"
-        :header-row-style="{ height: '32px' }"
-        :cell-style="{ padding: '5px' }"
+        size="small"
         style="width: 100%"
         class="flex1"
         height="100%"

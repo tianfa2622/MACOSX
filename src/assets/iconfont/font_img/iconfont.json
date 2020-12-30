@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "19131691",
+      "name": "检查站",
+      "font_class": "u2390",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
       "icon_id": "12891720",
       "name": "勤务管理",
       "font_class": "qinwuguanli",

@@ -1,7 +1,7 @@
 // 战果区域统计
 
 const options = {
-  backgroundColor: '#12193a',
+  // backgroundColor: '#12193a',
   color: ['#f0c725', '#16f892'],
   title: {
     left: 'center',

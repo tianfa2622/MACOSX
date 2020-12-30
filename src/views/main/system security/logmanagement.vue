@@ -40,6 +40,7 @@
         :data="tableDate"
         fit
         border
+        size="small"
         style="width: 100%"
         class="flex1"
         height="100%"
@@ -91,7 +92,13 @@
         width="40%"
         style="height: 100%"
       >
-        <el-table :data="tableDate1" fit border style="width: 100%">
+        <el-table
+          :data="tableDate1"
+          size="small"
+          fit
+          border
+          style="width: 100%"
+        >
           <el-table-column
             type="index"
             label="NO."

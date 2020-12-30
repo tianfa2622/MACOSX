@@ -40,6 +40,7 @@
         :data="tableDate"
         fit
         border
+        size="small"
         :key="itemkey"
         style="width: 100%"
         class="flex1"
@@ -264,6 +265,7 @@
             "
             tooltip-effect="dark"
             style="width: 100%"
+            size="small"
             @selection-change="handleSelectionChange"
           >
             <el-table-column type="selection" width="55"></el-table-column>

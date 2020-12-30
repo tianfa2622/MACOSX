@@ -80,6 +80,7 @@
           :data="tableData"
           fit
           border
+          size="small"
           style="width: 100%"
           :cell-class-name="setRowStyle"
           class="flex1"
@@ -149,36 +150,42 @@
           <el-table-column
             label="操作"
             :resizable="false"
-            min-width="150px"
             align="center"
+            min-width="90px"
           >
             <template slot-scope="scope">
-              <el-button
-                @click="handleDetails(scope.$index, scope.row)"
+              <el-dropdown
+                split-button
                 type="primary"
-                class="mini-btn mt-5"
                 size="mini"
-                :resizable="false"
+                trigger="click"
+                @click="handleDetails(scope.$index, scope.row)"
               >
                 查看
-              </el-button>
-              <el-button
-                @click="handleDetails3(scope.$index, scope.row)"
-                size="mini"
-                type="info"
-                class="mini-btn mt-5"
-                v-if="scope.row.CarComparison !== '正常'"
-              >
-                处置
-              </el-button>
-              <el-button
-                @click="handleDetails2(scope.$index, scope.row)"
-                size="mini"
-                type="primary"
-                class="bgc1 mini-btn mt-5"
-              >
-                关联人员
-              </el-button>
+                <el-dropdown-menu slot="dropdown">
+                  <el-dropdown-item>
+                    <el-button
+                      @click="handleDetails2(scope.$index, scope.row)"
+                      type="primary"
+                      class="bgc1"
+                      size="mini"
+                    >
+                      关联人员
+                    </el-button>
+                  </el-dropdown-item>
+                  <el-dropdown-item>
+                    <el-button
+                      class="mt-5 w-100"
+                      size="mini"
+                      @click="handleDetails3(scope.$index, scope.row)"
+                      type="info"
+                      v-if="scope.row.CarComparison !== '正常'"
+                    >
+                      处 置
+                    </el-button>
+                  </el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
             </template>
           </el-table-column>
         </el-table>
@@ -776,8 +783,12 @@ export default {
 .cancelColor {
   color: red;
 }
-.mini-btn {
-  padding: 7px 12px !important;
+.mini-btn1 {
+  padding: 7px 8px !important;
+  margin-left: 0 !important;
+}
+.mini-btn2 {
+  padding: 7px 5px !important;
 }
 </style>
 

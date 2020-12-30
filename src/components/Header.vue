@@ -18,10 +18,21 @@
         >
           返回首页
         </el-button>
-        <el-button type="text" icon="el-icon-s-comment" class="btntext">
+        <el-button
+          type="text"
+          icon="el-icon-s-comment"
+          class="btntext"
+          v-if="$route.path !== '/message'"
+          @click="$router.push('/message')"
+        >
           消息
         </el-button>
-        <el-button type="text" icon="el-icon-s-tools" class="btntext">
+        <el-button
+          type="text"
+          icon="el-icon-s-tools"
+          class="btntext"
+          style="display: none"
+        >
           个人设置
         </el-button>
         <el-button type="text" class="btntext">退出</el-button>

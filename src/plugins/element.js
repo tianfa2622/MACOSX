@@ -41,9 +41,15 @@ import {
   Image,
   Avatar,
   Autocomplete,
-  Tree
+  Tree,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu
 } from 'element-ui'
 
+Vue.use(Dropdown)
+Vue.use(DropdownItem)
+Vue.use(DropdownMenu)
 Vue.use(Tree)
 Vue.use(Autocomplete)
 Vue.use(Avatar)

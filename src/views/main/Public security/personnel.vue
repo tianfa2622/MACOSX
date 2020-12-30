@@ -65,6 +65,7 @@
           style="width: 100%"
           class="flex1"
           height="100%"
+          size="small"
           :cell-class-name="setRowStyle"
         >
           <el-table-column
@@ -127,12 +128,7 @@
             :resizable="false"
             show-overflow-tooltip
           ></el-table-column>
-          <el-table-column
-            prop="cao"
-            label="操作"
-            align="center"
-            :resizable="false"
-          >
+          <el-table-column label="操作" width="150" :resizable="false">
             <template slot-scope="scope">
               <el-button
                 @click="handleDetails(scope.$index, scope.row)"
@@ -143,7 +139,7 @@
               <el-button
                 @click="handleDetails1(scope.$index, scope.row)"
                 size="mini"
-                class="tablebtn mt-5"
+                class="mt-5"
                 type="info"
                 v-if="scope.row.PeoComparison !== '正常'"
                 >处置</el-button

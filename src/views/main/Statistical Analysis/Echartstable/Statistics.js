@@ -1,7 +1,7 @@
 // 战果物品统计
 
 const options = {
-  backgroundColor: '#00265f',
+  // backgroundColor: '#00265f',
   title: {
     text: '物品统计',
     x: 'center',

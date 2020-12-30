@@ -64,6 +64,7 @@
           border
           class="flex1"
           height="100%"
+          size="small"
           style="width: 100%"
         >
           <el-table-column
@@ -117,9 +118,9 @@
             <template slot-scope="scope">
               <el-button
                 @click="handleDetails(scope.$index, scope.row)"
-                type="text"
+                type="primary"
                 size="small"
-                >查看</el-button
+                >详情</el-button
               >
             </template>
           </el-table-column>

@@ -81,9 +81,7 @@
         :data="tableDate"
         fit
         border
-        :row-style="{ height: '32px' }"
-        :header-row-style="{ height: '32px' }"
-        :cell-style="{ padding: '5px' }"
+        size="small"
         style="width: 100%"
         class="flex1"
         height="100%"
@@ -220,16 +218,16 @@ export default {
             label: '车辆核验预警',
             children: [{
               id: 9,
-              label: '只读'
+              label: '访问'
             }, {
               id: 10,
-              label: '增'
+              label: '添加'
             }, {
               id: 11,
-              label: '删'
+              label: '删除'
             }, {
               id: 12,
-              label: '改'
+              label: '修改'
             }, {
               id: 13,
               label: '处理'
@@ -276,16 +274,16 @@ export default {
           label: '车辆核验预警',
           children: [{
             id: 9,
-            label: '只读'
+            label: '访问'
           }, {
             id: 10,
-            label: '增'
+            label: '添加'
           }, {
             id: 11,
-            label: '删'
+            label: '删除'
           }, {
             id: 12,
-            label: '改'
+            label: '修改'
           }, {
             id: 13,
             label: '处理'

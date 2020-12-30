@@ -52,7 +52,14 @@
       style="over-flow: hidden"
       body-style="height: 100%"
     >
-      <el-table :data="tableData" fit border class="flex1 w-100" height="100%">
+      <el-table
+        :data="tableData"
+        fit
+        border
+        class="flex1 w-100"
+        size="small"
+        height="100%"
+      >
         <el-table-column
           type="index"
           label="NO."
@@ -181,7 +188,14 @@
           <el-button plain style="width: 100px">搜索</el-button>
         </el-form-item>
       </el-form>
-      <el-table :data="tableData1" fit border style="width: 100%" height="100%">
+      <el-table
+        :data="tableData1"
+        fit
+        border
+        size="small"
+        style="width: 100%"
+        height="100%"
+      >
         <el-table-column
           prop="Prohibitedtype"
           label="违禁物品类别"
