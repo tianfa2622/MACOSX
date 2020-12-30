@@ -37,10 +37,7 @@
         </el-form-item>
         <el-form-item class="ml-15">
           <el-button @click="onSubmit" type="primary">搜索</el-button>
-          <el-button
-            @click="onSubmit"
-            type="primary"
-            class="ml-25 p-15 w100 bgc"
+          <el-button @click="onSubmit" type="primary" class="bgc w100"
             >导出</el-button
           >
         </el-form-item>
@@ -54,7 +51,47 @@
         <el-button @click="onSubmit" type="primary" size="mini">月</el-button>
         <el-button @click="onSubmit" type="primary" size="mini">年</el-button>
       </div>
-      <EchartsPackage :option="TrafficStatistics"></EchartsPackage>
+      <div class="w-100 content-h dflex">
+        <div class="w-50 h-100">
+          <EchartsPackage :option="TrafficStatistics"></EchartsPackage>
+        </div>
+        <div class="w-50 h-100 posi-rel">
+          <el-table
+            :data="tableData"
+            fit
+            border
+            size="small"
+            style="width: 100%"
+            class="flex1"
+            height="100%"
+          >
+            <el-table-column prop="data" label="日期" :resizable="false">
+            </el-table-column>
+            <el-table-column
+              prop="NumberOfPersonnel"
+              :resizable="false"
+              label="人员通行数"
+            ></el-table-column>
+            <el-table-column
+              prop="NumberOfVehicles"
+              label="车辆通行数"
+              :resizable="false"
+            >
+            </el-table-column>
+          </el-table>
+          <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page="currentPage"
+            :page-sizes="[5, 10, 15, 20]"
+            :page-size="5"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="400"
+            class="posi-abs b-10 ta-c offset"
+          >
+          </el-pagination>
+        </div>
+      </div>
     </el-card>
   </div>
 </template>
@@ -99,13 +136,37 @@ export default {
       formInline: {
         OwnedCheckpoint: '',
         timeLimit: ''
-      }
+      },
+      tableData: [
+        {
+          data: '2020-12-01',
+          NumberOfPersonnel: '50',
+          NumberOfVehicles: '10'
+        },
+        {
+          data: '2020-12-01',
+          NumberOfPersonnel: '50',
+          NumberOfVehicles: '10'
+        },
+        {
+          data: '2020-12-01',
+          NumberOfPersonnel: '50',
+          NumberOfVehicles: '10'
+        }
+      ],
+      currentPage: 1
     }
   },
   mounted () {
   },
   methods: {
-    onSubmit () {}
+    onSubmit () {},
+    handleSizeChange (val) {
+      console.log(`每页 ${val} 条`)
+    },
+    handleCurrentChange (val) {
+      console.log(`当前页: ${val}`)
+    }
   }
 }
 </script>
@@ -122,7 +183,7 @@ export default {
       padding: 0 2px;
     }
     .bgc {
-      border: #9cf !important;
+      border: 1px #9cf !important;
 
       background-color: #9cf !important;
     }
@@ -131,6 +192,9 @@ export default {
     .headerbtn {
       text-align: end;
     }
+  }
+  .content-h {
+    height: calc(100% - 64px);
   }
 }
 </style>

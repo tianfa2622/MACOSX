@@ -35,19 +35,68 @@
           </el-form-item>
           <el-form-item class="ml-15">
             <el-button @click="onSubmit" type="primary">搜索</el-button>
-            <el-button
-              @click="onSubmit"
-              type="primary"
-              class="ml-25 p-15 w100 bgc"
+            <el-button @click="onSubmit" type="primary" class="ml-25 w100 bgc"
               >导出</el-button
             >
           </el-form-item>
         </el-form>
-        <div class="dflex1 echarts-content mwidth">
-          <EchartsPackage
-            v-if="'first' == activeName"
-            :option="Statistics"
-          ></EchartsPackage>
+        <div class="dflex1 echarts-content mwidth dflex">
+          <div class="w-50 h-100">
+            <EchartsPackage
+              v-if="'first' == activeName"
+              :option="Statistics"
+            ></EchartsPackage>
+          </div>
+          <div class="w-50 h-100 posi-rel">
+            <el-table
+              :data="tableData"
+              fit
+              border
+              size="small"
+              style="width: 100%"
+              class="flex1"
+              height="100%"
+            >
+              <el-table-column prop="data" label="日期" :resizable="false">
+              </el-table-column>
+              <el-table-column
+                prop="yryb"
+                :resizable="false"
+                label="易燃易爆"
+              ></el-table-column>
+              <el-table-column prop="qzdy" label="枪支弹药" :resizable="false">
+              </el-table-column>
+              <el-table-column prop="gzdj" label="管制刀具" :resizable="false">
+              </el-table-column>
+              <el-table-column
+                prop="fdxcp"
+                label="反动宣传品"
+                :resizable="false"
+              >
+              </el-table-column>
+              <el-table-column prop="dp" label="毒品" :resizable="false">
+              </el-table-column
+              ><el-table-column prop="zdry" label="重点人员" :resizable="false">
+              </el-table-column>
+              <el-table-column prop="zdcl" label="重点车辆" :resizable="false">
+              </el-table-column>
+              <el-table-column prop="cz" label="超载" :resizable="false">
+              </el-table-column>
+              <el-table-column prop="total" label="总数" :resizable="false">
+              </el-table-column>
+            </el-table>
+            <el-pagination
+              @size-change="handleSizeChange"
+              @current-change="handleCurrentChange"
+              :current-page="currentPage"
+              :page-sizes="[5, 10, 15, 20]"
+              :page-size="5"
+              layout="total, sizes, prev, pager, next, jumper"
+              :total="400"
+              class="posi-abs b-10 ta-c offset"
+            >
+            </el-pagination>
+          </div>
         </div>
       </el-tab-pane>
       <el-tab-pane
@@ -104,20 +153,94 @@
             </el-form-item>
             <el-form-item class="ml-15">
               <el-button @click="onSubmit" type="primary">搜索</el-button>
-              <el-button
-                @click="onSubmit"
-                type="primary"
-                class="ml-25 p-15 w100 bgc"
+              <el-button @click="onSubmit" type="primary" class="ml-25 w100 bgc"
                 >导出</el-button
               >
             </el-form-item>
           </el-form>
         </el-card>
         <el-card class="mt-10 flex1 fill_height" body-style="height: 100%">
-          <EchartsPackage
-            v-if="'second' == activeName"
-            :option="RegionalStatistics"
-          ></EchartsPackage>
+          <!-- <div slot="header" class="header-tit">
+
+          </div> -->
+          <div class="w-100 h-100 dflex">
+            <div class="w-50 h-100">
+              <EchartsPackage
+                v-if="'second' == activeName"
+                :option="RegionalStatistics"
+              ></EchartsPackage>
+            </div>
+            <div class="w-50 h-100 posi-rel">
+              <el-table
+                :data="tableData1"
+                fit
+                border
+                size="small"
+                style="width: 100%"
+                class="flex1"
+                height="100%"
+              >
+                <el-table-column
+                  prop="CheckpointName"
+                  label="检查站名称"
+                  :resizable="false"
+                >
+                </el-table-column>
+                <el-table-column
+                  prop="yryb"
+                  :resizable="false"
+                  label="易燃易爆"
+                ></el-table-column>
+                <el-table-column
+                  prop="qzdy"
+                  label="枪支弹药"
+                  :resizable="false"
+                >
+                </el-table-column>
+                <el-table-column
+                  prop="gzdj"
+                  label="管制刀具"
+                  :resizable="false"
+                >
+                </el-table-column>
+                <el-table-column
+                  prop="fdxcp"
+                  label="反动宣传品"
+                  :resizable="false"
+                >
+                </el-table-column>
+                <el-table-column prop="dp" label="毒品" :resizable="false">
+                </el-table-column
+                ><el-table-column
+                  prop="zdry"
+                  label="重点人员"
+                  :resizable="false"
+                >
+                </el-table-column>
+                <el-table-column
+                  prop="zdcl"
+                  label="重点车辆"
+                  :resizable="false"
+                >
+                </el-table-column>
+                <el-table-column prop="cz" label="超载" :resizable="false">
+                </el-table-column>
+                <el-table-column prop="total" label="总数" :resizable="false">
+                </el-table-column>
+              </el-table>
+              <el-pagination
+                @size-change="handleSizeChange1"
+                @current-change="handleCurrentChange1"
+                :current-page="currentPage1"
+                :page-sizes="[5, 10, 15, 20]"
+                :page-size="5"
+                layout="total, sizes, prev, pager, next, jumper"
+                :total="400"
+                class="posi-abs b-10 ta-c offset"
+              >
+              </el-pagination>
+            </div>
+          </div>
         </el-card>
       </el-tab-pane>
     </el-tabs>
@@ -172,7 +295,38 @@ export default {
         province: '',
         city: '',
         Area: ''
-      }
+      },
+      tableData: [
+        {
+          data: '2020-12-01',
+          yryb: '5',
+          qzdy: '1',
+          gzdj: '10',
+          fdxcp: '10',
+          dp: '10',
+          zdry: '20',
+          zdcl: '33',
+          cz: '56',
+          total: '145'
+        }
+      ],
+      tableData1: [
+        {
+          CheckpointName: 'xx检查站',
+          yryb: '5',
+          qzdy: '1',
+          gzdj: '10',
+          fdxcp: '10',
+          dp: '10',
+          zdry: '20',
+          zdcl: '33',
+          cz: '56',
+          total: '145'
+        }
+      ],
+      currentPage: 1,
+      currentPage1: 1
+
     }
   },
   mounted () {
@@ -182,6 +336,18 @@ export default {
     // 切换标签页时触发
     handleClick (tab, event) {
       this.activeName = tab.name
+    },
+    handleSizeChange (val) {
+      console.log(`每页 ${val} 条`)
+    },
+    handleCurrentChange (val) {
+      console.log(`当前页: ${val}`)
+    },
+    handleSizeChange1 (val) {
+      console.log(`每页 ${val} 条`)
+    },
+    handleCurrentChange1 (val) {
+      console.log(`当前页: ${val}`)
     }
   }
 }

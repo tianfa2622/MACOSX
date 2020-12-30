@@ -38,8 +38,7 @@
           <el-button
             @click="onSubmit"
             type="primary"
-            size="medium"
-            class="ml-25 w100 bgc mr-25"
+            class="ml-25 bgc w100 mr-25"
             >导出</el-button
           >
         </el-form-item>

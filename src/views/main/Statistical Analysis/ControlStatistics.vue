@@ -37,10 +37,7 @@
         </el-form-item>
         <el-form-item class="ml-15">
           <el-button @click="onSubmit" type="primary">搜索</el-button>
-          <el-button
-            @click="onSubmit"
-            type="primary"
-            class="ml-25 p-15 w100 bgc"
+          <el-button @click="onSubmit" type="primary" class="ml-25 w100 bgc"
             >导出</el-button
           >
         </el-form-item>
@@ -48,7 +45,54 @@
     </el-card>
 
     <el-card class="mt-10 pb-30 flex1 fill_height" body-style="height: 100%">
-      <EchartsPackage :option="ControlStatistics"></EchartsPackage>
+      <div class="w-100 h-100 dflex">
+        <div class="w-50 h-100">
+          <EchartsPackage :option="ControlStatistics"></EchartsPackage>
+        </div>
+        <div class="w-50 h-100 posi-rel">
+          <el-table
+            :data="tableData"
+            fit
+            border
+            size="small"
+            style="width: 100%"
+            class="flex1"
+            height="100%"
+          >
+            <el-table-column prop="data" label="日期" :resizable="false">
+            </el-table-column>
+            <el-table-column
+              prop="normal"
+              :resizable="false"
+              label="正常"
+            ></el-table-column>
+            <el-table-column
+              prop="Warning"
+              :resizable="false"
+              label="预警"
+            ></el-table-column>
+            <el-table-column
+              prop="LiftTheWarning"
+              label="解除预警"
+              :resizable="false"
+            >
+            </el-table-column>
+            <el-table-column prop="total" label="总数" :resizable="false">
+            </el-table-column>
+          </el-table>
+          <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page="currentPage"
+            :page-sizes="[5, 10, 15, 20]"
+            :page-size="5"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="400"
+            class="posi-abs b-10 ta-c offset"
+          >
+          </el-pagination>
+        </div>
+      </div>
     </el-card>
   </div>
 </template>
@@ -93,13 +137,41 @@ export default {
             picker.$emit('pick', [start, end])
           }
         }]
-      }
+      },
+      tableData: [
+        {
+          data: '2020-12-01',
+          normal: '10',
+          Warning: '15',
+          LiftTheWarning: '25',
+          total: '50'
+        }, {
+          data: '2020-12-01',
+          normal: '10',
+          Warning: '15',
+          LiftTheWarning: '25',
+          total: '50'
+        }, {
+          data: '2020-12-01',
+          normal: '10',
+          Warning: '15',
+          LiftTheWarning: '25',
+          total: '50'
+        }
+      ],
+      currentPage: 1
     }
   },
   mounted () {
   },
   methods: {
-    onSubmit () { }
+    onSubmit () { },
+    handleSizeChange (val) {
+      console.log(`每页 ${val} 条`)
+    },
+    handleCurrentChange (val) {
+      console.log(`当前页: ${val}`)
+    }
   }
 }
 </script>
@@ -107,5 +179,8 @@ export default {
 .header-title {
   font-size: 16px;
   font-weight: 500;
+}
+.content-h {
+  height: calc(100% - 64px);
 }
 </style>

@@ -4,14 +4,14 @@ var xData = (function () {
 }())
 
 const options = {
-  // backgroundColor: '#344b58',
+  // backgroundColor: '#dfe4ea',
   title: {
     text: '车辆查控',
     x: '4%',
     y: '4%',
 
     textStyle: {
-      color: '#fff',
+      color: '#000',
       fontSize: '22'
     }
   },

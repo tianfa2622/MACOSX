@@ -1,15 +1,14 @@
 // 战果区域统计
 
 const options = {
-  // backgroundColor: '#12193a',
   color: ['#f0c725', '#16f892'],
   title: {
     left: 'center',
-    text: '区域统计',
-    textStyle: {
-      color: '#FFFFFF',
-      fontSize: '14'
-    }
+    text: '区域统计'
+    // textStyle: {
+    //   color: '#000',
+    //   fontSize: '22'
+    // }
   },
   tooltip: {
     trigger: 'axis',
@@ -20,11 +19,10 @@ const options = {
   legend: {
     data: ['易燃易爆', '枪支弹药', '管制刀具', '反动宣传品', '毒品', '重点人员', '重点车辆', '超载'],
     x: 'center',
-    top: '25',
-    textStyle: {
-      color: '#c1cadf',
-      fontSize: 10
-    }
+    top: '30'
+    // textStyle: {
+    //   color: '#90979c'
+    // }
   },
   grid: {
     left: '6%',
@@ -39,12 +37,12 @@ const options = {
       data: ['xx检查站', 'xx检查站', 'xx检查站', 'xx检查站', 'xx检查站', 'xx检查站', 'xx检查站', 'xx检查站'],
       axisLine: {
         lineStyle: {
-          color: '#8f8082'
+          color: '#000'
         }
       },
       axisLabel: {
         interval: 0,
-        color: '#c1cadf'
+        color: '#000'
       }
     }
   ],
@@ -53,18 +51,18 @@ const options = {
       type: 'value',
       name: '(数量/起)',
       nameTextStyle: {
-        color: '#c1cadf',
+        color: '#2c3e50',
         align: 'right',
         lineHeight: 10
       },
       axisLine: {
         lineStyle: {
-          color: 'rgba(240,199,37,0.5)'
+          color: '#000'
         }
       },
       axisLabel: {
         interval: 0,
-        color: '#c1cadf'
+        color: '#000'
       }
     }
   ],

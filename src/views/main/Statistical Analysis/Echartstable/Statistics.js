@@ -7,11 +7,11 @@ const options = {
     x: 'center',
     y: '4%',
     textStyle: {
-      color: '#fff',
+      color: '#000',
       fontSize: '22'
     },
     subtextStyle: {
-      color: '#90979c',
+      color: '#000',
       fontSize: '16'
 
     }
@@ -34,12 +34,12 @@ const options = {
     axisLine: {
       show: true,
       lineStyle: {
-        color: 'rgba(255,255,255,0.12)'
+        color: '#000'
       }
     },
     axisLabel: {
       margin: 10,
-      color: '#e2e9ff',
+      color: '#000',
       textStyle: {
         fontSize: 14
       }
@@ -49,17 +49,17 @@ const options = {
     name: '数量/起',
     axisLabel: {
       formatter: '{value}',
-      color: '#e2e9ff'
+      color: '#000'
     },
     axisLine: {
       show: true,
       lineStyle: {
-        color: 'rgba(255,255,255,1)'
+        color: '#000'
       }
     },
     splitLine: {
       lineStyle: {
-        color: 'rgba(255,255,255,0.12)'
+        color: '#ccc'
       }
     }
   }],
@@ -96,7 +96,7 @@ const options = {
         lineHeight: 30,
         width: 80,
         height: 30,
-        backgroundColor: 'rgba(0,160,221,0.1)',
+        backgroundColor: '#ccc',
         borderRadius: 200,
         position: ['-8', '-60'],
         distance: 1,
@@ -104,7 +104,7 @@ const options = {
           '    {d|●}',
           ' {a|{c} 起}     \n',
           '    {b|}'
-        ].join(','),
+        ].join(''),
         rich: {
           d: {
             color: '#3CDDCF'
