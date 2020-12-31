@@ -8,7 +8,7 @@
       </div>
       <!-- 头部右侧区域 -->
       <div class="flr clearfix">
-        <el-button
+        <!-- <el-button
           type="text"
           icon="el-icon-s-home"
           class="btntext"
@@ -17,7 +17,7 @@
           @click="$router.push('/')"
         >
           返回首页
-        </el-button>
+        </el-button> -->
         <el-button
           type="text"
           icon="el-icon-s-comment"

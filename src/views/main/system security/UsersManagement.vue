@@ -43,10 +43,10 @@
         </el-row>
         <el-row>
           <el-col :span="24" style="text-align: end">
-            <el-button @click="onSubmit" type="primary" class="w200"
+            <el-button @click="onSubmit" type="primary" class="w150"
               >查询</el-button
             >
-            <el-button @click="onSubmit1" type="primary" class="w200"
+            <el-button @click="onSubmit1" type="primary" class="w150"
               >新增人员</el-button
             >
           </el-col>

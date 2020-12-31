@@ -34,11 +34,13 @@
           </el-select>
         </el-form-item>
         <el-form-item class="mb-5 w-90 align-e">
-          <el-button @click="onSubmit" type="primary">查询</el-button>
+          <el-button @click="onSubmit" class="w150" type="primary"
+            >查询</el-button
+          >
           <el-button
             @click="onSubmit"
             type="primary"
-            class="ml-25 bgc w100 mr-25"
+            class="ml-25 bgc w150 mr-25"
             >导出</el-button
           >
         </el-form-item>

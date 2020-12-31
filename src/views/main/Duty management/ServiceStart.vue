@@ -34,8 +34,10 @@
           </el-select>
         </el-form-item>
         <el-form-item class="flex1">
-          <el-button @click="onSubmit" type="primary">查询</el-button>
-          <el-button @click="onSubmit1" plain type="primary"
+          <el-button @click="onSubmit" class="w150" type="primary"
+            >查询</el-button
+          >
+          <el-button @click="onSubmit1" class="w150" plain type="primary"
             >创建任务</el-button
           >
         </el-form-item>

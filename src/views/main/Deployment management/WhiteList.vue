@@ -2,38 +2,36 @@
   <div class="fill_height dflex direction-column mwidth back-c">
     <el-card body-style="padding-bottom: 0">
       <div slot="header" class="clearfix">
-        <span style="font-size: 16px">车白名单</span>
+        <span style="font-size: 16px">车辆白名单</span>
       </div>
       <el-form :inline="true" size="medium" :model="formInline">
-        <el-form-item label="机动车牌号码：" style="width: 31%" class="ta-c">
+        <el-form-item label="机动车牌号码：" style="width: 25%" class="ta-c">
           <el-input v-model="formInline.CarNumber"></el-input>
         </el-form-item>
-        <el-form-item label="机动车车辆类型：" style="width: 31%" class="ta-c">
+        <el-form-item label="机动车车辆类型：" style="width: 25%" class="ta-c">
           <el-select v-model="formInline.category" placeholder="机动车车辆类型">
             <el-option label="轿车" value="shanghai"></el-option>
             <el-option label="货车" value="beijing"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="机动车车牌种类：" style="width: 31%" class="ta-c">
+        <el-form-item label="机动车车牌种类：" style="width: 25%" class="ta-c">
           <el-select v-model="formInline.species" placeholder="机动车车牌种类">
             <el-option label="蓝牌白字" value="shanghai"></el-option>
             <el-option label="黄牌黑字" value="beijing"></el-option>
-          </el-select> </el-form-item
-        ><br />
-        <div class="flr clearfix" style="margin: 0 215px 20px 10px">
-          <el-button
-            @click="onSubmit"
-            plain
-            style="margin-right: 20px; width: 200px"
-            >查询</el-button
-          >
-          <el-button
-            @click="onSubmit1"
-            type="primary"
-            style="margin-right: 20px; width: 200px"
-            >新增</el-button
-          >
-        </div>
+          </el-select>
+        </el-form-item>
+        <el-button
+          @click="onSubmit"
+          type="primary"
+          style="margin-right: 20px; width: 150px"
+          >查询</el-button
+        >
+        <el-button
+          @click="onSubmit1"
+          type="primary"
+          style="margin-right: 20px; width: 150px"
+          >新增</el-button
+        >
       </el-form>
     </el-card>
 

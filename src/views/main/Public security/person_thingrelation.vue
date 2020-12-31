@@ -3,7 +3,7 @@
   <div class="dflex direction-column fill_height mwidth back-c">
     <el-card body-style="padding-bottom: 0">
       <div slot="header" class="clearfix">
-        <span class="person_title">人车物关联</span>
+        <span class="person_title">信息归档</span>
       </div>
       <el-form
         :inline="true"
@@ -39,12 +39,10 @@
             <el-option label="区域二" value="beijing"></el-option>
           </el-select>
         </el-form-item>
-      </el-form>
-      <div class="flr clearfix mb-10 w-25">
-        <el-button @click="onSubmit" type="primary" class="w150 mr-20">
+        <el-button @click="onSubmit" type="primary" class="w150 ml-30">
           查询
         </el-button>
-      </div>
+      </el-form>
     </el-card>
 
     <el-card

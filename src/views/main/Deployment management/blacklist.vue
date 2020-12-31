@@ -56,13 +56,13 @@
           <el-button
             @click="onSubmit"
             type="primary"
-            style="margin-right: 20px; width: 200px"
+            style="margin-right: 20px; width: 150px"
             >查询</el-button
           >
           <el-button
             @click="onSubmit1"
             type="primary"
-            style="margin-right: 20px; width: 200px"
+            style="margin-right: 20px; width: 150px"
             >新增</el-button
           >
         </div>

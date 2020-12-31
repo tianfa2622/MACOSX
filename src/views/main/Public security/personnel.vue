@@ -1,10 +1,10 @@
 <template>
-  <!-- 人员核查预警 -->
+  <!-- 人员预警 -->
   <div class="fill_height dflex mwidth back-c">
     <div class="personnelLeft dflex direction-column">
       <el-card body-style="padding-bottom: 0" class="over-f">
         <div slot="header" class="clearfix">
-          <span style="font-size: 16px">人员核查预警</span>
+          <span style="font-size: 16px">人员预警</span>
         </div>
 
         <el-button
@@ -49,7 +49,7 @@
             </el-date-picker>
           </el-form-item>
           <el-form-item class="ml-25">
-            <el-button plain class="w150">查询</el-button>
+            <el-button type="primary" class="w150">查询</el-button>
           </el-form-item>
         </el-form>
       </el-card>

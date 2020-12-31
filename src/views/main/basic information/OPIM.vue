@@ -2,7 +2,7 @@
   <div class="fill_height mwidth dflex direction-column back-c">
     <el-card>
       <div slot="header" class="clearfix">
-        <span style="font-size: 16px">执勤人员信息管理</span>
+        <span style="font-size: 16px">执勤人员管理</span>
       </div>
       <el-form :model="formInline" size="medium" label-width="100px">
         <el-row type="flex" justify="space-around">
@@ -34,8 +34,10 @@
         </el-row>
         <el-row style="text-align: end">
           <el-col>
-            <el-button @click="onSubmit" plain class="w200">查询</el-button>
-            <el-button @click="onSubmit1" type="primary" class="w200 ml-20"
+            <el-button @click="onSubmit" type="primary" class="w150"
+              >查询</el-button
+            >
+            <el-button @click="onSubmit1" type="primary" class="w150 ml-20"
               >添加</el-button
             >
           </el-col>

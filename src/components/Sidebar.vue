@@ -20,12 +20,12 @@
         </template>
         <el-menu-item index="/vehicleVerification">
           <template slot="title">
-            <span>车辆核查预警</span>
+            <span>车辆预警</span>
           </template>
         </el-menu-item>
         <el-menu-item index="/personnel">
           <template slot="title">
-            <span class="home-title">人员核查预警</span>
+            <span class="home-title">人员预警</span>
           </template>
         </el-menu-item>
         <el-menu-item index="/iteminspection">
@@ -35,12 +35,12 @@
         </el-menu-item>
         <el-menu-item index="/personnelLostContact">
           <template slot="title">
-            <span>人员物关联</span>
+            <span>信息归档</span>
           </template>
         </el-menu-item>
         <el-menu-item index="/message">
           <template slot="title">
-            <span>处置联动及结果流转</span>
+            <span>联动处置</span>
           </template>
         </el-menu-item>
       </el-submenu>
@@ -56,12 +56,12 @@
         </el-menu-item>
         <el-menu-item index="/Witelist">
           <template slot="title">
-            <span>车白名单</span>
+            <span>车辆白名单</span>
           </template>
         </el-menu-item>
         <el-menu-item index="/deploymentcontrol">
           <template slot="title">
-            <span>布控</span>
+            <span>人车布控</span>
           </template>
         </el-menu-item>
       </el-submenu>
@@ -72,12 +72,12 @@
         </template>
         <el-menu-item index="/vehiclemonitoring">
           <template slot="title">
-            <span>车辆通行信息监测</span>
+            <span>车辆监测</span>
           </template>
         </el-menu-item>
         <el-menu-item index="/presonnelmonitoring">
           <template slot="title">
-            <span>人员信息监测</span>
+            <span>人员监测</span>
           </template>
         </el-menu-item>
       </el-submenu>
@@ -143,17 +143,17 @@
         </template>
         <el-menu-item index="/pscim">
           <template slot="title">
-            <span>公安检查站基本信息管理</span>
+            <span>检查站管理</span>
           </template>
         </el-menu-item>
         <el-menu-item index="/opim">
           <template slot="title">
-            <span>执勤人员信息管理</span>
+            <span>执勤人员管理</span>
           </template>
         </el-menu-item>
         <el-menu-item index="/scim">
           <template slot="title">
-            <span>警备装备信息管理</span>
+            <span>警备装备管理</span>
           </template>
         </el-menu-item>
         <el-menu-item index="/warningSettings">

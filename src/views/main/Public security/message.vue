@@ -2,7 +2,7 @@
   <div class="dflex direction-column fill_height mwidth back-c">
     <el-card body-style="padding-bottom: 0">
       <div slot="header" class="clearfix">
-        <span style="font-size: 16px">处理联动及结果流转</span>
+        <span style="font-size: 16px">联动处理</span>
       </div>
       <el-form :inline="true" size="medium" :model="form" label-width="120px">
         <el-form-item label="异常/预警类型：" class="ta-c w-25">
@@ -59,7 +59,7 @@
           </el-col>
         </el-form-item>
         <el-form-item class="ta-c w-25">
-          <el-button type="primary" plain class="w150" @click="onSubmit"
+          <el-button type="primary" class="w150" @click="onSubmit"
             >查询</el-button
           >
         </el-form-item>

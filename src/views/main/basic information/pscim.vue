@@ -2,13 +2,13 @@
   <div class="fill_height mwidth dflex direction-column back-c">
     <el-card body-style="padding-bottom:0">
       <div slot="header" class="clearfix">
-        <span style="font-size: 16px">公安检查站信息管理</span>
+        <span style="font-size: 16px">检查站管理</span>
       </div>
       <el-form :inline="true" size="medium" :model="formInline">
-        <el-form-item label="公安检查站名称：" style="width: 30%" class="ta-c">
+        <el-form-item label="公安检查站名称：" style="width: 25%" class="ta-c">
           <el-input v-model="formInline.CheckpointName"></el-input>
         </el-form-item>
-        <el-form-item label="公安检查站类别：" style="width: 30%" class="ta-c">
+        <el-form-item label="公安检查站类别：" style="width: 25%" class="ta-c">
           <el-select
             v-model="formInline.CheckpointCategory"
             placeholder="公安检查站类别"
@@ -17,19 +17,16 @@
             <el-option label="二级" value="beijing"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="归属单位名称：" style="width: 30%" class="ta-c">
+        <el-form-item label="归属单位名称：" style="width: 25%" class="ta-c">
           <el-input v-model="formInline.unitName"></el-input>
         </el-form-item>
-      </el-form>
-      <div class="mwidth flr clearfix" style="width: 25%">
         <el-button
           @click="onSubmit"
           type="primary"
-          class="mb-10"
-          style="margin-right: 20px; width: 200px"
+          style="margin-right: 20px; width: 150px"
           >查询</el-button
         >
-      </div>
+      </el-form>
     </el-card>
 
     <el-card

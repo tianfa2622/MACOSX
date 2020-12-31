@@ -4,7 +4,7 @@
     <div class="vehicleLeft dflex direction-column">
       <el-card body-style="padding-bottom: 0">
         <div slot="header" class="clearfix">
-          <span style="font-size: 16px">车辆核查预警</span>
+          <span style="font-size: 16px">车辆预警</span>
         </div>
         <el-button
           type="primary"
@@ -67,7 +67,7 @@
             </el-col>
           </el-form-item>
           <el-form-item style="margin-left: 20px">
-            <el-button plain style="width: 100px">查询</el-button>
+            <el-button type="primary" style="width: 150px">查询</el-button>
           </el-form-item>
         </el-form>
       </el-card>
