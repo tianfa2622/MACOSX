@@ -29,7 +29,7 @@
           </el-col>
           <el-col :span="5">
             <el-button @click="onSubmit" type="primary" class="w100">
-              搜索
+              查询
             </el-button>
             <el-button @click="onSubmit1" type="primary" class="w100">
               增加

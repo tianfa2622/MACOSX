@@ -185,7 +185,7 @@
           <el-input></el-input>
         </el-form-item>
         <el-form-item style="margin-left: 20px">
-          <el-button plain style="width: 100px">搜索</el-button>
+          <el-button plain style="width: 100px">查询</el-button>
         </el-form-item>
       </el-form>
       <el-table

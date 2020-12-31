@@ -34,7 +34,7 @@
         </el-row>
         <el-row style="text-align: end">
           <el-col>
-            <el-button @click="onSubmit" plain class="w200">搜索</el-button>
+            <el-button @click="onSubmit" plain class="w200">查询</el-button>
             <el-button @click="onSubmit1" type="primary" class="w200 ml-20"
               >添加</el-button
             >

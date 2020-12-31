@@ -49,7 +49,7 @@
             </el-date-picker>
           </el-form-item>
           <el-form-item class="ml-25">
-            <el-button plain class="w150">搜索</el-button>
+            <el-button plain class="w150">查询</el-button>
           </el-form-item>
         </el-form>
       </el-card>

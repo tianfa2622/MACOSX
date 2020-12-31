@@ -34,7 +34,7 @@
           </el-select>
         </el-form-item>
         <el-form-item class="flex1">
-          <el-button @click="onSubmit" type="primary">搜索</el-button>
+          <el-button @click="onSubmit" type="primary">查询</el-button>
           <el-button @click="onSubmit1" plain type="primary">上报</el-button>
         </el-form-item>
       </el-form>

@@ -25,7 +25,7 @@
             @click="onSubmit"
             plain
             style="margin-right: 20px; width: 200px"
-            >搜索</el-button
+            >查询</el-button
           >
           <el-button
             @click="onSubmit1"

@@ -60,7 +60,7 @@
         </el-form-item>
         <el-form-item class="ta-c w-25">
           <el-button type="primary" plain class="w150" @click="onSubmit"
-            >搜索</el-button
+            >查询</el-button
           >
         </el-form-item>
       </el-form>

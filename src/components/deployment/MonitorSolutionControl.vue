@@ -26,7 +26,7 @@
         </el-form-item>
         <el-form-item style="width: 10%">
           <el-button type="primary" class="w150" round @click="handleDetails3">
-            搜索
+            查询
           </el-button>
         </el-form-item>
       </el-form>

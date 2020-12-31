@@ -34,7 +34,7 @@
             </el-date-picker>
           </el-form-item>
           <el-form-item class="ml-15">
-            <el-button @click="onSubmit" type="primary">搜索</el-button>
+            <el-button @click="onSubmit" type="primary">查询</el-button>
             <el-button @click="onSubmit" type="primary" class="ml-25 w100 bgc"
               >导出</el-button
             >
@@ -52,10 +52,11 @@
               :data="tableData"
               fit
               border
-              size="small"
+              size="mini"
               style="width: 100%"
               class="flex1"
               height="100%"
+              empty-text
             >
               <el-table-column prop="data" label="日期" :resizable="false">
               </el-table-column>
@@ -72,6 +73,7 @@
                 prop="fdxcp"
                 label="反动宣传品"
                 :resizable="false"
+                width="90"
               >
               </el-table-column>
               <el-table-column prop="dp" label="毒品" :resizable="false">
@@ -89,10 +91,9 @@
               @size-change="handleSizeChange"
               @current-change="handleCurrentChange"
               :current-page="currentPage"
-              :page-sizes="[5, 10, 15, 20]"
               :page-size="5"
-              layout="total, sizes, prev, pager, next, jumper"
-              :total="400"
+              layout="total, prev, pager, next, jumper"
+              :total="20"
               class="posi-abs b-10 ta-c offset"
             >
             </el-pagination>
@@ -152,7 +153,7 @@
               </el-date-picker>
             </el-form-item>
             <el-form-item class="ml-15">
-              <el-button @click="onSubmit" type="primary">搜索</el-button>
+              <el-button @click="onSubmit" type="primary">查询</el-button>
               <el-button @click="onSubmit" type="primary" class="ml-25 w100 bgc"
                 >导出</el-button
               >

@@ -36,7 +36,7 @@
           </el-date-picker>
         </el-form-item>
         <el-form-item class="ml-15">
-          <el-button @click="onSubmit" type="primary">搜索</el-button>
+          <el-button @click="onSubmit" type="primary">查询</el-button>
           <el-button @click="onSubmit" type="primary" class="ml-25 w100 bgc"
             >导出</el-button
           >

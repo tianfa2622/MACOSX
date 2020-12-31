@@ -27,7 +27,7 @@
           type="primary"
           class="mb-10"
           style="margin-right: 20px; width: 200px"
-          >搜索</el-button
+          >查询</el-button
         >
       </div>
     </el-card>
@@ -275,7 +275,7 @@
                 <el-input
                   v-model="search"
                   size="mini"
-                  placeholder="输入关键字搜索"
+                  placeholder="输入关键字查询"
                 />
               </template>
             </el-table-column>
