@@ -17,7 +17,7 @@
           :model="formInline"
           label-width="130px"
           :inline="true"
-          class="text-al"
+          class="ta-c"
           size="medium"
         >
           <el-form-item label="起始日期：">
@@ -41,13 +41,14 @@
           </el-form-item>
         </el-form>
         <div class="dflex1 echarts-content mwidth dflex">
-          <div class="w-50 h-100">
+          <div class="w-45 h-100">
             <EchartsPackage
               v-if="'first' == activeName"
               :option="Statistics"
             ></EchartsPackage>
           </div>
-          <div class="w-50 h-100 posi-rel">
+          <div style="width: 2%"></div>
+          <div class="h-100 posi-rel" style="width: 53%">
             <el-table
               :data="tableData"
               fit
