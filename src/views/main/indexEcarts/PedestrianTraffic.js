@@ -4,7 +4,7 @@ const options = {
 
   // backgroundColor: '#424956',
   title: {
-    text: '通行人车流量折线图',
+    text: '人车通行流量折线图',
     textStyle: {
       fontWeight: 700,
       fontSize: 16,

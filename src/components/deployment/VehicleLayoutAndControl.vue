@@ -93,7 +93,7 @@
         </el-form>
 
         <!-- 布控范围 -->
-        <el-dialog title="布控范围" :visible.sync="dialogVisible1" width="40%">
+        <el-dialog title="布控范围" :visible.sync="dialogVisible1" width="45%">
           <div class="mb-20">
             <area-select
               type="text"
@@ -297,6 +297,15 @@ export default {
         }
       }
     }
+  }
+}
+</style>
+<style lang="less" scoped>
+/deep/.area-select {
+  line-height: 32px !important;
+  span {
+    padding: 0 20px 0 12px !important;
+    line-height: 30px !important;
   }
 }
 </style>

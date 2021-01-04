@@ -6,7 +6,12 @@ const options = {
       type: 'shadow'
     }
   },
-
+  grid: {
+    left: '1%',
+    right: '8%',
+    bottom: '4%',
+    containLabel: true
+  },
   xAxis: [
     {
       type: 'category',
@@ -16,7 +21,7 @@ const options = {
       },
       axisLabel: {
         interval: 0,
-        rotate: '-40'
+        rotate: '-45'
       }
     }
   ],

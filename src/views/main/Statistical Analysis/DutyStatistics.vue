@@ -11,13 +11,13 @@
         size="medium"
         :inline="true"
       >
-        <el-form-item label="值班队长">
+        <el-form-item label="值班队长" class="w-30">
           <el-input v-model="formInline.CaptainOnDuty"></el-input>
         </el-form-item>
-        <el-form-item label="巡逻时间：">
+        <el-form-item label="巡逻时间：" class="w-30">
           <el-input v-model="formInline.PatrolTime"></el-input>
         </el-form-item>
-        <el-form-item label="区域：">
+        <el-form-item label="区域：" class="w-35">
           <area-select
             type="text"
             v-model="formInline.selected"
@@ -27,188 +27,21 @@
             style="overflow: visible; !important"
           ></area-select>
         </el-form-item>
-        <el-form-item label="所属检查站：">
+        <el-form-item label="所属检查站：" class="w-30">
           <el-select v-model="formInline.OwnedCheckpoint" placeholder="请选择">
             <el-option label="部门一" value="bumengyi"></el-option>
             <el-option label="部门二" value="bumenger"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item class="w-90 ta-e">
-          <el-button @click="onSubmit" class="w150" type="primary"
-            >查询</el-button
-          >
-          <el-button
-            @click="onSubmit"
-            type="primary"
-            class="ml-25 bgc w150 mr-25"
+        <el-form-item class="w-60 ta-e">
+          <el-button @click="onSubmit" type="primary">查询</el-button>
+          <el-button @click="onSubmit" type="primary" class="bgc w100"
             >导出</el-button
           >
         </el-form-item>
       </el-form>
     </el-card>
     <div class="mwidth dflex Duty-bottom">
-      <el-card class="card-content">
-        <div slot="header" class="header-tit">
-          <span>勤务一</span>
-        </div>
-        <ul>
-          <li>
-            <span class="span-title">值班队长:</span
-            ><span class="span-content">猪猪侠</span>
-          </li>
-          <li>
-            <span class="span-title">值班队员:</span
-            ><span class="span-content">张三，李四，王五，赵六</span>
-          </li>
-          <li>
-            <span class="span-title">值勤民警:</span
-            ><span class="span-content">袁七</span>
-          </li>
-          <li>
-            <span class="span-title">巡逻时间:</span
-            ><span class="span-content">2020-12-12 00:00:00</span>
-          </li>
-          <li>
-            <span class="span-title">所属检查站:</span
-            ><span class="span-content">万家丽检查站</span>
-          </li>
-        </ul>
-      </el-card>
-      <el-card class="card-content">
-        <div slot="header" class="header-tit">
-          <span>勤务一</span>
-        </div>
-        <ul>
-          <li>
-            <span class="span-title">值班队长:</span
-            ><span class="span-content">猪猪侠</span>
-          </li>
-          <li>
-            <span class="span-title">值班队员:</span
-            ><span class="span-content">张三，李四，王五，赵六</span>
-          </li>
-          <li>
-            <span class="span-title">值勤民警:</span
-            ><span class="span-content">袁七</span>
-          </li>
-          <li>
-            <span class="span-title">巡逻时间:</span
-            ><span class="span-content">2020-12-12 00:00:00</span>
-          </li>
-          <li>
-            <span class="span-title">所属检查站:</span
-            ><span class="span-content">万家丽检查站</span>
-          </li>
-        </ul>
-      </el-card>
-      <el-card class="card-content">
-        <div slot="header" class="header-tit">
-          <span>勤务一</span>
-        </div>
-        <ul>
-          <li>
-            <span class="span-title">值班队长:</span
-            ><span class="span-content">猪猪侠</span>
-          </li>
-          <li>
-            <span class="span-title">值班队员:</span
-            ><span class="span-content">张三，李四，王五，赵六</span>
-          </li>
-          <li>
-            <span class="span-title">值勤民警:</span
-            ><span class="span-content">袁七</span>
-          </li>
-          <li>
-            <span class="span-title">巡逻时间:</span
-            ><span class="span-content">2020-12-12 00:00:00</span>
-          </li>
-          <li>
-            <span class="span-title">所属检查站:</span
-            ><span class="span-content">万家丽检查站</span>
-          </li>
-        </ul>
-      </el-card>
-      <el-card class="card-content">
-        <div slot="header" class="header-tit">
-          <span>勤务一</span>
-        </div>
-        <ul>
-          <li>
-            <span class="span-title">值班队长:</span
-            ><span class="span-content">猪猪侠</span>
-          </li>
-          <li>
-            <span class="span-title">值班队员:</span
-            ><span class="span-content">张三，李四，王五，赵六</span>
-          </li>
-          <li>
-            <span class="span-title">值勤民警:</span
-            ><span class="span-content">袁七</span>
-          </li>
-          <li>
-            <span class="span-title">巡逻时间:</span
-            ><span class="span-content">2020-12-12 00:00:00</span>
-          </li>
-          <li>
-            <span class="span-title">所属检查站:</span
-            ><span class="span-content">万家丽检查站</span>
-          </li>
-        </ul>
-      </el-card>
-      <el-card class="card-content">
-        <div slot="header" class="header-tit">
-          <span>勤务一</span>
-        </div>
-        <ul>
-          <li>
-            <span class="span-title">值班队长:</span
-            ><span class="span-content">猪猪侠</span>
-          </li>
-          <li>
-            <span class="span-title">值班队员:</span
-            ><span class="span-content">张三，李四，王五，赵六</span>
-          </li>
-          <li>
-            <span class="span-title">值勤民警:</span
-            ><span class="span-content">袁七</span>
-          </li>
-          <li>
-            <span class="span-title">巡逻时间:</span
-            ><span class="span-content">2020-12-12 00:00:00</span>
-          </li>
-          <li>
-            <span class="span-title">所属检查站:</span
-            ><span class="span-content">万家丽检查站</span>
-          </li>
-        </ul>
-      </el-card>
-      <el-card class="card-content">
-        <div slot="header" class="header-tit">
-          <span>勤务一</span>
-        </div>
-        <ul>
-          <li>
-            <span class="span-title">值班队长:</span
-            ><span class="span-content">猪猪侠</span>
-          </li>
-          <li>
-            <span class="span-title">值班队员:</span
-            ><span class="span-content">张三，李四，王五，赵六</span>
-          </li>
-          <li>
-            <span class="span-title">值勤民警:</span
-            ><span class="span-content">袁七</span>
-          </li>
-          <li>
-            <span class="span-title">巡逻时间:</span
-            ><span class="span-content">2020-12-12 00:00:00</span>
-          </li>
-          <li>
-            <span class="span-title">所属检查站:</span
-            ><span class="span-content">万家丽检查站</span>
-          </li>
-        </ul>
-      </el-card>
       <el-card class="card-content">
         <div slot="header" class="header-tit">
           <span>勤务一</span>

@@ -31,9 +31,7 @@
               </el-select>
             </el-form-item>
           </el-col>
-        </el-row>
-        <el-row style="text-align: end">
-          <el-col>
+          <el-col :span="6">
             <el-button @click="onSubmit" type="primary" class="w150"
               >查询</el-button
             >
@@ -42,6 +40,9 @@
             >
           </el-col>
         </el-row>
+        <!-- <el-row style="text-align: end">
+
+        </el-row> -->
       </el-form>
 
       <!-- 添加 -->

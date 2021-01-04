@@ -72,7 +72,7 @@
           :data="tableData"
           fit
           border
-          size="small"
+          size="mini"
           style="width: 100%"
           :cell-class-name="setRowStyle"
           class="flex1"
@@ -143,10 +143,10 @@
             label="操作"
             :resizable="false"
             align="center"
-            min-width="90px"
+            min-width="170"
           >
             <template slot-scope="scope">
-              <el-dropdown
+              <!-- <el-dropdown
                 split-button
                 type="primary"
                 size="mini"
@@ -177,7 +177,32 @@
                     </el-button>
                   </el-dropdown-item>
                 </el-dropdown-menu>
-              </el-dropdown>
+              </el-dropdown> -->
+              <el-button
+                @click="handleDetails(scope.$index, scope.row)"
+                type="primary"
+                class="mini-btn mt-5"
+                size="mini"
+                :resizable="false"
+              >
+                查看
+              </el-button>
+              <el-button
+                @click="handleDetails2(scope.$index, scope.row)"
+                size="mini"
+                type="primary"
+                class="bgc1 mini-btn mt-5"
+              >
+                关联人员
+              </el-button>
+              <el-button
+                @click="handleDetails3(scope.$index, scope.row)"
+                size="mini"
+                type="info"
+                class="mini-btn mt-5"
+              >
+                处置
+              </el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -670,7 +695,7 @@ export default {
           return 'status-success'
         } else {
           console.log('status-error')
-          return 'status-error'
+          return 'status-yellow'
         }
       }
     },
@@ -767,10 +792,22 @@ export default {
   color: #009900;
 }
 /deep/ .status-success {
-  background-color: #85c963 !important;
+  color: #044aa2 !important;
+}
+/deep/ .status-yellow {
+  color: rgb(226, 226, 7) !important;
+}
+/deep/ .status-orange {
+  color: #f80 !important;
 }
 /deep/ .status-error {
-  background-color: rgb(231, 110, 110) !important;
+  color: rgb(231, 110, 110) !important;
+}
+/deep/ .status-errorSize {
+  color: rgb(231, 110, 110) !important;
+}
+/deep/ .status-successSize {
+  color: #85c963 !important;
 }
 .cancelColor {
   color: red;
@@ -781,6 +818,10 @@ export default {
 }
 .mini-btn2 {
   padding: 7px 5px !important;
+}
+.mini-btn {
+  padding: 7px 8px !important;
+  margin-left: 3px !important;
 }
 </style>
 

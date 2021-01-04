@@ -11,16 +11,16 @@
         label-width="110px"
         :inline="true"
       >
-        <el-form-item label="姓名：">
+        <el-form-item label="姓名：" class="w-24">
           <el-input v-model="formInline.username" class="w250"></el-input>
         </el-form-item>
-        <el-form-item label="身份证号码：">
+        <el-form-item label="身份证号码：" class="w-24">
           <el-input
             v-model="formInline.identificationNumber"
             class="w250"
           ></el-input>
         </el-form-item>
-        <el-form-item label="检查站：">
+        <el-form-item label="检查站：" class="w-24">
           <el-select
             v-model="formInline.CheckpointCategory"
             placeholder="请选择检查站"
@@ -30,11 +30,11 @@
             <el-option label="部门二" value="beijing"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="电话号码：">
+        <el-form-item label="电话号码：" class="w-24">
           <el-input v-model="formInline.phoneNumber" class="w250"></el-input>
         </el-form-item>
         <el-row>
-          <el-col :span="24" style="text-align: end">
+          <el-col :span="23" style="text-align: end">
             <el-button @click="onSubmit" type="primary" class="w150"
               >查询</el-button
             >
@@ -513,6 +513,9 @@ export default {
 <style lang="less" scoped>
 .mwidth {
   width: 100%;
+  .w-24 {
+    width: 24% !important;
+  }
   .el-collapse-item__content {
     padding-bottom: 0;
   }

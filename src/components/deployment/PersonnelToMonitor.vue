@@ -191,14 +191,13 @@
       <el-button class="w150" @click="cancel">取消</el-button>
     </div>
     <!-- 布控范围 -->
-    <el-dialog title="布控范围" :visible.sync="dialogVisible" width="40%">
+    <el-dialog title="布控范围" :visible.sync="dialogVisible" width="45%">
       <div class="mb-20">
         <area-select
           type="text"
           v-model="selected"
           :data="$pcaa"
           :level="1"
-          class="line-h"
         ></area-select>
       </div>
       <div class="ml-30">
@@ -300,9 +299,6 @@ export default {
 </script>
 
 <style lang="less">
-.line-h {
-  line-height: 16px;
-}
 .form-content {
   height: 90%;
   padding: 20px 10% 0;
@@ -358,6 +354,17 @@ export default {
         }
       }
     }
+  }
+}
+</style>
+<style lang="less" scoped>
+/deep/.area-select {
+  span {
+    line-height: 34px;
+    padding: 0px 20px !important;
+  }
+  /deep/.area-selectable-list-wrap {
+    top: 32px !important;
   }
 }
 </style>

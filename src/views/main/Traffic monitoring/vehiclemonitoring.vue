@@ -1,5 +1,14 @@
 <template>
-  <div id="container"></div>
+  <div id="container">
+    <el-dialog
+      title="提示"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :before-close="handleClose"
+    >
+      <span>这是一段信息</span>
+    </el-dialog>
+  </div>
 </template>
 
 <script>
@@ -9,6 +18,7 @@ import AMap from 'AMap'
 export default {
   data () {
     return {
+      dialogVisible: false
       // map: undefined
     }
   },
@@ -50,7 +60,7 @@ export default {
           offset: new AMap.Pixel(-15, -40)
         })
         markers.push(marker)
-        marker.content = '<table class="table1" align="center" width="500"><tr><td>车牌号码</td><td>车辆位置</td><td>车辆颜色</td><td>查看</td></tr><tr><td>湘A 56G3H</td><td>大姚检查站</td><td>红色</td><td><a href="javascript:;">查看图片</a></td></tr></table><div class="Astyle"><a href="#">侦查区</a><a href="#">检查区</a></div>'
+        marker.content = '<table class="table1" align="center" width="500"><tr><td>车牌号码</td><td>车辆位置</td><td>车辆颜色</td><td>查看</td></tr><tr><td>湘A 56G3H</td><td>大姚检查站</td><td>红色</td><td><a id="Dialog" href="javascript: void(0);">查看图片</a></td></tr></table><div class="Astyle"><a href="#">侦查区</a><a href="#">检查区</a></div>'
         // const Content = Vue.extend({
         //   render: function (createElement) {
         //     return createElement('el-input', {
@@ -99,6 +109,10 @@ export default {
           console.log(err, data)
         })
       })
+    },
+    handleClose () {},
+    Display () {
+      this.dialogVisible = true
     }
   }
 }

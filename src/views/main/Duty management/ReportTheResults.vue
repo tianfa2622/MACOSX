@@ -7,15 +7,20 @@
       </div>
       <el-form
         :model="formInline"
-        label-width="100px"
+        label-width="186px"
         :inline="true"
-        class="dflex"
         size="medium"
       >
-        <el-form-item label="值班对长：" class="flex1">
+        <el-form-item label="被查获人员姓名/物品名称：">
           <el-input v-model="formInline.CertificateNum" class="w250"></el-input>
         </el-form-item>
-        <el-form-item label="勤务时间：" class="flex1">
+        <el-form-item label="被查获人身份证号码：">
+          <el-input
+            v-model="formInline.CertificateNumId"
+            class="w250"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="查获时间：">
           <el-date-picker
             v-model="formInline.DutyTime"
             type="datetime"
@@ -23,7 +28,7 @@
           >
           </el-date-picker>
         </el-form-item>
-        <el-form-item label="所属检查站：" class="flex1">
+        <el-form-item label="所属检查站：">
           <el-select
             v-model="formInline.OwnedCheckpoint"
             placeholder="请选择检查站"
@@ -33,18 +38,26 @@
             <el-option label="部门二" value="beijing"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item class="flex1">
+        <!-- <el-form-item class="ta-e">
           <el-button @click="onSubmit" class="w150" type="primary"
             >查询</el-button
           >
           <el-button @click="onSubmit1" class="w150" plain type="primary"
             >上报</el-button
           >
-        </el-form-item>
+        </el-form-item> -->
+        <div class="flr over-h mb-10 w-30">
+          <el-button @click="onSubmit" class="w150" type="primary"
+            >查询</el-button
+          >
+          <el-button @click="onSubmit1" class="w150" plain type="primary"
+            >上报</el-button
+          >
+        </div>
       </el-form>
 
       <!-- 上报 -->
-      <el-dialog :visible.sync="dialogVisible" title="上报" width="30%">
+      <el-dialog :visible.sync="dialogVisible" title="上报" width="50%">
         <el-form :model="form" :inline="true" label-width="150px">
           <el-form-item label="所属站点：">
             <el-input class="w200" v-model="form.OwnedSite"></el-input>
@@ -70,7 +83,7 @@
           <el-form-item label="户籍：">
             <el-input class="w200" v-model="form.Domicile"></el-input>
           </el-form-item>
-          <el-form-item label="证件号码：">
+          <el-form-item label="证件号码：" class="w-100">
             <el-input class="w200" v-model="form.IDNumber"></el-input>
           </el-form-item>
           <el-form-item label="被查获危险物品：">
@@ -79,17 +92,24 @@
           <el-form-item label="数量：">
             <el-input
               v-model.number="form.NumberSeized"
-              class="w200"
+              class="w100"
               type="number"
               :maxlength="3"
               onkeyup="value=value.replace(/[^\d]/g,'')"
               onblur="value=value.replace(/[^\d]/g,'')"
               :min="1"
             ></el-input>
+            <el-button
+              class="ml-10"
+              type="danger"
+              icon="el-icon-plus"
+              circle
+              @click="increase"
+            ></el-button>
           </el-form-item>
-          <el-form-item label="查获描述：">
+          <el-form-item label="查获描述：" class="w-100">
             <el-input
-              class="w200"
+              class="w-100"
               type="textarea"
               v-model="form.SeizedDescription"
               :autosize="{ minRows: 2, maxRows: 4 }"
@@ -315,7 +335,7 @@
       </el-dialog>
 
       <!-- 编辑 -->
-      <el-dialog :visible.sync="dialogVisible1" title="编辑" width="45%">
+      <el-dialog :visible.sync="dialogVisible1" title="编辑" width="30%">
         <el-form :model="form" :inline="true" label-width="150px">
           <el-form-item label="所属站点：">
             <el-input class="w200" v-model="form.OwnedSite"></el-input>
@@ -461,7 +481,7 @@ export default {
     },
     handleCurrentChange (val) {
       console.log(`当前页: ${val}`)
-    }
+    },
     // dutyList (row, column) {
     //   const DutyMember = row.DutyMember.map((item, index) => {
     //     return item
@@ -472,6 +492,9 @@ export default {
     //   const Unit = (row.PoliceForce + ' 人')
     //   return Unit
     // }
+    increase () {
+      console.log('增加一条')
+    }
   }
 }
 </script>
