@@ -33,7 +33,7 @@
             <el-option label="部门二" value="bumenger"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item class="mb-5 w-90 align-e">
+        <el-form-item class="w-90 ta-e">
           <el-button @click="onSubmit" class="w150" type="primary"
             >查询</el-button
           >
@@ -276,7 +276,7 @@ export default {
     background-color: #9cf !important;
   }
   .Duty-bottom {
-    height: calc(100% - 204px);
+    height: calc(100% - 226px);
     overflow: auto;
     margin-top: 10px;
     flex-wrap: wrap;

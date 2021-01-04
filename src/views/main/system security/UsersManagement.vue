@@ -5,42 +5,34 @@
       <div slot="header" class="clearfix">
         <span style="font-size: 16px">用户管理</span>
       </div>
-      <el-form :model="formInline" size="medium" label-width="100px">
-        <el-row type="flex" justify="space-around">
-          <el-col :span="4">
-            <el-form-item label="姓名：">
-              <el-input v-model="formInline.username" class="w250"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="4">
-            <el-form-item label="身份证号码：">
-              <el-input
-                v-model="formInline.identificationNumber"
-                class="w250"
-              ></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="4">
-            <el-form-item label="检查站：">
-              <el-select
-                v-model="formInline.CheckpointCategory"
-                placeholder="请选择检查站"
-                class="w250"
-              >
-                <el-option label="部门一" value="shanghai"></el-option>
-                <el-option label="部门二" value="beijing"></el-option>
-              </el-select>
-            </el-form-item>
-          </el-col>
-          <el-col :span="4">
-            <el-form-item label="电话号码：">
-              <el-input
-                v-model="formInline.phoneNumber"
-                class="w250"
-              ></el-input>
-            </el-form-item>
-          </el-col>
-        </el-row>
+      <el-form
+        :model="formInline"
+        size="medium"
+        label-width="110px"
+        :inline="true"
+      >
+        <el-form-item label="姓名：">
+          <el-input v-model="formInline.username" class="w250"></el-input>
+        </el-form-item>
+        <el-form-item label="身份证号码：">
+          <el-input
+            v-model="formInline.identificationNumber"
+            class="w250"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="检查站：">
+          <el-select
+            v-model="formInline.CheckpointCategory"
+            placeholder="请选择检查站"
+            class="w250"
+          >
+            <el-option label="部门一" value="shanghai"></el-option>
+            <el-option label="部门二" value="beijing"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="电话号码：">
+          <el-input v-model="formInline.phoneNumber" class="w250"></el-input>
+        </el-form-item>
         <el-row>
           <el-col :span="24" style="text-align: end">
             <el-button @click="onSubmit" type="primary" class="w150"

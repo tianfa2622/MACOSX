@@ -10,7 +10,7 @@
         size="medium"
         :model="formInline"
         label-width="140px"
-        class="mx-20"
+        class="mx-20 mb-10"
       >
         <el-form-item label="机动车车辆类型：">
           <el-select
@@ -39,7 +39,11 @@
             <el-option label="区域二" value="beijing"></el-option>
           </el-select>
         </el-form-item>
-        <el-button @click="onSubmit" type="primary" class="w150 ml-30">
+        <el-button
+          @click="onSubmit"
+          type="primary"
+          class="w150 ml-30 flr clearfix mb-10"
+        >
           查询
         </el-button>
       </el-form>

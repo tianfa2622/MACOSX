@@ -13,7 +13,7 @@
         >
           实时监控
         </el-button>
-        <el-form :inline="true" size="medium" class="pl-10">
+        <el-form :inline="true" size="medium" class="pl-10 ta-c">
           <el-form-item label="机动车车辆类型：" label-width="125px">
             <el-select v-model="formInline.VehicleType">
               <el-option value="轿车" label="轿车"></el-option>
@@ -43,28 +43,20 @@
               <el-option value="区域二" label="区域二"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item
-            label="日期："
-            style="margin-left: 20px"
-            label-width="125px"
-          >
-            <el-col :span="11">
-              <el-date-picker
-                type="date"
-                placeholder="选择日期"
-                v-model="formInline.date1"
-                style="width: 100%"
-              ></el-date-picker>
-            </el-col>
-            <el-col class="line" :span="2">-</el-col>
-            <el-col :span="11">
-              <el-date-picker
-                type="date"
-                placeholder="选择日期"
-                v-model="formInline.date2"
-                style="width: 100%"
-              ></el-date-picker>
-            </el-col>
+          <el-form-item label="日期：" label-width="125px">
+            <el-date-picker
+              type="date"
+              placeholder="选择日期"
+              v-model="formInline.date1"
+              class="w150"
+            ></el-date-picker>
+            <span> - </span>
+            <el-date-picker
+              type="date"
+              class="w150"
+              placeholder="选择日期"
+              v-model="formInline.date2"
+            ></el-date-picker>
           </el-form-item>
           <el-form-item style="margin-left: 20px">
             <el-button type="primary" style="width: 150px">查询</el-button>

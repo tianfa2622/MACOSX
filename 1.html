@@ -8,12 +8,13 @@
 </head>
 
 <body>
-  <table align="center" cellspacing="0" cellpadding="6" class="table1">
+  <table>
     <thead>
       <tr align="center">
         <td>车牌号码</td>
         <td>车辆位置</td>
         <td>车辆颜色</td>
+        <td>查看</td>
       </tr>
     </thead>
     <tbody>
@@ -42,9 +43,19 @@
 
 </body>
 <style>
-  .table1 {
-    border: 1px solid #999;
-    border-spacing: 0;
+  table tr th,
+  table tr td {
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+
+  tfoot tr td {
+    border: none;
+  }
+
+  table {
+    text-align: center;
+    border-collapse: collapse;
   }
 </style>
 

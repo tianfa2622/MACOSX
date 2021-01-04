@@ -1,22 +1,29 @@
 <template>
   <!-- 通行统计 -->
   <div class="fill_height mwidth dflex direction-column back-c">
-    <el-card>
+    <el-card class="over-f">
       <div slot="header" class="clearfix">
         <span class="header-title">通行统计</span>
       </div>
       <el-form
         :model="formInline"
-        label-width="130px"
+        label-width="90px"
         :inline="true"
-        class="text-al"
         size="medium"
       >
-        <el-form-item>
+        <el-form-item label="区域：">
+          <area-select
+            type="text"
+            v-model="formInline.selected"
+            :data="$pcaa"
+            :level="2"
+            size="small"
+          ></area-select>
+        </el-form-item>
+        <el-form-item label="检查站：">
           <el-select
             v-model="formInline.OwnedCheckpoint"
             placeholder="请选择检查站"
-            class="w250"
           >
             <el-option label="部门一" value="shanghai"></el-option>
             <el-option label="部门二" value="beijing"></el-option>
@@ -24,11 +31,12 @@
         </el-form-item>
         <el-form-item label="起始日期：">
           <el-date-picker
+            class="w320"
             v-model="formInline.timeLimit"
             type="daterange"
             align="right"
             unlink-panels
-            range-separator="至"
+            range-separator="-"
             start-placeholder="开始日期"
             end-placeholder="结束日期"
             :picker-options="pickerOptions"
@@ -44,14 +52,17 @@
       </el-form>
     </el-card>
 
-    <el-card class="mt-10 pb-10 flex1 fill_height" body-style="height: 100%">
+    <el-card
+      class="mt-10 pb-10 flex1 fill_height dflex direction-column"
+      body-style="flex: 1;"
+    >
       <div slot="header" class="headerbtn">
         <el-button @click="onSubmit" type="primary" size="mini">天</el-button>
         <el-button @click="onSubmit" type="primary" size="mini">周</el-button>
         <el-button @click="onSubmit" type="primary" size="mini">月</el-button>
         <el-button @click="onSubmit" type="primary" size="mini">年</el-button>
       </div>
-      <div class="w-100 content-h dflex">
+      <div class="w-100 fill_height dflex">
         <div class="w-50 h-100">
           <EchartsPackage :option="TrafficStatistics"></EchartsPackage>
         </div>
@@ -135,7 +146,8 @@ export default {
       },
       formInline: {
         OwnedCheckpoint: '',
-        timeLimit: ''
+        timeLimit: '',
+        selected: []
       },
       tableData: [
         {
@@ -193,8 +205,16 @@ export default {
       text-align: end;
     }
   }
-  .content-h {
-    height: calc(100% - 64px);
+}
+</style>
+<style lang="less" scoped>
+.over-f {
+  overflow: visible !important;
+}
+/deep/.area-select {
+  span {
+    line-height: 34px;
+    padding: 0px 15px !important;
   }
 }
 </style>

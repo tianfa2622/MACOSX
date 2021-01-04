@@ -6,7 +6,7 @@
         <div slot="header" class="clearfix">
           <span style="font-size: 16px">物品检查</span>
         </div>
-        <el-form :inline="true" size="medium" :model="formInline">
+        <el-form :inline="true" size="medium" class="ta-c" :model="formInline">
           <el-form-item label="安检违禁物品类别：" class="mr-20">
             <el-select
               v-model="formInline.user"
@@ -42,15 +42,19 @@
               class="w150"
             ></el-date-picker>
           </el-form-item>
+          <el-form-item class="ml-20 flr clearfix">
+            <el-button @click="onSubmit" class="w100"> 查询 </el-button>
+            <el-button type="primary" class="w100" @click="AddonSubmit"
+              >新增</el-button
+            >
+          </el-form-item>
         </el-form>
-        <div class="flr clearfix" style="margin: 0 100px 20px 10px">
-          <el-button @click="onSubmit" style="margin-right: 20px" class="w100">
-            查询
-          </el-button>
+        <!-- <div class="flr clearfix mb-10">
+          <el-button @click="onSubmit" class="w100"> 查询 </el-button>
           <el-button type="primary" class="w100" @click="AddonSubmit"
             >新增</el-button
           >
-        </div>
+        </div> -->
       </el-card>
 
       <el-card

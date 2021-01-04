@@ -20,13 +20,23 @@
           class="ta-c"
           size="medium"
         >
+          <el-form-item label="区域：">
+            <area-select
+              class="ta-l select_line-h"
+              type="text"
+              v-model="formInline.selected1"
+              :data="$pcaa"
+              :level="2"
+              size="small"
+            ></area-select>
+          </el-form-item>
           <el-form-item label="起始日期：">
             <el-date-picker
               v-model="formInline.timeLimit"
               type="daterange"
               align="right"
               unlink-panels
-              range-separator="至"
+              range-separator="——"
               start-placeholder="开始日期"
               end-placeholder="结束日期"
               :picker-options="pickerOptions"
@@ -41,14 +51,14 @@
           </el-form-item>
         </el-form>
         <div class="dflex1 echarts-content mwidth dflex">
-          <div class="w-45 h-100">
+          <div class="h-100" style="width: 45%">
             <EchartsPackage
               v-if="'first' == activeName"
               :option="Statistics"
             ></EchartsPackage>
           </div>
-          <div style="width: 2%"></div>
-          <div class="h-100 posi-rel" style="width: 53%">
+          <div style="width: 1%"></div>
+          <div class="h-100 posi-rel" style="width: 54%">
             <el-table
               :data="tableData"
               fit
@@ -106,39 +116,23 @@
         name="second"
         class="fill_height dflex direction-column"
       >
-        <el-card>
+        <el-card class="over-f">
           <el-form
             size="medium"
             :model="formInline"
             label-width="130px"
             :inline="true"
-            class="text-al"
+            class="ta-c"
           >
-            <el-form-item label="">
-              <el-select
-                v-model="formInline.province"
-                placeholder="省"
-                class="ml-10 w100"
-              >
-                <el-option label="湖南省" value="shanghai"></el-option>
-                <el-option label="广东省" value="beijing"></el-option>
-              </el-select>
-              <el-select
-                v-model="formInline.city"
-                placeholder="市"
-                class="ml-10 w100"
-              >
-                <el-option label="长沙市" value="shanghai"></el-option>
-                <el-option label="衡阳市" value="beijing"></el-option>
-              </el-select>
-              <el-select
-                v-model="formInline.Area"
-                placeholder="区"
-                class="ml-10 w100"
-              >
-                <el-option label="雨花区" value="shanghai"></el-option>
-                <el-option label="宝安区" value="beijing"></el-option>
-              </el-select>
+            <el-form-item label="区域：">
+              <area-select
+                class="ta-l"
+                type="text"
+                v-model="formInline.selected"
+                :data="$pcaa"
+                :level="2"
+                size="small"
+              ></area-select>
             </el-form-item>
             <el-form-item label="起始日期：">
               <el-date-picker
@@ -146,7 +140,7 @@
                 type="daterange"
                 align="right"
                 unlink-panels
-                range-separator="至"
+                range-separator="——"
                 start-placeholder="开始日期"
                 end-placeholder="结束日期"
                 :picker-options="pickerOptions"
@@ -166,13 +160,14 @@
 
           </div> -->
           <div class="w-100 h-100 dflex">
-            <div class="w-50 h-100">
+            <div class="w-45 h-100">
               <EchartsPackage
                 v-if="'second' == activeName"
                 :option="RegionalStatistics"
               ></EchartsPackage>
             </div>
-            <div class="w-50 h-100 posi-rel">
+            <div style="width: 1%"></div>
+            <div class="h-100 posi-rel" style="width: 54%">
               <el-table
                 :data="tableData1"
                 fit
@@ -296,7 +291,9 @@ export default {
         timeLimit1: '',
         province: '',
         city: '',
-        Area: ''
+        Area: '',
+        selected: [],
+        selected1: []
       },
       tableData: [
         {
@@ -366,7 +363,7 @@ export default {
   }
 }
 </style>
-<style lang="less">
+<style lang="less" scoped>
 .mwidth {
   .tabs-height {
     /deep/.el-tabs__content {
@@ -375,6 +372,18 @@ export default {
     .echarts-content {
       height: calc(100% - 76px);
     }
+  }
+  /deep/.area-select {
+    span {
+      line-height: 34px;
+      padding: 0px 15px !important;
+    }
+    /deep/.area-selectable-list-wrap {
+      top: 32px !important;
+    }
+  }
+  .over-f {
+    overflow: visible !important;
   }
 }
 </style>

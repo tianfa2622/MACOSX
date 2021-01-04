@@ -23,7 +23,7 @@
         <el-button
           @click="onSubmit"
           type="primary"
-          style="margin-right: 20px; width: 150px"
+          style="margin-right: 10px; width: 150px"
           >查询</el-button
         >
         <el-button

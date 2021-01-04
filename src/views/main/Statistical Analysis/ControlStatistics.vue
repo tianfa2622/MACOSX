@@ -1,22 +1,29 @@
 <template>
   <!-- 查控统计 -->
   <div class="fill_height mwidth dflex direction-column back-c">
-    <el-card>
+    <el-card class="over-f">
       <div slot="header" class="clearfix">
         <span class="header-title">查控统计</span>
       </div>
       <el-form
         size="medium"
         :model="formInline"
-        label-width="130px"
+        label-width="90px"
         :inline="true"
-        class="text-al"
       >
-        <el-form-item>
+        <el-form-item label="区域：">
+          <area-select
+            type="text"
+            v-model="formInline.selected"
+            :data="$pcaa"
+            :level="2"
+            size="small"
+          ></area-select>
+        </el-form-item>
+        <el-form-item label="查控类型：">
           <el-select
             v-model="formInline.ControlType"
             placeholder="请选择查控类型"
-            class="w250"
           >
             <el-option label="车辆查控" value="shanghai"></el-option>
             <el-option label="人员查控" value="beijing"></el-option>
@@ -25,10 +32,11 @@
         <el-form-item label="起始日期：">
           <el-date-picker
             v-model="formInline.timeLimit"
+            class="w320"
             type="daterange"
             align="right"
             unlink-panels
-            range-separator="至"
+            range-separator="-"
             start-placeholder="开始日期"
             end-placeholder="结束日期"
             :picker-options="pickerOptions"
@@ -109,7 +117,8 @@ export default {
       ControlStatistics,
       formInline: {
         ControlType: '',
-        timeLimit: ''
+        timeLimit: '',
+        selected: []
       },
       pickerOptions: {
         shortcuts: [{
@@ -182,5 +191,16 @@ export default {
 }
 .content-h {
   height: calc(100% - 64px);
+}
+</style>
+<style lang="less" scoped>
+.over-f {
+  overflow: visible !important;
+}
+/deep/.area-select {
+  span {
+    line-height: 32px;
+    padding: 0px 15px !important;
+  }
 }
 </style>
