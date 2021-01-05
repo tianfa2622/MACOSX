@@ -5,22 +5,14 @@
       <div slot="header" class="clearfix">
         <span style="font-size: 16px">战果上报</span>
       </div>
-      <el-form
-        :model="formInline"
-        label-width="186px"
-        :inline="true"
-        size="medium"
-      >
-        <el-form-item label="被查获人员姓名/物品名称：">
-          <el-input v-model="formInline.CertificateNum" class="w250"></el-input>
+      <el-form :model="formInline" :inline="true" size="small">
+        <el-form-item label="被查获人员姓名/物品名称：" class="w-28">
+          <el-input v-model="formInline.CertificateNum"></el-input>
         </el-form-item>
-        <el-form-item label="被查获人身份证号码：">
-          <el-input
-            v-model="formInline.CertificateNumId"
-            class="w250"
-          ></el-input>
+        <el-form-item label="被查获人身份证号码：" class="w-25">
+          <el-input v-model="formInline.CertificateNumId"></el-input>
         </el-form-item>
-        <el-form-item label="查获时间：">
+        <el-form-item label="查获时间：" class="w-22">
           <el-date-picker
             v-model="formInline.DutyTime"
             type="datetime"
@@ -28,11 +20,10 @@
           >
           </el-date-picker>
         </el-form-item>
-        <el-form-item label="所属检查站：">
+        <el-form-item label="所属检查站：" class="w-20">
           <el-select
             v-model="formInline.OwnedCheckpoint"
             placeholder="请选择检查站"
-            class="w250"
           >
             <el-option label="部门一" value="shanghai"></el-option>
             <el-option label="部门二" value="beijing"></el-option>
@@ -58,7 +49,7 @@
 
       <!-- 上报 -->
       <el-dialog :visible.sync="dialogVisible" title="上报" width="50%">
-        <el-form :model="form" :inline="true" label-width="150px">
+        <el-form :model="form" :inline="true" ref="form" label-width="150px">
           <el-form-item label="所属站点：">
             <el-input class="w200" v-model="form.OwnedSite"></el-input>
           </el-form-item>
@@ -86,27 +77,44 @@
           <el-form-item label="证件号码：" class="w-100">
             <el-input class="w200" v-model="form.IDNumber"></el-input>
           </el-form-item>
-          <el-form-item label="被查获危险物品：">
-            <el-input class="w200" v-model="form.dangerousItem"></el-input>
-          </el-form-item>
-          <el-form-item label="数量：">
-            <el-input
-              v-model.number="form.NumberSeized"
-              class="w100"
-              type="number"
-              :maxlength="3"
-              onkeyup="value=value.replace(/[^\d]/g,'')"
-              onblur="value=value.replace(/[^\d]/g,'')"
-              :min="1"
-            ></el-input>
+          <div v-for="(item, index) in form.formList" :key="item.key">
+            <el-form-item
+              :label="'被查获危险物品：'"
+              :prop="'formList.' + index + '.dangerousItem'"
+            >
+              <el-input class="w200" v-model="item.dangerousItem"></el-input>
+            </el-form-item>
+            <el-form-item
+              :label="'数量：'"
+              :prop="'formList.' + index + '.NumberSeized'"
+            >
+              <el-input
+                v-model.number="item.NumberSeized"
+                class="w100"
+                type="number"
+                :maxlength="3"
+                onkeyup="value=value.replace(/[^\d]/g,'')"
+                onblur="value=value.replace(/[^\d]/g,'')"
+                :min="1"
+              ></el-input>
+            </el-form-item>
+            <el-button
+              class="ml-10"
+              type="primary"
+              icon="el-icon-plus"
+              circle
+              v-if="index === 0"
+              @click="increase"
+            ></el-button>
             <el-button
               class="ml-10"
               type="danger"
-              icon="el-icon-plus"
+              icon="el-icon-delete"
               circle
-              @click="increase"
+              @click="removeRow(index)"
+              v-if="index > 0"
             ></el-button>
-          </el-form-item>
+          </div>
           <el-form-item label="查获描述：" class="w-100">
             <el-input
               class="w-100"
@@ -117,9 +125,7 @@
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
-          <el-button type="primary" @click="dialogVisible = false"
-            >保 存</el-button
-          >
+          <el-button type="primary" @click="Preservation">保 存</el-button>
           <el-button @click="dialogVisible = false">取 消</el-button>
         </span>
       </el-dialog>
@@ -335,7 +341,7 @@
       </el-dialog>
 
       <!-- 编辑 -->
-      <el-dialog :visible.sync="dialogVisible1" title="编辑" width="30%">
+      <el-dialog :visible.sync="dialogVisible1" title="编辑" width="50%">
         <el-form :model="form" :inline="true" label-width="150px">
           <el-form-item label="所属站点：">
             <el-input class="w200" v-model="form.OwnedSite"></el-input>
@@ -361,23 +367,47 @@
           <el-form-item label="户籍：">
             <el-input class="w200" v-model="form.Domicile"></el-input>
           </el-form-item>
-          <el-form-item label="证件号码：">
+          <el-form-item label="证件号码：" class="w-100">
             <el-input class="w200" v-model="form.IDNumber"></el-input>
           </el-form-item>
-          <el-form-item label="被查获危险物品：">
-            <el-input class="w200" v-model="form.dangerousItem"></el-input>
-          </el-form-item>
-          <el-form-item label="数量：">
-            <el-input
-              v-model.number="form.NumberSeized"
-              class="w200"
-              type="number"
-              :maxlength="3"
-              onkeyup="value=value.replace(/[^\d]/g,'')"
-              onblur="value=value.replace(/[^\d]/g,'')"
-              :min="1"
-            ></el-input>
-          </el-form-item>
+          <div v-for="(item, index) in form.formList" :key="item.key">
+            <el-form-item
+              :label="'被查获危险物品：'"
+              :prop="'formList.' + index + '.dangerousItem'"
+            >
+              <el-input class="w200" v-model="item.dangerousItem"></el-input>
+            </el-form-item>
+            <el-form-item
+              :label="'数量：'"
+              :prop="'formList.' + index + '.NumberSeized'"
+            >
+              <el-input
+                v-model.number="item.NumberSeized"
+                class="w100"
+                type="number"
+                :maxlength="3"
+                onkeyup="value=value.replace(/[^\d]/g,'')"
+                onblur="value=value.replace(/[^\d]/g,'')"
+                :min="1"
+              ></el-input>
+            </el-form-item>
+            <el-button
+              class="ml-10"
+              type="primary"
+              icon="el-icon-plus"
+              circle
+              v-if="index === 0"
+              @click="increase"
+            ></el-button>
+            <el-button
+              class="ml-10"
+              type="danger"
+              icon="el-icon-delete"
+              circle
+              @click="removeRow(index)"
+              v-if="index > 0"
+            ></el-button>
+          </div>
           <el-form-item label="查获描述：">
             <el-input
               class="w200"
@@ -416,7 +446,7 @@ export default {
           BeSeizedID: '',
           SeizedDescription: '',
           PolicemanOnDuty: ''
-        }, {}, {}, {}, {}, {}
+        }
       ],
       currentPage: 1,
       dialogVisible: false,
@@ -430,8 +460,12 @@ export default {
         SeizedPersonnel: '',
         Domicile: '',
         IDNumber: '',
-        dangerousItem: '',
-        NumberSeized: '',
+        formList: [
+          {
+            dangerousItem: '',
+            NumberSeized: ''
+          }
+        ],
         SeizedDescription: ''
       },
       form1: {
@@ -482,6 +516,12 @@ export default {
     handleCurrentChange (val) {
       console.log(`当前页: ${val}`)
     },
+    // 保存
+    Preservation () {
+      this.tableDate.push(this.form)
+      console.log(this.form)
+      this.dialogVisible = false
+    },
     // dutyList (row, column) {
     //   const DutyMember = row.DutyMember.map((item, index) => {
     //     return item
@@ -492,8 +532,20 @@ export default {
     //   const Unit = (row.PoliceForce + ' 人')
     //   return Unit
     // }
+
+    // 添加属性列
     increase () {
-      console.log('增加一条')
+      this.form.formList.push({
+        dangerousItem: '',
+        NumberSeized: '',
+        key: Date.now()
+      })
+    },
+    // 删除属性列
+    removeRow (index) {
+      if (index !== 0) {
+        this.form.formList.splice(index, 1)
+      }
     }
   }
 }
@@ -502,5 +554,11 @@ export default {
 <style lang="less" scoped>
 .el-button--mini {
   padding: 7px 10px;
+}
+.w-22 {
+  width: 22%;
+}
+.w-28 {
+  width: 28%;
 }
 </style>

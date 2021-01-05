@@ -75,7 +75,7 @@
           align="center"
         >
         </el-table-column>
-        <el-table-column label="操作" :resizable="false" align="center">
+        <el-table-column label="操作" :resizable="false" width="210">
           <template slot-scope="scope">
             <el-button
               @click="handleDetails(scope.$index, scope.row)"

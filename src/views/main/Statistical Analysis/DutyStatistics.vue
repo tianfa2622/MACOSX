@@ -116,6 +116,8 @@ export default {
     justify-content: space-between;
     .card-content {
       width: 32%;
+      height: 310px;
+      overflow-y: auto;
       margin: 5px 0;
       ul {
         list-style: none;

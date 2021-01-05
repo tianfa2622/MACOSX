@@ -44,9 +44,13 @@ import {
   Tree,
   Dropdown,
   DropdownItem,
-  DropdownMenu
+  DropdownMenu,
+  Link,
+  Popover
 } from 'element-ui'
 
+Vue.use(Popover)
+Vue.use(Link)
 Vue.use(Dropdown)
 Vue.use(DropdownItem)
 Vue.use(DropdownMenu)

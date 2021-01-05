@@ -44,7 +44,7 @@
       </el-form>
 
       <!-- 创建任务 -->
-      <el-dialog :visible.sync="dialogVisible" center width="25%">
+      <el-dialog :visible.sync="dialogVisible" width="25%">
         <el-form :model="form" label-width="130px">
           <el-form-item label="值班队长：">
             <el-input v-model="form.CaptainOnDuty"></el-input>
@@ -315,39 +315,6 @@ export default {
           PoliceForce: 10,
           VehicleLocation: '5号车道',
           DutyReport: '否',
-          DutyTime: '',
-          DutyTasks: '',
-          PolicemanOnDuty: '',
-          OwnedCheckpoint: ''
-        },
-        {
-          CaptainOnDuty: '李小红',
-          DutyMember: ['张三', '李四'],
-          PoliceForce: 10,
-          VehicleLocation: '5号车道',
-          DutyReport: '否',
-          DutyTime: '',
-          DutyTasks: '',
-          PolicemanOnDuty: '',
-          OwnedCheckpoint: ''
-        },
-        {
-          CaptainOnDuty: '王小明',
-          DutyMember: ['张三', '李四'],
-          PoliceForce: 10,
-          VehicleLocation: '5号车道',
-          DutyReport: '是',
-          DutyTime: '',
-          DutyTasks: '',
-          PolicemanOnDuty: '',
-          OwnedCheckpoint: ''
-        },
-        {
-          CaptainOnDuty: '周小伟',
-          DutyMember: ['张三', '李四', '王五'],
-          PoliceForce: 10,
-          VehicleLocation: '5号车道',
-          DutyReport: '是',
           DutyTime: '',
           DutyTasks: '',
           PolicemanOnDuty: '',

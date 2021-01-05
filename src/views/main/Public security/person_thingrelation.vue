@@ -21,7 +21,7 @@
             <el-option label="区域二" value="beijing"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="车牌号码：" class="ml-20">
+        <el-form-item label="车牌号码：">
           <el-input
             placeholder="请输入车牌号码"
             v-model="formInline.CarNumber"
@@ -33,19 +33,17 @@
             v-model="formInline.IdNumber"
           ></el-input>
         </el-form-item>
-        <el-form-item label="所属检查站：" class="ml-20">
+        <el-form-item label="所属检查站：">
           <el-select v-model="formInline.region" placeholder="公安检查站">
             <el-option label="区域一" value="shanghai"></el-option>
             <el-option label="区域二" value="beijing"></el-option>
           </el-select>
         </el-form-item>
-        <el-button
-          @click="onSubmit"
-          type="primary"
-          class="w150 ml-30 flr clearfix mb-10"
-        >
-          查询
-        </el-button>
+        <el-form-item class="w150 flr clearfix">
+          <el-button @click="onSubmit" type="primary" class="w150">
+            查询
+          </el-button>
+        </el-form-item>
       </el-form>
     </el-card>
 
