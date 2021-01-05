@@ -94,8 +94,8 @@
         </el-form>
 
         <!-- 布控范围 -->
-        <el-dialog title="布控范围" :visible.sync="dialogVisible1" width="45%">
-          <div class="mb-20">
+        <el-dialog title="布控范围" :visible.sync="dialogVisible1" width="40%">
+          <div class="mb-20 ml-30">
             <area-select
               type="text"
               v-model="selected"

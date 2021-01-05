@@ -6,11 +6,54 @@
         <span style="font-size: 16px">设备信息管理</span>
       </div>
       <el-input placeholder="请输入内容" v-model="input" style="width: 25%">
-        <el-button slot="append" icon="el-icon-search"></el-button>
+        <el-button
+          slot="append"
+          @click="onSubmit"
+          icon="el-icon-search"
+        ></el-button>
       </el-input>
-      <el-button type="primary" icon="el-icon-circle-plus" class="ml-30 fonts"
+      <el-button
+        type="primary"
+        icon="el-icon-circle-plus"
+        class="ml-30 fonts"
+        @click="onSubmit1"
         >注册设备</el-button
       >
+      <!-- 注册 -->
+      <el-dialog
+        :visible.sync="dialogVisible1"
+        width="25%"
+        style="height: 100%"
+      >
+        <el-form :model="form2" label-width="130px">
+          <el-form-item label="设备名称：">
+            <el-input v-model="form2.EquipmentName"></el-input>
+          </el-form-item>
+          <el-form-item label="品牌名称：">
+            <el-input v-model="form2.BrandModels"></el-input>
+          </el-form-item>
+          <el-form-item label="IP地址：">
+            <el-input v-model="form2.IPAddress"></el-input>
+          </el-form-item>
+          <el-form-item label="网络端口号：">
+            <el-input v-model="form2.NetworkPortNumber"></el-input>
+          </el-form-item>
+          <el-form-item label="公安检查站">
+            <el-select
+              v-model="form2.PublicSecurityCheckpoint"
+              placeholder="请选择"
+              style="width: 100%"
+            >
+              <el-option label="长沙西检查站" value="changsha"></el-option>
+              <el-option label="大姚检查站" value="dayao"></el-option>
+            </el-select>
+          </el-form-item>
+        </el-form>
+        <span slot="footer" class="dialog-footer">
+          <el-button type="primary" @click="addbtn1"> 提 交 </el-button>
+          <el-button @click="dialogVisible1 = false">取 消</el-button>
+        </span>
+      </el-dialog>
     </el-card>
     <el-card
       class="mt-10 pb-30 flex1 posi-rel over-h"
@@ -181,21 +224,33 @@ export default {
         }
       ],
       form2: {
-        EquipmentName: 'X射线安检机',
-        BrandModels: '掌门神-XJ6550C',
-        NetworkPortNumber: 53,
-        IPAddress: '192.168.1.1',
-        PublicSecurityCheckpoint: '长沙西公安检查站',
-        UpdateTime: '2020-11-30 12:12:59'
+        EquipmentName: '',
+        BrandModels: '',
+        NetworkPortNumber: null,
+        IPAddress: '',
+        PublicSecurityCheckpoint: '',
+        UpdateTime: ''
       },
       currentPage: 1,
       dialogVisible: false,
+      dialogVisible1: false,
       itemkey: '',
       Rowindex: null
     }
   },
   methods: {
     onSubmit () {},
+    onSubmit1 () {
+      this.dialogVisible1 = true
+    },
+    addbtn1 () {
+      const UpdateTime = this.$moment(new Date()).format('YYYY-MM-DD HH:mm:ss')
+      this.form2.UpdateTime = UpdateTime
+      this.itemkey = Math.random()
+      this.tableDate.push(this.form2)
+      this.dialogVisible1 = false
+      this.form2 = {}
+    },
     handleDetails (index, row) {
       this.dialogVisible = true
       const editrow = JSON.parse(JSON.stringify(row))
@@ -208,6 +263,7 @@ export default {
       this.dialogVisible = false
       this.tableDate[this.Rowindex] = this.form2
       this.itemkey = Math.random()
+      this.form2 = {}
     },
     handleDetails1 (index) {
       this.$confirm('是否确认删除 X射线安检机 此设备?', '提示', {

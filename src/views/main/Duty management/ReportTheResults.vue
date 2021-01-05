@@ -49,12 +49,19 @@
 
       <!-- 上报 -->
       <el-dialog :visible.sync="dialogVisible" title="上报" width="50%">
-        <el-form :model="form" :inline="true" ref="form" label-width="150px">
+        <el-form
+          :model="form"
+          :inline="true"
+          ref="form"
+          label-width="150px"
+          size="small"
+        >
           <el-form-item label="所属站点：">
             <el-input class="w200" v-model="form.OwnedSite"></el-input>
           </el-form-item>
           <el-form-item label="查获时间：">
             <el-date-picker
+              value-format="yyyy-MM-dd HH:mm:ss"
               class="w200"
               v-model="form.SeizedTime"
               type="datetime"
@@ -101,12 +108,14 @@
             <el-button
               class="ml-10"
               type="primary"
+              size="small"
               icon="el-icon-plus"
               circle
               v-if="index === 0"
               @click="increase"
             ></el-button>
             <el-button
+              size="small"
               class="ml-10"
               type="danger"
               icon="el-icon-delete"
@@ -144,6 +153,7 @@
         style="width: 100%"
         class="flex1"
         height="100%"
+        :key="itemkey"
       >
         <el-table-column
           type="index"
@@ -256,82 +266,73 @@
       </el-pagination>
 
       <!-- 详情 -->
-      <el-dialog :visible.sync="dialogVisible2" title="详情" width="30%">
-        <el-form :model="form" :inline="true" label-width="150px">
+      <el-dialog :visible.sync="dialogVisible2" title="详情" width="50%">
+        <el-form :model="form" :inline="true" label-width="150px" size="small">
           <el-form-item label="所属站点：">
-            <el-input
-              class="w200"
-              v-model="form.OwnedSite"
-              :disabled="true"
-            ></el-input>
+            <el-input v-model="form.OwnedSite" :disabled="true"></el-input>
           </el-form-item>
           <el-form-item label="查获时间：">
-            <el-date-picker
-              class="w200"
+            <!-- <el-date-picker
               :disabled="true"
               v-model="form.SeizedTime"
               type="datetime"
-              placeholder="选择日期时间"
             >
-            </el-date-picker>
-          </el-form-item>
-          <el-form-item label="查获民警：">
+            </el-date-picker> -->
             <el-input
               class="w200"
               :disabled="true"
-              v-model="form.PoliceSeized"
+              v-model="form.SeizedTime"
             ></el-input>
+          </el-form-item>
+          <el-form-item label="查获民警：">
+            <el-input :disabled="true" v-model="form.PoliceSeized"></el-input>
           </el-form-item>
           <el-form-item label="执勤民警：">
             <el-input
-              class="w200"
               :disabled="true"
               v-model="form.PolicemanOnDuty"
             ></el-input>
           </el-form-item>
           <el-form-item label="被查获人员姓名：">
             <el-input
-              class="w200"
               :disabled="true"
               v-model="form.SeizedPersonnel"
             ></el-input>
           </el-form-item>
           <el-form-item label="户籍：">
-            <el-input
-              class="w200"
-              :disabled="true"
-              v-model="form.Domicile"
-            ></el-input>
+            <el-input :disabled="true" v-model="form.Domicile"></el-input>
           </el-form-item>
-          <el-form-item label="证件号码：">
+          <el-form-item label="证件号码：" class="w-100">
             <el-input
               class="w200"
               :disabled="true"
               v-model="form.IDNumber"
             ></el-input>
           </el-form-item>
-          <el-form-item label="被查获危险物品：">
+          <div v-for="item1 in form.formList" :key="item1.key">
+            <el-form-item label="被查获危险物品：">
+              <el-input
+                class="w200"
+                :disabled="true"
+                v-model="item1.dangerousItem"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="数量：">
+              <el-input
+                v-model.number="item1.NumberSeized"
+                :disabled="true"
+                class="w100"
+                type="number"
+                :maxlength="3"
+                onkeyup="value=value.replace(/[^\d]/g,'')"
+                onblur="value=value.replace(/[^\d]/g,'')"
+                :min="1"
+              ></el-input>
+            </el-form-item>
+          </div>
+          <el-form-item label="查获描述：" class="w-100">
             <el-input
-              class="w200"
-              :disabled="true"
-              v-model="form.dangerousItem"
-            ></el-input>
-          </el-form-item>
-          <el-form-item label="数量：">
-            <el-input
-              v-model.number="form.NumberSeized"
-              :disabled="true"
-              class="w200"
-              type="number"
-              :maxlength="3"
-              onkeyup="value=value.replace(/[^\d]/g,'')"
-              onblur="value=value.replace(/[^\d]/g,'')"
-              :min="1"
-            ></el-input>
-          </el-form-item>
-          <el-form-item label="查获描述：">
-            <el-input
-              class="w200"
+              class="w-100"
               :disabled="true"
               type="textarea"
               resize="none"
@@ -344,7 +345,13 @@
 
       <!-- 编辑 -->
       <el-dialog :visible.sync="dialogVisible1" title="编辑" width="50%">
-        <el-form :model="form" :inline="true" label-width="150px">
+        <el-form
+          :model="form"
+          :inline="true"
+          ref="form"
+          label-width="150px"
+          size="small"
+        >
           <el-form-item label="所属站点：">
             <el-input class="w200" v-model="form.OwnedSite"></el-input>
           </el-form-item>
@@ -372,19 +379,19 @@
           <el-form-item label="证件号码：" class="w-100">
             <el-input class="w200" v-model="form.IDNumber"></el-input>
           </el-form-item>
-          <div v-for="(item, index) in form.formList" :key="item.key">
+          <div v-for="(item2, index) in form.formList" :key="item2.key">
             <el-form-item
               :label="'被查获危险物品：'"
               :prop="'formList.' + index + '.dangerousItem'"
             >
-              <el-input class="w200" v-model="item.dangerousItem"></el-input>
+              <el-input class="w200" v-model="item2.dangerousItem"></el-input>
             </el-form-item>
             <el-form-item
               :label="'数量：'"
               :prop="'formList.' + index + '.NumberSeized'"
             >
               <el-input
-                v-model.number="item.NumberSeized"
+                v-model.number="item2.NumberSeized"
                 class="w100"
                 type="number"
                 :maxlength="3"
@@ -394,6 +401,7 @@
               ></el-input>
             </el-form-item>
             <el-button
+              size="small"
               class="ml-10"
               type="primary"
               icon="el-icon-plus"
@@ -402,6 +410,7 @@
               @click="increase"
             ></el-button>
             <el-button
+              size="small"
               class="ml-10"
               type="danger"
               icon="el-icon-delete"
@@ -410,9 +419,9 @@
               v-if="index > 0"
             ></el-button>
           </div>
-          <el-form-item label="查获描述：">
+          <el-form-item label="查获描述：" class="w-100">
             <el-input
-              class="w200"
+              class="w-100"
               type="textarea"
               resize="none"
               v-model="form.SeizedDescription"
@@ -421,9 +430,7 @@
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
-          <el-button type="primary" @click="dialogVisible1 = false"
-            >保 存</el-button
-          >
+          <el-button type="primary" @click="saveForm">保 存</el-button>
           <el-button @click="dialogVisible1 = false">取 消</el-button>
         </span>
       </el-dialog>
@@ -449,6 +456,7 @@ export default {
           BeSeized: '',
           Domicile: '',
           IDNumber: '',
+          SeizedPersonnel: '',
           formList: [
             {
               dangerousItem: '',
@@ -479,28 +487,31 @@ export default {
         SeizedDescription: '',
         BeSeized: ''
       },
-      form1: {
-        CaptainOnDuty: '',
-        DutyMember: '',
-        PoliceForce: 0,
-        VehicleLocation: '',
-        DutyReport: '',
-        DutyTime: '',
-        DutyTasks: '',
-        PolicemanOnDuty: '',
-        OwnedCheckpoint: ''
-      }
+      index: null,
+      itemkey: ''
     }
   },
   methods: {
     onSubmit () {},
     onSubmit1 () {
+      this.form = {
+        formList: [
+          {
+            dangerousItem: '',
+            NumberSeized: ''
+          }
+        ]
+      }
       this.dialogVisible = true
     },
-    handleDetails () {
+    handleDetails (index) {
+      this.form = this.tableDate[index]
+      this.index = index
       this.dialogVisible1 = true
     },
-    handleDetails2 () {
+    handleDetails2 (index) {
+      this.form = this.tableDate[index]
+      this.index = index
       this.dialogVisible2 = true
     },
     handleDetails1 (index) {
@@ -532,18 +543,23 @@ export default {
     // 保存
     Preservation () {
       var dangerousItem = this.form.formList.map((item) => { return item.dangerousItem })
-      var BeSeized = [this.form.SeizedPersonnel, ...dangerousItem]
-      this.form.BeSeized = BeSeized.join('/')
-      this.tableDate.push(this.form)
-      this.dialogVisible = false
-      this.form = {
-        formList: [
-          {
-            dangerousItem: '',
-            NumberSeized: ''
-          }
-        ]
+      if (this.form.SeizedPersonnel !== ('' || undefined) && dangerousItem !== '') {
+        var BeSeized = [this.form.SeizedPersonnel, ...dangerousItem]
+        this.form.BeSeized = BeSeized.join('/')
+        this.tableDate.push(this.form)
       }
+      this.dialogVisible = false
+    },
+    // 编辑保存
+    saveForm () {
+      var dangerousItem = this.form.formList.map((item) => { return item.dangerousItem })
+      if (this.form.SeizedPersonnel !== ('' || undefined) && dangerousItem !== '') {
+        var BeSeized = [this.form.SeizedPersonnel, ...dangerousItem]
+        this.form.BeSeized = BeSeized.join('/')
+        this.tableDate[this.index] = this.form
+        this.itemkey = Math.random()
+      }
+      this.dialogVisible1 = false
     },
     // dutyList (row, column) {
     //   const DutyMember = row.DutyMember.map((item, index) => {
