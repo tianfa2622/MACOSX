@@ -76,6 +76,7 @@
           <el-form-item label="勤务任务：">
             <el-input
               type="textarea"
+              resize="none"
               v-model="form.DutyTasks"
               :autosize="{ minRows: 2, maxRows: 4 }"
             ></el-input>
@@ -270,6 +271,7 @@
           <el-form-item label="勤务任务：">
             <el-input
               type="textarea"
+              resize="none"
               v-model="form1.DutyTasks"
               :autosize="{ minRows: 2, maxRows: 4 }"
             ></el-input>

@@ -169,6 +169,7 @@
           <el-input
             v-model="form.desc"
             type="textarea"
+            resize="none"
             :autosize="{ minRows: 4, maxRows: 6 }"
             placeholder="请输入内容"
           ></el-input>

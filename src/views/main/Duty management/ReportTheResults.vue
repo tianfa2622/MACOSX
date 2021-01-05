@@ -119,6 +119,7 @@
             <el-input
               class="w-100"
               type="textarea"
+              resize="none"
               v-model="form.SeizedDescription"
               :autosize="{ minRows: 2, maxRows: 4 }"
             ></el-input>
@@ -152,7 +153,7 @@
           :resizable="false"
         ></el-table-column>
         <el-table-column
-          prop="SiteName"
+          prop="OwnedSite"
           label="站点名称"
           align="center"
           min-width="90px"
@@ -184,7 +185,7 @@
         >
         </el-table-column>
         <el-table-column
-          prop="BeSeizedID"
+          prop="IDNumber"
           label="被查获人证件号码"
           align="center"
           min-width="90px"
@@ -333,6 +334,7 @@
               class="w200"
               :disabled="true"
               type="textarea"
+              resize="none"
               v-model="form.SeizedDescription"
               :autosize="{ minRows: 2, maxRows: 4 }"
             ></el-input>
@@ -412,6 +414,7 @@
             <el-input
               class="w200"
               type="textarea"
+              resize="none"
               v-model="form.SeizedDescription"
               :autosize="{ minRows: 2, maxRows: 4 }"
             ></el-input>
@@ -439,13 +442,20 @@ export default {
       },
       tableDate: [
         {
-          SiteName: '',
+          OwnedSite: '',
           SeizedTime: '',
-          PoliceSeized: [],
+          PoliceSeized: '',
+          PolicemanOnDuty: '',
           BeSeized: '',
-          BeSeizedID: '',
-          SeizedDescription: '',
-          PolicemanOnDuty: ''
+          Domicile: '',
+          IDNumber: '',
+          formList: [
+            {
+              dangerousItem: '',
+              NumberSeized: ''
+            }
+          ],
+          SeizedDescription: ''
         }
       ],
       currentPage: 1,
@@ -466,7 +476,8 @@ export default {
             NumberSeized: ''
           }
         ],
-        SeizedDescription: ''
+        SeizedDescription: '',
+        BeSeized: ''
       },
       form1: {
         CaptainOnDuty: '',
@@ -492,17 +503,19 @@ export default {
     handleDetails2 () {
       this.dialogVisible2 = true
     },
-    handleDetails1 () {
+    handleDetails1 (index) {
       this.$confirm('是否确认删除该条信息?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning',
         center: true
       }).then(() => {
-        this.$message({
-          type: 'success',
-          message: '删除成功!'
-        })
+        this.tableDate.splice(index, 1)
+        this.$message(
+          {
+            type: 'success',
+            message: '删除成功!'
+          })
       }).catch(() => {
         this.$message({
           type: 'info',
@@ -518,9 +531,19 @@ export default {
     },
     // 保存
     Preservation () {
+      var dangerousItem = this.form.formList.map((item) => { return item.dangerousItem })
+      var BeSeized = [this.form.SeizedPersonnel, ...dangerousItem]
+      this.form.BeSeized = BeSeized.join('/')
       this.tableDate.push(this.form)
-      console.log(this.form)
       this.dialogVisible = false
+      this.form = {
+        formList: [
+          {
+            dangerousItem: '',
+            NumberSeized: ''
+          }
+        ]
+      }
     },
     // dutyList (row, column) {
     //   const DutyMember = row.DutyMember.map((item, index) => {

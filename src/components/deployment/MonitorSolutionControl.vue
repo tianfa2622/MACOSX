@@ -165,6 +165,7 @@
             <el-input
               type="textarea"
               :disabled="true"
+              resize="none"
               class="w200"
               v-model="DiaForm.ControlReason"
               :autosize="{ minRows: 2, maxRows: 4 }"
@@ -275,6 +276,7 @@
           <el-form-item label="布控事由：" class="w-45">
             <el-input
               type="textarea"
+              resize="none"
               v-model="DiaForm.ControlReason"
               :disabled="true"
             ></el-input>
