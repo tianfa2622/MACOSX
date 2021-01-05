@@ -10,7 +10,7 @@
       <el-table-column prop="address" label="车辆位置" width="180">
       </el-table-column>
       <el-table-column>
-        <el-popover placement="bottom" width="200" trigger="click">
+        <el-popover placement="bottom" width="400" trigger="click">
           <el-image :src="src"></el-image>
           <el-link slot="reference" type="primary">查看图片</el-link>
         </el-popover>
@@ -44,7 +44,7 @@ export default {
 <style lang="less" scoped>
 /deep/ .el-table,
 /deep/ .el-table__expanded-cell {
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 /* 表格内背景颜色 */
 /deep/ .el-table th,

@@ -13,8 +13,8 @@
         >
           实时监控
         </el-button>
-        <el-form :inline="true" size="medium" class="pl-10 ta-c">
-          <el-form-item label="机动车车辆类型：" label-width="125px">
+        <el-form :inline="true" size="medium" label-width="125px" class="ml-30 ">
+          <el-form-item label="机动车车辆类型：" class="w-30">
             <el-select v-model="formInline.VehicleType">
               <el-option value="轿车" label="轿车"></el-option>
               <el-option value="货车" label="货车"></el-option>
@@ -22,28 +22,26 @@
           </el-form-item>
           <el-form-item
             label="车牌号码："
-            style="margin-left: 20px"
-            label-width="125px"
+            class="w-30"
           >
             <el-input></el-input>
           </el-form-item>
           <el-form-item
             label="车证比对结果："
-            style="margin-left: 20px"
-            label-width="125px"
+            class="w-30"
           >
             <el-select v-model="formInline.contrastres">
               <el-option value="验证成功" label="验证成功"></el-option>
               <el-option value="验证失败" label="验证失败"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="所属检查站：" label-width="125px">
+          <el-form-item label="所属检查站：" class="w-30">
             <el-select v-model="formInline.station">
               <el-option value="区域一" label="区域一"></el-option>
               <el-option value="区域二" label="区域二"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="日期：" label-width="125px">
+          <el-form-item label="日期：" class="w-40">
             <el-date-picker
               type="date"
               placeholder="选择日期"
@@ -58,7 +56,7 @@
               v-model="formInline.date2"
             ></el-date-picker>
           </el-form-item>
-          <el-form-item style="margin-left: 20px">
+          <el-form-item class="w-20">
             <el-button type="primary" style="width: 150px">查询</el-button>
           </el-form-item>
         </el-form>
@@ -793,16 +791,20 @@ export default {
   color: #009900;
 }
 /deep/ .status-success {
-  color: #044aa2 !important;
+  background-color: #044aa2 !important;
+  color: #000;
 }
 /deep/ .status-yellow {
-  color: rgb(226, 226, 7) !important;
+  color: #000;
+  background-color: rgb(255,255,1) !important;
 }
 /deep/ .status-orange {
-  color: #f80 !important;
+  color: #000;
+  background-color: #f80 !important;
 }
 /deep/ .status-error {
-  color: rgb(231, 110, 110) !important;
+  color: #000;
+  background-color: rgb(231, 110, 110) !important;
 }
 /deep/ .status-errorSize {
   color: rgb(231, 110, 110) !important;

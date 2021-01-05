@@ -649,16 +649,20 @@ export default {
   }
 }
 /deep/ .status-success {
-  color: #044aa2 !important;
+  background-color: #044aa2 !important;
+  color: #000;
 }
 /deep/ .status-yellow {
-  color: rgb(226, 226, 7) !important;
+  background-color: rgb(255,255,1)!important;
+  color: #000;
 }
 /deep/ .status-orange {
-  color: #f80 !important;
+  color: #000;
+  background-color: #f80 !important;
 }
 /deep/ .status-error {
-  color: rgb(231, 110, 110) !important;
+  color: #000;
+  background-color: rgb(231, 110, 110) !important;
 }
 /deep/ .status-errorSize {
   color: rgb(231, 110, 110) !important;

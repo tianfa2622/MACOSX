@@ -44,8 +44,10 @@
           </el-date-picker>
         </el-form-item>
         <el-form-item class="ml-15">
-          <el-button @click="onSubmit" type="primary">查询</el-button>
-          <el-button @click="onSubmit" type="primary" class="bgc w100"
+          <el-button @click="onSubmit" type="primary" class="w100"
+            >查询</el-button
+          >
+          <el-button @click="Export2Excel" type="primary" class="bgc ml-25 w100"
             >导出</el-button
           >
         </el-form-item>
@@ -110,6 +112,7 @@
 <script>
 import EchartsPackage from '../../../components/echarts/index'
 import TrafficStatistics from './Echartstable/TrafficStatistics'
+import { ExportToExcel } from '../../../vendor/Export2Excel'
 export default {
   components: {
     EchartsPackage
@@ -166,6 +169,11 @@ export default {
           NumberOfVehicles: '10'
         }
       ],
+      exportKey: {
+        data: '日期',
+        NumberOfPersonnel: '人员通行数',
+        NumberOfVehicles: '车辆通行数'
+      },
       currentPage: 1
     }
   },
@@ -173,6 +181,23 @@ export default {
   },
   methods: {
     onSubmit () {},
+    Export2Excel () {
+      this.$confirm('该操作将数据导出为excel文件, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      })
+        .then(() => {
+          ExportToExcel(this.tableData, this.exportKey, '通行统计表')
+          this.$message.success('文件导出成功')
+        })
+        .catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消操作'
+          })
+        })
+    },
     handleSizeChange (val) {
       console.log(`每页 ${val} 条`)
     },

@@ -44,8 +44,10 @@
             </el-date-picker>
           </el-form-item>
           <el-form-item class="ml-15">
-            <el-button @click="onSubmit" type="primary">查询</el-button>
-            <el-button @click="onSubmit" type="primary" class="ml-25 w100 bgc"
+            <el-button @click="onSubmit" type="primary" class="w100"
+              >查询</el-button
+            >
+            <el-button @click="Export2Excel" type="primary" class="ml-25 w100 bgc"
               >导出</el-button
             >
           </el-form-item>
@@ -148,8 +150,10 @@
               </el-date-picker>
             </el-form-item>
             <el-form-item class="ml-15">
-              <el-button @click="onSubmit" type="primary">查询</el-button>
-              <el-button @click="onSubmit" type="primary" class="ml-25 w100 bgc"
+              <el-button @click="onSubmit" type="primary" class="w100"
+                >查询</el-button
+              >
+              <el-button @click="Export2Excel" type="primary" class="ml-25 w100 bgc"
                 >导出</el-button
               >
             </el-form-item>
@@ -250,6 +254,8 @@ import EchartsPackage from '../../../components/echarts/index'
 import Statistics from './Echartstable/Statistics'
 // 区域统计统计
 import RegionalStatistics from './Echartstable/RegionalStatistics'
+import { ExportToExcel } from '../../../vendor/Export2Excel'
+
 export default {
   components: {
     EchartsPackage
@@ -323,6 +329,31 @@ export default {
           total: '145'
         }
       ],
+      exportKey: {
+        data: '日期',
+        yryb: '易燃易爆',
+        qzdy: '枪支弹药',
+        gzdj: '管制刀具',
+        fdxcp: '反动宣传品',
+        dp: '毒品',
+        zdry: '重点人员',
+        zdcl: '重点车辆',
+        cz: '超载',
+        total: '总数'
+
+      },
+      exportKey1: {
+        CheckpointName: '检查站名称',
+        yryb: '易燃易爆',
+        qzdy: '枪支弹药',
+        gzdj: '管制刀具',
+        fdxcp: '反动宣传品',
+        dp: '毒品',
+        zdry: '重点人员',
+        zdcl: '重点车辆',
+        cz: '超载',
+        total: '总数'
+      },
       currentPage: 1,
       currentPage1: 1
 
@@ -332,6 +363,31 @@ export default {
   },
   methods: {
     onSubmit () {},
+    Export2Excel () {
+      this.$confirm('该操作将数据导出为excel文件, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      })
+        .then(() => {
+          if (this.activeName === 'first') {
+            const tableData = this.tableData
+            const exportKey = this.exportKey
+            ExportToExcel(tableData, exportKey, '物品统计表')
+          } else {
+            const tableData = this.tableData1
+            const exportKey = this.exportKey1
+            ExportToExcel(tableData, exportKey, '区域统计表')
+          }
+          this.$message.success('文件导出成功')
+        })
+        .catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消操作'
+          })
+        })
+    },
     // 切换标签页时触发
     handleClick (tab, event) {
       this.activeName = tab.name

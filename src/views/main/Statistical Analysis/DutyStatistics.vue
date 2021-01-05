@@ -34,8 +34,10 @@
           </el-select>
         </el-form-item>
         <el-form-item class="w-60 ta-e">
-          <el-button @click="onSubmit" type="primary">查询</el-button>
-          <el-button @click="onSubmit" type="primary" class="bgc w100"
+          <el-button @click="onSubmit" type="primary" class="w100"
+            >查询</el-button
+          >
+          <el-button @click="Export2Excel" type="primary" class="bgc ml-25 w100"
             >导出</el-button
           >
         </el-form-item>
@@ -74,6 +76,7 @@
 </template>
 
 <script>
+import { ExportToExcel } from '../../../vendor/Export2Excel'
 export default {
   data () {
     return {
@@ -82,11 +85,42 @@ export default {
         PatrolTime: '',
         selected: [],
         OwnedCheckpoint: ''
+      },
+      tableData: [{
+        CaptainOnDuty: '猪猪侠',
+        Players: '张三，李四，王五，赵六',
+        DutyOfficer: '袁七',
+        PatrolTime: '2020-12-12 00:00:00',
+        OwnedCheckpoint: '万家丽检查站'
+      }],
+      exportKey: {
+        CaptainOnDuty: '值班队长',
+        Players: '值班队员',
+        DutyOfficer: '值勤民警',
+        PatrolTime: '巡逻时间',
+        OwnedCheckpoint: '所属检查站'
       }
     }
   },
   methods: {
-    onSubmit () {}
+    onSubmit () {},
+    Export2Excel () {
+      this.$confirm('该操作将数据导出为excel文件, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      })
+        .then(() => {
+          ExportToExcel(this.tableData, this.exportKey, '勤务统计表')
+          this.$message.success('文件导出成功')
+        })
+        .catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消操作'
+          })
+        })
+    }
   }
 
 }

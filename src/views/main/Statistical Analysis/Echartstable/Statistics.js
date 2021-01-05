@@ -38,11 +38,11 @@ const options = {
       }
     },
     axisLabel: {
-      margin: 10,
-      color: '#000',
-      textStyle: {
-        fontSize: 14
-      }
+      // margin: 10,
+      color: '#000'
+      // textStyle: {
+      //   fontSize: 14
+      // }
     }
   }],
   yAxis: [{
@@ -94,11 +94,11 @@ const options = {
       normal: {
         show: true,
         lineHeight: 30,
-        width: 80,
+        width: 60,
         height: 30,
         backgroundColor: '#ccc',
         borderRadius: 200,
-        position: ['-8', '-60'],
+        position: ['-6', '-60'],
         distance: 1,
         formatter: [
           '    {d|●}',

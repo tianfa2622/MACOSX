@@ -20,7 +20,6 @@ export default {
   methods: {
     init () {
       var map = new AMap.Map('container', {
-        mapStyle: 'amap://styles/dark',
         // center: [112.932841, 28.206193],
         center: [113.050425, 28.169996],
         resizeEnable: true,
