@@ -8,11 +8,7 @@
         </div>
         <el-form :inline="true" size="medium" class="ta-c" :model="formInline">
           <el-form-item label="安检违禁物品类别：" class="mr-20">
-            <el-select
-              v-model="formInline.user"
-              placeholder="安检违禁物品类别"
-              class="w150"
-            >
+            <el-select v-model="formInline.user" placeholder="违禁物品类别">
               <el-option label="区域一" value="shanghai"></el-option>
               <el-option label="区域二" value="beijing"></el-option>
             </el-select>
@@ -21,7 +17,7 @@
             <el-select
               v-model="formInline.region"
               placeholder="公安检查站"
-              class="w150"
+              class="w200"
             >
               <el-option label="区域一" value="shanghai"></el-option>
               <el-option label="区域二" value="beijing"></el-option>

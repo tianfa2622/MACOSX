@@ -13,35 +13,33 @@
         >
           实时监控
         </el-button>
-        <el-form :inline="true" size="medium" label-width="125px" class="ml-30 ">
-          <el-form-item label="机动车车辆类型：" class="w-30">
+        <el-form :inline="true" size="medium" class="ml-20">
+          <el-form-item
+            label="机动车车辆类型："
+            label-width="125px"
+            class="w-35"
+          >
             <el-select v-model="formInline.VehicleType">
               <el-option value="轿车" label="轿车"></el-option>
               <el-option value="货车" label="货车"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item
-            label="车牌号码："
-            class="w-30"
-          >
+          <el-form-item label="车牌号码：" label-width="110px" class="w-30">
             <el-input></el-input>
           </el-form-item>
-          <el-form-item
-            label="车证比对结果："
-            class="w-30"
-          >
+          <el-form-item label="车证比对结果：" class="w-30">
             <el-select v-model="formInline.contrastres">
               <el-option value="验证成功" label="验证成功"></el-option>
               <el-option value="验证失败" label="验证失败"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="所属检查站：" class="w-30">
+          <el-form-item label="所属检查站：" label-width="125px" class="w-35">
             <el-select v-model="formInline.station">
               <el-option value="区域一" label="区域一"></el-option>
               <el-option value="区域二" label="区域二"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="日期：" class="w-40">
+          <el-form-item label="日期：" label-width="110px" class="w-40">
             <el-date-picker
               type="date"
               placeholder="选择日期"
@@ -137,12 +135,7 @@
             label="检查站"
             :resizable="false"
           ></el-table-column>
-          <el-table-column
-            label="操作"
-            :resizable="false"
-            align="center"
-            min-width="170"
-          >
+          <el-table-column label="操作" :resizable="false" min-width="170">
             <template slot-scope="scope">
               <!-- <el-dropdown
                 split-button
@@ -179,7 +172,7 @@
               <el-button
                 @click="handleDetails(scope.$index, scope.row)"
                 type="primary"
-                class="mini-btn mt-5"
+                class="mini-btn"
                 size="mini"
                 :resizable="false"
               >
@@ -189,7 +182,7 @@
                 @click="handleDetails2(scope.$index, scope.row)"
                 size="mini"
                 type="primary"
-                class="bgc1 mini-btn mt-5"
+                class="bgc1 mini-btn"
               >
                 关联人员
               </el-button>
@@ -197,7 +190,8 @@
                 @click="handleDetails3(scope.$index, scope.row)"
                 size="mini"
                 type="info"
-                class="mini-btn mt-5"
+                class="mini-btn"
+                v-if="scope.row.CarComparison !== '正常'"
               >
                 处置
               </el-button>
@@ -796,7 +790,7 @@ export default {
 }
 /deep/ .status-yellow {
   color: #000;
-  background-color: rgb(255,255,1) !important;
+  background-color: rgb(255, 255, 1) !important;
 }
 /deep/ .status-orange {
   color: #000;

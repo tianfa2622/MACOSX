@@ -24,8 +24,8 @@ const options = {
   },
   grid: {
     top: '15%',
-    right: '3%',
-    left: '5%',
+    right: '4%',
+    left: '4%',
     bottom: '12%'
   },
   xAxis: [{
@@ -39,10 +39,10 @@ const options = {
     },
     axisLabel: {
       // margin: 10,
-      color: '#000'
-      // textStyle: {
-      //   fontSize: 14
-      // }
+      color: '#000',
+      textStyle: {
+        fontSize: 11
+      }
     }
   }],
   yAxis: [{
@@ -94,7 +94,7 @@ const options = {
       normal: {
         show: true,
         lineHeight: 30,
-        width: 60,
+        width: 65,
         height: 30,
         backgroundColor: '#ccc',
         borderRadius: 200,
