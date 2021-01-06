@@ -28,7 +28,11 @@
           ></area-select>
         </el-form-item>
         <el-form-item label="所属检查站：" class="w-30">
-          <el-select v-model="formInline.OwnedCheckpoint" placeholder="请选择">
+          <el-select
+            v-model="formInline.OwnedCheckpoint"
+            placeholder="请选择"
+            class="w202"
+          >
             <el-option label="部门一" value="bumengyi"></el-option>
             <el-option label="部门二" value="bumenger"></el-option>
           </el-select>
@@ -183,5 +187,8 @@ export default {
 <style lang="less" scoped>
 /deep/.el-card {
   overflow: visible;
+}
+.w202 {
+  width: 202px !important;
 }
 </style>

@@ -77,7 +77,12 @@
                 height="100%"
                 empty-text
               >
-                <el-table-column prop="data" label="日期" :resizable="false">
+                <el-table-column
+                  prop="data"
+                  show-overflow-tooltip
+                  label="日期"
+                  :resizable="false"
+                >
                 </el-table-column>
                 <el-table-column
                   prop="yryb"
@@ -187,14 +192,14 @@
         </el-card>
         <el-card class="mt-10 flex1 fill_height" body-style="height: 100%">
           <div class="w-100 h-100 dflex">
-            <div class="w-45 h-100">
+            <div class="h-100" style="width: 44%">
               <EchartsPackage
                 v-if="'second' == activeName"
                 :option="RegionalStatistics"
               ></EchartsPackage>
             </div>
             <div style="width: 1%"></div>
-            <div class="h-100 posi-rel" style="width: 54%">
+            <div class="h-100 posi-rel" style="width: 55%">
               <el-table
                 :data="tableData1"
                 fit
@@ -207,6 +212,8 @@
                 <el-table-column
                   prop="CheckpointName"
                   label="检查站名称"
+                  width="85"
+                  show-overflow-tooltip
                   :resizable="false"
                 >
                 </el-table-column>
@@ -230,6 +237,7 @@
                 <el-table-column
                   prop="fdxcp"
                   label="反动宣传品"
+                  width="85"
                   :resizable="false"
                 >
                 </el-table-column>

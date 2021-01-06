@@ -13,7 +13,7 @@
         >
           实时监控
         </el-button>
-        <el-form :inline="true" size="medium" class="ml-20">
+        <el-form :inline="true" size="mini" class="ml-20 ta-c">
           <el-form-item
             label="机动车车辆类型："
             label-width="125px"
@@ -24,10 +24,14 @@
               <el-option value="货车" label="货车"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="车牌号码：" label-width="110px" class="w-30">
-            <el-input></el-input>
+          <el-form-item
+            label="车牌号码："
+            label-width="110px"
+            class="w-35 ta-c"
+          >
+            <el-input class="w270"></el-input>
           </el-form-item>
-          <el-form-item label="车证比对结果：" class="w-30">
+          <el-form-item label="车证比对结果：" class="w-30 ta-c">
             <el-select v-model="formInline.contrastres">
               <el-option value="验证成功" label="验证成功"></el-option>
               <el-option value="验证失败" label="验证失败"></el-option>
@@ -39,22 +43,22 @@
               <el-option value="区域二" label="区域二"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="日期：" label-width="110px" class="w-40">
+          <el-form-item label="日期：" label-width="110px" class="w-35 ta-c">
             <el-date-picker
               type="date"
               placeholder="选择日期"
               v-model="formInline.date1"
-              class="w150"
+              class="w135"
             ></el-date-picker>
             <span> - </span>
             <el-date-picker
               type="date"
-              class="w150"
+              class="w135"
               placeholder="选择日期"
               v-model="formInline.date2"
             ></el-date-picker>
           </el-form-item>
-          <el-form-item class="w-20">
+          <el-form-item class="w-30 ta-c">
             <el-button type="primary" style="width: 150px">查询</el-button>
           </el-form-item>
         </el-form>
@@ -68,7 +72,7 @@
           :data="tableData"
           fit
           border
-          size="mini"
+          size="small"
           style="width: 100%"
           :cell-class-name="setRowStyle"
           class="flex1"
@@ -85,6 +89,7 @@
             prop="CarNumber"
             label="机动车牌号码"
             :resizable="false"
+            show-overflow-tooltip
           >
           </el-table-column>
           <el-table-column
@@ -95,7 +100,6 @@
           <el-table-column
             prop="IdCardNumber"
             label="公民身份号码"
-            min-width="140px"
             :resizable="false"
             show-overflow-tooltip
           >
@@ -127,8 +131,8 @@
           <el-table-column
             prop="cartime"
             label="时间"
+            show-overflow-tooltip
             :resizable="false"
-            min-width="90px"
           ></el-table-column>
           <el-table-column
             prop="checkpoint"
@@ -784,8 +788,14 @@ export default {
 .result-color {
   color: #009900;
 }
+.w270 {
+  width: 285px;
+}
+.w135 {
+  width: 135px;
+}
 /deep/ .status-success {
-  background-color: #044aa2 !important;
+  // background-color: #044aa2 !important;
   color: #000;
 }
 /deep/ .status-yellow {

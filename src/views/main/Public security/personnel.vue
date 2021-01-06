@@ -15,14 +15,14 @@
           实时监控
         </el-button>
 
-        <el-form :inline="true" size="medium" class="pl-10" label-width="96px">
-          <el-form-item label="姓名：" class="ml-25">
+        <el-form :inline="true" size="mini" class="ml-20">
+          <el-form-item label="姓名：" class="w-25" label-width="96px">
             <el-input placeholder="请输入姓名"></el-input>
           </el-form-item>
-          <el-form-item label="证件号码：" class="ml-25">
-            <el-input placeholder="请输入证件号码"></el-input>
+          <el-form-item label="证件号码：" label-width="82px" class="w-35">
+            <el-input placeholder="请输入证件号码" class="w250"></el-input>
           </el-form-item>
-          <el-form-item label="户籍地址：" class="ml-25">
+          <el-form-item label="户籍地址：" class="w-35">
             <area-select
               type="text"
               v-model="selected"
@@ -31,15 +31,15 @@
               size="small"
             ></area-select>
           </el-form-item>
-          <el-form-item label="所属检查站：" class="ml-25">
-            <el-select v-model="station" style="width: 202px">
+          <el-form-item label="所属检查站：" class="w-25">
+            <el-select v-model="station" class="w178">
               <el-option value="区域一" label="区域一"></el-option>
               <el-option value="区域二" label="区域二"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="日期：" class="ml-25">
+          <el-form-item label="日期：" label-width="82px" class="w-35">
             <el-date-picker
-              class="ml-10"
+              class="w250"
               v-model="date1"
               type="daterange"
               range-separator="至"
@@ -48,7 +48,7 @@
             >
             </el-date-picker>
           </el-form-item>
-          <el-form-item class="ml-25">
+          <el-form-item class="w-35">
             <el-button type="primary" class="w150">查询</el-button>
           </el-form-item>
         </el-form>
@@ -105,6 +105,7 @@
           <el-table-column
             prop="Peraddress"
             align="center"
+            show-overflow-tooltip
             label="户籍地址"
             :resizable="false"
           >
@@ -490,16 +491,6 @@ export default {
           checkpoint: '打药检查站',
           PeoComparison: '三级预警',
           Peotime: '2020/2/21/ 12:12:12'
-        },
-        {
-          names: '小二',
-          KeyPersonnel: '否',
-          Cdocuments: '身份证',
-          documentsNum: '430426121198103218721',
-          Peraddress: '湖南省长沙市',
-          checkpoint: '打药检查站',
-          PeoComparison: '正常',
-          Peotime: '2020/2/21/ 12:12:12'
         }
       ],
       currentPage: 1,
@@ -649,11 +640,11 @@ export default {
   }
 }
 /deep/ .status-success {
-  background-color: #044aa2 !important;
+  // background-color: #044aa2 !important;
   color: #000;
 }
 /deep/ .status-yellow {
-  background-color: rgb(255,255,1)!important;
+  background-color: rgb(255, 255, 1) !important;
   color: #000;
 }
 /deep/ .status-orange {
@@ -682,6 +673,27 @@ export default {
 }
 .mini-btn {
   padding: 7px 12px !important;
+}
+.w178 {
+  width: 178px !important;
+}
+.w-35 {
+  width: 35%;
+  text-align: center;
+}
+/deep/.area-select-wrap {
+  height: 28px !important;
+  line-height: 28px !important;
+  .area-select {
+    height: 28px !important;
+    .area-selected-trigger {
+      height: 28px !important;
+      text-align: left;
+    }
+    .area-selectable-list-wrap {
+      top: 25px !important;
+    }
+  }
 }
 </style>
 <style lang="less">

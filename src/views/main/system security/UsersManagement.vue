@@ -182,6 +182,9 @@
           label="性别"
           align="center"
         >
+          <template slot-scope="scope">
+            {{ scope.row.gender !== 0 ? "男" : "女" }}
+          </template>
         </el-table-column>
         <el-table-column
           prop="Roles"
