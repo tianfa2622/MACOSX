@@ -469,7 +469,7 @@ export default {
           documentsNum: '430426121198103218721',
           Peraddress: '湖南省长沙市',
           checkpoint: '打药检查站',
-          PeoComparison: '一级预警',
+          PeoComparison: '蓝色预警',
           Peotime: '2020/2/21/ 12:12:12'
         },
         {
@@ -479,7 +479,7 @@ export default {
           documentsNum: '430426121198103218721',
           Peraddress: '湖南省长沙市',
           checkpoint: '打药检查站',
-          PeoComparison: '二级预警',
+          PeoComparison: '黄色预警',
           Peotime: '2020/2/21/ 12:12:12'
         },
         {
@@ -489,7 +489,7 @@ export default {
           documentsNum: '430426121198103218721',
           Peraddress: '湖南省长沙市',
           checkpoint: '打药检查站',
-          PeoComparison: '三级预警',
+          PeoComparison: '红色预警',
           Peotime: '2020/2/21/ 12:12:12'
         }
       ],
@@ -543,9 +543,11 @@ export default {
       if (column.property === 'PeoComparison') {
         if (row.PeoComparison === '正常') {
           return 'status-success'
-        } else if (row.PeoComparison === '一级预警') {
+        } else if (row.PeoComparison === '蓝色预警') {
+          return 'status-blue'
+        } else if (row.PeoComparison === '黄色预警') {
           return 'status-yellow'
-        } else if (row.PeoComparison === '二级预警') {
+        } else if (row.PeoComparison === '橙色预警') {
           return 'status-orange'
         } else {
           return 'status-error'
@@ -641,6 +643,10 @@ export default {
 }
 /deep/ .status-success {
   // background-color: #044aa2 !important;
+  color: #000;
+}
+/deep/ .status-blue {
+  background-color: #044aa2 !important;
   color: #000;
 }
 /deep/ .status-yellow {

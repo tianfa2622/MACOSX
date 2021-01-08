@@ -619,7 +619,7 @@ export default {
           VehicleModel: 'XT-86L',
           Carname: '李四',
           vehicleType: '黄牌黑字',
-          CarComparison: '一级预警',
+          CarComparison: '黄色预警',
           cartime: '2019/12/31',
           checkpoint: '大瑶检查站'
         }
@@ -688,11 +688,15 @@ export default {
     setRowStyle ({ row, column }) {
       if (column.property === 'CarComparison') {
         if (row.CarComparison === '正常') {
-          console.log('status-success')
           return 'status-success'
-        } else {
-          console.log('status-error')
+        } else if (row.CarComparison === '蓝色预警') {
+          return 'status-blue'
+        } else if (row.CarComparison === '黄色预警') {
           return 'status-yellow'
+        } else if (row.CarComparison === '橙色预警') {
+          return 'status-orange'
+        } else {
+          return 'status-error'
         }
       }
     },
@@ -795,7 +799,10 @@ export default {
   width: 135px;
 }
 /deep/ .status-success {
-  // background-color: #044aa2 !important;
+  color: #000;
+}
+/deep/ .status-blue {
+  background-color: #044aa2 !important;
   color: #000;
 }
 /deep/ .status-yellow {

@@ -5,7 +5,7 @@ const options = {
   },
   legend: {
     top: 10,
-    data: ['正常', '一级预警', '二级预警', '三级预警']
+    data: ['正常', '蓝色预警', '黄色预警', '橙色预警', '红色预警']
   },
   series: [
     {
@@ -23,10 +23,11 @@ const options = {
         }
       },
       data: [
-        { value: 335, name: '正常', itemStyle: { color: '#044aa2' } },
-        { value: 310, name: '一级预警', itemStyle: { color: '#ffff00' } },
-        { value: 234, name: '二级预警', itemStyle: { color: '#ff8800' } },
-        { value: 135, name: '三级预警', itemStyle: { color: '#e74c3c' } }
+        { value: 335, name: '正常', itemStyle: { color: '#ccc' } },
+        { value: 335, name: '蓝色预警', itemStyle: { color: '#044aa2' } },
+        { value: 310, name: '黄色预警', itemStyle: { color: '#ffff00' } },
+        { value: 234, name: '橙色预警', itemStyle: { color: '#ff8800' } },
+        { value: 135, name: '红色预警', itemStyle: { color: '#e74c3c' } }
       ],
       labelLine: {
         normal: {
